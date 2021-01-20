@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Списки книг</title>
+    <link rel="shortcut icon" href="../images/Лого (1).svg" type="image/x-icon">
+    <link href="../css/bstyle.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="../js/Books.js"></script>
+</head>
+<body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Переключить навигацию">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample10">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="navbar-brand active" href="Home.html">
+                                    <image src="../images/Лого.svg" width="200" height="min" style="vertical-align:middle; " role="img" class="d-block"></image>
+                                </a>
+                            </li>
+                            <li>
+                                <form>
+                                    <input type="text" placeholder="Искать здесь..." class="col-4">
+                                    <button type="submit"></button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--  <a class="navbar-brand active col-4 pt-1 align-content-center" href="Home.html">
+        <image src="../images/Лого.svg" width="200" height="min" style="vertical-align:middle; " role="img" class="d-block"></image>
+    </a>
+                  <form>
+                      <input type="text" placeholder="Искать здесь..." class="col-4">
+                      <button type="submit"></button>
+                  </form>-->
+                </nav>
+                <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link active" href="Books.html">Книги</a>
+                    <a class="nav-link" href="Review.html">Рецензии</a>
+                    <a class="nav-link" href="Comments.html">Отзывы</a>
+                    <a class="nav-link" href="Quotes.html">Цитаты</a>
+                    <a class="nav-link" href="News.html">Новости</a>
+                    <a class="nav-link" href="Author.html">Авторы</a>
+                    <a class="nav-link" href="#">Войти</a>
+                </nav>
+            </div>
+        </header>
+        <main role="main" class="inner cover">
+            <h1 class="cover-heading">Все книги</h1>
+            <div class="container-fluid">
+                <div id="bookDiv" class="row" align="justify"></div>
+            </div>
+        </main>
+    </div>
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+</body>
+</html>
+
+<!--<div class="container-fluid">
+    <div class="row my-3  justify-content-center">
+        <button class="btn btn-success center-block" data-toggle="modal" data-target="#cBook">Добавить книгу</button>
+    </div>
+    <div class="row" id="bookDiv"></div>
+</div>
+<div id="сBook" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="model-header">
+                <button class="close" data-dismiss="modal">x</button>
+                <h3 class="modal-title">Добавить книгу</h3>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="createTitle">Название</label>
+                        <input id="createTitle" class="form-control" type="text" required placeholder="Введите название книги" />
+                    </div>
+                    <div class="form-group">
+                        <label for="chooseAuthor">Автор</label>
+                        <select id="chooseAuthor" class="form-control" required placeholder="Укажите автора книги. Если нужного автора нет в списке, нажмите на кнопку 'Добавить автора'" />
+                    </div>
+                    <div class="form-group">
+                        <label for="chooseTypeLit">Тип литературы</label>
+                        <select id="chooseTypeLit" class="form-control" placeholder="Укажите тип литературы" />
+                    </div>
+                    <div class="form-group">
+                        <label for="chooseGenre">Жанр</label>
+                        <select id="chooseGenre" class="form-control" placeholder="Укажите жанр произведения" />
+                    </div>
+                    <div class="form-group">
+                        <label for="createDescription">Описание</label>
+                        <input id="createDescription" class="form-control" type="text" required placeholder="Опишите книгу" />
+                    </div>
+                    <div class="form-group">
+                        <label for="createStory">Сюжет</label>
+                        <input id="createStory" class="form-control" type="text" required placeholder="Напишите сюжет произведения" />
+                    </div>
+                    <div class="form-group">
+                        <label for="createEdition">Тираж</label>
+                        <input id="createEdition" class="form-control" type="text" required placeholder="Введите количество изданных книг" />
+                    </div>
+                    <div class="form-group">
+                        <label for="create_Date">Дата выхода в свет </label>
+                        <input type="text" class="form-control" id="create_Date" required>
+                    </div>
+                    <div class="form-group">
+                        <p>Изображение обложки:</p>
+                        <input class="form-control" type="file" id="addImage" placeholder="Загрузите изображение" required />
+                    </div>
+                    <div class="result">
+                        <img src="#" alt="image" />
+                    </div>
+                    <button onclick="createBook(); return false;" type="submit" class='btn btn-success'>Добавить книгу</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+</html >-->
+
+
