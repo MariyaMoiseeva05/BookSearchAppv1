@@ -46,7 +46,6 @@ namespace BLL.Data
                 ImagePath = a.ImagePath,
                 ImageLink = a.ImageLink,
                 Book = a.Book,
-                Genre = a.Genre,
                 Interesting_fact = a.Interesting_fact,
                 Details = a.Details
             });
@@ -71,7 +70,6 @@ namespace BLL.Data
             av.Awards = av.Awards;
             av.ImageLink = av.ImageLink;
             av.Book = a.Book;
-            av.Genre = a.Genre;
             av.Interesting_fact = a.Interesting_fact;
             av.Details = a.Details;
 
@@ -115,6 +113,7 @@ namespace BLL.Data
                 Type_of_literatureId = b.Type_of_literatureId,
                 Comment = b.Comment,
                 Author = b.Author,
+                Screenings = b.Screenings,
                 Type_of_literature = b.Type_of_literature,
                 Quote = b.Quote,
                 Review = b.Review,
@@ -138,6 +137,7 @@ namespace BLL.Data
             bk.Type_of_literatureId = b.Type_of_literatureId;
             bk.Comment = b.Comment;
             bk.Author = b.Author;
+            bk.Screenings = b.Screenings;
             bk.Type_of_literature = b.Type_of_literature;
             bk.Quote = b.Quote;
             bk.Review = b.Review;
@@ -222,9 +222,7 @@ namespace BLL.Data
             db.Genres.Create(new Genre()
             {
                 NameGenre = g.NameGenre,
-                Genre_Books = g.Genre_Books,
-                Author = g.Author,
-                Type_of_literature =g.Type_of_literature 
+                Genre_Books = g.Genre_Books
 
             });
             Save();
@@ -235,8 +233,6 @@ namespace BLL.Data
             Genre gr = db.Genres.GetItem(g.GenreId);
             gr.NameGenre = g.NameGenre;
             gr.Genre_Books = g.Genre_Books;
-            gr.Author = g.Author;
-            gr.Type_of_literature = g.Type_of_literature;
 
             Save();
         }
@@ -551,8 +547,7 @@ namespace BLL.Data
             db.Type_of_literatures.Create(new Type_of_literature()
             {
                 Name_Type = t.Name_Type,
-                Book = t.Book,
-                Genres = t.Genres
+                Book = t.Book
 
             });
             Save();
@@ -564,7 +559,6 @@ namespace BLL.Data
 
             tl.Name_Type = t.Name_Type;
             tl.Book = t.Book;
-            tl.Genres = t.Genres;
             Save();
         }
 

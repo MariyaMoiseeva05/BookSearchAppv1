@@ -25,7 +25,6 @@ namespace BLL.Models
         public string ImagePath{ get; set; }
         public virtual ICollection<Book> Book { get; set; }  // Книга
         public virtual ICollection<Interesting_fact> Interesting_fact { get; set; }  // Интересные факты
-        public virtual ICollection<Genre_Author> Genre { get; set; }
 
 
         public AuthorModel() { }
@@ -48,7 +47,6 @@ namespace BLL.Models
             ImagePath = a.ImagePath;
             Book = a.Book;
             Interesting_fact = a.Interesting_fact;
-            Genre = a.Genre;
             Details = a.Details;
         }
     }

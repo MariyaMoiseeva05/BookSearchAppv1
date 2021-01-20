@@ -12,7 +12,6 @@ namespace DAL.Entities
         [Required]
         public string Name_Type { get; set; }
         public ICollection<Book> Book { get; set; }
-        public virtual ICollection<Genre_TypeLit> Genres{ get; set; }// Жанр книги
 
     }
 }

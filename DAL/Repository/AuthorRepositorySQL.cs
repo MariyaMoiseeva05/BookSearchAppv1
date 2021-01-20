@@ -53,7 +53,6 @@ namespace DAL.Repository
             author.ImageLink = author.ImageLink;
             author.ImagePath = author.ImagePath;
             author.Book = Author.Book;
-            author.Genre = Author.Genre;
             author.Interesting_fact = Author.Interesting_fact;
             author.Details = Author.Details;
             db.Authors.Update(author);

@@ -67,6 +67,7 @@ namespace DAL.Repository
             book.Comment = Book.Comment;
             book.Quote = Book.Quote;
             book.Review = Book.Review;
+            book.Screenings = Book.Screenings;
             book.Type_of_literatureId = Book.Type_of_literatureId;
             book.Type_of_literature = Book.Type_of_literature;
             book.Genre_Books = Book.Genre_Books;

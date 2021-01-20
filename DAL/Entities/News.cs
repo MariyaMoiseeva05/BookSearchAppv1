@@ -22,7 +22,7 @@ namespace DAL.Entities
         [Display(Name = "Дата создания")]
         public DateTime Date_of_creation { get; set; } // Дата создания
         [Display(Name = "Содержание")]
-        public string Content { get; set; } // Сдержание
+        public string Content { get; set; } // Содержание
         public virtual ICollection<News_Tags> Tags { get; set; } = new HashSet<News_Tags>();
 
     }

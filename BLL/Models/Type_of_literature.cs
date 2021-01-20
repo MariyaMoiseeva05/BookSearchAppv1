@@ -8,7 +8,6 @@ namespace BLL.Models
         public int? Type_of_literatureId { get; set; }
         public string Name_Type { get; set; }
         public ICollection<Book> Book { get; set; }
-        public ICollection<Genre_TypeLit> Genres { get; set; }
         public Type_of_literatureModel() { }
         public Type_of_literatureModel(Type_of_literature t)
         {
@@ -16,7 +15,6 @@ namespace BLL.Models
             Type_of_literatureId = t.Type_of_literatureId;
             Name_Type = t.Name_Type;
             Book = t.Book;
-            Genres = t.Genres;
 
         }
 

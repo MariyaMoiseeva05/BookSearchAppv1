@@ -40,7 +40,6 @@ namespace DAL.Repository
 
             tl.Name_Type = Type_of_literature.Name_Type;
             tl.Book = Type_of_literature.Book;
-            tl.Genres = Type_of_literature.Genres;
 
             db.Type_Of_Literatures.Update(tl);
             db.SaveChanges();

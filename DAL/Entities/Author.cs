@@ -40,8 +40,6 @@ namespace DAL.Entities
         public string Details { get; set; } // Подробно
         public string ImagePath { get; set; }
         public string ImageLink { get; set; }
-
-        public virtual ICollection<Genre_Author> Genre { get; set; }// Жанр произведений
         public virtual ICollection<Book> Book { get; set; }  // Книга
         public virtual ICollection<Interesting_fact> Interesting_fact { get; set; }  // Интересные факты
 

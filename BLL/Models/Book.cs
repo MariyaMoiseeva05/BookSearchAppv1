@@ -13,6 +13,7 @@ namespace BLL.Models
         public string Description { get; set; }
         public string Story { get; set; }
         public string Edition { get; set; }
+        public string Screenings { get; set; }
         public DateTime Publication_date { get; set; }
         public string ImageLink { get; set; }
         public string ImagePath { get; set; }
@@ -38,6 +39,7 @@ namespace BLL.Models
             Type_of_literatureId = b.Type_of_literatureId;
             Comment = b.Comment;
             Author = b.Author;
+            Screenings = b.Screenings;
             Type_of_literature = b.Type_of_literature;
             Quote = b.Quote;
             Review = b.Review;

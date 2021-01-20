@@ -39,8 +39,6 @@ namespace DAL.Repository
             var gr = db.Genres.Find(genreId);
             gr.NameGenre = Genre.NameGenre;
             gr.Genre_Books = Genre.Genre_Books;
-            gr.Author = Genre.Author;
-            gr.Type_of_literature = Genre.Type_of_literature;
 
             db.Genres.Update(gr);
             db.SaveChanges();

@@ -18,8 +18,6 @@ namespace DAL.Entities
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<Genre> Genres { get; set; }
         public virtual DbSet<Genre_Book> Genre_Books { get; set; }
-        public virtual DbSet<Genre_Author> Genre_Authors { get; set; }
-        public virtual DbSet<Genre_TypeLit> Genre_TypeLiters { get; set; }
         public virtual DbSet<Interesting_fact> Interesting_Facts { get; set; }
         public virtual DbSet<Type_of_literature> Type_Of_Literatures { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
@@ -68,33 +66,6 @@ namespace DAL.Entities
                 .WithMany(t => t.Genre_Books)
                 .HasForeignKey(pt => pt.GenreId);
 
-            modelBuilder.Entity<Genre_Author>()
-            .HasKey(t => new { t.AuthorId, t.GenreId });
-
-            modelBuilder.Entity<Genre_Author>()
-                .HasOne(pt => pt.Author)
-                .WithMany(p => p.Genre)
-                .HasForeignKey(pt => pt.AuthorId);
-
-            modelBuilder.Entity<Genre_Author>()
-
-                .HasOne(pt => pt.Genre)
-                .WithMany(t => t.Author)
-                .HasForeignKey(pt => pt.GenreId);
-
-            modelBuilder.Entity<Genre_TypeLit>()
-            .HasKey(t => new { t.TypeLitId, t.GenreId });
-
-            modelBuilder.Entity<Genre_TypeLit>()
-                .HasOne(pt => pt.Type_of_literature)
-                .WithMany(p => p.Genres)
-                .HasForeignKey(pt => pt.TypeLitId);
-
-            modelBuilder.Entity<Genre_TypeLit>()
-
-                .HasOne(pt => pt.Genre)
-                .WithMany(t => t.Type_of_literature)
-                .HasForeignKey(pt => pt.GenreId);
 
             modelBuilder.Entity<Book>(entity =>
             {
