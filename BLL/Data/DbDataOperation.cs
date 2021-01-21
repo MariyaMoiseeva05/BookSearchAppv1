@@ -176,6 +176,8 @@ namespace BLL.Data
                 Title = c.Title,
                 Date_of_creation = c.Date_of_creation,
                 Book = c.Book,
+                Review = c.Review,
+                News = c.News,
                 Rating = c.Rating,
                 //User = c.User
             });
@@ -191,6 +193,8 @@ namespace BLL.Data
             cm.Date_of_creation = c.Date_of_creation;
             cm.Book = c.Book;
             cm.Rating = c.Rating;
+            cm.News = c.News;
+            cm.Review = c.Review;
            // cm.User = c.User;
             Save();
         }
@@ -316,6 +320,8 @@ namespace BLL.Data
                 Date_of_creation = n.Date_of_creation,
                 Content = n.Content,
                 Tags = n.Tags,
+                Comments = n.Comments,
+                Source = n.Source,
                 ImageLink = n.ImageLink,
                 ImagePath = n.ImagePath
 
@@ -329,10 +335,12 @@ namespace BLL.Data
             nw.Topic = n.Topic;
             nw.Title = n.Title;
             nw.Tags = n.Tags;
+            nw.Comments = n.Comments;
             nw.ImagePath = n.ImagePath;
             nw.ImageLink = n.ImageLink;
             nw.Date_of_creation = n.Date_of_creation;
             nw.Content = n.Content;
+            nw.Source = n.Source;
             Save();
         }
 
@@ -452,6 +460,7 @@ namespace BLL.Data
              //   UserID = r.UserID,
               //  User = r.User,
                 Book = r.Book,
+                Comments = r.Comments,
                 Rating = r.Rating
             });
             Save();
@@ -467,6 +476,7 @@ namespace BLL.Data
             rw.BookID = r.BookID;
             //rw.UserID = r.UserID;
             rw.Book = r.Book;
+            rw.Comments = r.Comments;
             // rw.User = r.User;
             rw.Rating = r.Rating;
             Save();

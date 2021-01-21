@@ -20,13 +20,14 @@ namespace DAL.Entities
         public string Text { get; set; }
 
         [Display(Name = "Тип")]
-        public string Type { get; set; } // положительная или отрицательная
+        public bool Type { get; set; } // положительная или отрицательная
 
         [Display(Name = "Рейтинг книги")]
         public double Rating { get; set; } //рейтинг книги
         public int? BookID { get; set; }
        // public int? UserID { get; set; }
         public virtual Book Book { get; set; } // навигационное свойство
-       
+        public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
+
     }
 }

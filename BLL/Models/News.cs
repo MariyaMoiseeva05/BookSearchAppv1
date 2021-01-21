@@ -13,7 +13,9 @@ namespace BLL.Models
         public string Content { get; set; }
         public string ImageLink { get; set; }
         public string ImagePath { get; set; }
+        public string Source { get; set; }
         public virtual ICollection<News_Tags> Tags { get; set; } = new HashSet<News_Tags>();
+        public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
         public NewsModel() { }
         public NewsModel(News n)
         {
@@ -23,6 +25,8 @@ namespace BLL.Models
             Date_of_creation = n.Date_of_creation;
             Content = n.Content;
             Tags = n.Tags;
+            Comments = n.Comments;
+            Source = n.Source;
             ImageLink = n.ImageLink;
             ImagePath = n.ImagePath;
 

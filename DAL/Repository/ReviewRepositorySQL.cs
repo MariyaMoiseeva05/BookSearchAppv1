@@ -45,6 +45,7 @@ namespace DAL.Repository
            // rw.UserID = Review.UserID;
             rw.Book = Review.Book;
             rw.Rating = Review.Rating;
+            rw.Comments = Review.Comments;
 
             db.Reviews.Update(rw);
             db.SaveChanges();

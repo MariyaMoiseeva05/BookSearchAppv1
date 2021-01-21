@@ -43,6 +43,8 @@ namespace DAL.Repository
             cm.Date_of_creation = Comment.Date_of_creation;
             cm.Book = Comment.Book;
             cm.Rating = Comment.Rating;
+            cm.Review = Comment.Review;
+            cm.News = Comment.News;
 
             db.Comments.Update(cm);
             db.SaveChanges();

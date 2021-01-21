@@ -45,6 +45,8 @@ namespace DAL.Repository
             nw.ImageLink = News.ImageLink;
             nw.ImagePath = News.ImagePath;
             nw.Tags = News.Tags;
+            nw.Source = News.Source;
+            nw.Comments = News.Comments;
 
             db.News.Update(nw);
             db.SaveChanges();

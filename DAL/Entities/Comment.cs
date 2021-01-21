@@ -29,6 +29,8 @@ namespace DAL.Entities
         public DateTime Date_of_creation { get; set; } // дата создания
 
         public virtual Book Book { get; set; } // навигационное свойство
-        
+        public virtual News News { get; set; }
+        public virtual Review Review { get; set; }
+
     }
 }

@@ -13,6 +13,8 @@ namespace BLL.Models
         public double Rating { get; set; }
         public DateTime Date_of_creation { get; set; }
         public virtual Book Book { get; set; } // навигационное свойство
+        public virtual News News { get; set; }
+        public virtual Review Review { get; set; }
         public CommentModel() { }
         public CommentModel(Comment c)
         {
@@ -22,6 +24,8 @@ namespace BLL.Models
             Title = c.Title;
             Date_of_creation = c.Date_of_creation;
             Book = c.Book;
+            News = c.News;
+            Review = c.Review;
             Rating = c.Rating;
 
         }
