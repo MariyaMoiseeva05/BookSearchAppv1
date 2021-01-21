@@ -38,7 +38,7 @@ namespace DAL.Repository
                 .Include(a => a.Author)
                 .Include(r => r.Review)
                 .Include(q => q.Quote)
-                .Include(t => t.Type_of_literature)
+                .Include(t => t.Type_of_literature).ThenInclude(gn => gn.TypeLit)
                 .Include(g => g.Genre_Books).ThenInclude(gn => gn.Genre)
                 .First(b => b.BookID == id);
         }
@@ -47,7 +47,7 @@ namespace DAL.Repository
         {
             return db.Books
                 .Include(a => a.Author)
-                .Include(t => t.Type_of_literature)
+                .Include(t => t.Type_of_literature).ThenInclude(gn => gn.TypeLit)
                 .Include(g => g.Genre_Books).ThenInclude(gn => gn.Genre)
                 .ToList();
         }
@@ -68,7 +68,6 @@ namespace DAL.Repository
             book.Quote = Book.Quote;
             book.Review = Book.Review;
             book.Screenings = Book.Screenings;
-            book.Type_of_literatureId = Book.Type_of_literatureId;
             book.Type_of_literature = Book.Type_of_literature;
             book.Genre_Books = Book.Genre_Books;
 

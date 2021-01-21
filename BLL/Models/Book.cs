@@ -17,8 +17,7 @@ namespace BLL.Models
         public DateTime Publication_date { get; set; }
         public string ImageLink { get; set; }
         public string ImagePath { get; set; }
-        public int? Type_of_literatureId { get; set; }
-        public Type_of_literature Type_of_literature { get; set; }
+        public ICollection<TypeOfLit_Book> Type_of_literature { get; set; }
         public virtual ICollection<Comment> Comment { get; set; }  // Отзывы
         public virtual ICollection<Quote> Quote { get; set; }  // Цитаты
         public virtual ICollection<Review> Review { get; set; } // Рецензии
@@ -36,7 +35,6 @@ namespace BLL.Models
             Publication_date = b.Publication_date;
             ImageLink = b.ImageLink;
             ImagePath = b.ImagePath;
-            Type_of_literatureId = b.Type_of_literatureId;
             Comment = b.Comment;
             Author = b.Author;
             Screenings = b.Screenings;

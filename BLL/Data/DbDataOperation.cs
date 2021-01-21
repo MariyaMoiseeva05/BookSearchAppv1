@@ -110,7 +110,6 @@ namespace BLL.Data
                 Publication_date = b.Publication_date,
                 ImagePath = b.ImagePath,
                 ImageLink = b.ImageLink,
-                Type_of_literatureId = b.Type_of_literatureId,
                 Comment = b.Comment,
                 Author = b.Author,
                 Screenings = b.Screenings,
@@ -134,7 +133,6 @@ namespace BLL.Data
             bk.Publication_date = b.Publication_date;
             bk.ImagePath = b.ImagePath;
             bk.ImageLink = b.ImageLink;
-            bk.Type_of_literatureId = b.Type_of_literatureId;
             bk.Comment = b.Comment;
             bk.Author = b.Author;
             bk.Screenings = b.Screenings;

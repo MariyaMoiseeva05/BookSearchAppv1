@@ -12,7 +12,8 @@ namespace DAL.Entities
         [Required]
         [Display(Name = "Тип литературы")]
         public string Name_Type { get; set; }
-        public ICollection<Book> Book { get; set; }
+        public virtual ICollection<TypeOfLit_Book>Book { get; set; }
+
 
     }
 }

@@ -20,6 +20,7 @@ namespace DAL.Entities
         public virtual DbSet<Genre_Book> Genre_Books { get; set; }
         public virtual DbSet<Interesting_fact> Interesting_Facts { get; set; }
         public virtual DbSet<Type_of_literature> Type_Of_Literatures { get; set; }
+        public virtual DbSet<TypeOfLit_Book> TypeOfLit_Books { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Quote> Quotes { get; set; }
 
@@ -66,6 +67,20 @@ namespace DAL.Entities
                 .WithMany(t => t.Genre_Books)
                 .HasForeignKey(pt => pt.GenreId);
 
+            modelBuilder.Entity<TypeOfLit_Book>()
+            .HasKey(t => new { t.BookId, t.TypeId });
+
+            modelBuilder.Entity<TypeOfLit_Book>()
+                .HasOne(pt => pt.Book)
+                .WithMany(p => p.Type_of_literature)
+                .HasForeignKey(pt => pt.BookId);
+
+            modelBuilder.Entity<TypeOfLit_Book>()
+
+                .HasOne(pt => pt.TypeLit)
+                .WithMany(t => t.Book)
+                .HasForeignKey(pt => pt.TypeId);
+
 
             modelBuilder.Entity<Book>(entity =>
             {
@@ -74,12 +89,6 @@ namespace DAL.Entities
                     .HasForeignKey(b => b.AuthorID);
             });
 
-            modelBuilder.Entity<Book>(entity =>
-            {
-                entity.HasOne(b => b.Type_of_literature)
-                    .WithMany(p => p.Book)
-                    .HasForeignKey(b => b.Type_of_literatureId);
-            });
 
             modelBuilder.Entity<News_Tags>()
            .HasKey(t => new { t.NewsId, t.TagId });

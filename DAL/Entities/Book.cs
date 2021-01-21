@@ -42,8 +42,7 @@ namespace DAL.Entities
         public virtual ICollection<Comment> Comment { get; set; }  // Отзывы
         public virtual ICollection<Quote> Quote { get; set; }  // Цитаты
         public virtual ICollection<Review> Review { get; set; } // Рецензии
-        public int? Type_of_literatureId { get; set; }
-        public Type_of_literature Type_of_literature { get; set; } //тип литературы
+        public ICollection<TypeOfLit_Book> Type_of_literature { get; set; } //тип литературы
         public virtual ICollection<Genre_Book> Genre_Books { get; set; }// Жанр книги
 
 

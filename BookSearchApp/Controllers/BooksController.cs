@@ -90,7 +90,6 @@ namespace BookSearchApp.Controllers
             bookModel.Comment = book.Comment;
             bookModel.Quote = book.Quote;
             bookModel.Review = book.Review;
-            bookModel.Type_of_literatureId = book.Type_of_literatureId;
             bookModel.Type_of_literature = book.Type_of_literature;
             bookModel.Genre_Books = book.Genre_Books;
 
