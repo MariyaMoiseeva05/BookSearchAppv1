@@ -11,6 +11,7 @@ namespace DAL.Entities
         public int FactId { get; set; } // Id
         public int? AuthorID { get; set; }// Автор
         [Required]
+        [Display(Name = "Интересный факт")]
         public string Content { get; set; }// Содержание
         public string ImageLink { get; set; }
         public string ImagePath { get; set; }

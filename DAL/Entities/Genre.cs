@@ -10,6 +10,7 @@ namespace DAL.Entities
         [Key]
         public int GenreId { get; set; }
         [Required]
+        [Display(Name = "Жанр")]
         public string NameGenre { get; set; }
         public ICollection<Genre_Book> Genre_Books { get; set; }
         

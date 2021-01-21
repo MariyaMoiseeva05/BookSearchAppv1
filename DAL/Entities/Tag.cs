@@ -11,6 +11,7 @@ namespace DAL.Entities
         public int Id { get; set; }
 
         [Required]
+        [Display(Name = "Тэг")]
         public string Name { get; set; }
 
         public virtual ICollection<News_Tags> News { get; set; } = new HashSet<News_Tags>();

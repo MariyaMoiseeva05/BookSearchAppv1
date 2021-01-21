@@ -23,8 +23,8 @@ function getBook() {
                     html += '<p Сюжет:>' + book[i].story + ' </p>';
                     html += '<p> Тираж' + book[i].edition + '</p>';
                     html += '<p> Дата выхода в свет' + book[i].date + '</p>';
-                   // html += '<button type="button" class="mt-2 btn btn-primary btn-block innerBtn"   data-toggle="modal" data-target="#myModal2" onclick="Getdessert(' + book[i].bookId + ');"> Редактировать </button>';
-                   // html += '<button type="button" class="btn btn-btn-link btn-block innerBtn" onclick="deleteDessert(' + book[i].bookId + ');"> Удалить </button>';
+                   // html += '<button type="button" class="mt-2 btn btn-primary btn-block innerBtn"   data-toggle="modal" data-target="#myModal2" onclick="Getdbook(' + book[i].bookId + ');"> Редактировать </button>';
+                   // html += '<button type="button" class="btn btn-btn-link btn-block innerBtn" onclick="deleteBook(' + book[i].bookId + ');"> Удалить </button>';
                     html += '</div>';
                     html += "</div>";
                 }
@@ -64,17 +64,8 @@ function createBook() {
     $.ajax({
         url: '/api/book',
         type: 'POST',
-        //contentType: 'application/json',
         contentType: false,
         processData: false,
-        //dataType: 'HTML',
-        //data: JSON.stringify({
-        //    Name: name,
-        //    Gramm: gramm,
-        //    Count: count,
-        //    Cost: cost,
-        //    ImageLink: data
-        //}),
         data: data,
         success: function (data) {
             getBook();

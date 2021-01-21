@@ -9,12 +9,20 @@ namespace DAL.Entities
     {
         [Key]
         public int RewiewId { get; set; }
+
         [Required]
+        [Display(Name = "Название")]
         public string Title { get; set; }
+
         [Required]
         [StringLength(5000, MinimumLength = 50, ErrorMessage = "Попробуйте написать рецензию ещё раз, чтобы она была длиннее, У Вас всё получится!")]
+        [Display(Name = "Текст рецензии")]
         public string Text { get; set; }
-        public string Type { get; set; }
+
+        [Display(Name = "Тип")]
+        public string Type { get; set; } // положительная или отрицательная
+
+        [Display(Name = "Рейтинг книги")]
         public double Rating { get; set; } //рейтинг книги
         public int? BookID { get; set; }
        // public int? UserID { get; set; }

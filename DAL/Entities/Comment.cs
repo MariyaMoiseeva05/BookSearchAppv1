@@ -13,12 +13,19 @@ namespace DAL.Entities
         [Required()]
        // public int? UserId { get; set; } // внешний ключ
         public int? BookID { get; set; } // внешний ключ
+
+        [Display(Name = "Отзыв")]
         public string Content { get; set; } // содержание отзыва
+
+        [Display(Name = "Название отзыва")]
         public string Title { get; set; } //  название 
+
+        [Display(Name = "Рейтинг книги")]
         public double Rating { get; set; } //рейтинг книги
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [Display(Name = "Дата создания")]
         public DateTime Date_of_creation { get; set; } // дата создания
 
         public virtual Book Book { get; set; } // навигационное свойство
