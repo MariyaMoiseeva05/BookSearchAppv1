@@ -25,8 +25,9 @@ namespace DAL.Entities
         [Display(Name = "Рейтинг книги")]
         public double Rating { get; set; } //рейтинг книги
         public int? BookID { get; set; }
-       // public int? UserID { get; set; }
+        public int? UserID { get; set; }
         public virtual Book Book { get; set; } // навигационное свойство
+        public virtual User User { get; set; }
         public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
 
     }

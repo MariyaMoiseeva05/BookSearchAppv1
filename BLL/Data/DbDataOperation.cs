@@ -169,15 +169,16 @@ namespace BLL.Data
         {
             db.Comments.Create(new Comment()
             {
-                //UserId = c.UserId,
+                UserId = c.UserId,
                 Content = c.Content,
                 Title = c.Title,
                 Date_of_creation = c.Date_of_creation,
+                BookID = c.BookID,
                 Book = c.Book,
                 Review = c.Review,
                 News = c.News,
                 Rating = c.Rating,
-                //User = c.User
+                User = c.User
             });
             Save();
         }
@@ -185,7 +186,8 @@ namespace BLL.Data
         public void UpdateComment(CommentModel c)
         {
             Comment cm = db.Comments.GetItem(c.CommentId);
-            //cm.UserId = c.UserId;
+            cm.UserId = c.UserId;
+            cm.BookID = c.BookID;
             cm.Content = c.Content;
             cm.Title = c.Title;
             cm.Date_of_creation = c.Date_of_creation;
@@ -193,7 +195,7 @@ namespace BLL.Data
             cm.Rating = c.Rating;
             cm.News = c.News;
             cm.Review = c.Review;
-           // cm.User = c.User;
+            cm.User = c.User;
             Save();
         }
 
@@ -410,8 +412,10 @@ namespace BLL.Data
             {
                 BookID = q.BookID,
                 Content = q.Content,
-                Book = q.Book
-            });
+                Book = q.Book,
+                UserID = q.UserId,
+                User = q.User,
+            }) ;
             Save();
         }
 
@@ -422,6 +426,8 @@ namespace BLL.Data
             qt.BookID = q.BookID;
             qt.Content = q.Content;
             qt.Book = q.Book;
+            qt.UserID = q.UserId;
+            qt.User = q.User;
             Save();
         }
 
@@ -455,8 +461,8 @@ namespace BLL.Data
                 Text = r.Text,
                 Type = r.Type,
                 BookID = r.BookID,
-             //   UserID = r.UserID,
-              //  User = r.User,
+                UserID = r.UserID,
+                User = r.User,
                 Book = r.Book,
                 Comments = r.Comments,
                 Rating = r.Rating
@@ -472,10 +478,10 @@ namespace BLL.Data
             rw.Text = r.Text;
             rw.Type = r.Type;
             rw.BookID = r.BookID;
-            //rw.UserID = r.UserID;
+            rw.UserID = r.UserID;
             rw.Book = r.Book;
             rw.Comments = r.Comments;
-            // rw.User = r.User;
+            rw.User = r.User;
             rw.Rating = r.Rating;
             Save();
         }
@@ -509,8 +515,8 @@ namespace BLL.Data
                 Title = t.Title,
                 Content = t.Content,
                 Date_of_creation = t.Date_of_creation,
-              //  UserId = t.UserId,
-               // User = t.User
+                UserId = t.UserId,
+                User = t.User
 
             });
             Save();
@@ -523,8 +529,8 @@ namespace BLL.Data
             th.Title = t.Title;
             th.Content = t.Content;
             th.Date_of_creation = t.Date_of_creation;
-           // th.UserId = t.UserId;
-           // th.User = t.User;
+            th.UserId = t.UserId;
+            th.User = t.User;
             Save();
         }
 
@@ -581,7 +587,7 @@ namespace BLL.Data
         }
         #endregion
 
-        /*#region User
+        #region User
         public IEnumerable<UserModel> GetAllUsers()
         {
             return db.Users.GetAll().Select(i => new UserModel(i)).ToList();
@@ -596,12 +602,22 @@ namespace BLL.Data
         {
             db.Users.Create(new User()
             {
-                Nickname = u.Nickname,
+                Login = u.Login,
+                Name = u.Name,
+                Surname = u.Surname,
+                Sex = u.Sex,
+                Interest = u.Interest,
+                Favorite_books = u.Favorite_books,
+                Country = u.Country,
+                Place = u.Place,
                 Date_of_Birth = u.Date_of_Birth,
-                Link = u.Link,
+                About_me = u.About_me,
+                ImagePath = u.ImagePath,
+                ImageLink = u.ImageLink,
                 Comment = u.Comment,
                 Review = u.Review,
-                Think = u.Think
+                Think = u.Think,
+                Quote = u.Quote
             });
             Save();
         }
@@ -609,12 +625,23 @@ namespace BLL.Data
         public void UpdateUser(UserModel u)
         {
             User us = db.Users.GetItem(u.UserId);
-            us.Nickname = u.Nickname;
+            us.Login = u.Login;
+            us.Name = u.Name;
+            us.Surname = u.Surname;
+            us.Sex = u.Sex;
+            us.Interest = u.Interest;
+            us.Favorite_books = u.Favorite_books;
+            us.Country = u.Country;
+            us.Place = u.Place;
             us.Date_of_Birth = u.Date_of_Birth;
-            us.Link = u.Link;
+            us.About_me = u.About_me;
+            us.ImageLink = u.ImageLink;
+            us.ImagePath = u.ImagePath;
+            us.Quote = u.Quote;
             us.Comment = u.Comment;
             us.Review = u.Review;
             us.Think = u.Think;
+
             Save();
         }
 
@@ -627,7 +654,7 @@ namespace BLL.Data
                 Save();
             }
         }
-        #endregion*/
+        #endregion
 
         public bool Save()
         {

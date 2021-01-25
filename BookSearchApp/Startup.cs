@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -32,6 +33,9 @@ namespace BookSearchApp
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<BookSearchContext>(options =>
             options.UseSqlServer(connection));
+
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<BookSearchContext>();
 
 
             services.AddMvc(option => option.EnableEndpointRouting = false)

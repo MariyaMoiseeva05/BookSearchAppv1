@@ -11,7 +11,7 @@ namespace DAL.Entities
         public int ThinkId { get; set; }
 
         [Required()]
-        // public int? UserId { get; set; } //внешний ключ 
+        public int? UserId { get; set; } //внешний ключ 
         [Display(Name = "Содержание")]
         public string Content { get; set; }
 
@@ -20,5 +20,6 @@ namespace DAL.Entities
 
         [Display(Name = "Дата создания")]
         public string Date_of_creation { get; set; }
+        public virtual User User { get; set; }
     }
 }

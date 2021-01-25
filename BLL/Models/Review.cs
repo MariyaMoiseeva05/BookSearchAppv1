@@ -11,11 +11,11 @@ namespace BLL.Models
         public bool Type { get; set; }
         public int? BookID { get; set; }
         public double Rating { get; set; }
-        //public int? UserID { get; set; }
+        public int? UserID { get; set; }
         public virtual Book Book { get; set; }
         public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
 
-        // public virtual User User { get; set; }
+        public virtual User User { get; set; }
         public ReviewModel() { }
         public ReviewModel(Review r)
         {
@@ -25,9 +25,9 @@ namespace BLL.Models
             Text = r.Text;
             Type = r.Type;
             BookID = r.BookID;
-            //UserID = r.UserID;
+            UserID = r.UserID;
             Book = r.Book;
-            //User = r.User;
+            User = r.User;
             Rating = r.Rating;
             Comments = r.Comments;
         }

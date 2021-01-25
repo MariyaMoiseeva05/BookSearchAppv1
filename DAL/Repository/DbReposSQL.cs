@@ -18,6 +18,7 @@ namespace DAL.Repository
         private ThinkRepositorySQL thinkRepository;
         private Type_of_literatureRepositorySQL type_of_literatureRepository;
         private TagRepositorySQL tagRepository;
+        private UserRepositorySQL userRepository;
 
         public DbReposSQL(DbContextOptions<BookSearchContext> options)
         {
@@ -133,7 +134,7 @@ namespace DAL.Repository
             }
         }
 
-      /* public IRepository<User> Users
+       public IRepository<User> Users
         {
             get
             {
@@ -141,7 +142,7 @@ namespace DAL.Repository
                     userRepository = new UserRepositorySQL(db);
                 return userRepository;
             }
-        }*/
+        }
 
 
         public int Save()

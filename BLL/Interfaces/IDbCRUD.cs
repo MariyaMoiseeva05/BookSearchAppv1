@@ -73,6 +73,12 @@ namespace BLL.Interfaces
         void UpdateType_of_literature(Type_of_literatureModel tl);
         void DeleteType_of_literature(int id);
 
+        UserModel GetUser(int userId);
+        void CreateUser(UserModel u);
+        void UpdateUser(UserModel u);
+        void DeleteUser(int id);
+
+
         bool Save();
     }
 }

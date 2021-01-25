@@ -11,7 +11,7 @@ namespace DAL.Entities
         public int CommentId { get; set; }
 
         [Required()]
-       // public int? UserId { get; set; } // внешний ключ
+        public int? UserId { get; set; } // внешний ключ
         public int? BookID { get; set; } // внешний ключ
 
         [Display(Name = "Отзыв")]
@@ -31,6 +31,7 @@ namespace DAL.Entities
         public virtual Book Book { get; set; } // навигационное свойство
         public virtual News News { get; set; }
         public virtual Review Review { get; set; }
+        public virtual User User { get; set; } 
 
     }
 }

@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DAL.Entities
 {
-    public class BookSearchContext : DbContext
+    public partial class BookSearchContext : IdentityDbContext<User>
     {
         public BookSearchContext(DbContextOptions<BookSearchContext> options)
             : base(options)
@@ -23,6 +24,7 @@ namespace DAL.Entities
         public virtual DbSet<TypeOfLit_Book> TypeOfLit_Books { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Quote> Quotes { get; set; }
+        public virtual DbSet<User> PUsers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -104,7 +106,7 @@ namespace DAL.Entities
                 .WithMany(t => t.News)
                 .HasForeignKey(pt => pt.TagId);
 
-            /*modelBuilder.Entity<Comment>(entity =>
+            modelBuilder.Entity<Comment>(entity =>
             {
                 entity.HasOne(b => b.User)
                     .WithMany(p => p.Comment)
@@ -123,7 +125,14 @@ namespace DAL.Entities
                 entity.HasOne(b => b.User)
                     .WithMany(p => p.Think)
                     .HasForeignKey(b => b.UserId);
-            });*/
+            });
+
+            modelBuilder.Entity<Quote>(entity =>
+            {
+                entity.HasOne(b => b.User)
+                    .WithMany(p => p.Quote)
+                    .HasForeignKey(b => b.UserID);
+            });
         }
     }
 }

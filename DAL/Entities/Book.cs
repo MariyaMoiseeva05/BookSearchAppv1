@@ -16,15 +16,20 @@ namespace DAL.Entities
 
         [Key]
         public int? BookID { get; set; }
+
         [Required]
         public int? AuthorID { get; set; }
+
         [Required]
         [Display(Name = "Название книги")]
         public string Title { get; set; } // Название книги
+
         [Display(Name = "Описание")]
         public string Description { get; set; } // Описание
+
         [Display(Name = "Сюжет")]
         public string Story { get; set; } // Сюжет
+
         [Display(Name = "Тираж")]
         public string Edition { get; set; } // Тираж
 
