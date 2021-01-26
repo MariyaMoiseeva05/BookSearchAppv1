@@ -17,16 +17,16 @@ namespace DAL.Repository
             db.Thinks.Add(Think);
         }
 
-        public void Delete(int? id)
+        public void Delete(object id)
         {
-            Think Think = db.Thinks.Find(id);
+            Think Think = db.Thinks.Find((int)id);
             if (Think != null)
                 db.Thinks.Remove(Think);
         }
 
-        public Think GetItem(int? id)
+        public Think GetItem(object id)
         {
-            return db.Thinks.Find(id);
+            return db.Thinks.Find((int)id);
         }
 
         public IEnumerable<Think> GetAll()
@@ -34,13 +34,12 @@ namespace DAL.Repository
             return db.Thinks.ToList();
         }
 
-        public void Update(Think Think, int? thinkId)
+        public void Update(Think Think, object thinkId)
         {
-            var th = db.Thinks.Find(thinkId);
+            var th = db.Thinks.Find((int)thinkId);
             th.Title = Think.Title;
             th.Content = Think.Content;
             th.Date_of_creation = Think.Date_of_creation;
-            //th.UserId = Think.UserId;
 
             db.Thinks.Update(th);
             db.SaveChanges();

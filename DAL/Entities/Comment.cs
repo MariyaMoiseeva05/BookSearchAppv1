@@ -11,7 +11,7 @@ namespace DAL.Entities
         public int CommentId { get; set; }
 
         [Required()]
-        public int? UserId { get; set; } // внешний ключ
+        public string? UserId { get; set; } // внешний ключ
         public int? BookID { get; set; } // внешний ключ
 
         [Display(Name = "Отзыв")]
@@ -20,8 +20,8 @@ namespace DAL.Entities
         [Display(Name = "Название отзыва")]
         public string Title { get; set; } //  название 
 
-        [Display(Name = "Рейтинг книги")]
-        public double Rating { get; set; } //рейтинг книги
+        [Display(Name = "Оценка книги")]
+        public int Rating { get; set; } //рейтинг книги
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
@@ -32,6 +32,5 @@ namespace DAL.Entities
         public virtual News News { get; set; }
         public virtual Review Review { get; set; }
         public virtual User User { get; set; } 
-
     }
 }

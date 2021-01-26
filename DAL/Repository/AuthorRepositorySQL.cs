@@ -17,16 +17,16 @@ namespace DAL.Repository
             db.Authors.Add(Author);
         }
 
-        public void Delete(int? id)
+        public void Delete(object id)
         {
-            Author Author = db.Authors.Find(id);
+            Author Author = db.Authors.Find((int)id);
             if (Author != null)
                 db.Authors.Remove(Author);
         }
 
-        public Author GetItem(int? id)
+        public Author GetItem(object id)
         {
-            return db.Authors.Find(id);
+            return db.Authors.Find((int)id);
         }
 
         public IEnumerable<Author> GetAll()
@@ -34,9 +34,9 @@ namespace DAL.Repository
             return db.Authors.ToList();
         }
 
-        public void Update(Author Author, int? authorId)
+        public void Update(Author Author, object authorId)
         {
-            var author = db.Authors.Find(authorId);
+            var author = db.Authors.Find((int)authorId);
             author.Full_name = Author.Full_name;
             author.Pseudonym = Author.Pseudonym;
             author.Date_of_Birth = Author.Date_of_Birth;

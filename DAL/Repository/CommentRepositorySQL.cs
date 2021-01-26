@@ -17,16 +17,16 @@ namespace DAL.Repository
             db.Comments.Add(Comment);
         }
 
-        public void Delete(int? id)
+        public void Delete(object id)
         {
-            Comment Comment = db.Comments.Find(id);
+            Comment Comment = db.Comments.Find((int)id);
             if (Comment != null)
                 db.Comments.Remove(Comment);
         }
 
-        public Comment GetItem(int? id)
+        public Comment GetItem(object id)
         {
-            return db.Comments.Find(id);
+            return db.Comments.Find((int)id);
         }
 
         public IEnumerable<Comment> GetAll()
@@ -34,9 +34,9 @@ namespace DAL.Repository
             return db.Comments.ToList();
         }
 
-        public void Update(Comment Comment, int? commentId)
+        public void Update(Comment Comment, object commentId)
         {
-            var cm = db.Comments.Find(commentId);
+            var cm = db.Comments.Find((int)commentId);
            // cm.UserId = Comment.UserId;
             cm.Content = Comment.Content;
             cm.Title = Comment.Title;

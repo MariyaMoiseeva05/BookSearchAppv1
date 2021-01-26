@@ -16,7 +16,7 @@ namespace DAL.Entities
         }
 
         [Key]
-        public int? UserId { get; set; } //Id
+        public string UserId { get; set; } //Id
 
         [Required()]
         [Display(Name = "Имя пользователя")]

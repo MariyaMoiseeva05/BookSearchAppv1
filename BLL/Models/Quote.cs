@@ -7,7 +7,7 @@ namespace BLL.Models
     {
         public int QuoteId { get; set; }
         public int? BookID { get; set; }
-        public int? UserId { get; set; }
+        public string? UserId { get; set; }
         public string Content { get; set; }
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }

@@ -32,7 +32,7 @@ namespace BookSearchApp
         {
             var connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<BookSearchContext>(options =>
-            options.UseSqlServer(connection));
+                options.UseSqlServer(connection));
 
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<BookSearchContext>();
@@ -40,25 +40,25 @@ namespace BookSearchApp
 
             services.AddMvc(option => option.EnableEndpointRouting = false)
                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
-                .AddNewtonsoftJson(options => {
+                .AddNewtonsoftJson(options =>
+                {
                     var resolver = options.SerializerSettings.ContractResolver;
                     if (resolver != null)
                         (resolver as DefaultContractResolver).NamingStrategy =
                        null;
                 });
-                 
+
             services.AddDbContext<BookSearchContext>(opt =>
                opt.UseInMemoryDatabase("BookSearch"));
 
-            services.AddMvc().AddNewtonsoftJson(options => {
+            services.AddMvc().AddNewtonsoftJson(options =>
+            {
                 options.SerializerSettings.ReferenceLoopHandling =
                ReferenceLoopHandling.Ignore;
             });
 
-
             services.AddScoped<IDbCRUD, DbDataOperation>();
             services.AddScoped<IDbRepos, DbReposSQL>();
-
 
         }
 

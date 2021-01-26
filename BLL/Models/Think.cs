@@ -6,7 +6,7 @@ namespace BLL.Models
     public class ThinkModel
     {
         public int ThinkId { get; set; }
-        public int? UserId { get; set; }
+        public string? UserId { get; set; }
         public string Content { get; set; }
         public string Title { get; set; }
         public string Date_of_creation { get; set; }
