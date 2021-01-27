@@ -11,7 +11,8 @@ namespace DAL.Entities
         public int QuoteId { get; set; }
         [Required()]
         public int? BookID { get; set; } // внешний ключ
-        public string? UserID { get; set; }
+        public int? UserID { get; set; }
+        public int like { get; set; } // (лайки, понравившиеся цитаты)скольким пользователям понравилась цитата
         public string Content { get; set; } // содержание отзыва
         public virtual Book Book { get; set; } // навигационное свойство
         public virtual User User { get; set; }
