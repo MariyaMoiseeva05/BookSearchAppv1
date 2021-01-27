@@ -17,16 +17,16 @@ namespace DAL.Repository
             db.Reviews.Add(Review);
         }
 
-        public void Delete(int? id)
+        public void Delete(object id)
         {
-            Review Review = db.Reviews.Find(id);
+            Review Review = db.Reviews.Find((int)id);
             if (Review != null)
                 db.Reviews.Remove(Review);
         }
 
-        public Review GetItem(int? id)
+        public Review GetItem(object id)
         {
-            return db.Reviews.Find(id);
+            return db.Reviews.Find((int)id);
         }
 
         public IEnumerable<Review> GetAll()
@@ -34,9 +34,9 @@ namespace DAL.Repository
             return db.Reviews.ToList();
         }
 
-        public void Update(Review Review, int? reviewId)
+        public void Update(Review Review, object reviewId)
         {
-            var rw = db.Reviews.Find(reviewId);
+            var rw = db.Reviews.Find((int)reviewId);
 
             rw.Title = Review.Title;
             rw.Text = Review.Text;

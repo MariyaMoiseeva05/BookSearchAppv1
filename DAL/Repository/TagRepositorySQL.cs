@@ -17,16 +17,16 @@ namespace DAL.Repository
             db.Tags.Add(Tags);
         }
 
-        public void Delete(int? id)
+        public void Delete(object id)
         {
-            Tag Tags = db.Tags.Find(id);
+            Tag Tags = db.Tags.Find((int)id);
             if (Tags != null)
                 db.Tags.Remove(Tags);
         }
 
-        public Tag GetItem(int? id)
+        public Tag GetItem(object id)
         {
-            return db.Tags.Find(id);
+            return db.Tags.Find((int)id);
         }
 
         public IEnumerable<Tag> GetAll()
@@ -34,9 +34,9 @@ namespace DAL.Repository
             return db.Tags.ToList();
         }
 
-        public void Update(Tag Tags, int? tagsId)
+        public void Update(Tag Tags, object tagsId)
         {
-            var tg = db.Tags.Find(tagsId);
+            var tg = db.Tags.Find((int)tagsId);
 
             tg.Name = Tags.Name;
             tg.News = Tags.News;

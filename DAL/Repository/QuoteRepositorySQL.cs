@@ -17,16 +17,16 @@ namespace DAL.Repository
             db.Quotes.Add(Quote);
         }
 
-        public void Delete(int? id)
+        public void Delete(object id)
         {
-            Quote Quote = db.Quotes.Find(id);
+            Quote Quote = db.Quotes.Find((int)id);
             if (Quote != null)
                 db.Quotes.Remove(Quote);
         }
 
-        public Quote GetItem(int? id)
+        public Quote GetItem(object id)
         {
-            return db.Quotes.Find(id);
+            return db.Quotes.Find((int)id);
         }
 
         public IEnumerable<Quote> GetAll()
@@ -34,13 +34,14 @@ namespace DAL.Repository
             return db.Quotes.ToList();
         }
 
-        public void Update(Quote Quote, int? quoteId)
+        public void Update(Quote Quote, object quoteId)
         {
-            var qt = db.Quotes.Find(quoteId);
+            var qt = db.Quotes.Find((int)quoteId);
 
             qt.BookID = Quote.BookID;
             qt.Content = Quote.Content;
             qt.Book = Quote.Book;
+            qt.Like = Quote.Like;
 
             db.Quotes.Update(qt);
             db.SaveChanges();

@@ -17,16 +17,16 @@ namespace DAL.Repository
             db.News.Add(News);
         }
 
-        public void Delete(int? id)
+        public void Delete(object id)
         {
-            News News = db.News.Find(id);
+            News News = db.News.Find((int)id);
             if (News != null)
                 db.News.Remove(News);
         }
 
-        public News GetItem(int? id)
+        public News GetItem(object id)
         {
-            return db.News.Find(id);
+            return db.News.Find((int)id);
         }
 
         public IEnumerable<News> GetAll()
@@ -34,9 +34,9 @@ namespace DAL.Repository
             return db.News.ToList();
         }
 
-        public void Update(News News, int? newsId)
+        public void Update(News News, object newsId)
         {
-            var nw = db.News.Find(newsId);
+            var nw = db.News.Find((int)newsId);
 
             nw.Topic = News.Topic;
             nw.Title = News.Title;

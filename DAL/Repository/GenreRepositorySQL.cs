@@ -17,16 +17,16 @@ namespace DAL.Repository
             db.Genres.Add(Genre);
         }
 
-        public void Delete(int? id)
+        public void Delete(object id)
         {
-            Genre Genre = db.Genres.Find(id);
+            Genre Genre = db.Genres.Find((int)id);
             if (Genre != null)
                 db.Genres.Remove(Genre);
         }
 
-        public Genre GetItem(int? id)
+        public Genre GetItem(object id)
         {
-            return db.Genres.Find(id);
+            return db.Genres.Find((int)id);
         }
 
         public IEnumerable<Genre> GetAll()
@@ -34,9 +34,9 @@ namespace DAL.Repository
             return db.Genres.ToList();
         }
 
-        public void Update(Genre Genre, int? genreId)
+        public void Update(Genre Genre, object genreId)
         {
-            var gr = db.Genres.Find(genreId);
+            var gr = db.Genres.Find((int)genreId);
             gr.NameGenre = Genre.NameGenre;
             gr.Genre_Books = Genre.Genre_Books;
 

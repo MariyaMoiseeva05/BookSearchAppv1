@@ -22,9 +22,9 @@ namespace DAL.Repository
 
         }
 
-        public void Delete(int? userId)
+        public void Delete(object userId)
         {
-            var user = db.PUsers.FirstOrDefault(x => x.UserId == userId);
+            var user = db.PUsers.FirstOrDefault(x => x.UserId == (string)userId);
 
             if (user != null)
             {
@@ -33,14 +33,14 @@ namespace DAL.Repository
             }
         }
 
-        public User GetItem(int? id)
+        public User GetItem(object id)
         {
             return db.Users
                 .Include(c => c.Comment)
                 .Include(a => a.Think)
                 .Include(r => r.Review)
                 .Include(q => q.Quote)
-                .First (u => u.UserId == id);
+                .First (u => u.UserId == (string)id);
         }
 
         public IEnumerable<User> GetAll()
@@ -53,9 +53,9 @@ namespace DAL.Repository
                 .ToList();
         }
 
-        public void Update(User User, int? userId)
+        public void Update(User User, object userId)
         {
-            var user = db.PUsers.Find(userId);
+            var user = db.PUsers.Find((string)userId);
             user.Comment = User.Comment;
             user.Review = User.Review;
             user.Quote = User.Quote;
@@ -76,8 +76,8 @@ namespace DAL.Repository
 
             db.PUsers.Update(User);
             db.SaveChanges();
-
         }
+
     }
 }
     

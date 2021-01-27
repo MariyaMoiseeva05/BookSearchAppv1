@@ -11,7 +11,7 @@ namespace DAL.Entities
         public int ThinkId { get; set; }
 
         [Required()]
-        public int? UserId { get; set; } //внешний ключ 
+        public string UserId { get; set; } //внешний ключ 
         [Display(Name = "Содержание")]
         public string Content { get; set; }
 

@@ -10,8 +10,8 @@ namespace BLL.Models
         public string Text { get; set; }
         public bool Type { get; set; }
         public int? BookID { get; set; }
-        public double Rating { get; set; }
-        public int? UserID { get; set; }
+        public int Rating { get; set; }
+        public string UserID { get; set; }
         public virtual Book Book { get; set; }
         public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
 

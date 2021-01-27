@@ -17,16 +17,16 @@ namespace DAL.Repository
             db.Interesting_Facts.Add(Interesting_fact);
         }
 
-        public void Delete(int? id)
+        public void Delete(object id)
         {
-            Interesting_fact Interesting_fact = db.Interesting_Facts.Find(id);
+            Interesting_fact Interesting_fact = db.Interesting_Facts.Find((int)id);
             if (Interesting_fact != null)
                 db.Interesting_Facts.Remove(Interesting_fact);
         }
 
-        public Interesting_fact GetItem(int? id)
+        public Interesting_fact GetItem(object id)
         {
-            return db.Interesting_Facts.Find(id);
+            return db.Interesting_Facts.Find((int)id);
         }
 
         public IEnumerable<Interesting_fact> GetAll()
@@ -34,9 +34,9 @@ namespace DAL.Repository
             return db.Interesting_Facts.ToList();
         }
 
-        public void Update(Interesting_fact Interesting_fact, int? factId)
+        public void Update(Interesting_fact Interesting_fact, object factId)
         {
-            var fi = db.Interesting_Facts.Find(factId);
+            var fi = db.Interesting_Facts.Find((int)factId);
             fi.AuthorID = Interesting_fact.AuthorID;
             fi.Content = Interesting_fact.Content;
             fi.Author = Interesting_fact.Author;

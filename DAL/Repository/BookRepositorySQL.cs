@@ -20,9 +20,9 @@ namespace DAL.Repository
 
         }
 
-        public void Delete(int? bookId)
+        public void Delete(object bookId)
         {
-            var book = db.Books.FirstOrDefault(x => x.BookID == bookId);
+            var book = db.Books.FirstOrDefault(x => x.BookID == (int)bookId);
 
             if (book != null)
             {
@@ -31,7 +31,7 @@ namespace DAL.Repository
             }
         }
 
-        public Book GetItem(int? id)
+        public Book GetItem(object id)
         {
             return db.Books
                 .Include(c => c.Comment)
@@ -40,7 +40,7 @@ namespace DAL.Repository
                 .Include(q => q.Quote)
                 .Include(t => t.Type_of_literature).ThenInclude(gn => gn.TypeLit)
                 .Include(g => g.Genre_Books).ThenInclude(gn => gn.Genre)
-                .First(b => b.BookID == id);
+                .First(b => b.BookID == (int)id);
         }
 
         public IEnumerable<Book> GetAll()
@@ -52,9 +52,9 @@ namespace DAL.Repository
                 .ToList();
         }
 
-        public void Update(Book Book, int? bookId)
+        public void Update(Book Book, object bookId)
         {
-            var book = db.Books.Find(bookId);
+            var book = db.Books.Find((int)bookId);
             book.Title = Book.Title;
             book.AuthorID = Book.AuthorID;
             book.Author = Book.Author;
