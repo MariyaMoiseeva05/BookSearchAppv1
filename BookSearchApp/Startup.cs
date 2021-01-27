@@ -15,6 +15,7 @@ using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Threading.Tasks;
 
 namespace BookSearchApp
 {
@@ -60,7 +61,67 @@ namespace BookSearchApp
             services.AddScoped<IDbCRUD, DbDataOperation>();
             services.AddScoped<IDbRepos, DbReposSQL>();
 
+            services.ConfigureApplicationCookie(options => // возврат 401 кода в авторизации 
+            {
+                options.Cookie.Name = "SimpleWebApp";
+                options.LoginPath = "/";
+                options.AccessDeniedPath = "/";
+                options.LogoutPath = "/";
+                options.Events.OnRedirectToLogin = context =>
+                {
+                    context.Response.StatusCode = 401;
+                    return Task.CompletedTask;
+                };
+                options.Events.OnRedirectToAccessDenied = context =>
+                {
+                    context.Response.StatusCode = 401;
+                    return Task.CompletedTask;
+                };
+            });
+
         }
+        private async Task CreateUserRoles(IServiceProvider serviceProvider) // метод, создающий две роли: пользователя и админимтратора, и пользователей для этих ролей 
+        {
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<User>>();
+
+            // Создание ролей администратора и пользователя
+            if (await roleManager.FindByNameAsync("admin") == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole("admin"));
+            }
+            if (await roleManager.FindByNameAsync("user") == null)
+            {
+                await roleManager.CreateAsync(new IdentityRole("user"));
+            }
+
+            // Создание Администратора
+            string adminEmail = "admin@gmail.com";
+            string adminPassword = "1221Admin!";
+            if (await userManager.FindByNameAsync(adminEmail) == null)
+            {
+                User admin = new User { Email = adminEmail, UserName = adminEmail };
+                IdentityResult result = await userManager.CreateAsync(admin, adminPassword);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(admin, "admin");
+                }
+            }
+
+            // Создание Пользователя
+            string userEmail = "user@gmail.com";
+            string userPassword = "Aa123456!";
+            if (await userManager.FindByNameAsync(userEmail) == null)
+            {
+                User user = new User { Email = userEmail, UserName = userEmail };
+                IdentityResult result = await userManager.CreateAsync(user, userPassword);
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, "user");
+                }
+            }
+        }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory, IServiceProvider services)
@@ -70,6 +131,7 @@ namespace BookSearchApp
                 app.UseDeveloperExceptionPage();
             }
 
+            CreateUserRoles(services).Wait();
 
             app.UseHttpsRedirection();
 
