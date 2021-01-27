@@ -415,6 +415,7 @@ namespace BLL.Data
                 Book = q.Book,
                 UserID = q.UserId,
                 User = q.User,
+                Like = q.Like
             }) ;
             Save();
         }
@@ -428,6 +429,7 @@ namespace BLL.Data
             qt.Book = q.Book;
             qt.UserID = q.UserId;
             qt.User = q.User;
+            qt.Like = q.Like;
             Save();
         }
 

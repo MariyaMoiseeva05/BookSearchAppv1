@@ -11,7 +11,7 @@ namespace DAL.Entities
         public int CommentId { get; set; }
 
         [Required()]
-        public string? UserId { get; set; } // внешний ключ
+        public string UserId { get; set; } // внешний ключ
         public int? BookID { get; set; } // внешний ключ
 
         [Display(Name = "Отзыв")]

@@ -7,8 +7,9 @@ namespace BLL.Models
     {
         public int QuoteId { get; set; }
         public int? BookID { get; set; }
-        public string? UserId { get; set; }
+        public string UserId { get; set; }
         public string Content { get; set; }
+        public int Like { get; set; }
         public virtual Book Book { get; set; }
         public virtual User User { get; set; }
         public QuoteModel() { }
@@ -20,6 +21,7 @@ namespace BLL.Models
             Content = q.Content;
             Book = q.Book;
             User = q.User;
+            Like = q.Like;
 
         }
     }

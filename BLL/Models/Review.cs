@@ -11,7 +11,7 @@ namespace BLL.Models
         public bool Type { get; set; }
         public int? BookID { get; set; }
         public int Rating { get; set; }
-        public string? UserID { get; set; }
+        public string UserID { get; set; }
         public virtual Book Book { get; set; }
         public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
 

@@ -41,6 +41,7 @@ namespace DAL.Repository
             qt.BookID = Quote.BookID;
             qt.Content = Quote.Content;
             qt.Book = Quote.Book;
+            qt.Like = Quote.Like;
 
             db.Quotes.Update(qt);
             db.SaveChanges();
