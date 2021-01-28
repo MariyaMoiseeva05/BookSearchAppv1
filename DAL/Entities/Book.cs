@@ -15,10 +15,10 @@ namespace DAL.Entities
         }
 
         [Key]
-        public int? BookID { get; set; }
+        public int BookID { get; set; }
 
         [Required]
-        public int? AuthorID { get; set; }
+        public int AuthorID { get; set; }
 
         [Required]
         [Display(Name = "Название книги")]

@@ -6,7 +6,7 @@ namespace BLL.Models
     public class Interesting_factModel
     {
         public int FactId { get; set; }
-        public int? AuthorID { get; set; }
+        public int AuthorID { get; set; }
         public string Content { get; set; }
         public string ImageLink { get; set; }
         public string ImagePath { get; set; }

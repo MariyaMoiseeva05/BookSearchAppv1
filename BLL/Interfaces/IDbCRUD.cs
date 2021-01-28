@@ -22,9 +22,9 @@ namespace BLL.Interfaces
         void UpdateAuthor(AuthorModel at);
         void DeleteAuthor(int id);
 
-        BookModel GetBook(int? bookId);
+        BookModel GetBook(int bookId);
         void CreateBook(BookModel b);
-        void UpdateBook(BookModel b, int? bookId);
+        void UpdateBook(BookModel b, int bookId);
         void DeleteBook(int id);
 
         CommentModel GetComment(int commentId);

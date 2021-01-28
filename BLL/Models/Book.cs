@@ -6,8 +6,8 @@ namespace BLL.Models
 {
     public class BookModel
     {
-        public int? BookID { get; set; }
-        public int? AuthorID { get; set; }
+        public int BookID { get; set; }
+        public int AuthorID { get; set; }
         public Author Author { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

@@ -84,12 +84,12 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Entities.Book", b =>
                 {
-                    b.Property<int?>("BookID")
+                    b.Property<int>("BookID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorID")
+                    b.Property<int>("AuthorID")
                         .IsRequired()
                         .HasColumnType("int");
 
@@ -132,7 +132,7 @@ namespace DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BookID")
+                    b.Property<int>("BookID")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -141,13 +141,13 @@ namespace DAL.Migrations
                     b.Property<DateTime>("Date_of_creation")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("NewsId")
+                    b.Property<int>("NewsId")
                         .HasColumnType("int");
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ReviewRewiewId")
+                    b.Property<int>("ReviewRewiewId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -208,7 +208,7 @@ namespace DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorID")
+                    b.Property<int>("AuthorID")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -285,7 +285,7 @@ namespace DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BookID")
+                    b.Property<int>("BookID")
                         .IsRequired()
                         .HasColumnType("int");
 
@@ -311,7 +311,7 @@ namespace DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BookID")
+                    b.Property<int>("BookID")
                         .HasColumnType("int");
 
                     b.Property<int>("Rating")
@@ -401,7 +401,7 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Entities.Type_of_literature", b =>
                 {
-                    b.Property<int?>("Type_of_literatureId")
+                    b.Property<int>("Type_of_literatureId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);

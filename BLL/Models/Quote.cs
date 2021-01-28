@@ -6,7 +6,7 @@ namespace BLL.Models
     public class QuoteModel
     {
         public int QuoteId { get; set; }
-        public int? BookID { get; set; }
+        public int BookID { get; set; }
         public string UserId { get; set; }
         public string Content { get; set; }
         public int Like { get; set; }

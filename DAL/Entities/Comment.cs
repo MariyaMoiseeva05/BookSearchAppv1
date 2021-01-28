@@ -12,7 +12,7 @@ namespace DAL.Entities
 
         [Required()]
         public string UserId { get; set; } // внешний ключ
-        public int? BookID { get; set; } // внешний ключ
+        public int BookID { get; set; } // внешний ключ
 
         [Display(Name = "Отзыв")]
         public string Content { get; set; } // содержание отзыва

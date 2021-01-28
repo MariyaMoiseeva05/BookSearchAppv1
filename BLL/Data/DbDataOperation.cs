@@ -93,7 +93,7 @@ namespace BLL.Data
             return db.Books.GetAll().Select(i => new BookModel(i)).ToList();
         }
 
-        public BookModel GetBook(int? Id)
+        public BookModel GetBook(int Id)
         {
             return new BookModel(db.Books.GetItem(Id));
         }
@@ -122,7 +122,7 @@ namespace BLL.Data
             Save();
         }
 
-        public void UpdateBook(BookModel b, int? bookId)
+        public void UpdateBook(BookModel b, int bookId)
         {
             Book bk = db.Books.GetItem(b.BookID);
             bk.AuthorID = b.AuthorID;

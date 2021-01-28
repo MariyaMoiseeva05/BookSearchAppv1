@@ -82,13 +82,12 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Entities.Book", b =>
                 {
-                    b.Property<int?>("BookID")
+                    b.Property<int>("BookID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorID")
-                        .IsRequired()
+                    b.Property<int>("AuthorID")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -130,7 +129,7 @@ namespace DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BookID")
+                    b.Property<int>("BookID")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -206,7 +205,7 @@ namespace DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorID")
+                    b.Property<int>("AuthorID")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -283,12 +282,14 @@ namespace DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BookID")
-                        .IsRequired()
+                    b.Property<int>("BookID")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Like")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserID")
                         .HasColumnType("nvarchar(450)");
@@ -309,7 +310,7 @@ namespace DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BookID")
+                    b.Property<int>("BookID")
                         .HasColumnType("int");
 
                     b.Property<int>("Rating")
@@ -399,7 +400,7 @@ namespace DAL.Migrations
 
             modelBuilder.Entity("DAL.Entities.Type_of_literature", b =>
                 {
-                    b.Property<int?>("Type_of_literatureId")
+                    b.Property<int>("Type_of_literatureId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -662,7 +663,9 @@ namespace DAL.Migrations
                 {
                     b.HasOne("DAL.Entities.Book", "Book")
                         .WithMany("Comment")
-                        .HasForeignKey("BookID");
+                        .HasForeignKey("BookID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DAL.Entities.News", "News")
                         .WithMany("Comments")
@@ -698,7 +701,9 @@ namespace DAL.Migrations
                 {
                     b.HasOne("DAL.Entities.Author", "Author")
                         .WithMany("Interesting_fact")
-                        .HasForeignKey("AuthorID");
+                        .HasForeignKey("AuthorID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("DAL.Entities.News_Tags", b =>
@@ -733,7 +738,9 @@ namespace DAL.Migrations
                 {
                     b.HasOne("DAL.Entities.Book", "Book")
                         .WithMany("Review")
-                        .HasForeignKey("BookID");
+                        .HasForeignKey("BookID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("DAL.Entities.User", "User")
                         .WithMany("Review")

@@ -27,6 +27,10 @@ namespace DAL.Data
             }
             context.SaveChanges();
 
+            if (context.Comments.Any())
+            {
+                return;
+            }
             var comments = new Comment[]
                 {
                      new Comment { BookID = 1, Title = "Кто слишком часто оглядывается назад, легко может споткнуться и упасть",
@@ -39,18 +43,115 @@ namespace DAL.Data
             }
             context.SaveChanges();
 
+            if (context.Genres.Any())
+            {
+                return;
+            }
             var genres = new Genre[]
                 {
-                    new Genre { NameGenre = "Роман"},
-                    new Genre { NameGenre = "Комедия"},
-                    new Genre { NameGenre = "Детектив"},
-                    new Genre { NameGenre = "Рассказ"},
-                    new Genre { NameGenre = "Повесть"}
+                    new Genre { NameGenre = "Менеджмент"},  new Genre { NameGenre = "О бизнесе популярно"}, new Genre { NameGenre = "Маркетинг, PR, реклама"}, new Genre { NameGenre = "Банковское дело"},new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Делопроизводство"},  new Genre { NameGenre = "Зарубежная компьютерная литература"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Зарубежная деловая лиетратура"},  new Genre { NameGenre = "Зарубежный юмор"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Недвижимость"},  new Genre { NameGenre = "Зарубежная старинная литература"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Финансы"},  new Genre { NameGenre = " Зарубежная справочная литература"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Малый бизнес"},  new Genre { NameGenre = "Зарубежная эзотерическая литература"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Отраслевые издания"},  new Genre { NameGenre = " Зарубежная религиозная литература"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Государственное  и муниципальное управление"}, new Genre { NameGenre = "Зарубежные боевики"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Тайм-менеджмент"}, new Genre { NameGenre = "Зарубежная психология"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Менеджмент и кадры"}, new Genre { NameGenre = "Зарубежные приключения"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Работа с клиентами"}, new Genre { NameGenre = "Зарубежная религиозная и эзотерическая литература"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Политическое управление"}, new Genre { NameGenre = "Зарубежная публицистика"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Стартапы и создание бизнеса"}, new Genre { NameGenre = "Зарубежная прикладная литература"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Корпоративная культура"}, new Genre { NameGenre = "Зарубежная драматургия"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Переговоры"}, new Genre { NameGenre = "Зарубежная литература о культуре и искусстве"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Личная эффективность"}, new Genre { NameGenre = "Зарубежная фантастика"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Личные финансы"}, new Genre { NameGenre = "Зарубежные детские книги"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Ораторское искусство, риторика"}, new Genre { NameGenre = "Современная зарубежная литература"}, new Genre { NameGenre = ""}, new Genre { NameGenre = ""},  new Genre { NameGenre = ""},
+                    new Genre { NameGenre = "Риторика"},
+                    new Genre { NameGenre = "Продажи"},
+                    new Genre { NameGenre = "Интернет-бизнес"},
+                    new Genre { NameGenre = "Ценные бумаги, инвестиции"},
+                    new Genre { NameGenre = "Бухучет, налогообложение, аудит"},
+                    new Genre { NameGenre = "Поиск работы, карьера"},
+                    new Genre { NameGenre = "Кадровый менеджмент"},
+                    new Genre { NameGenre = "Экономика"},
+                    new Genre { NameGenre = "Зарубежная классика"},
+                    new Genre { NameGenre = "Русская классика"},
+                    new Genre { NameGenre = "Литература XX века"},
+                    new Genre { NameGenre = "Фольклор"},
+                    new Genre { NameGenre = "Литература XIX века"},
+                    new Genre { NameGenre = "Европейская старинная литература"},
+                    new Genre { NameGenre = "Зарубежная старинная литература"},
+                    new Genre { NameGenre = "Древнерусская литература"},
+                    new Genre { NameGenre = "Классическая проза"},
+                    new Genre { NameGenre = "Старинная литература"},
+                    new Genre { NameGenre = "Мифы, легенды, эпос"},
+                    new Genre { NameGenre = "Советская литература"},
+                    new Genre { NameGenre = "Античная литература"},
+                    new Genre { NameGenre = "Литература XVIII века"},
+                    new Genre { NameGenre = "Древневосточная литература"},
+                    new Genre { NameGenre = "Зарубежная классика "},
+                    new Genre { NameGenre = "Зарубежные любовные романы"},
+                    new Genre { NameGenre = "Зарубежные детективы"},
+                    new Genre { NameGenre = "Зарубежное фэнтези"},
+                    new Genre { NameGenre = "Зарубежная деловая литература"},
+                    new Genre { NameGenre = "Зарубежная поэзия"},
+                    new Genre { NameGenre = "Зарубежная образовательная литература"},
                 };
 
             foreach (Genre g in genres)
             {
                 context.Genres.Add(g);
+            }
+            context.SaveChanges();
+
+            if (context.Type_Of_Literatures.Any())
+            {
+                return;
+            }
+            var types = new Type_of_literature[]
+                {
+                    new Type_of_literature{ Name_Type = "Бизнес-книги" },
+                    new Type_of_literature{ Name_Type = "Классическая литература" },
+                    new Type_of_literature{ Name_Type = "Зарубежная литература" },
+                    new Type_of_literature{ Name_Type = "Русская литература" },
+                    new Type_of_literature{ Name_Type = "Детские книги" },
+                    new Type_of_literature{ Name_Type = "Детективы" },
+                    new Type_of_literature{ Name_Type = "Фэнтези" },
+                    new Type_of_literature{ Name_Type = "Фантастика" },
+                    new Type_of_literature{ Name_Type = "Современная проза" },
+                    new Type_of_literature{ Name_Type = "Приключения" },
+                    new Type_of_literature{ Name_Type = "Ужасы, мистика" },
+                    new Type_of_literature{ Name_Type = "Публицистическая литература" },
+                    new Type_of_literature{ Name_Type = "Книги для подростков" },
+                    new Type_of_literature{ Name_Type = "Любовные романы" },
+                    new Type_of_literature{ Name_Type = "Боевики, остросюжетная литература" },
+                    new Type_of_literature{ Name_Type = "Книги по психологии" },
+                    new Type_of_literature{ Name_Type = "Повести, рассказы" },
+                    new Type_of_literature{ Name_Type = "Поэзия, драматургия" },
+                    new Type_of_literature{ Name_Type = "Наука и образование" },
+                    new Type_of_literature{ Name_Type = "Дом, семья, хобби и досуг" },
+                    new Type_of_literature{ Name_Type = "Комиксы, манга" },
+                    new Type_of_literature{ Name_Type = "Эзотерика" },
+                    new Type_of_literature{ Name_Type = "Культура и искусство" },
+                    new Type_of_literature{ Name_Type = "Юмористическая литература" },
+                    new Type_of_literature{ Name_Type = "Религия" },
+                    new Type_of_literature{ Name_Type = "Словари" },
+                    new Type_of_literature{ Name_Type = "Справочники" },
+                    new Type_of_literature{ Name_Type = "Красота и здоровье" },
+                    new Type_of_literature{ Name_Type = "Книги на иностранных языках" },
+                    new Type_of_literature{ Name_Type = "Компьютерная литература" },
+                    new Type_of_literature{ Name_Type = "Эротика и секс" },
+                    new Type_of_literature{ Name_Type = "Периодические издания" },
+                    new Type_of_literature{ Name_Type = "Учебная литература" },
+                    new Type_of_literature{ Name_Type = "Исторический роман" },
+                    new Type_of_literature{ Name_Type = "Магический реализм" },
+                    new Type_of_literature{ Name_Type = "ЛГБТ" },
+                    new Type_of_literature{ Name_Type = "Реализм" }
+                 };
+            foreach (Type_of_literature t in types)
+            {
+                context.Type_Of_Literatures.Add(t);
             }
             context.SaveChanges();
 

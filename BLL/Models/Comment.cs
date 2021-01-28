@@ -8,7 +8,7 @@ namespace BLL.Models
     {
         public int CommentId { get; set; }
         public string UserId { get; set; }
-        public int? BookID { get; set; }
+        public int BookID { get; set; }
         public string Content { get; set; }
         public string Title { get; set; }
         public int Rating { get; set; }

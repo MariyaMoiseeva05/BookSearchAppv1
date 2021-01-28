@@ -8,7 +8,7 @@ namespace DAL.Entities
     public partial class Type_of_literature
     {
         [Key]
-        public int? Type_of_literatureId { get; set; }
+        public int Type_of_literatureId { get; set; }
         [Required]
         [Display(Name = "Тип литературы")]
         public string Name_Type { get; set; }

@@ -9,7 +9,7 @@ namespace BLL.Models
         public string Title { get; set; }
         public string Text { get; set; }
         public bool Type { get; set; }
-        public int? BookID { get; set; }
+        public int BookID { get; set; }
         public int Rating { get; set; }
         public string UserID { get; set; }
         public virtual Book Book { get; set; }
