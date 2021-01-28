@@ -100,7 +100,7 @@ namespace BookSearchApp
             string adminPassword = "1221Admin!";
             if (await userManager.FindByNameAsync(adminEmail) == null)
             {
-                User admin = new User { Email = adminEmail, UserName = adminEmail };
+                User admin = new User { Email = adminEmail, UserName = adminEmail, Name = "Администратор1", Login = adminEmail };
                 IdentityResult result = await userManager.CreateAsync(admin, adminPassword);
                 if (result.Succeeded)
                 {
@@ -113,7 +113,7 @@ namespace BookSearchApp
             string userPassword = "Aa123456!";
             if (await userManager.FindByNameAsync(userEmail) == null)
             {
-                User user = new User { Email = userEmail, UserName = userEmail };
+                User user = new User { Email = userEmail, UserName = userEmail, Name = "Пользователь1", Login = userEmail };
                 IdentityResult result = await userManager.CreateAsync(user, userPassword);
                 if (result.Succeeded)
                 {
