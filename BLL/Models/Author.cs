@@ -23,7 +23,7 @@ namespace BLL.Models
         public string Details { get; set; } // Подробно
         public string ImageLink { get; set; }
         public string ImagePath{ get; set; }
-        public virtual ICollection<Book> Book { get; set; }  // Книга
+        public virtual ICollection<Author_Book> Book { get; set; } 
         public virtual ICollection<Interesting_fact> Interesting_fact { get; set; }  // Интересные факты
 
 

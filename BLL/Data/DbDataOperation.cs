@@ -102,7 +102,6 @@ namespace BLL.Data
         {
             db.Books.Create(new Book()
             {
-                AuthorID = b.AuthorID,
                 Title = b.Title,
                 Description = b.Description,
                 Story = b.Story,
@@ -116,7 +115,9 @@ namespace BLL.Data
                 Type_of_literature = b.Type_of_literature,
                 Quote = b.Quote,
                 Review = b.Review,
-                Genre_Books = b.Genre_Books
+                Genre_Books = b.Genre_Books,
+                Book_Collections = b.Book_Collections,
+                Book_Characters = b.Book_Characters,
 
             });
             Save();
@@ -125,7 +126,6 @@ namespace BLL.Data
         public void UpdateBook(BookModel b, int bookId)
         {
             Book bk = db.Books.GetItem(b.BookID);
-            bk.AuthorID = b.AuthorID;
             bk.Title = b.Title;
             bk.Description = b.Description;
             bk.Story = b.Story;
@@ -140,6 +140,8 @@ namespace BLL.Data
             bk.Quote = b.Quote;
             bk.Review = b.Review;
             bk.Genre_Books = b.Genre_Books;
+            bk.Book_Collections = b.Book_Collections;
+            bk.Book_Characters = bk.Book_Characters;
             Save();
         }
 
@@ -653,6 +655,112 @@ namespace BLL.Data
             if (u != null)
             {
                 db.Users.Delete(u.UserId);
+                Save();
+            }
+        }
+        #endregion
+
+        #region Collection
+        public IEnumerable<CollectionModel> GetAllCollections()
+        {
+            return db.Collections.GetAll().Select(i => new CollectionModel(i)).ToList();
+        }
+
+        public CollectionModel GetCollection(int Id)
+        {
+            return new CollectionModel(db.Collections.GetItem(Id));
+        }
+
+        public void CreateCollection(CollectionModel cl)
+        {
+            db.Collections.Create(new Collection()
+            {
+                Title = cl.Title,
+                Info = cl.Info,
+                ImagePath = cl.ImagePath,
+                ImageLink = cl.ImageLink,
+                Book_Collections = cl.Book_Collections
+
+            });
+            Save();
+        }
+
+        public void UpdateCollection(CollectionModel cl)
+        {
+            Collection co = db.Collections.GetItem(cl.CollectionId);
+            co.Title = cl.Title;
+            co.Info = cl.Info;
+            co.ImagePath = cl.ImagePath;
+            co.ImageLink = cl.ImageLink;
+            co.Book_Collections = cl.Book_Collections;
+            Save();
+        }
+
+        public void DeleteCollection(int id)
+        {
+            Collection a = db.Collections.GetItem(id);
+            if (a != null)
+            {
+                db.Collections.Delete(a.CollectionId);
+                Save();
+            }
+        }
+        #endregion
+
+        #region Character
+        public IEnumerable<CharacterModel> GetAllCharacters()
+        {
+            return db.Characters.GetAll().Select(i => new CharacterModel(i)).ToList();
+        }
+
+        public CharacterModel GetCharacter(int Id)
+        {
+            return new CharacterModel(db.Characters.GetItem(Id));
+        }
+
+        public void CreateCharacter(CharacterModel ch)
+        {
+            db.Characters.Create(new Character()
+            {
+                Name = ch.Name,
+                Other_name = ch.Other_name,
+                Sex = ch.Sex,
+                View = ch.View,
+                Biography = ch.Biography,
+                Appearance = ch.Appearance,
+                Date_of_Birth = ch.Date_of_Birth,
+                Date_of_Death = ch.Date_of_Death,
+                ImagePath = ch.ImagePath,
+                ImageLink = ch.ImageLink,
+                Book_Characters = ch.Book_Characters
+
+            }) ;
+            Save();
+        }
+
+        public void UpdateCharacter(CharacterModel ch)
+        {
+            Character cr = db.Characters.GetItem(ch.CharacterId);
+            cr.Name = ch.Name;
+            cr.Other_name = ch.Other_name;
+            cr.Sex = ch.Sex;
+            cr.View = ch.View;
+            cr.Biography = ch.Biography;
+            cr.Appearance = ch.Appearance;
+            cr.Date_of_Birth = ch.Date_of_Birth;
+            cr.Date_of_Death = ch.Date_of_Death;
+            cr.ImagePath = ch.ImagePath;
+            cr.ImageLink = ch.ImageLink;
+            cr.Book_Characters = ch.Book_Characters;
+            Save();
+        }
+
+        public void DeleteCharacter(int id)
+        {
+            Character a = db.Characters.GetItem(id);
+            if (a != null)
+            {
+                db.Characters.Delete(a.CharacterId);
                 Save();
             }
         }

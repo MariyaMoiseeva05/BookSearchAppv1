@@ -7,7 +7,7 @@ namespace BLL.Models
     {
         public int GenreId { get; set; }
         public string NameGenre { get; set; }
-        public ICollection<Genre_Book> Genre_Books { get; set; }
+        public virtual ICollection<Genre_Book> Genre_Books { get; set; }
         public GenreModel() { }
         public GenreModel(Genre g)
         {

@@ -16,7 +16,9 @@ namespace BLL.Interfaces
         IEnumerable<ReviewModel> GetAllReviews();
         IEnumerable<ThinkModel> GetAllThinks();
         IEnumerable<Type_of_literatureModel> GetAllType_of_literatures();
-        
+        IEnumerable<CollectionModel> GetAllCollections();
+        IEnumerable<CharacterModel> GetAllCharacters();
+
         AuthorModel GetAuthor(int authorId);
         void CreateAuthor(AuthorModel at);
         void UpdateAuthor(AuthorModel at);
@@ -77,6 +79,16 @@ namespace BLL.Interfaces
         void CreateUser(UserModel u);
         void UpdateUser(UserModel u);
         void DeleteUser(int id);
+
+        CollectionModel GetCollection(int collectionId);
+        void CreateCollection(CollectionModel cl);
+        void UpdateCollection(CollectionModel cl);
+        void DeleteCollection(int id);
+
+        CharacterModel GetCharacter(int characterId);
+        void CreateCharacter(CharacterModel ch);
+        void UpdateCharacter(CharacterModel ch);
+        void DeleteCharacter(int id);
 
 
         bool Save();

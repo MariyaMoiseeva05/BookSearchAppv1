@@ -25,6 +25,11 @@ namespace DAL.Entities
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Quote> Quotes { get; set; }
         public virtual DbSet<User> PUsers { get; set; }
+        public virtual DbSet<Collection> Collections { get; set; }
+        public virtual DbSet<Character> Characters { get; set; }
+        public virtual DbSet<Book_Character> Book_Characters { get; set; }
+        public virtual DbSet<Book_Collection> Book_Collections { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -55,6 +60,19 @@ namespace DAL.Entities
                     .HasForeignKey(b => b.BookID);
             });
 
+            modelBuilder.Entity<Author_Book>()
+         .HasKey(t => new { t.BookId, t.AuthorId });
+
+            modelBuilder.Entity<Author_Book>()
+                .HasOne(pt => pt.Book)
+                .WithMany(p => p.Author)
+                .HasForeignKey(pt => pt.BookId);
+
+            modelBuilder.Entity<Author_Book>()
+                .HasOne(pt => pt.Author)
+                .WithMany(t => t.Book)
+                .HasForeignKey(pt => pt.BookId);
+
             modelBuilder.Entity<Genre_Book>()
             .HasKey(t => new { t.BookId, t.GenreId });
 
@@ -82,15 +100,6 @@ namespace DAL.Entities
                 .HasOne(pt => pt.TypeLit)
                 .WithMany(t => t.Book)
                 .HasForeignKey(pt => pt.TypeId);
-
-
-            modelBuilder.Entity<Book>(entity =>
-            {
-                entity.HasOne(b => b.Author)
-                    .WithMany(p => p.Book)
-                    .HasForeignKey(b => b.AuthorID);
-            });
-
 
             modelBuilder.Entity<News_Tags>()
            .HasKey(t => new { t.NewsId, t.TagId });
@@ -133,6 +142,33 @@ namespace DAL.Entities
                     .WithMany(p => p.Quote)
                     .HasForeignKey(b => b.UserID);
             });
+
+            modelBuilder.Entity<Book_Character>()
+            .HasKey(t => new { t.BookId, t.CharacterId });
+
+            modelBuilder.Entity<Book_Character>()
+                .HasOne(pt => pt.Book)
+                .WithMany(p => p.Book_Characters)
+                .HasForeignKey(pt => pt.BookId);
+
+            modelBuilder.Entity<Book_Character>()
+                .HasOne(pt => pt.Character)
+                .WithMany(t => t.Book_Characters)
+                .HasForeignKey(pt => pt.CharacterId);
+
+            modelBuilder.Entity<Book_Collection>()
+            .HasKey(t => new { t.BookId, t.CollectionId });
+
+            modelBuilder.Entity<Book_Collection>()
+                .HasOne(pt => pt.Book)
+                .WithMany(p => p.Book_Collections)
+                .HasForeignKey(pt => pt.BookId);
+
+            modelBuilder.Entity<Book_Collection>()
+                .HasOne(pt => pt.Collection)
+                .WithMany(t => t.Book_Collections)
+                .HasForeignKey(pt => pt.CollectionId);
+
         }
     }
 }

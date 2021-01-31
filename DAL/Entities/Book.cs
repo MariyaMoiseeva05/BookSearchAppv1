@@ -18,9 +18,6 @@ namespace DAL.Entities
         public int BookID { get; set; }
 
         [Required]
-        public int AuthorID { get; set; }
-
-        [Required]
         [Display(Name = "Название книги")]
         public string Title { get; set; } // Название книги
 
@@ -43,12 +40,15 @@ namespace DAL.Entities
         [Display(Name = "Экранизации")]
         public string Screenings { get; set; }
 
-        public virtual Author Author { get; set; } // навигационное свойство
         public virtual ICollection<Comment> Comment { get; set; }  // Отзывы
         public virtual ICollection<Quote> Quote { get; set; }  // Цитаты
         public virtual ICollection<Review> Review { get; set; } // Рецензии
-        public ICollection<TypeOfLit_Book> Type_of_literature { get; set; } //тип литературы
-        public virtual ICollection<Genre_Book> Genre_Books { get; set; }// Жанр книги
+        public virtual ICollection<TypeOfLit_Book> Type_of_literature { get; set; }
+        public virtual ICollection<Genre_Book> Genre_Books { get; set; }
+        public virtual ICollection<Book_Collection> Book_Collections { get; set; }
+        public virtual ICollection<Book_Character> Book_Characters { get; set; }
+        public virtual ICollection<Author_Book> Author { get; set; }
+        //public List<Author> Authors { get; set; }
 
 
     }

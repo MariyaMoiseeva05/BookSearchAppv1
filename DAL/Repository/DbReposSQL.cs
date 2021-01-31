@@ -19,6 +19,8 @@ namespace DAL.Repository
         private Type_of_literatureRepositorySQL type_of_literatureRepository;
         private TagRepositorySQL tagRepository;
         private UserRepositorySQL userRepository;
+        private CollectionRepositorySQL collectionRepository;
+        private CharacterRepositorySQL characterRepository;
 
         public DbReposSQL(DbContextOptions<BookSearchContext> options)
         {
@@ -144,6 +146,24 @@ namespace DAL.Repository
             }
         }
 
+        public IRepository<Character> Characters
+        {
+            get
+            {
+                if (characterRepository == null)
+                    characterRepository = new CharacterRepositorySQL(db);
+                return characterRepository;
+            }
+        }
+        public IRepository<Collection> Collections
+        {
+            get
+            {
+                if (collectionRepository == null)
+                    collectionRepository = new CollectionRepositorySQL(db);
+                return collectionRepository;
+            }
+        }
 
         public int Save()
         {

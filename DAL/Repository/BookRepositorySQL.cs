@@ -35,20 +35,24 @@ namespace DAL.Repository
         {
             return db.Books
                 .Include(c => c.Comment)
-                .Include(a => a.Author)
                 .Include(r => r.Review)
                 .Include(q => q.Quote)
+                .Include(a =>a.Author).ThenInclude(gn => gn.Author)
                 .Include(t => t.Type_of_literature).ThenInclude(gn => gn.TypeLit)
                 .Include(g => g.Genre_Books).ThenInclude(gn => gn.Genre)
+                .Include(cl => cl.Book_Collections).ThenInclude(gn => gn.Collection)
+                .Include(ch => ch.Book_Characters).ThenInclude(gn => gn.Character)
                 .First(b => b.BookID == (int)id);
         }
 
         public IEnumerable<Book> GetAll()
         {
             return db.Books
-                .Include(a => a.Author)
+                .Include(a => a.Author).ThenInclude(gn => gn.Author)
                 .Include(t => t.Type_of_literature).ThenInclude(gn => gn.TypeLit)
                 .Include(g => g.Genre_Books).ThenInclude(gn => gn.Genre)
+                .Include(cl => cl.Book_Collections).ThenInclude(gn => gn.Collection)
+                .Include(ch => ch.Book_Characters).ThenInclude(gn => gn.Character)
                 .ToList();
         }
 
@@ -56,7 +60,6 @@ namespace DAL.Repository
         {
             var book = db.Books.Find((int)bookId);
             book.Title = Book.Title;
-            book.AuthorID = Book.AuthorID;
             book.Author = Book.Author;
             book.Description = Book.Description;
             book.Story = Book.Story;
@@ -70,6 +73,8 @@ namespace DAL.Repository
             book.Screenings = Book.Screenings;
             book.Type_of_literature = Book.Type_of_literature;
             book.Genre_Books = Book.Genre_Books;
+            book.Book_Characters = Book.Book_Characters;
+            book.Book_Collections = Book.Book_Collections;
 
 
             db.Books.Update(book);

@@ -17,6 +17,8 @@ namespace DAL.Interfaces
         IRepository<Type_of_literature> Type_of_literatures { get; }
         IRepository<Tag> Tags { get; }
         IRepository<User> Users { get; }
+        IRepository<Collection> Collections { get; }
+        IRepository<Character> Characters { get; }
 
         int Save();
     }
