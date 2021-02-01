@@ -29,6 +29,7 @@ namespace DAL.Entities
         public virtual DbSet<Character> Characters { get; set; }
         public virtual DbSet<Book_Character> Book_Characters { get; set; }
         public virtual DbSet<Book_Collection> Book_Collections { get; set; }
+        public virtual DbSet<Author_Book> Author_Books { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

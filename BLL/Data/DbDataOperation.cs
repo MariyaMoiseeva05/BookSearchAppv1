@@ -118,6 +118,7 @@ namespace BLL.Data
                 Genre_Books = b.Genre_Books,
                 Book_Collections = b.Book_Collections,
                 Book_Characters = b.Book_Characters,
+                Authors = b.Authors
 
             });
             Save();
@@ -141,7 +142,8 @@ namespace BLL.Data
             bk.Review = b.Review;
             bk.Genre_Books = b.Genre_Books;
             bk.Book_Collections = b.Book_Collections;
-            bk.Book_Characters = bk.Book_Characters;
+            bk.Book_Characters = b.Book_Characters;
+            bk.Authors = b.Authors;
             Save();
         }
 

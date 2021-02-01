@@ -48,7 +48,7 @@ namespace DAL.Entities
         public virtual ICollection<Book_Collection> Book_Collections { get; set; }
         public virtual ICollection<Book_Character> Book_Characters { get; set; }
         public virtual ICollection<Author_Book> Author { get; set; }
-        //public List<Author> Authors { get; set; }
+        public Author Authors { get; set; }
 
 
     }
