@@ -4,69 +4,22 @@ using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(BookSearchContext))]
-    partial class BookSearchContextModelSnapshot : ModelSnapshot
+    [Migration("20210201091040_ooo")]
+    partial class ooo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("DAL.Entities.Advert", b =>
-                {
-                    b.Property<string>("AdvertID")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("BookId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Date_of_Create")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Delivery")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("ExchangeCompleted")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("Finish")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("LocalityId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Number_of_views")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Pickup")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("SaleCompleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("AdvertID");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("LocalityId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Advert");
-                });
 
             modelBuilder.Entity("DAL.Entities.Author", b =>
                 {
@@ -322,52 +275,6 @@ namespace DAL.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Comment_Advert", b =>
-                {
-                    b.Property<int>("Comment_AdvertId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AdvertId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Date_of_AddComment")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Comment_AdvertId");
-
-                    b.HasIndex("AdvertId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Comment_Adverts");
-                });
-
-            modelBuilder.Entity("DAL.Entities.Featured_Advert", b =>
-                {
-                    b.Property<string>("AdvertId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Featured_AdvertId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AdvertId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Featured_Adverts");
-                });
-
             modelBuilder.Entity("DAL.Entities.Genre", b =>
                 {
                     b.Property<int>("GenreId")
@@ -424,81 +331,6 @@ namespace DAL.Migrations
                     b.HasIndex("AuthorID");
 
                     b.ToTable("Interesting_Facts");
-                });
-
-            modelBuilder.Entity("DAL.Entities.Like_Advert", b =>
-                {
-                    b.Property<string>("AdvertId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Like_AdvertId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AdvertId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Like_Adverts");
-                });
-
-            modelBuilder.Entity("DAL.Entities.Locality", b =>
-                {
-                    b.Property<int>("LocalityId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Timezone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("LocalityId");
-
-                    b.ToTable("Localities");
-                });
-
-            modelBuilder.Entity("DAL.Entities.Message", b =>
-                {
-                    b.Property<int>("MessageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("AdvertId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Create_Message")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Readed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Recipient_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Sender_Id")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("MessageId");
-
-                    b.HasIndex("AdvertId");
-
-                    b.HasIndex("Sender_Id");
-
-                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("DAL.Entities.News", b =>
@@ -926,25 +758,6 @@ namespace DAL.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("DAL.Entities.Advert", b =>
-                {
-                    b.HasOne("DAL.Entities.Book", "Book")
-                        .WithMany("Adverts")
-                        .HasForeignKey("BookId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DAL.Entities.Locality", "Locality")
-                        .WithMany()
-                        .HasForeignKey("LocalityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DAL.Entities.User", "User")
-                        .WithMany("Advert")
-                        .HasForeignKey("UserId");
-                });
-
             modelBuilder.Entity("DAL.Entities.Author_Book", b =>
                 {
                     b.HasOne("DAL.Entities.Author", "Author")
@@ -954,7 +767,7 @@ namespace DAL.Migrations
                         .IsRequired();
 
                     b.HasOne("DAL.Entities.Book", "Book")
-                        .WithMany("Authors")
+                        .WithMany("Author")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -993,7 +806,7 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.Entities.Comment", b =>
                 {
                     b.HasOne("DAL.Entities.Book", "Book")
-                        .WithMany("Comments")
+                        .WithMany("Comment")
                         .HasForeignKey("BookID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1013,36 +826,10 @@ namespace DAL.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("DAL.Entities.Comment_Advert", b =>
-                {
-                    b.HasOne("DAL.Entities.Advert", "Advert")
-                        .WithMany("Comment_Advert")
-                        .HasForeignKey("AdvertId");
-
-                    b.HasOne("DAL.Entities.User", "User")
-                        .WithMany("Comment_Advert")
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("DAL.Entities.Featured_Advert", b =>
-                {
-                    b.HasOne("DAL.Entities.Advert", "Advert")
-                        .WithMany("Featured_Adverts")
-                        .HasForeignKey("AdvertId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DAL.Entities.User", "User")
-                        .WithMany("Featured_Adverts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("DAL.Entities.Genre_Book", b =>
                 {
                     b.HasOne("DAL.Entities.Book", "Book")
-                        .WithMany("Genres_Books")
+                        .WithMany("Genre_Books")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1059,34 +846,6 @@ namespace DAL.Migrations
                     b.HasOne("DAL.Entities.Author", "Author")
                         .WithMany("Interesting_fact")
                         .HasForeignKey("AuthorID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DAL.Entities.Like_Advert", b =>
-                {
-                    b.HasOne("DAL.Entities.Advert", "Advert")
-                        .WithMany("Like_Adverts")
-                        .HasForeignKey("AdvertId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DAL.Entities.User", "User")
-                        .WithMany("Like_Adverts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DAL.Entities.Message", b =>
-                {
-                    b.HasOne("DAL.Entities.Advert", "Advert")
-                        .WithMany("Message")
-                        .HasForeignKey("AdvertId");
-
-                    b.HasOne("DAL.Entities.User", "User")
-                        .WithMany("Message")
-                        .HasForeignKey("Sender_Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1109,7 +868,7 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.Entities.Quote", b =>
                 {
                     b.HasOne("DAL.Entities.Book", "Book")
-                        .WithMany("Quotes")
+                        .WithMany("Quote")
                         .HasForeignKey("BookID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1122,7 +881,7 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.Entities.Review", b =>
                 {
                     b.HasOne("DAL.Entities.Book", "Book")
-                        .WithMany("Reviews")
+                        .WithMany("Review")
                         .HasForeignKey("BookID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1144,7 +903,7 @@ namespace DAL.Migrations
             modelBuilder.Entity("DAL.Entities.TypeOfLit_Book", b =>
                 {
                     b.HasOne("DAL.Entities.Book", "Book")
-                        .WithMany("Types_of_literature")
+                        .WithMany("Type_of_literature")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

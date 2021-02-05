@@ -23,7 +23,6 @@ namespace BLL.Models
         public virtual ICollection<Book_Collection> Book_Collections { get; set; }
         public virtual ICollection<Book_Character> Book_Characters { get; set; }
         public virtual ICollection<Author_Book> Author { get; set; }
-        public Author Authors { get; set; }
         public BookModel() { }
         public BookModel(Book b)
         {
@@ -36,16 +35,15 @@ namespace BLL.Models
             Publication_date = b.Publication_date;
             ImageLink = b.ImageLink;
             ImagePath = b.ImagePath;
-            Comment = b.Comment;
-            Author = b.Author;
+            Comment = b.Comments;
+            Author = b.Authors;
             Screenings = b.Screenings;
-            Type_of_literature = b.Type_of_literature;
-            Quote = b.Quote;
-            Review = b.Review;
-            Genre_Books = b.Genre_Books;
+            Type_of_literature = b.Types_of_literature;
+            Quote = b.Quotes;
+            Review = b.Reviews;
+            Genre_Books = b.Genres_Books;
             Book_Collections = b.Book_Collections;
             Book_Characters = b.Book_Characters;
-            Authors = b.Authors;
         }
 
     }

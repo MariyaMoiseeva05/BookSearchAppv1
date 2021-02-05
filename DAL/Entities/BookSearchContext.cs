@@ -30,6 +30,13 @@ namespace DAL.Entities
         public virtual DbSet<Book_Character> Book_Characters { get; set; }
         public virtual DbSet<Book_Collection> Book_Collections { get; set; }
         public virtual DbSet<Author_Book> Author_Books { get; set; }
+        public virtual DbSet<Advert> Advert { get; set; }
+        public virtual DbSet<Comment_Advert> Comment_Adverts { get; set; }
+        public virtual DbSet<Featured_Advert> Featured_Adverts { get; set; }
+        public virtual DbSet<Like_Advert> Like_Adverts { get; set; }
+        public virtual DbSet<Locality> Localities { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -43,21 +50,21 @@ namespace DAL.Entities
             modelBuilder.Entity<Comment>(entity =>
             {
                 entity.HasOne(b => b.Book)
-                    .WithMany(p => p.Comment)
+                    .WithMany(p => p.Comments)
                     .HasForeignKey(b => b.BookID);
             });
 
             modelBuilder.Entity<Review>(entity =>
             {
                 entity.HasOne(b => b.Book)
-                    .WithMany(p => p.Review)
+                    .WithMany(p => p.Reviews)
                     .HasForeignKey(b => b.BookID);
             });
 
             modelBuilder.Entity<Quote>(entity =>
             {
                 entity.HasOne(b => b.Book)
-                    .WithMany(p => p.Quote)
+                    .WithMany(p => p.Quotes)
                     .HasForeignKey(b => b.BookID);
             });
 
@@ -66,7 +73,7 @@ namespace DAL.Entities
 
             modelBuilder.Entity<Author_Book>()
                 .HasOne(pt => pt.Book)
-                .WithMany(p => p.Author)
+                .WithMany(p => p.Authors)
                 .HasForeignKey(pt => pt.BookId);
 
             modelBuilder.Entity<Author_Book>()
@@ -79,7 +86,7 @@ namespace DAL.Entities
 
             modelBuilder.Entity<Genre_Book>()
                 .HasOne(pt => pt.Book)
-                .WithMany(p => p.Genre_Books)
+                .WithMany(p => p.Genres_Books)
                 .HasForeignKey(pt => pt.BookId);
 
             modelBuilder.Entity<Genre_Book>()
@@ -93,7 +100,7 @@ namespace DAL.Entities
 
             modelBuilder.Entity<TypeOfLit_Book>()
                 .HasOne(pt => pt.Book)
-                .WithMany(p => p.Type_of_literature)
+                .WithMany(p => p.Types_of_literature)
                 .HasForeignKey(pt => pt.BookId);
 
             modelBuilder.Entity<TypeOfLit_Book>()
@@ -111,7 +118,6 @@ namespace DAL.Entities
                 .HasForeignKey(pt => pt.NewsId);
 
             modelBuilder.Entity<News_Tags>()
-
                 .HasOne(pt => pt.Tag)
                 .WithMany(t => t.News)
                 .HasForeignKey(pt => pt.TagId);
@@ -170,6 +176,74 @@ namespace DAL.Entities
                 .WithMany(t => t.Book_Collections)
                 .HasForeignKey(pt => pt.CollectionId);
 
+            modelBuilder.Entity<Message>(entity =>
+            {
+                entity.HasOne(b => b.User)
+                    .WithMany(p => p.Message)
+                    .HasForeignKey(b => b.Recipient_Id);
+            });
+
+            modelBuilder.Entity<Message>(entity =>
+            {
+                entity.HasOne(b => b.User)
+                    .WithMany(p => p.Message)
+                    .HasForeignKey(b => b.Sender_Id);
+            });
+
+            modelBuilder.Entity<Message>(entity =>
+            {
+                entity.HasOne(b => b.Advert)
+                    .WithMany(p => p.Message)
+                    .HasForeignKey(b => b.AdvertId);
+            });
+
+
+            modelBuilder.Entity<Comment_Advert>(entity =>
+            {
+                entity.HasOne(b => b.Advert)
+                    .WithMany(p => p.Comment_Advert)
+                    .HasForeignKey(b => b.AdvertId);
+            });
+
+            modelBuilder.Entity<Comment_Advert>(entity =>
+            {
+                entity.HasOne(b => b.User)
+                    .WithMany(p => p.Comment_Advert)
+                    .HasForeignKey(b => b.UserId);
+            });
+
+            modelBuilder.Entity<Featured_Advert>()
+           .HasKey(t => new { t.AdvertId, t.UserId });
+
+            modelBuilder.Entity<Featured_Advert>()
+                .HasOne(pt => pt.Advert)
+                .WithMany(p => p.Featured_Adverts)
+                .HasForeignKey(pt => pt.AdvertId);
+
+            modelBuilder.Entity<Featured_Advert>()
+                .HasOne(pt => pt.User)
+                .WithMany(t => t.Featured_Adverts)
+                .HasForeignKey(pt => pt.UserId);
+
+            modelBuilder.Entity<Like_Advert>()
+           .HasKey(t => new { t.AdvertId, t.UserId });
+
+            modelBuilder.Entity<Like_Advert>()
+                .HasOne(pt => pt.Advert)
+                .WithMany(p => p.Like_Adverts)
+                .HasForeignKey(pt => pt.AdvertId);
+
+            modelBuilder.Entity<Like_Advert>()
+                .HasOne(pt => pt.User)
+                .WithMany(t => t.Like_Adverts)
+                .HasForeignKey(pt => pt.UserId);
+
+            modelBuilder.Entity<Advert>(entity =>
+            {
+                entity.HasOne(b => b.Book)
+                    .WithMany(p => p.Adverts)
+                    .HasForeignKey(b => b.BookId);
+            });
         }
     }
 }

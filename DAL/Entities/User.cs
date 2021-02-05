@@ -10,9 +10,12 @@ namespace DAL.Entities
         public User()
         {
             Comment = new HashSet<Comment>();
+            Comment_Advert = new HashSet<Comment_Advert>();
             Review = new HashSet<Review>();
             Quote = new HashSet<Quote>();
             Think = new HashSet<Think>();
+            Message = new HashSet<Message>();
+            Advert = new HashSet<Advert>();
         }
 
         [Key]
@@ -57,5 +60,10 @@ namespace DAL.Entities
         public virtual ICollection<Think> Think { get; set; }  // Мысли
         public virtual ICollection<Quote> Quote { get; set; }  // Цитаты
         public virtual ICollection<Review> Review { get; set; } // Рецензии
+        public virtual ICollection<Message> Message { get; set; } // Сообщения
+        public virtual ICollection<Advert> Advert { get; set; } // Объявления
+        public virtual ICollection<Comment_Advert> Comment_Advert { get; set; } // Комментарии объявления
+        public virtual ICollection<Featured_Advert> Featured_Adverts { get; set; } // Избранные объявления
+        public virtual ICollection<Like_Advert> Like_Adverts { get; set; } // Лайки на объявлениях
     }
 }

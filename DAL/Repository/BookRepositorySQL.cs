@@ -34,13 +34,12 @@ namespace DAL.Repository
         public Book GetItem(object id)
         {
             return db.Books
-                .Include(c => c.Comment)
-                .Include(r => r.Review)
-                .Include(q => q.Quote)
-                .Include(au =>au.Authors)
-                .Include(a =>a.Author).ThenInclude(gn => gn.Author)
-                .Include(t => t.Type_of_literature).ThenInclude(gn => gn.TypeLit)
-                .Include(g => g.Genre_Books).ThenInclude(gn => gn.Genre)
+                .Include(c => c.Comments)
+                .Include(r => r.Reviews)
+                .Include(q => q.Quotes)
+                .Include(a =>a.Authors).ThenInclude(gn => gn.Author)
+                .Include(t => t.Types_of_literature).ThenInclude(gn => gn.TypeLit)
+                .Include(g => g.Genres_Books).ThenInclude(gn => gn.Genre)
                 .Include(cl => cl.Book_Collections).ThenInclude(gn => gn.Collection)
                 .Include(ch => ch.Book_Characters).ThenInclude(gn => gn.Character)
                 .First(b => b.BookID == (int)id);
@@ -49,9 +48,9 @@ namespace DAL.Repository
         public IEnumerable<Book> GetAll()
         {
             return db.Books
-                .Include(a => a.Author).ThenInclude(gn => gn.Author)
-                .Include(t => t.Type_of_literature).ThenInclude(gn => gn.TypeLit)
-                .Include(g => g.Genre_Books).ThenInclude(gn => gn.Genre)
+                .Include(a => a.Authors).ThenInclude(gn => gn.Author)
+                .Include(t => t.Types_of_literature).ThenInclude(gn => gn.TypeLit)
+                .Include(g => g.Genres_Books).ThenInclude(gn => gn.Genre)
                 .Include(cl => cl.Book_Collections).ThenInclude(gn => gn.Collection)
                 .Include(ch => ch.Book_Characters).ThenInclude(gn => gn.Character)
                 .ToList();
@@ -61,22 +60,21 @@ namespace DAL.Repository
         {
             var book = db.Books.Find((int)bookId);
             book.Title = Book.Title;
-            book.Author = Book.Author;
+            book.Authors = Book.Authors;
             book.Description = Book.Description;
             book.Story = Book.Story;
             book.Edition = Book.Edition;
             book.Publication_date = Book.Publication_date;
             book.ImagePath = Book.ImagePath;
             book.ImageLink = Book.ImageLink;
-            book.Comment = Book.Comment;
-            book.Quote = Book.Quote;
-            book.Review = Book.Review;
+            book.Comments = Book.Comments;
+            book.Quotes = Book.Quotes;
+            book.Reviews = Book.Reviews;
             book.Screenings = Book.Screenings;
-            book.Type_of_literature = Book.Type_of_literature;
-            book.Genre_Books = Book.Genre_Books;
+            book.Types_of_literature = Book.Types_of_literature;
+            book.Genres_Books = Book.Genres_Books;
             book.Book_Characters = Book.Book_Characters;
             book.Book_Collections = Book.Book_Collections;
-            book.Authors = Book.Authors;
 
             db.Books.Update(book);
             db.SaveChanges();

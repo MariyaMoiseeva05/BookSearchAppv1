@@ -9,9 +9,10 @@ namespace DAL.Entities
     {
         public Book()
         {
-            Comment = new HashSet<Comment>();
-            Review = new HashSet<Review>();
-            Quote = new HashSet<Quote>();
+            Comments = new HashSet<Comment>();
+            Reviews = new HashSet<Review>();
+            Quotes = new HashSet<Quote>();
+            Adverts = new HashSet<Advert>();
         }
 
         [Key]
@@ -40,15 +41,15 @@ namespace DAL.Entities
         [Display(Name = "Экранизации")]
         public string Screenings { get; set; }
 
-        public virtual ICollection<Comment> Comment { get; set; }  // Отзывы
-        public virtual ICollection<Quote> Quote { get; set; }  // Цитаты
-        public virtual ICollection<Review> Review { get; set; } // Рецензии
-        public virtual ICollection<TypeOfLit_Book> Type_of_literature { get; set; }
-        public virtual ICollection<Genre_Book> Genre_Books { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }  // Отзывы
+        public virtual ICollection<Quote> Quotes { get; set; }  // Цитаты
+        public virtual ICollection<Review> Reviews { get; set; } // Рецензии
+        public virtual ICollection<TypeOfLit_Book> Types_of_literature { get; set; }
+        public virtual ICollection<Genre_Book> Genres_Books { get; set; }
         public virtual ICollection<Book_Collection> Book_Collections { get; set; }
         public virtual ICollection<Book_Character> Book_Characters { get; set; }
-        public virtual ICollection<Author_Book> Author { get; set; }
-        public Author Authors { get; set; }
+        public virtual ICollection<Author_Book> Authors { get; set; }
+        public virtual ICollection<Advert> Adverts { get; set; }
 
 
     }

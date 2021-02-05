@@ -109,16 +109,15 @@ namespace BLL.Data
                 Publication_date = b.Publication_date,
                 ImagePath = b.ImagePath,
                 ImageLink = b.ImageLink,
-                Comment = b.Comment,
-                Author = b.Author,
+                Comments = b.Comment,
+                Authors = b.Author,
                 Screenings = b.Screenings,
-                Type_of_literature = b.Type_of_literature,
-                Quote = b.Quote,
-                Review = b.Review,
-                Genre_Books = b.Genre_Books,
+                Types_of_literature = b.Type_of_literature,
+                Quotes = b.Quote,
+                Reviews = b.Review,
+                Genres_Books = b.Genre_Books,
                 Book_Collections = b.Book_Collections,
-                Book_Characters = b.Book_Characters,
-                Authors = b.Authors
+                Book_Characters = b.Book_Characters
 
             });
             Save();
@@ -134,16 +133,15 @@ namespace BLL.Data
             bk.Publication_date = b.Publication_date;
             bk.ImagePath = b.ImagePath;
             bk.ImageLink = b.ImageLink;
-            bk.Comment = b.Comment;
-            bk.Author = b.Author;
+            bk.Comments = b.Comment;
+            bk.Authors = b.Author;
             bk.Screenings = b.Screenings;
-            bk.Type_of_literature = b.Type_of_literature;
-            bk.Quote = b.Quote;
-            bk.Review = b.Review;
-            bk.Genre_Books = b.Genre_Books;
+            bk.Types_of_literature = b.Type_of_literature;
+            bk.Quotes = b.Quote;
+            bk.Reviews = b.Review;
+            bk.Genres_Books = b.Genre_Books;
             bk.Book_Collections = b.Book_Collections;
             bk.Book_Characters = b.Book_Characters;
-            bk.Authors = b.Authors;
             Save();
         }
 
