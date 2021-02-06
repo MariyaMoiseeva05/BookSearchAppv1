@@ -65,5 +65,7 @@ namespace DAL.Entities
         public virtual ICollection<Comment_Advert> Comment_Advert { get; set; } // Комментарии объявления
         public virtual ICollection<Featured_Advert> Featured_Adverts { get; set; } // Избранные объявления
         public virtual ICollection<Like_Advert> Like_Adverts { get; set; } // Лайки на объявлениях
+        public virtual ICollection<Featured_Book> Featured_Books { get; set; } // Избранные книги
+
     }
 }

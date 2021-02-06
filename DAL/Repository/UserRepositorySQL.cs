@@ -36,6 +36,12 @@ namespace DAL.Repository
         public User GetItem(object id)
         {
             return db.Users
+                .Include(a => a.Advert)
+                .Include(m => m.Message)
+                .Include(c => c.Comment_Advert)
+                .Include(fa => fa.Featured_Adverts)
+                .Include(fb => fb.Featured_Books)
+                .Include(l => l.Like_Adverts)
                 .Include(c => c.Comment)
                 .Include(a => a.Think)
                 .Include(r => r.Review)
@@ -46,7 +52,13 @@ namespace DAL.Repository
         public IEnumerable<User> GetAll()
         {
             return db.PUsers
-                 .Include(c => c.Comment)
+                .Include(a => a.Advert)
+                .Include(m => m.Message)
+                .Include(c => c.Comment_Advert)
+                .Include(fa => fa.Featured_Adverts)
+                .Include(fb => fb.Featured_Books)
+                .Include(l => l.Like_Adverts)
+                .Include(c => c.Comment)
                 .Include(a => a.Think)
                 .Include(r => r.Review)
                 .Include(q => q.Quote)
@@ -73,6 +85,12 @@ namespace DAL.Repository
             user.Date_of_Birth = User.Date_of_Birth;
             user.ImageLink = User.ImageLink;
             user.ImagePath = User.ImagePath;
+            user.Advert = User.Advert;
+            user.Message = User.Message;
+            user.Featured_Books = User.Featured_Books;
+            user.Featured_Adverts = User.Featured_Adverts;
+            user.Like_Adverts = User.Like_Adverts;
+            user.Comment_Advert = User.Comment_Advert;
 
             db.PUsers.Update(User);
             db.SaveChanges();

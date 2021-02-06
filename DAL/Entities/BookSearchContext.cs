@@ -30,12 +30,13 @@ namespace DAL.Entities
         public virtual DbSet<Book_Character> Book_Characters { get; set; }
         public virtual DbSet<Book_Collection> Book_Collections { get; set; }
         public virtual DbSet<Author_Book> Author_Books { get; set; }
-        public virtual DbSet<Advert> Advert { get; set; }
+        public virtual DbSet<Advert> Adverts { get; set; }
         public virtual DbSet<Comment_Advert> Comment_Adverts { get; set; }
         public virtual DbSet<Featured_Advert> Featured_Adverts { get; set; }
         public virtual DbSet<Like_Advert> Like_Adverts { get; set; }
         public virtual DbSet<Locality> Localities { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<Featured_Book> Featured_Books { get; set; }
 
 
 
@@ -243,6 +244,26 @@ namespace DAL.Entities
                 entity.HasOne(b => b.Book)
                     .WithMany(p => p.Adverts)
                     .HasForeignKey(b => b.BookId);
+            });
+
+            modelBuilder.Entity<Featured_Book>()
+           .HasKey(t => new { t.BookId, t.UserId });
+
+            modelBuilder.Entity<Featured_Book>()
+                .HasOne(pt => pt.Book)
+                .WithMany(p => p.Featured_Books)
+                .HasForeignKey(pt => pt.BookId);
+
+            modelBuilder.Entity<Featured_Book>()
+                .HasOne(pt => pt.User)
+                .WithMany(t => t.Featured_Books)
+                .HasForeignKey(pt => pt.UserId);
+
+            modelBuilder.Entity<Advert>(entity =>
+            {
+                entity.HasOne(b => b.Locality)
+                    .WithMany(p => p.Adverts)
+                    .HasForeignKey(b => b.LocalityId);
             });
         }
     }

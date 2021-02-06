@@ -23,6 +23,8 @@ namespace BLL.Models
         public virtual ICollection<Book_Collection> Book_Collections { get; set; }
         public virtual ICollection<Book_Character> Book_Characters { get; set; }
         public virtual ICollection<Author_Book> Author { get; set; }
+        public virtual ICollection<Advert> Adverts { get; set; }
+        public virtual ICollection<Featured_Book> Featured_Books { get; set; }
         public BookModel() { }
         public BookModel(Book b)
         {
@@ -44,6 +46,8 @@ namespace BLL.Models
             Genre_Books = b.Genres_Books;
             Book_Collections = b.Book_Collections;
             Book_Characters = b.Book_Characters;
+            Adverts = b.Adverts;
+            Featured_Books = b.Featured_Books;
         }
 
     }

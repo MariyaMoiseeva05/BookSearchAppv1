@@ -37,6 +37,7 @@ namespace DAL.Repository
                 .Include(c => c.Comments)
                 .Include(r => r.Reviews)
                 .Include(q => q.Quotes)
+                .Include(ad => ad.Adverts)
                 .Include(a =>a.Authors).ThenInclude(gn => gn.Author)
                 .Include(t => t.Types_of_literature).ThenInclude(gn => gn.TypeLit)
                 .Include(g => g.Genres_Books).ThenInclude(gn => gn.Genre)
@@ -75,6 +76,8 @@ namespace DAL.Repository
             book.Genres_Books = Book.Genres_Books;
             book.Book_Characters = Book.Book_Characters;
             book.Book_Collections = Book.Book_Collections;
+            book.Adverts = Book.Adverts;
+            book.Featured_Books = Book.Featured_Books;
 
             db.Books.Update(book);
             db.SaveChanges();

@@ -21,6 +21,13 @@ namespace DAL.Repository
         private UserRepositorySQL userRepository;
         private CollectionRepositorySQL collectionRepository;
         private CharacterRepositorySQL characterRepository;
+        private MessageRepositorySQL messageRepository;
+        private AdvertRepositorySQL advertRepository;
+        private LocalityRepositorySQL localityRepository;
+        private Comment_AdvertRepositorySQL comment_advertRepository;
+        private Featured_AdvertRepositorySQL featured_advertRepository;
+        private Featured_BooksRepositorySQL featured_booksRepository;
+        private Like_AdvertRepositorySQL like_advertRepository;
 
         public DbReposSQL(DbContextOptions<BookSearchContext> options)
         {
@@ -164,6 +171,80 @@ namespace DAL.Repository
                 return collectionRepository;
             }
         }
+
+        public IRepository<Advert> Adverts
+        {
+            get
+            {
+                if (advertRepository == null)
+                    advertRepository = new AdvertRepositorySQL(db);
+                return advertRepository;
+            }
+        }
+
+        public IRepository<Comment_Advert> Comment_Adverts
+        {
+            get
+            {
+                if (comment_advertRepository == null)
+                    comment_advertRepository = new Comment_AdvertRepositorySQL(db);
+                return comment_advertRepository;
+            }
+        }
+
+        public IRepository<Like_Advert> Like_Adverts
+        {
+            get
+            {
+                if (like_advertRepository == null)
+                    like_advertRepository = new Like_AdvertRepositorySQL(db);
+                return like_advertRepository;
+            }
+        }
+
+        public IRepository<Featured_Advert> Featured_Adverts
+        {
+            get
+            {
+                if (featured_advertRepository == null)
+                    featured_advertRepository = new Featured_AdvertRepositorySQL(db);
+                return featured_advertRepository;
+            }
+        }
+
+        public IRepository<Featured_Book> Featured_Books
+        {
+            get
+            {
+                if (featured_booksRepository == null)
+                    featured_booksRepository = new Featured_BooksRepositorySQL(db);
+                return featured_booksRepository;
+            }
+        }
+
+        public IRepository<Message> Messages
+        {
+            get
+            {
+                if (messageRepository == null)
+                    messageRepository = new MessageRepositorySQL(db);
+                return messageRepository;
+            }
+        }
+
+        public IRepository<Locality> Localities
+        {
+            get
+            {
+                if (localityRepository == null)
+                    localityRepository = new LocalityRepositorySQL(db);
+                return localityRepository;
+            }
+        }
+
+
+
+
 
         public int Save()
         {

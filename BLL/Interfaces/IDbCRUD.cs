@@ -18,6 +18,14 @@ namespace BLL.Interfaces
         IEnumerable<Type_of_literatureModel> GetAllType_of_literatures();
         IEnumerable<CollectionModel> GetAllCollections();
         IEnumerable<CharacterModel> GetAllCharacters();
+        IEnumerable<AdvertModel> GetAllAdverts();
+        IEnumerable<Comment_AdvertModel> GetAllCommentAdverts();
+        IEnumerable<Featured_AdvertModel> GetAllFeaturedAdverts();
+        IEnumerable<Featured_BookModel> GetAllFeaturedBooks();
+        IEnumerable<Like_AdvertModel> GetAllLikeAdverts();
+        IEnumerable<LocalityModel> GetAllLocalities();
+        IEnumerable<MessageModel> GetAllMessages();
+
 
         AuthorModel GetAuthor(int authorId);
         void CreateAuthor(AuthorModel at);
@@ -90,6 +98,40 @@ namespace BLL.Interfaces
         void UpdateCharacter(CharacterModel ch);
         void DeleteCharacter(int id);
 
+        AdvertModel GetAdvert(int advertId);
+        void CreateAdvert(AdvertModel a);
+        void UpdateAdvert(AdvertModel a, int advertId);
+        void DeleteAdvert(int id);
+
+        Comment_AdvertModel GetCommentAdvert(int comment_advertId);
+        void CreateCommentAdvert(Comment_AdvertModel ca);
+        void UpdateCommentAdvert(Comment_AdvertModel ca, int comment_advertId);
+        void DeleteCommentAdvert(int id);
+
+        Featured_AdvertModel GetFeaturedAdvert(int featured_advertId);
+        void CreateFeaturedAdvert(Featured_AdvertModel fa);
+        void UpdateFeaturedAdvert(Featured_AdvertModel fa, int featured_advertId);
+        void DeleteFeaturedAdvert(int id);
+
+        Featured_BookModel GetFeaturedBook(int featured_bookId);
+        void CreateFeaturedBook(Featured_BookModel fb);
+        void UpdateFeaturedBook(Featured_BookModel fb, int featured_bookId);
+        void DeleteFeaturedBook(int id);
+
+        Like_AdvertModel GetLikeAdvert(int like_advertId);
+        void CreateLikeAdvert(Like_AdvertModel la);
+        void UpdateLikeAdvert(Like_AdvertModel la, int like_advertId);
+        void DeleteLikeAdvert(int id);
+
+        LocalityModel GetLocality(int localityId);
+        void CreateLocality(LocalityModel l);
+        void UpdateLocality(LocalityModel l, int localityId);
+        void DeleteLocality(int id);
+
+        MessageModel GetMessage(int messageId);
+        void CreateMessage(MessageModel m);
+        void UpdateMessage(MessageModel m, int messageId);
+        void DeleteMessage(int id);
 
         bool Save();
     }

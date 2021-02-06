@@ -117,7 +117,9 @@ namespace BLL.Data
                 Reviews = b.Review,
                 Genres_Books = b.Genre_Books,
                 Book_Collections = b.Book_Collections,
-                Book_Characters = b.Book_Characters
+                Book_Characters = b.Book_Characters,
+                Adverts = b.Adverts,
+                Featured_Books = b.Featured_Books
 
             });
             Save();
@@ -142,6 +144,8 @@ namespace BLL.Data
             bk.Genres_Books = b.Genre_Books;
             bk.Book_Collections = b.Book_Collections;
             bk.Book_Characters = b.Book_Characters;
+            bk.Adverts = b.Adverts;
+            bk.Featured_Books = b.Featured_Books;
             Save();
         }
 
@@ -766,6 +770,360 @@ namespace BLL.Data
         }
         #endregion
 
+        #region Advert
+        public IEnumerable<AdvertModel> GetAllAdverts()
+        {
+            return db.Adverts.GetAll().Select(i => new AdvertModel(i)).ToList();
+        }
+
+        public AdvertModel GetAdvert(int Id)
+        {
+            return new AdvertModel(db.Adverts.GetItem(Id));
+        }
+
+        public void CreateAdvert(AdvertModel a)
+        {
+            db.Adverts.Create(new Advert()
+            {
+                Content = a.Content,
+                LocalityId = a.LocalityId,
+                Locality = a.Locality,
+                ExchangeCompleted = a.ExchangeCompleted,
+                SaleCompleted = a.SaleCompleted,
+                Finish = a.Finish,
+                Date_of_Create =a.Date_of_Create,
+                Number_of_views = a.Number_of_views,
+                Delivery = a.Delivery,
+                Pickup = a.Pickup,
+                Message = a.Message,
+                Comment_Advert = a.Comment_Advert,
+                Featured_Adverts = a.Featured_Adverts,
+                Like_Adverts = a.Like_Adverts,
+                Book = a.Book,
+                BookId = a.BookId,
+                User = a.User,
+                UserId = a.UserId
+
+            });
+            Save();
+        }
+
+        public void UpdateAdvert(AdvertModel a, int advertId)
+        {
+            Advert ad = db.Adverts.GetItem(a.AdvertID);
+            ad.Content = a.Content;
+            ad.LocalityId = a.LocalityId;
+            ad.Locality = a.Locality;
+            ad.ExchangeCompleted = a.ExchangeCompleted;
+            ad.SaleCompleted = a.SaleCompleted;
+            ad.Finish = a.Finish;
+            ad.Date_of_Create = a.Date_of_Create;
+            ad.Number_of_views = a.Number_of_views;
+            ad.Delivery = a.Delivery;
+            ad.Pickup = a.Pickup;
+            ad.Message = a.Message;
+            ad.Comment_Advert = a.Comment_Advert;
+            ad.Featured_Adverts = a.Featured_Adverts;
+            ad.Like_Adverts = a.Like_Adverts;
+            ad.User = a.User;
+            ad.UserId = a.UserId;
+            ad.Book = a.Book;
+            ad.BookId = ad.BookId;
+            Save();
+        }
+
+        public void DeleteAdvert(int id)
+        {
+            Advert a = db.Adverts.GetItem(id);
+            if (a != null)
+            {
+                db.Adverts.Delete(a.AdvertID);
+                Save();
+            }
+        }
+        #endregion
+
+        #region CommentAdvert
+        public IEnumerable<Comment_AdvertModel> GetAllCommentAdverts()
+        {
+            return db.Comment_Adverts.GetAll().Select(i => new Comment_AdvertModel(i)).ToList();
+        }
+
+        public Comment_AdvertModel GetCommentAdvert(int Id)
+        {
+            return new Comment_AdvertModel(db.Comment_Adverts.GetItem(Id));
+        }
+
+        public void CreateCommentAdvert(Comment_AdvertModel ca)
+        {
+            db.Comment_Adverts.Create(new Comment_Advert()
+            {
+                Content = ca.Content,
+                Date_of_AddComment = ca.Date_of_AddComment,
+                User = ca.User,
+                UserId = ca.UserId,
+                AdvertId = ca.AdvertId,
+                Advert = ca.Advert
+            }); 
+            Save();
+        }
+
+        public void UpdateCommentAdvert(Comment_AdvertModel c, int comment_advertId)
+        {
+            Comment_Advert ca = db.Comment_Adverts.GetItem(c.Comment_AdvertId);
+            ca.Content = c.Content;
+            ca.Date_of_AddComment = c.Date_of_AddComment;
+            ca.User = c.User;
+            ca.UserId = c.UserId;
+            ca.Advert = c.Advert;
+            ca.AdvertId = c.AdvertId;
+            Save();
+        }
+
+        public void DeleteCommentAdvert(int id)
+        {
+            Comment_Advert c = db.Comment_Adverts.GetItem(id);
+            if (c != null)
+            {
+                db.Comment_Adverts.Delete(c.Comment_AdvertId);
+                Save();
+            }
+        }
+        #endregion
+
+        #region FeaturedAdvert
+        public IEnumerable<Featured_AdvertModel> GetAllFeaturedAdverts()
+        {
+            return db.Featured_Adverts.GetAll().Select(i => new Featured_AdvertModel(i)).ToList();
+        }
+
+        public Featured_AdvertModel GetFeaturedAdvert(int Id)
+        {
+            return new Featured_AdvertModel(db.Featured_Adverts.GetItem(Id));
+        }
+
+        public void CreateFeaturedAdvert(Featured_AdvertModel fa)
+        {
+            db.Featured_Adverts.Create(new Featured_Advert()
+            {
+                UserId = fa.UserId,
+                User = fa.User,
+                AdvertId = fa.AdvertId,
+                Advert = fa.Advert
+            });
+            Save();
+        }
+
+        public void UpdateFeaturedAdvert(Featured_AdvertModel f, int featured_advertId)
+        {
+            Featured_Advert fa = db.Featured_Adverts.GetItem(f.Featured_AdvertId);
+            
+            fa.User = f.User;
+            fa.UserId = f.UserId;
+            fa.Advert = f.Advert;
+            fa.AdvertId = f.AdvertId;
+            Save();
+        }
+
+        public void DeleteFeaturedAdvert(int id)
+        {
+            Featured_Advert f = db.Featured_Adverts.GetItem(id);
+            if (f != null)
+            {
+                db.Featured_Adverts.Delete(f.Featured_AdvertId);
+                Save();
+            }
+        }
+        #endregion
+
+        #region FeaturedBook
+        public IEnumerable<Featured_BookModel> GetAllFeaturedBooks()
+        {
+            return db.Featured_Books.GetAll().Select(i => new Featured_BookModel(i)).ToList();
+        }
+
+        public Featured_BookModel GetFeaturedBook(int Id)
+        {
+            return new Featured_BookModel(db.Featured_Books.GetItem(Id));
+        }
+
+        public void CreateFeaturedBook(Featured_BookModel b)
+        {
+            db.Featured_Books.Create(new Featured_Book()
+            {
+                UserId = b.UserId,
+                User = b.User,
+                BookId = b.BookId,
+                Book = b.Book
+            });
+            Save();
+        }
+
+        public void UpdateFeaturedBook(Featured_BookModel b, int featured_booktId)
+        {
+            Featured_Book bk = db.Featured_Books.GetItem(b.Featured_BookId);
+
+            bk.User = b.User;
+            bk.UserId = b.UserId;
+            bk.Book = b.Book;
+            bk.BookId = b.BookId;
+            Save();
+        }
+
+        public void DeleteFeaturedBook(int id)
+        {
+            Featured_Book b = db.Featured_Books.GetItem(id);
+            if (b != null)
+            {
+                db.Featured_Books.Delete(b.Featured_BookId);
+                Save();
+            }
+        }
+        #endregion
+
+        #region LikeAdvert
+        public IEnumerable<Like_AdvertModel> GetAllLikeAdverts()
+        {
+            return db.Like_Adverts.GetAll().Select(i => new Like_AdvertModel(i)).ToList();
+        }
+
+        public Like_AdvertModel GetLikeAdvert(int Id)
+        {
+            return new Like_AdvertModel(db.Like_Adverts.GetItem(Id));
+        }
+
+        public void CreateLikeAdvert(Like_AdvertModel fa)
+        {
+            db.Like_Adverts.Create(new Like_Advert()
+            {
+                UserId = fa.UserId,
+                User = fa.User,
+                AdvertId = fa.AdvertId,
+                Advert = fa.Advert
+            });
+            Save();
+        }
+
+        public void UpdateLikeAdvert(Like_AdvertModel l, int like_advertId)
+        {
+            Like_Advert lk = db.Like_Adverts.GetItem(l.Like_AdvertId);
+
+            lk.User = l.User;
+            lk.UserId = l.UserId;
+            lk.Advert = l.Advert;
+            lk.AdvertId = l.AdvertId;
+            Save();
+        }
+
+        public void DeleteLikeAdvert(int id)
+        {
+            Like_Advert f = db.Like_Adverts.GetItem(id);
+            if (f != null)
+            {
+                db.Like_Adverts.Delete(f.Like_AdvertId);
+                Save();
+            }
+        }
+        #endregion
+
+        #region Locality
+        public IEnumerable<LocalityModel> GetAllLocalities()
+        {
+            return db.Localities.GetAll().Select(i => new LocalityModel(i)).ToList();
+        }
+
+        public LocalityModel GetLocality(int Id)
+        {
+            return new LocalityModel(db.Localities.GetItem(Id));
+        }
+
+        public void CreateLocality(LocalityModel l)
+        {
+            db.Localities.Create(new Locality()
+            {
+                Type = l.Type,
+                Name = l.Name,
+                Timezone = l.Timezone,
+                Adverts = l.Adverts
+        });
+            Save();
+        }
+
+        public void UpdateLocality(LocalityModel l, int localityId)
+        {
+            Locality lk = db.Localities.GetItem(l.LocalityId);
+
+            lk.Type = l.Type;
+            lk.Name = l.Name;
+            lk.Timezone = l.Timezone;
+            lk.Adverts = l.Adverts;
+            Save();
+        }
+
+        public void DeleteLocality(int id)
+        {
+            Locality l = db.Localities.GetItem(id);
+            if (l != null)
+            {
+                db.Localities.Delete(l.LocalityId);
+                Save();
+            }
+        }
+        #endregion
+
+        #region Message
+        public IEnumerable<MessageModel> GetAllMessages()
+        {
+            return db.Messages.GetAll().Select(i => new MessageModel(i)).ToList();
+        }
+
+        public MessageModel GetMessage(int Id)
+        {
+            return new MessageModel(db.Messages.GetItem(Id));
+        }
+
+        public void CreateMessage(MessageModel m)
+        {
+            db.Messages.Create(new Message()
+            {
+                Content = m.Content,
+                Sender_Id = m.Sender_Id,
+                Recipient_Id = m.Recipient_Id,
+                Readed = m.Readed,
+                Create_Message = m.Create_Message,
+                User = m.User,
+                Advert = m.Advert,
+                AdvertId = m.AdvertId
+        });
+            Save();
+        }
+
+        public void UpdateMessage(MessageModel m, int messageId)
+        {
+            Message mg = db.Messages.GetItem(m.MessageId);
+
+            mg.Content = m.Content;
+            mg.Sender_Id = m.Sender_Id;
+            mg.Recipient_Id = m.Recipient_Id;
+            mg.Readed = m.Readed;
+            mg.Create_Message = m.Create_Message;
+            mg.User = m.User;
+            mg.Advert = m.Advert;
+            mg.AdvertId = m.AdvertId;
+            Save();
+        }
+
+        public void DeleteMessage(int id)
+        {
+            Message m = db.Messages.GetItem(id);
+            if (m != null)
+            {
+                db.Messages.Delete(m.MessageId);
+                Save();
+            }
+        }
+
+        #endregion
         public bool Save()
         {
             if (db.Save() > 0) return true;

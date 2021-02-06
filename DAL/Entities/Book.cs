@@ -50,6 +50,7 @@ namespace DAL.Entities
         public virtual ICollection<Book_Character> Book_Characters { get; set; }
         public virtual ICollection<Author_Book> Authors { get; set; }
         public virtual ICollection<Advert> Adverts { get; set; }
+        public virtual ICollection<Featured_Book> Featured_Books { get; set; } // Избранные книги
 
 
     }
