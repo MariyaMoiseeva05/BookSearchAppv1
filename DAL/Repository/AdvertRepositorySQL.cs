@@ -35,7 +35,6 @@ namespace DAL.Repository
         {
             return db.Adverts
                 .Include(m => m.Message)
-                .Include(c => c.Comment_Advert)
                 .First(b => b.AdvertID == (string)id);
 
         }
@@ -44,7 +43,6 @@ namespace DAL.Repository
         {
             return db.Adverts
                 .Include(m => m.Message)
-                .Include(c => c.Comment_Advert)
                 .ToList();
         }
 
@@ -61,7 +59,6 @@ namespace DAL.Repository
             advert.Delivery = Advert.Delivery;
             advert.Pickup = Advert.Pickup;
             advert.Message = Advert.Message;
-            advert.Comment_Advert = Advert.Comment_Advert;
             advert.Featured_Adverts = Advert.Featured_Adverts;
             advert.Like_Adverts = Advert.Like_Adverts;
             advert.BookId = Advert.BookId;

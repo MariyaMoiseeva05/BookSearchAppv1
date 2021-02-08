@@ -20,12 +20,13 @@ namespace DAL.Interfaces
         IRepository<Collection> Collections { get; }
         IRepository<Character> Characters { get; }
         IRepository<Advert> Adverts { get; }
-        IRepository<Comment_Advert> Comment_Adverts { get; }
         IRepository<Featured_Advert> Featured_Adverts { get; }
         IRepository<Like_Advert> Like_Adverts { get; }
         IRepository<Locality> Localities { get; }
         IRepository<Message> Messages { get; }
         IRepository<Featured_Book> Featured_Books { get; }
+        IRepository<Comment_Review> Comment_Reviews { get; }
+        IRepository<Comment_News> Comment_News { get; }
         int Save();
     }
 }

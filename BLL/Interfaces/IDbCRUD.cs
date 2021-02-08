@@ -19,12 +19,13 @@ namespace BLL.Interfaces
         IEnumerable<CollectionModel> GetAllCollections();
         IEnumerable<CharacterModel> GetAllCharacters();
         IEnumerable<AdvertModel> GetAllAdverts();
-        IEnumerable<Comment_AdvertModel> GetAllCommentAdverts();
         IEnumerable<Featured_AdvertModel> GetAllFeaturedAdverts();
         IEnumerable<Featured_BookModel> GetAllFeaturedBooks();
         IEnumerable<Like_AdvertModel> GetAllLikeAdverts();
         IEnumerable<LocalityModel> GetAllLocalities();
         IEnumerable<MessageModel> GetAllMessages();
+        IEnumerable<Comment_ReviewModel> GetAllComment_Review();
+        IEnumerable<Comment_NewsModel> GetAllComment_News();
 
 
         AuthorModel GetAuthor(int authorId);
@@ -103,11 +104,6 @@ namespace BLL.Interfaces
         void UpdateAdvert(AdvertModel a, int advertId);
         void DeleteAdvert(int id);
 
-        Comment_AdvertModel GetCommentAdvert(int comment_advertId);
-        void CreateCommentAdvert(Comment_AdvertModel ca);
-        void UpdateCommentAdvert(Comment_AdvertModel ca, int comment_advertId);
-        void DeleteCommentAdvert(int id);
-
         Featured_AdvertModel GetFeaturedAdvert(int featured_advertId);
         void CreateFeaturedAdvert(Featured_AdvertModel fa);
         void UpdateFeaturedAdvert(Featured_AdvertModel fa, int featured_advertId);
@@ -132,6 +128,16 @@ namespace BLL.Interfaces
         void CreateMessage(MessageModel m);
         void UpdateMessage(MessageModel m, int messageId);
         void DeleteMessage(int id);
+
+        Comment_ReviewModel GetComment_Review(int comment_reviewId);
+        void CreateComment_Review(Comment_ReviewModel cr);
+        void UpdateComment_Review(Comment_ReviewModel cr, int comment_reviewId);
+        void DeleteComment_Review(int id);
+
+        Comment_NewsModel GetComment_News(int comment_newsId);
+        void CreateComment_News(Comment_NewsModel cn);
+        void UpdateComment_News(Comment_NewsModel cn, int comment_newsId);
+        void DeleteComment_News(int id);
 
         bool Save();
     }

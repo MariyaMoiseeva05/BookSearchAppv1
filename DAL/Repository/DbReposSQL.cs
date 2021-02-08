@@ -24,10 +24,11 @@ namespace DAL.Repository
         private MessageRepositorySQL messageRepository;
         private AdvertRepositorySQL advertRepository;
         private LocalityRepositorySQL localityRepository;
-        private Comment_AdvertRepositorySQL comment_advertRepository;
         private Featured_AdvertRepositorySQL featured_advertRepository;
         private Featured_BooksRepositorySQL featured_booksRepository;
         private Like_AdvertRepositorySQL like_advertRepository;
+        private Comment_ReviewRepositorySQL comment_reviewRepository;
+        private Comment_NewsRepositorySQL comment_newsRepository;
 
         public DbReposSQL(DbContextOptions<BookSearchContext> options)
         {
@@ -40,7 +41,7 @@ namespace DAL.Repository
             {
                 if (bookRepository == null)
                     bookRepository = new BookRepositorySQL(db);
-                return (IRepository<Book>)bookRepository;
+                return bookRepository;
             }
         }
 
@@ -50,7 +51,7 @@ namespace DAL.Repository
             {
                 if (authorRepository == null)
                     authorRepository = new AuthorRepositorySQL(db);
-                return (IRepository<Author>)authorRepository;
+                return authorRepository;
             }
         }
 
@@ -60,7 +61,7 @@ namespace DAL.Repository
             {
                 if (commentRepository == null)
                     commentRepository = new CommentRepositorySQL(db);
-                return (IRepository<Comment>)commentRepository;
+                return commentRepository;
             }
         }
 
@@ -70,7 +71,7 @@ namespace DAL.Repository
             {
                 if (genreRepository == null)
                     genreRepository = new GenreRepositorySQL(db);
-                return (IRepository<Genre>)genreRepository;
+                return genreRepository;
             }
         }
 
@@ -80,7 +81,7 @@ namespace DAL.Repository
             {
                 if (interesting_factRepository == null)
                     interesting_factRepository = new Interesting_factRepositorySQL(db);
-                return (IRepository<Interesting_fact>)interesting_factRepository;
+                return interesting_factRepository;
             }
         }
 
@@ -90,7 +91,7 @@ namespace DAL.Repository
             {
                 if (newsRepository == null)
                     newsRepository = new NewsRepositorySQL(db);
-                return (IRepository<News>)newsRepository;
+                return newsRepository;
             }
         }
 
@@ -100,7 +101,7 @@ namespace DAL.Repository
             {
                 if (tagRepository == null)
                     tagRepository = new TagRepositorySQL(db);
-                return (IRepository<Tag>)tagRepository;
+                return tagRepository;
             }
         }
 
@@ -110,7 +111,7 @@ namespace DAL.Repository
             {
                 if (quoteRepository == null)
                     quoteRepository = new QuoteRepositorySQL(db);
-                return (IRepository<Quote>)quoteRepository;
+                return quoteRepository;
             }
         }
 
@@ -120,7 +121,7 @@ namespace DAL.Repository
             {
                 if (reviewRepository == null)
                     reviewRepository = new ReviewRepositorySQL(db);
-                return (IRepository<Review>)reviewRepository;
+                return reviewRepository;
             }
         }
         public IRepository<Think> Thinks
@@ -129,7 +130,7 @@ namespace DAL.Repository
             {
                 if (thinkRepository == null)
                     thinkRepository = new ThinkRepositorySQL(db);
-                return (IRepository<Think>)thinkRepository;
+                return thinkRepository;
             }
         }
 
@@ -139,7 +140,7 @@ namespace DAL.Repository
             {
                 if (type_of_literatureRepository == null)
                     type_of_literatureRepository = new Type_of_literatureRepositorySQL(db);
-                return (IRepository<Type_of_literature>)type_of_literatureRepository;
+                return type_of_literatureRepository;
             }
         }
 
@@ -182,15 +183,7 @@ namespace DAL.Repository
             }
         }
 
-        public IRepository<Comment_Advert> Comment_Adverts
-        {
-            get
-            {
-                if (comment_advertRepository == null)
-                    comment_advertRepository = new Comment_AdvertRepositorySQL(db);
-                return comment_advertRepository;
-            }
-        }
+      
 
         public IRepository<Like_Advert> Like_Adverts
         {
@@ -242,9 +235,25 @@ namespace DAL.Repository
             }
         }
 
+        public IRepository<Comment_Review> Comment_Reviews
+        {
+            get
+            {
+                if (comment_reviewRepository == null)
+                    comment_reviewRepository = new Comment_ReviewRepositorySQL(db);
+                return comment_reviewRepository;
+            }
+        }
 
-
-
+        public IRepository<Comment_News> Comment_News
+        {
+            get
+            {
+                if (comment_newsRepository == null)
+                    comment_newsRepository = new Comment_NewsRepositorySQL(db);
+                return comment_newsRepository;
+            }
+        }
 
         public int Save()
         {

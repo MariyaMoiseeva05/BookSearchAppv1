@@ -177,12 +177,9 @@ namespace BLL.Data
             {
                 UserId = c.UserId,
                 Content = c.Content,
-                Title = c.Title,
                 Date_of_creation = c.Date_of_creation,
                 BookID = c.BookID,
                 Book = c.Book,
-                Review = c.Review,
-                News = c.News,
                 Rating = c.Rating,
                 User = c.User
             });
@@ -195,12 +192,9 @@ namespace BLL.Data
             cm.UserId = c.UserId;
             cm.BookID = c.BookID;
             cm.Content = c.Content;
-            cm.Title = c.Title;
             cm.Date_of_creation = c.Date_of_creation;
             cm.Book = c.Book;
             cm.Rating = c.Rating;
-            cm.News = c.News;
-            cm.Review = c.Review;
             cm.User = c.User;
             Save();
         }
@@ -796,7 +790,6 @@ namespace BLL.Data
                 Delivery = a.Delivery,
                 Pickup = a.Pickup,
                 Message = a.Message,
-                Comment_Advert = a.Comment_Advert,
                 Featured_Adverts = a.Featured_Adverts,
                 Like_Adverts = a.Like_Adverts,
                 Book = a.Book,
@@ -822,7 +815,6 @@ namespace BLL.Data
             ad.Delivery = a.Delivery;
             ad.Pickup = a.Pickup;
             ad.Message = a.Message;
-            ad.Comment_Advert = a.Comment_Advert;
             ad.Featured_Adverts = a.Featured_Adverts;
             ad.Like_Adverts = a.Like_Adverts;
             ad.User = a.User;
@@ -843,53 +835,6 @@ namespace BLL.Data
         }
         #endregion
 
-        #region CommentAdvert
-        public IEnumerable<Comment_AdvertModel> GetAllCommentAdverts()
-        {
-            return db.Comment_Adverts.GetAll().Select(i => new Comment_AdvertModel(i)).ToList();
-        }
-
-        public Comment_AdvertModel GetCommentAdvert(int Id)
-        {
-            return new Comment_AdvertModel(db.Comment_Adverts.GetItem(Id));
-        }
-
-        public void CreateCommentAdvert(Comment_AdvertModel ca)
-        {
-            db.Comment_Adverts.Create(new Comment_Advert()
-            {
-                Content = ca.Content,
-                Date_of_AddComment = ca.Date_of_AddComment,
-                User = ca.User,
-                UserId = ca.UserId,
-                AdvertId = ca.AdvertId,
-                Advert = ca.Advert
-            }); 
-            Save();
-        }
-
-        public void UpdateCommentAdvert(Comment_AdvertModel c, int comment_advertId)
-        {
-            Comment_Advert ca = db.Comment_Adverts.GetItem(c.Comment_AdvertId);
-            ca.Content = c.Content;
-            ca.Date_of_AddComment = c.Date_of_AddComment;
-            ca.User = c.User;
-            ca.UserId = c.UserId;
-            ca.Advert = c.Advert;
-            ca.AdvertId = c.AdvertId;
-            Save();
-        }
-
-        public void DeleteCommentAdvert(int id)
-        {
-            Comment_Advert c = db.Comment_Adverts.GetItem(id);
-            if (c != null)
-            {
-                db.Comment_Adverts.Delete(c.Comment_AdvertId);
-                Save();
-            }
-        }
-        #endregion
 
         #region FeaturedAdvert
         public IEnumerable<Featured_AdvertModel> GetAllFeaturedAdverts()
@@ -1123,6 +1068,106 @@ namespace BLL.Data
             }
         }
 
+        #endregion
+
+        #region CommentReview
+        public IEnumerable<Comment_ReviewModel> GetAllComment_Review()
+        {
+            return db.Comment_Reviews.GetAll().Select(i => new Comment_ReviewModel(i)).ToList();
+        }
+
+        public Comment_ReviewModel GetComment_Review(int Id)
+        {
+            return new Comment_ReviewModel(db.Comment_Reviews.GetItem(Id));
+        }
+
+        public void CreateComment_Review(Comment_ReviewModel cr)
+        {
+            db.Comment_Reviews.Create(new Comment_Review()
+            {
+                Comment_ReviewId = cr.Comment_ReviewId,
+                User = cr.User,
+                UserId = cr.UserId,
+                Review = cr.Review,
+                ReviewId = cr.ReviewId,
+                Content = cr.Content,
+                Date_of_creation = cr.Date_of_creation
+        });
+            Save();
+        }
+
+        public void UpdateComment_Review(Comment_ReviewModel cr, int comment_reviewId)
+        {
+            Comment_Review crv = db.Comment_Reviews.GetItem(cr.Comment_ReviewId);
+            crv.Comment_ReviewId = cr.Comment_ReviewId;
+            crv.User = cr.User;
+            crv.UserId = cr.UserId;
+            crv.Review = cr.Review;
+            crv.ReviewId = cr.ReviewId;
+            crv.Content = cr.Content;
+            crv.Date_of_creation = cr.Date_of_creation;
+            Save();
+        }
+
+        public void DeleteComment_Review(int id)
+        {
+            Comment_Review cr = db.Comment_Reviews.GetItem(id);
+            if (cr != null)
+            {
+                db.Comment_Reviews.Delete(cr.Comment_ReviewId);
+                Save();
+            }
+        }
+        #endregion
+
+        #region CommentNews
+        public IEnumerable<Comment_NewsModel> GetAllComment_News()
+        {
+            return db.Comment_News.GetAll().Select(i => new Comment_NewsModel(i)).ToList();
+        }
+
+        public Comment_NewsModel GetComment_News(int Id)
+        {
+            return new Comment_NewsModel(db.Comment_News.GetItem(Id));
+        }
+
+        public void CreateComment_News(Comment_NewsModel cn)
+        {
+            db.Comment_News.Create(new Comment_News()
+            {
+                Comment_NewsId = cn.Comment_NewsId,
+                User = cn.User,
+                UserId = cn.UserId,
+                News = cn.News,
+                NewsId = cn.NewsId,
+                Content = cn.Content,
+                Date_of_creation = cn.Date_of_creation
+        });
+            Save();
+        }
+
+        public void UpdateComment_News(Comment_NewsModel cn, int comment_newsId)
+        {
+            Comment_News cns = db.Comment_News.GetItem(cn.Comment_NewsId);
+            cns.Comment_NewsId = cn.Comment_NewsId;
+            cns.User = cn.User;
+            cns.UserId = cn.UserId;
+            cns.News = cn.News;
+            cns.NewsId = cn.NewsId;
+            cns.Content = cn.Content;
+            cns.Date_of_creation = cn.Date_of_creation;
+            Save();
+        }
+
+        public void DeleteComment_News(int id)
+        {
+            Comment_News cn = db.Comment_News.GetItem(id);
+            if (cn != null)
+            {
+                db.Comment_News.Delete(cn.Comment_NewsId);
+                Save();
+            }
+        }
         #endregion
         public bool Save()
         {

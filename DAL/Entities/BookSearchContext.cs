@@ -14,6 +14,8 @@ namespace DAL.Entities
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Author> Authors { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Comment_Review> Comments_Review { get; set; }
+        public virtual DbSet<Comment_News> Comments_News { get; set; }
         public virtual DbSet<Think> Thinks { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
@@ -31,7 +33,6 @@ namespace DAL.Entities
         public virtual DbSet<Book_Collection> Book_Collections { get; set; }
         public virtual DbSet<Author_Book> Author_Books { get; set; }
         public virtual DbSet<Advert> Adverts { get; set; }
-        public virtual DbSet<Comment_Advert> Comment_Adverts { get; set; }
         public virtual DbSet<Featured_Advert> Featured_Adverts { get; set; }
         public virtual DbSet<Like_Advert> Like_Adverts { get; set; }
         public virtual DbSet<Locality> Localities { get; set; }
@@ -53,6 +54,20 @@ namespace DAL.Entities
                 entity.HasOne(b => b.Book)
                     .WithMany(p => p.Comments)
                     .HasForeignKey(b => b.BookID);
+            });
+
+            modelBuilder.Entity<Comment_Review>(entity =>
+            {
+                entity.HasOne(b => b.Review)
+                    .WithMany(p => p.Comments)
+                    .HasForeignKey(b => b.Comment_ReviewId);
+            });
+
+            modelBuilder.Entity<Comment_News>(entity =>
+            {
+                entity.HasOne(b => b.News)
+                    .WithMany(p => p.Comments)
+                    .HasForeignKey(b => b.Comment_NewsId);
             });
 
             modelBuilder.Entity<Review>(entity =>
@@ -130,6 +145,20 @@ namespace DAL.Entities
                     .HasForeignKey(b => b.UserId);
             });
 
+            modelBuilder.Entity<Comment_Review>(entity =>
+            {
+                entity.HasOne(b => b.User)
+                    .WithMany(p => p.Comment_Review)
+                    .HasForeignKey(b => b.UserId);
+            });
+
+            modelBuilder.Entity<Comment_News>(entity =>
+            {
+                entity.HasOne(b => b.User)
+                    .WithMany(p => p.Comment_News)
+                    .HasForeignKey(b => b.UserId);
+            });
+
             modelBuilder.Entity<Review>(entity =>
             {
                 entity.HasOne(b => b.User)
@@ -198,20 +227,6 @@ namespace DAL.Entities
                     .HasForeignKey(b => b.AdvertId);
             });
 
-
-            modelBuilder.Entity<Comment_Advert>(entity =>
-            {
-                entity.HasOne(b => b.Advert)
-                    .WithMany(p => p.Comment_Advert)
-                    .HasForeignKey(b => b.AdvertId);
-            });
-
-            modelBuilder.Entity<Comment_Advert>(entity =>
-            {
-                entity.HasOne(b => b.User)
-                    .WithMany(p => p.Comment_Advert)
-                    .HasForeignKey(b => b.UserId);
-            });
 
             modelBuilder.Entity<Featured_Advert>()
            .HasKey(t => new { t.AdvertId, t.UserId });

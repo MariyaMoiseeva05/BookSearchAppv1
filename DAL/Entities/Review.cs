@@ -28,7 +28,7 @@ namespace DAL.Entities
         public string UserID { get; set; }
         public virtual Book Book { get; set; } // навигационное свойство
         public virtual User User { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
+        public virtual ICollection<Comment_Review> Comments { get; set; } = new HashSet<Comment_Review>();
 
     }
 }

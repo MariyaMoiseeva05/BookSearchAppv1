@@ -10,7 +10,6 @@ namespace DAL.Entities
         public Advert()
         {
             Message = new HashSet<Message>();
-            Comment_Advert = new HashSet<Comment_Advert>();
         }
         [Key]
         public string AdvertID { get; set; }
@@ -29,7 +28,6 @@ namespace DAL.Entities
         public bool Delivery { get; set; } // Флаг доставки
         public bool Pickup { get; set; } // Флаг самовывоза
         public virtual ICollection<Message> Message { get; set; } // Сообщения
-        public virtual ICollection<Comment_Advert> Comment_Advert { get; set; } // Комментарии
         public virtual ICollection<Featured_Advert> Featured_Adverts { get; set; } // Избранные объявления
         public virtual ICollection<Like_Advert> Like_Adverts { get; set; } // Избранные объявления
 

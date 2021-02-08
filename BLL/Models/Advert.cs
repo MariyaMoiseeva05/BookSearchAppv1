@@ -19,7 +19,6 @@ namespace BLL.Models
         public bool Delivery { get; set; }
         public bool Pickup { get; set; }
         public virtual ICollection<Message> Message { get; set; } 
-        public virtual ICollection<Comment_Advert> Comment_Advert { get; set; }
         public virtual ICollection<Featured_Advert> Featured_Adverts { get; set; }
         public virtual ICollection<Like_Advert> Like_Adverts { get; set; }
 
@@ -46,7 +45,6 @@ namespace BLL.Models
             Delivery = a.Delivery;
             Pickup = a.Pickup;
             Message = a.Message;
-            Comment_Advert = a.Comment_Advert;
             Featured_Adverts = a.Featured_Adverts;
             Like_Adverts = a.Like_Adverts;
 

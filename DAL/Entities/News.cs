@@ -33,7 +33,7 @@ namespace DAL.Entities
         [Display(Name = "ИСточник")]
         public string Source { get; set; } // Источник новости, где она появилась
         public virtual ICollection<News_Tags> Tags { get; set; } = new HashSet<News_Tags>();
-        public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
+        public virtual ICollection<Comment_News> Comments { get; set; } = new HashSet<Comment_News>();
 
     }
 }

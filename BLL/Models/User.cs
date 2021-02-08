@@ -21,6 +21,8 @@ namespace BLL.Models
         public string ImageLink { get; set; }
         public string ImagePath { get; set; }
         public virtual ICollection<Comment> Comment { get; set; }  // Отзывы
+        public virtual ICollection<Comment_Review> Comment_Review { get; set; }  // Комментарии к рецензиям
+        public virtual ICollection<Comment_News> Comment_News { get; set; }  // Комментарии к новостям
         public virtual ICollection<Think> Think { get; set; }  // Мысли
         public virtual ICollection<Quote> Quote { get; set; }  // Цитаты
         public virtual ICollection<Review> Review { get; set; } // Рецензии
@@ -45,6 +47,8 @@ namespace BLL.Models
             Think = u.Think;
             Review = u.Review;
             Quote = u.Quote;
+            Comment_News = u.Comment_News;
+            Comment_Review = u.Comment_Review;
 
         }
 

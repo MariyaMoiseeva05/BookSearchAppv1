@@ -4,14 +4,16 @@ using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(BookSearchContext))]
-    partial class BookSearchContextModelSnapshot : ModelSnapshot
+    [Migration("20210208133841_removeCommentAdvert")]
+    partial class removeCommentAdvert
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -293,8 +295,17 @@ namespace DAL.Migrations
                     b.Property<DateTime>("Date_of_creation")
                         .HasColumnType("datetime2");
 
+                    b.Property<int?>("NewsId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Rating")
                         .HasColumnType("int");
+
+                    b.Property<int?>("ReviewRewiewId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
@@ -304,59 +315,13 @@ namespace DAL.Migrations
 
                     b.HasIndex("BookID");
 
+                    b.HasIndex("NewsId");
+
+                    b.HasIndex("ReviewRewiewId");
+
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("DAL.Entities.Comment_News", b =>
-                {
-                    b.Property<int>("Comment_NewsId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Date_of_creation")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("NewsId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Comment_NewsId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Comments_News");
-                });
-
-            modelBuilder.Entity("DAL.Entities.Comment_Review", b =>
-                {
-                    b.Property<int>("Comment_ReviewId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Date_of_creation")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ReviewId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Comment_ReviewId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Comments_Review");
                 });
 
             modelBuilder.Entity("DAL.Entities.Featured_Advert", b =>
@@ -1025,38 +990,16 @@ namespace DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("DAL.Entities.User", "User")
-                        .WithMany("Comment")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DAL.Entities.Comment_News", b =>
-                {
                     b.HasOne("DAL.Entities.News", "News")
                         .WithMany("Comments")
-                        .HasForeignKey("Comment_NewsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("NewsId");
 
-                    b.HasOne("DAL.Entities.User", "User")
-                        .WithMany("Comment_News")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("DAL.Entities.Comment_Review", b =>
-                {
                     b.HasOne("DAL.Entities.Review", "Review")
                         .WithMany("Comments")
-                        .HasForeignKey("Comment_ReviewId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ReviewRewiewId");
 
                     b.HasOne("DAL.Entities.User", "User")
-                        .WithMany("Comment_Review")
+                        .WithMany("Comment")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

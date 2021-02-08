@@ -13,7 +13,7 @@ namespace BLL.Models
         public int Rating { get; set; }
         public string UserID { get; set; }
         public virtual Book Book { get; set; }
-        public virtual ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
+        public virtual ICollection<Comment_Review> Comments { get; set; } = new HashSet<Comment_Review>();
 
         public virtual User User { get; set; }
         public ReviewModel() { }
