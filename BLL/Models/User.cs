@@ -20,7 +20,6 @@ namespace BLL.Models
         public string About_me { get; set; }
         public string ImageLink { get; set; }
         public string ImagePath { get; set; }
-        public virtual ICollection<Comment> Comment { get; set; }  // Отзывы
         public virtual ICollection<Comment_Review> Comment_Review { get; set; }  // Комментарии к рецензиям
         public virtual ICollection<Comment_News> Comment_News { get; set; }  // Комментарии к новостям
         public virtual ICollection<Think> Think { get; set; }  // Мысли
@@ -43,7 +42,6 @@ namespace BLL.Models
             About_me = u.About_me;
             ImageLink = u.ImageLink;
             ImagePath = u.ImagePath;
-            Comment = u.Comment;
             Think = u.Think;
             Review = u.Review;
             Quote = u.Quote;

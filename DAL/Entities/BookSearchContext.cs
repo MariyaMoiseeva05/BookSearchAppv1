@@ -13,7 +13,6 @@ namespace DAL.Entities
         { }
         public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Author> Authors { get; set; }
-        public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<Comment_Review> Comments_Review { get; set; }
         public virtual DbSet<Comment_News> Comments_News { get; set; }
         public virtual DbSet<Think> Thinks { get; set; }
@@ -47,13 +46,6 @@ namespace DAL.Entities
             modelBuilder.Entity<Book>(entity =>
             {
                 entity.Property(e => e.Title).IsRequired();
-            });
-
-            modelBuilder.Entity<Comment>(entity =>
-            {
-                entity.HasOne(b => b.Book)
-                    .WithMany(p => p.Comments)
-                    .HasForeignKey(b => b.BookID);
             });
 
             modelBuilder.Entity<Comment_Review>(entity =>
@@ -137,13 +129,6 @@ namespace DAL.Entities
                 .HasOne(pt => pt.Tag)
                 .WithMany(t => t.News)
                 .HasForeignKey(pt => pt.TagId);
-
-            modelBuilder.Entity<Comment>(entity =>
-            {
-                entity.HasOne(b => b.User)
-                    .WithMany(p => p.Comment)
-                    .HasForeignKey(b => b.UserId);
-            });
 
             modelBuilder.Entity<Comment_Review>(entity =>
             {

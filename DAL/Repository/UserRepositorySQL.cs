@@ -41,7 +41,6 @@ namespace DAL.Repository
                 .Include(fa => fa.Featured_Adverts)
                 .Include(fb => fb.Featured_Books)
                 .Include(l => l.Like_Adverts)
-                .Include(c => c.Comment)
                 .Include(a => a.Think)
                 .Include(r => r.Review)
                 .Include(q => q.Quote)
@@ -56,7 +55,6 @@ namespace DAL.Repository
                 .Include(fa => fa.Featured_Adverts)
                 .Include(fb => fb.Featured_Books)
                 .Include(l => l.Like_Adverts)
-                .Include(c => c.Comment)
                 .Include(a => a.Think)
                 .Include(r => r.Review)
                 .Include(q => q.Quote)
@@ -66,7 +64,6 @@ namespace DAL.Repository
         public void Update(User User, object userId)
         {
             var user = db.PUsers.Find((string)userId);
-            user.Comment = User.Comment;
             user.Review = User.Review;
             user.Quote = User.Quote;
             user.Think = User.Think;

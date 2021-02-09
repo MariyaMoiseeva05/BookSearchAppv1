@@ -87,7 +87,6 @@ namespace BookSearchApp.Controllers
             bookModel.Description = book.Description;
             bookModel.Edition = book.Edition;
             bookModel.Publication_date = book.Publication_date;
-            bookModel.Comment = book.Comment;
             bookModel.Quote = book.Quote;
             bookModel.Review = book.Review;
             bookModel.Type_of_literature = book.Type_of_literature;

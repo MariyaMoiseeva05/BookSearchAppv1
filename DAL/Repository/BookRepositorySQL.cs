@@ -34,7 +34,6 @@ namespace DAL.Repository
         public Book GetItem(object id)
         {
             return db.Books
-                .Include(c => c.Comments)
                 .Include(r => r.Reviews)
                 .Include(q => q.Quotes)
                 .Include(ad => ad.Adverts)
@@ -68,7 +67,6 @@ namespace DAL.Repository
             book.Publication_date = Book.Publication_date;
             book.ImagePath = Book.ImagePath;
             book.ImageLink = Book.ImageLink;
-            book.Comments = Book.Comments;
             book.Quotes = Book.Quotes;
             book.Reviews = Book.Reviews;
             book.Screenings = Book.Screenings;

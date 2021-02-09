@@ -109,7 +109,6 @@ namespace BLL.Data
                 Publication_date = b.Publication_date,
                 ImagePath = b.ImagePath,
                 ImageLink = b.ImageLink,
-                Comments = b.Comment,
                 Authors = b.Author,
                 Screenings = b.Screenings,
                 Types_of_literature = b.Type_of_literature,
@@ -135,7 +134,6 @@ namespace BLL.Data
             bk.Publication_date = b.Publication_date;
             bk.ImagePath = b.ImagePath;
             bk.ImageLink = b.ImageLink;
-            bk.Comments = b.Comment;
             bk.Authors = b.Author;
             bk.Screenings = b.Screenings;
             bk.Types_of_literature = b.Type_of_literature;
@@ -155,56 +153,6 @@ namespace BLL.Data
             if (a != null)
             {
                 db.Books.Delete(a.BookID);
-                Save();
-            }
-        }
-        #endregion
-
-        #region Comment
-        public IEnumerable<CommentModel> GetAllComments()
-        {
-            return db.Comments.GetAll().Select(i => new CommentModel(i)).ToList();
-        }
-
-        public CommentModel GetComment(int Id)
-        {
-            return new CommentModel(db.Comments.GetItem(Id));
-        }
-
-        public void CreateComment(CommentModel c)
-        {
-            db.Comments.Create(new Comment()
-            {
-                UserId = c.UserId,
-                Content = c.Content,
-                Date_of_creation = c.Date_of_creation,
-                BookID = c.BookID,
-                Book = c.Book,
-                Rating = c.Rating,
-                User = c.User
-            });
-            Save();
-        }
-
-        public void UpdateComment(CommentModel c)
-        {
-            Comment cm = db.Comments.GetItem(c.CommentId);
-            cm.UserId = c.UserId;
-            cm.BookID = c.BookID;
-            cm.Content = c.Content;
-            cm.Date_of_creation = c.Date_of_creation;
-            cm.Book = c.Book;
-            cm.Rating = c.Rating;
-            cm.User = c.User;
-            Save();
-        }
-
-        public void DeleteComment(int id)
-        {
-            Comment c = db.Comments.GetItem(id);
-            if (c != null)
-            {
-                db.Comments.Delete(c.CommentId);
                 Save();
             }
         }
@@ -616,7 +564,6 @@ namespace BLL.Data
                 About_me = u.About_me,
                 ImagePath = u.ImagePath,
                 ImageLink = u.ImageLink,
-                Comment = u.Comment,
                 Review = u.Review,
                 Think = u.Think,
                 Quote = u.Quote
@@ -640,7 +587,6 @@ namespace BLL.Data
             us.ImageLink = u.ImageLink;
             us.ImagePath = u.ImagePath;
             us.Quote = u.Quote;
-            us.Comment = u.Comment;
             us.Review = u.Review;
             us.Think = u.Think;
 

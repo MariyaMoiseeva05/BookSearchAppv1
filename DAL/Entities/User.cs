@@ -9,7 +9,6 @@ namespace DAL.Entities
     {
         public User()
         {
-            Comment = new HashSet<Comment>();
             Comment_Review = new HashSet<Comment_Review>();
             Comment_News = new HashSet<Comment_News>();
             Review = new HashSet<Review>();
@@ -57,7 +56,6 @@ namespace DAL.Entities
         public string ImagePath { get; set; } //Путь до изображения
         public string ImageLink { get; set; } // Фотка
 
-        public virtual ICollection<Comment> Comment { get; set; }  // Отзывы к книгам
         public virtual ICollection<Comment_Review> Comment_Review { get; set; }  // Комментарии к рецензиям
         public virtual ICollection<Comment_News> Comment_News { get; set; }  // Комментарии к новостям
         public virtual ICollection<Think> Think { get; set; }  // Мысли

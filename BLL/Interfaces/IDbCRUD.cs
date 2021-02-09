@@ -7,7 +7,6 @@ namespace BLL.Interfaces
     {
         IEnumerable<BookModel> GetAllBooks();
         IEnumerable<AuthorModel> GetAllAuthors();
-        IEnumerable<CommentModel> GetAllComments();
         IEnumerable<GenreModel> GetAllGenres();
         IEnumerable<Interesting_factModel> GetAllInteresting_facts();
         IEnumerable<NewsModel> GetAllNews();
@@ -37,11 +36,6 @@ namespace BLL.Interfaces
         void CreateBook(BookModel b);
         void UpdateBook(BookModel b, int bookId);
         void DeleteBook(int id);
-
-        CommentModel GetComment(int commentId);
-        void CreateComment(CommentModel c);
-        void UpdateComment(CommentModel c);
-        void DeleteComment(int id);
 
         GenreModel GetGenre(int genreId);
         void CreateGenre(GenreModel g);

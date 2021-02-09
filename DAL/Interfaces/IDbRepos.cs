@@ -7,7 +7,6 @@ namespace DAL.Interfaces
     {
         IRepository<Book> Books { get; }
         IRepository<Author> Authors { get; }
-        IRepository<Comment> Comments { get; }
         IRepository<Genre> Genres { get; }
         IRepository<Interesting_fact> Interesting_facts { get; }
         IRepository<News> News { get; }

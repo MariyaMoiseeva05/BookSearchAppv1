@@ -9,7 +9,6 @@ namespace DAL.Entities
     {
         public Book()
         {
-            Comments = new HashSet<Comment>();
             Reviews = new HashSet<Review>();
             Quotes = new HashSet<Quote>();
             Adverts = new HashSet<Advert>();
@@ -41,7 +40,6 @@ namespace DAL.Entities
         [Display(Name = "Экранизации")]
         public string Screenings { get; set; }
 
-        public virtual ICollection<Comment> Comments { get; set; }  // Отзывы
         public virtual ICollection<Quote> Quotes { get; set; }  // Цитаты
         public virtual ICollection<Review> Reviews { get; set; } // Рецензии
         public virtual ICollection<TypeOfLit_Book> Types_of_literature { get; set; }

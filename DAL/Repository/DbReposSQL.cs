@@ -9,7 +9,6 @@ namespace DAL.Repository
         private BookSearchContext db;
         private BookRepositorySQL bookRepository;
         private AuthorRepositorySQL authorRepository;
-        private CommentRepositorySQL commentRepository;
         private GenreRepositorySQL genreRepository;
         private Interesting_factRepositorySQL interesting_factRepository;
         private NewsRepositorySQL newsRepository;
@@ -55,15 +54,6 @@ namespace DAL.Repository
             }
         }
 
-        public IRepository<Comment> Comments
-        {
-            get
-            {
-                if (commentRepository == null)
-                    commentRepository = new CommentRepositorySQL(db);
-                return commentRepository;
-            }
-        }
 
         public IRepository<Genre> Genres
         {
