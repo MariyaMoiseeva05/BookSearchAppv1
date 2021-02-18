@@ -29,7 +29,7 @@ namespace BookSearchApp.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<BookModel> GetAll()
+        public IEnumerable<BookModel> GetAllBooks()
         {
             return _dbCrud.GetAllBooks();
         }
@@ -91,6 +91,12 @@ namespace BookSearchApp.Controllers
             bookModel.Review = book.Review;
             bookModel.Type_of_literature = book.Type_of_literature;
             bookModel.Genre_Books = book.Genre_Books;
+            bookModel.Story = book.Story;
+            bookModel.Screenings = book.Screenings;
+            bookModel.Book_Collections = book.Book_Collections;
+            bookModel.Book_Characters = book.Book_Characters;
+            bookModel.Adverts = book.Adverts;
+            bookModel.Featured_Books = book.Featured_Books;
 
             try
             {

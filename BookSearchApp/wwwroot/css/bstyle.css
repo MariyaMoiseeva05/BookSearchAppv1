@@ -6,7 +6,7 @@
 a,
 a:focus,
 a:hover {
-    color: #F2C94C;
+    color: #fae714;
 }
 
 /* {
@@ -68,8 +68,8 @@ button {
 .btn-secondary:focus {
     color: #333;
     text-shadow: none; /* Prevent inheritance from `body` */
-    background-color: #F2C94C;
-    border: .1rem solid #F2C94C;
+    background-color: #fae714;
+    border: .1rem solid #fae714;
 }
 
 
@@ -94,7 +94,7 @@ body {
 body {
     display: -ms-flexbox;
     display: flex;
-    color: #F2C94C;
+    color: #fae714;
     padding-bottom: 20px;
 }
 
@@ -142,7 +142,7 @@ line-height: 20px;
     font-weight: 800;
     font-size: 17px;
     line-height: 20px;
-    border-bottom-color: #F2C94C;
+    border-bottom-color: #fae714;
 }
 
 @media (min-width: 48em) {

@@ -6,7 +6,16 @@
 a,
 a:focus,
 a:hover {
-    color: #F2C94C;
+    color: #fae714;
+}
+
+.blog-header {
+    line-height: 1;
+    border-bottom: 3px solid #e5e5e5;
+}
+
+#header-logo {
+    margin-left:2rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -16,17 +25,15 @@ h1, h2, h3, h4, h5, h6 {
 
 html,
 body {
-    background-image: url('../images/fon1.png');
     width: 100%;
     height: 100%;
-    background-color: black;
     background-size: cover;
 }
 
 body {
     display: -ms-flexbox;
     display: flex;
-    color: #F2C94C;
+    background-color: lightsalmon;
 }
 
 .cover-container {
@@ -52,18 +59,42 @@ body {
 .nav-masthead .nav-link {
     padding: .25rem 0;
     font-weight: 700;
-    color: white;
+    color: black;
     background-color: transparent;
-    border-bottom: .25rem solid transparent;
+    border-bottom: .2rem solid transparent;
 }
 
     .nav-masthead .nav-link:hover,
     .nav-masthead .nav-link:focus {
-        border-bottom-color: rgba(255, 255, 255, .25);
+        border-bottom-color: rgba(0, 0, 0, .5);
     }
 
+#book {
+    border-bottom-color: #ADFF2F;
+    text-shadow: white 0 0 10px;
+}
+
+#review {
+    border-bottom-color: #FA8072;
+    text-shadow: white 0 0 10px;
+}
+
+#quote {
+    border-bottom-color: #7FFFD4;
+    text-shadow: white 0 0 10px;
+}
+
+#author {
+    border-bottom-color: #FFFF00;
+    text-shadow: white 0 0 10px;
+}
+
+#news {
+    border-bottom-color: blueviolet;
+    text-shadow: white 0 0 10px;
+}
+
     .nav-masthead .nav-link + .nav-link {
-        margin-left: 1rem;
         font-style: normal;
         font-weight: 100;
         font-size: 17px;
@@ -71,22 +102,12 @@ body {
     }
 
 .nav-masthead .active {
-    color: white;
-    margin-left: 1rem;
+    color: black;
     font-style: normal;
     font-weight: 800;
     font-size: 17px;
     line-height: 20px;
-    border-bottom-color: #F2C94C;
+    border-bottom-color: #fae714;
 }
 
 
-@media (min-width: 48em) {
-    .masthead-brand {
-        float: left;
-    }
-
-    .nav-masthead {
-        float: right;
-    }
-}

@@ -4,7 +4,7 @@
 
 function getBook() {
     $.ajax({
-        url: "/api/book",
+        url: "/api/Books",
         type: "GET",
         dataType: "HTML",
         success: function (data) {

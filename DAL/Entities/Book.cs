@@ -35,7 +35,7 @@ namespace DAL.Entities
         [Display(Name = "Дата выхода в свет")]
         public DateTime Publication_date { get; set; } // Дата выхода в свет
         //[Required()]
-        public string ImagePath { get; set; } //Путь до изображения
+        public string ImagePath { get; set; } //Путь до изображения - хранить в блоб-полях
         public string ImageLink { get; set; } // Ссылка на изображение
         [Display(Name = "Экранизации")]
         public string Screenings { get; set; }

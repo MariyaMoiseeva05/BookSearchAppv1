@@ -15,7 +15,7 @@ namespace BLL.Models
         public DateTime Publication_date { get; set; }
         public string ImageLink { get; set; }
         public string ImagePath { get; set; }
-        public virtual ICollection<DAL.Entities.TypeOfLit_Book> Type_of_literature { get; set; }
+        public virtual ICollection<TypeOfLit_Book> Type_of_literature { get; set; }
         public virtual ICollection<Quote> Quote { get; set; }  // Цитаты
         public virtual ICollection<Review> Review { get; set; } // Рецензии
         public virtual ICollection<Genre_Book> Genre_Books { get; set; }
