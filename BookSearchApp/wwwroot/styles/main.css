@@ -1,6 +1,28 @@
 body {
   font-family: "Open Sans", Arial, Helvetica, sans-serif; }
 
+/*UserLink*/
+.user-log {
+    position: relative;
+    padding-right: 29px;
+    cursor: pointer;
+}
+
+    .user-log:before {
+        content: '\e832';
+        font-family: 'fontello';
+        color: #2c2b2b;
+        font-size: 8px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
 h1,
 h2,
 h3,
@@ -2736,11 +2758,12 @@ ul.pagination {
   @media (min-width: 992px) {
     .filter-blog {
       display: block; } }
-  .filter-blog .portfolio-filters {
+.filter-blog .portfolio-filters {
     padding: 45px 30px;
-    background-image: url(http://placehold.it/1170x140);
+    background-image: url(https://media-exp1.licdn.com/dms/image/C4D1BAQFjSkw638Y-Rw/company-background_10000/0/1585298107586?e=2159024400&v=beta&t=xHehfHXEQaCSfAyS33VZncsPbI8XPCP4fwyp_d8aOCQ);
     background-size: cover;
-    background-repeat: no-repeat; }
+    background-repeat: no-repeat;
+}
     .filter-blog .portfolio-filters ul {
       padding: 0;
       margin: 0;

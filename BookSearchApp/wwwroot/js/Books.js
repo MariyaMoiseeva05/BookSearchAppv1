@@ -2,6 +2,8 @@
     getBook();
 });
 
+var options = { year: 'numeric', month: 'long', day: 'numeric'};
+var formatter = new Intl.DateTimeFormat("ru", options); //формат даты
 function getBook() {
     $.ajax({
         url: "/api/Books",
@@ -12,21 +14,32 @@ function getBook() {
             let html = "";
             if (book) {
                 for (var i in book) {
-                    html += "<div class=\"card-white col-12 col-md-6 col-lg-3\">";
-                    html += "<div class=\"card-body\">";
-                    html += "<div class='img-container'><img class=\"card-img\" src=" + book[i].imageLink + "></div>";
-                    html += '<strong> <h4>' + book[i].title + '</h4> </strong>';
-                    html += '<strong> <h2>' + book[i].author + '</h4> </strong>';
-                    html += '<p> Тип литературы:' + book[i].typeLit + '</p>';
-                    html += '<p> Жанр' + book[i].genre + '</p>';
-                    html += '<p> Описание: ' + book[i].description + '</p>';
-                    html += '<p Сюжет:>' + book[i].story + ' </p>';
-                    html += '<p> Тираж' + book[i].edition + '</p>';
-                    html += '<p> Дата выхода в свет' + book[i].date + '</p>';
+                    html += " <div class=\"standard - posts\">";
+                    html += "<div class=\"row masonry - layout normal - col - gap\">";
+                    html += "<div class=\"col - lg - 4 masonry - item travel\">";
+                    html += "<div class=\"standard - post without - sidebar - post\">";
+                    html += "<div class=\"post-image\">";
+                    html += "<a href=\"#\"><img src=" + book[i].ImageLink + "></a></div>";
+                    html += "<div class=\down - content\">";
+                    for (j in book[i].Authors) {
+                        html += "<a href=\"#\"><h4><em>" + book[i].Authors[j].Full_name + "</em></h4></a>";
+                    }
+                    html += "<ul class=\"post - info\">";
+                    html += " <li><p class=\"lead\">" + book[i].Edition + "</p>";
+                    html += "<li><p class=\"lead\">" + formatter.format(new Date(Date. parse(book[i].Publication_date))) + "</p>";
+                    html += "</ul>";
+                    html += "<p class =\"lead\">" + book[i].Description + "</p>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
+                    html += "</div>";
                    // html += '<button type="button" class="mt-2 btn btn-primary btn-block innerBtn"   data-toggle="modal" data-target="#myModal2" onclick="Getdbook(' + book[i].bookId + ');"> Редактировать </button>';
                    // html += '<button type="button" class="btn btn-btn-link btn-block innerBtn" onclick="deleteBook(' + book[i].bookId + ');"> Удалить </button>';
-                    html += '</div>';
-                    html += "</div>";
+                  
                 }
             }
             $('#bookDiv').html(html);
@@ -39,13 +52,7 @@ function getBook() {
 
 function createBook() {
     var title = $('#createTitle').val();
-    var author = $('#chooseAuthor').val();
-    var typeLit = $('#chooseTypeLit').val();
-    var genre = $('#chooseGenre').val();
     var description = $('#createDescription').val();
-    var story = $('#createStory').val();
-    var edition = $('#createEdition').val();
-    var date = $('#create_Date').val();
     let fs = document.getElementById("addImage").files; //получение файла из формы
     var data = new FormData();
     if (fs.length > 0) {
@@ -53,25 +60,13 @@ function createBook() {
     }
     console.log(data);
     data.append("Title", title);
-    data.append("Author", author);
-    data.append("Type_of_literature", typeLit);
-    data.append("Genre", genre);
     data.append("Description", description);
-    data.append("Story", story);
-    data.append("Edition", edition);
-    data.append("Publication_date", date);
     console.log(data);
     $.ajax({
-        url: '/api/book',
+        url: '/api/Books',
         type: 'POST',
         contentType: false,
         processData: false,
-        data: data,
-        success: function (data) {
-            getBook();
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            alert("У вас недостаточно прав для выполнения этого действия");
-        }
+        data: data
     });
 }

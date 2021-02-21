@@ -107,7 +107,7 @@
                             </ul>
                         </li>
                         <li class="menu-item-has-children active">
-                            <a href="Books.html">Книги</a>
+                            <a href="Books.html">Что почитать</a>
                             <ul class="sub-menu">
                                 <li><a href="slider-infinity.html">Найти книгу</a></li>
                                 <li><a href="slider-full-width.html">Топ-250</a></li>
@@ -152,19 +152,113 @@
             <button type="submit" class="primary-button"><i class="icon_search"></i></button>
         </form>
     </div>
-    <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
-    <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
-    <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
-    <script src="../scripts/vendors/jquery.easing.min.js" charset="utf-8"></script>
-    <script src="../scripts/vendors/wow.min.js" charset="utf-8"></script>
-    <script src="../scripts/vendors/parallax.min.js" charset="utf-8"></script>
-    <script src="../scripts/vendors/isotope.min.js" charset="utf-8"></script>
-    <script src="../scripts/vendors/imagesloaded.pkgd.min.js" charset="utf-8"></script>
-    <script src="../scripts/vendors/packery-mode.pkgd.min.js" charset="utf-8"></script>
-    <script src="../scripts/vendors/owl-carousel.min.js" charset="utf-8"></script>
-    <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
-    <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
-    <script src="../scripts/main.js" charset="utf-8"></script>
+    <!--Книги по тематике вверху-->
+    <div class="main-banner boxed-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="owl-big-banner owl-carousel">
+                        <div class="item">
+                            <div class="overlay"></div>
+                            <img src="../images/novinki.png" alt="">
+                            <div class="item-content">
+                                <div class="main-content">
+                                    <div class="meta-category">
+                                        <span>Новинки</span>
+                                    </div>
+                                    <a href="single-standard-post.html"><h4>"Новая книга - шанс начать жить заново..."</h4></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="overlay"></div>
+                            <img src="../images/top250.png" alt="">
+                            <div class="item-content">
+                                <div class="main-content">
+                                    <div class="meta-category">
+                                        <span>Топ-250</span>
+                                    </div>
+                                    <a href="single-standard-post.html"><h4>"Книги — они как жизнь. На самом деле они никогда не кончаются."</h4></a>
+                                    <ul class="post-info">
+                                        <li><a href="Authors.html">Жоэль Диккер</a></li>
+                                        <li><a href="Quotes.html">Все цитаты</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="overlay"></div>
+                            <img src="../images/classick.png" alt="">
+                            <div class="item-content">
+                                <div class="main-content">
+                                    <div class="meta-category">
+                                        <span>Вечная классика</span>
+                                    </div>
+                                    <a href="single-standard-post.html"><h4>"Классика — то, что каждый считает нужным прочесть и никто не читает."</h4></a>
+                                    <ul class="post-info">
+                                        <li><a href="Authors.html">Марк Твен</a></li>
+                                        <li><a href="Quotes.html">Все цитаты</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="overlay"></div>
+                            <img src="../images/popular.png" alt="">
+                            <div class="item-content">
+                                <div class="main-content">
+                                    <div class="meta-category">
+                                        <span>Популярные</span>
+                                    </div>
+                                    <a href="single-standard-post.html"><h4>"Все хорошие книги сходны в одном: когда вы дочитаете до конца, вам кажется, что все это случилось с вами, и так оно навсегда при вас и останется."</h4></a>
+                                    <ul class="post-info">
+                                        <li><a href="Authors.html">Эрнест Хемингуэй</a></li>
+                                        <li><a href="Quotes.html">Все цитаты</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="small-gap filter-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="portfolio-filters">
+                        <ul>
+                            <li class="active" data-filter="*"><span>Все жанры</span></li>
+                            <li data-filter=".travel"><span>Коллекции</span></li>
+                            <li data-filter=".motivation"><span>Персонажи</span></li>
+                            <li data-filter=".fashion"><span>Рецензии</span></li>
+                            <li data-filter=".lifestyle"><span>Цитаты</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="medium-gap standard-home without-sidebar-home" id="bookDiv" >
+    </section>/
+
+
+        <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
+        <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
+        <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
+        <script src="../scripts/vendors/jquery.easing.min.js" charset="utf-8"></script>
+        <script src="../scripts/vendors/wow.min.js" charset="utf-8"></script>
+        <script src="../scripts/vendors/parallax.min.js" charset="utf-8"></script>
+        <script src="../scripts/vendors/isotope.min.js" charset="utf-8"></script>
+        <script src="../scripts/vendors/imagesloaded.pkgd.min.js" charset="utf-8"></script>
+        <script src="../scripts/vendors/packery-mode.pkgd.min.js" charset="utf-8"></script>
+        <script src="../scripts/vendors/owl-carousel.min.js" charset="utf-8"></script>
+        <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
+        <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
+        <script src="../scripts/main.js" charset="utf-8"></script>
 
 </body>
 </html>
