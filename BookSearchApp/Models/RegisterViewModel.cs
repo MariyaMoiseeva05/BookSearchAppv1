@@ -8,6 +8,19 @@ namespace BookSearchApp.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Не указан Логин")]
+        [Display(Name = "Login")]
+        public string Login { get; set; }
+
+        [Display(Name = "Sex")]
+        public bool Sex { get; set; }
+
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Display(Name = "Surname")]
+        public string Surname { get; set; }
+
         [Required(ErrorMessage = "Не указан пароль")]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]

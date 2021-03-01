@@ -35,7 +35,7 @@ namespace BookSearchApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.Email };
+                User user = new User { Email = model.Email, Login = model.Login, Name = model.Name, Surname = model.Surname, Sex = model.Sex   };
                 // Добавление нового пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -45,7 +45,7 @@ namespace BookSearchApp.Controllers
                     await _signInManager.SignInAsync(user, false);  // при удачном добалении пользователя устанавливает аутентификационные cookie для добавленного пользователя 
                     var msg = new
                     {
-                        message = "Добавлен новый пользователь: " + user.UserName
+                        message = "Добавлен новый пользователь: " + user.Login
                     };
                     return Ok(msg);
                 }
@@ -83,12 +83,12 @@ namespace BookSearchApp.Controllers
             if (ModelState.IsValid)
             {
                 var result =
-                    await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false); // выполняет всю работу по входу пользователя 
+                    await _signInManager.PasswordSignInAsync(model.Login, model.Password, model.RememberMe, false); // выполняет всю работу по входу пользователя 
                 if (result.Succeeded)
                 {
                     var msg = new
                     {
-                        message = "Выполнен вход пользователем: " + model.Email
+                        message = "Выполнен вход пользователем: " + model.Login
                     };
                     return Ok(msg);
                 }
