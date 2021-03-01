@@ -1,28 +1,6 @@
 body {
   font-family: "Open Sans", Arial, Helvetica, sans-serif; }
 
-/*UserLink*/
-.user-log {
-    position: relative;
-    padding-right: 29px;
-    cursor: pointer;
-}
-
-    .user-log:before {
-        content: '\e832';
-        font-family: 'fontello';
-        color: #2c2b2b;
-        font-size: 8px;
-        position: absolute;
-        top: 50%;
-        right: 0;
-        -webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%);
-    }
-
 h1,
 h2,
 h3,
@@ -132,8 +110,16 @@ button:-moz-focusring,
 [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText; }
 
+.list-group-item {
+    font-size: 14px;
+    font-family:'fontello';
+
+}
+
+
 fieldset {
-  padding: 0.35em 0.75em 0.625em; }
+    padding: 0.35em 0.75em 0.625em;
+}
 
 legend {
   box-sizing: border-box;
@@ -956,11 +942,11 @@ section.above-header {
       section.above-header ul.social-icons li:last-child {
         margin-right: 0px; }
       section.above-header ul.social-icons li a {
-        width: 36px;
-        height: 36px;
+        width: 40px;
+        height: 40px;
         display: inline-block;
         text-align: center;
-        line-height: 36px;
+        line-height: 40px;
         background-color: #1e1e1e;
         color: #ffffff;
         border-radius: 50%;
@@ -979,11 +965,11 @@ section.above-header {
     section.above-header ul.search-item li {
       display: inline-block; }
       section.above-header ul.search-item li a {
-        width: 36px;
-        height: 36px;
+        width: 40px;
+        height: 40px;
         display: inline-block;
         text-align: center;
-        line-height: 36px;
+        line-height: 40px;
         background-color: #1e1e1e;
         color: #ffffff;
         border-radius: 50%;
@@ -994,6 +980,8 @@ section.above-header {
     section.above-header {
       display: -webkit-box;
       display: flex; } }
+
+
 
 .site-header {
   z-index: 900;
@@ -1089,14 +1077,25 @@ section.above-header {
 .change-class {
   padding: 0.5px 0px; }
 
+.dropdown-menu {
+    background-color: black;
+    color: white;
+    padding: 16px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+}
+
+
 /*----------  Main Navigation  ----------*/
 .main-menu {
-  display: -webkit-box;
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  line-height: 1; }
+    display: -webkit-box;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
   .main-menu > li {
     display: -webkit-inline-box;
     display: inline-flex; }
@@ -2398,9 +2397,25 @@ section.large-gap {
         .about-me .widget-sidebar ul.social-icons li a:hover {
           background-color: #F2C94C; }
 
+.ul.social-icons:before {
+    content: '\e832';
+    font-family: 'fontello';
+    color: #2c2b2b;
+    font-size: 8px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 .about-version-two p {
-  margin-top: 10px !important;
-  text-align: center !important; }
+    margin-top: 10px !important;
+    text-align: center !important;
+}
 
 .about-version-two ul.social-icons {
   text-align: center !important; }
@@ -3043,11 +3058,11 @@ ul.pagination {
         .single-posts .about-author .right-content ul.social-icons li:first-child {
           margin-left: 0px; }
         .single-posts .about-author .right-content ul.social-icons li a {
-          width: 26px;
-          height: 26px;
+          width: 40px;
+          height: 40px;
           display: inline-block;
           text-align: center;
-          line-height: 26px;
+          line-height: 40px;
           background-color: #1e1e1e;
           color: #ffffff;
           border-radius: 50%;

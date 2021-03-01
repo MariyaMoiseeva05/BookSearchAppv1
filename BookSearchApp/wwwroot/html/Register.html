@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Книги</title>
+    <link rel="shortcut icon" href="../images/logoverh.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../LoginStyle/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="../LoginStyle/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../LoginStyle/style.css">
+    <title>Регистрация нового пользователя</title>
+</head>
+<body>
+    <div class="d-md-flex half">
+        <div class="bg" style="background-image: url('https://i.joylada.net/12816486/writer/5a8ab967007ee3000179f46e/cover-eb15058f-6562-404f-82f7-52d6c9eb3807.jpg/thumbnail'); "></div>
+        <div class="contents">
+            <div class="container p-3">
+                <div class="form-block mx-auto">
+                    <div class="text-left">
+                        <a href="Home.html"><img src="../images/logo_1.png" alt=""></a>
+                    </div>
+                    <div class="row align-items-center justify-content-center">
+                        <div class="text-center">
+                            <h1 class="display-4">Регистрация нового пользователя</h1>
+                        </div>
+                        <div class="msg-error">
+                            <p class="lead" id="msgRegister"></div>
+                            <ul id="formErrorRegister"></ul>
+                        </div>
+                        <form action="#" method="post">
+                            <div class="row mb-3">
+                                <div class="form-group  col-6 themed-grid-col">
+                                    <label for="name">Имя</label>
+                                    <input type="text" class="form-control" placeholder="Введите имя" id="name">
+                                </div>
+                                <div class="form-group  col-6 themed-grid-col">
+                                    <label for="surname">Фамилия</label>
+                                    <input type="text" class="form-control" placeholder="Введите фамилию" id="surname">
+                                </div>
+                                <div class="form-group  col-6 themed-grid-col">
+                                    <label for="sex">Пол</label>
+                                    <select class="form-control" id="sex">
+                                        <option>Женский</option>
+                                        <option>Мужской</option>
+                                    </select>
+                                </div>
+                                <div class="form-group  col-6 themed-grid-col">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" placeholder="Введите email" id="email" required>
+                                </div>
+                                <div class="form-group first col-6 themed-grid-col">
+                                    <label for="username">Логин</label>
+                                    <input type="text" class="form-control" placeholder="Придумайте логин для входа" id="username" required>
+                                </div>
+                                <div class="form-group last mb-3  col-6 themed-grid-col">
+                                    <label for="password">Пароль</label>
+                                    <input type="password" class="form-control" placeholder="Введите пароль" id="password" required>
+                                </div>
+                                <div class="form-group last mb-3  col-6 themed-grid-col">
+                                    <label for="passwordConfirm">Подтверждение пароля</label>
+                                    <input type="password" class="form-control" placeholder="Введите пароль ещё раз" id="passwordConfirm" required>
+                                </div>
+                            </div>
+                            <div class="d-sm-flex mb-5 align-items-center  col-6 themed-grid-col">
+                                <span class="ml-auto"><a href="Login.html" class="forgot-pass">Если Вы уже зарегистрированы, войдите пожалуйста</a></span>
+                            </div>
+                            <input type="submit" value="Зарегистрироваться" id="btnRegister" class="btn btn-block py-2 btn-primary">
+                        </form>
+                    </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+    <script src="../scripts/LoginStyleJs/jquery-3.3.1.min.js"></script>
+    <script src="../scripts/LoginStyleJs/popper.min.js"></script>
+    <script src="../scripts/LoginStyleJs/bootstrap.min.js"></script>
+    <script src="../scripts/LoginStyleJs/main.js"></script>
+</body>
+</html>
