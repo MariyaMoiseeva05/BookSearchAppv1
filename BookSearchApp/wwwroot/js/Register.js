@@ -1,10 +1,5 @@
 ﻿$(document).ready(function () {
-    $('.toast1').toast('show');
-    $("#drag").draggable();
 });
-
-
-
 const uri = "/api/Account/Register";
 function Register() {
     // Считывание данных с формы
@@ -47,6 +42,8 @@ function ParseResponse(e) {
     $("#msgRegister").html(response.message);
     // Вывод сообщений об ошибках
     if (response.error.length > 0) {
+        $('.toast1').toast('show');
+        $("#drag").draggable();
         let htmlError = "";
         for (var i = 0; i < response.error.length; i++) {
             htmlError += "<li>" + response.error[i] + '</li>';

@@ -24,7 +24,7 @@
             }
             else {
                 alert(data.message);
-                $(location).attr('href', "/");
+                $(location).attr('href', "/html");
             }
 
         },
