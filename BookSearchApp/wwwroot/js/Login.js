@@ -1,81 +1,57 @@
-﻿$(document).ready(function () {
-    common.init();
+﻿function logIn() {
+    var login = $('#Login').val();
+    var password = $('#Password').val();
 
-});
-var options = { year: 'numeric', month: 'long', day: 'numeric', minute: '2-digit', hour: 'numeric', second: '2-digit' };
-var formatter = new Intl.DateTimeFormat("ru", options); //формат даты
-var common = {
-    user_type: "", //тип пользователя
-    //получение текущего пользователя
-    getCurrentUser: function () {
-        $.ajax({
-            url: '/api/Account/isAuthenticated',
-            type: 'POST',
-            contentType: 'application/json',
-            statusCode: {
-                401: function (data) {
-                    alert('У вас не хватает прав для выполнения данного действия');
+    $.ajax({
+        url: '/api/Account/Login',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            Login: login,
+            Password: password,
+        }),
+        success: function (data) {
 
-                },
-                200: function (data) {
-                    $("#msgLogin").html(data.message);
-                    if (data.role !== undefined) {
-                        sessionStorage.setItem('role', data.role[0]);
-                        sessionStorage.setItem('userid', data.id);
-                    }
-                    if (data.isAuthenticated == 0) {
-                        $(".login").hide();
-
-                        sessionStorage.setItem('role', 'guest');
-                        sessionStorage.setItem('userid', '');
-                    }
-                    else {
-                        $(".not-login").hide();
-                    }
+            $('#msg_l').html('');
+            $('#msg_l').html(data.message);
+            if (data.error !== undefined) {
+                if (data.error.length > 0) {
+                    let html = ""
+                    data.error.forEach(element => html += "<li>" + element + "</li>");
+                    $("#formError_l").html(html);
+                    $('#password').val("");
                 }
             }
-        });
-    },
-    //выход из аккаунта
-    logoff: function () {
-        $.ajax({
-            url: '/api/account/logoff',
-            type: 'POST',
-            contentType: 'application/json',
-            success: function (data) {
-
-                if (data.error !== undefined) {
-                    if (data.error.length > 0) {
-                        let html = ""
-                        data.error.forEach(element => html += "<li>" + element + "</li>");
-                        $("#formErrorLogin").html(html);
-                    }
-                }
-                else {
-                    alert(data.message);
-                    $(location).attr('href', "/Login.html");
-                }
-
-            },
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            else {
+                alert(data.message);
+                $(location).attr('href', "/");
             }
-        });
-    },
-    //Отображение кнопок по ролям
-    customizePage: function () {
-        if (sessionStorage.getItem('role') == 'admin') {
-            $('.admin-show').show();
-        }
-        if (sessionStorage.getItem('role') == 'user') {
-            $('.user-show').show();
-        }
-    },
-    //начальная инициализаци страницы
-    init: function () {
-        common.getCurrentUser();
-        common.customizePage();
-    }
-};
 
-$('.close').on('click', function () { modals.closeAllModals(); })
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    });
+}
+
+function logOff() {
+    var request = new XMLHttpRequest();
+    request.open("POST", "api/account/logoff");
+    request.onload = function () {
+        var msg = JSON.parse(this.responseText);
+        document.getElementById("msgLogin").innerHTML = "";
+        var mydiv = document.getElementById('formErrorLogin');
+        while (mydiv.firstChild) {
+            mydiv.removeChild(mydiv.firstChild);
+        }
+        document.getElementById("msgLogin").innerHTML = msg;
+        location.reload();
+    };
+    request.setRequestHeader("Content-Type",
+        "application/json;charset=UTF-8");
+    request.send();
+    localStorage.removeItem('jcart');
+}
+// Обработка кликов по кнопкам
+document.getElementById("btnLogin").addEventListener("click", logIn);
+//document.getElementById("logoffBtn").addEventListener("click", logOff);
