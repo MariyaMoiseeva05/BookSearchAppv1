@@ -2,10 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", function (event) {
     getBook();
-    createBook();
-    getAuthor();
-    getGenre();
-    getType();
 });
 
 
@@ -128,15 +124,15 @@ function createBook() {
         type: 'POST',
         contentType: 'application/json',
         data: JSON.stringify({
-            title = Title,
-            description = Description,
-            story = Story,
-            edition = Edition,
-            publication_date = Publication_date,
-            screenings = Screenings,
-            author = Author,
-            genre = Genre,
-            type_of_literature = Type_of_literature
+            Title = title,
+            Description = description,
+            Story = story,
+            Edition = edition,
+            Publication_date = publication_date,
+            Screenings = screenings,
+            Author = author,
+            Genre = genre,
+            Type_of_literature = type_of_literature
         }),
         success: function (data) {
             loadData();

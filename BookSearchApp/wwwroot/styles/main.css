@@ -9,6 +9,21 @@ h5,
 h6 {
   font-family: "Open Sans", Arial, Helvetica, sans-serif; }
 
+#register {
+    color: black; /* Цвет обычной ссылки */
+    text-decoration: none; /* Убираем подчёркивание у ссылок */
+    font-size:12px;
+}
+
+    #register:visited {
+        color: gray; /* Цвет посещённой ссылки */
+    }
+
+    #register:hover {
+        color: #F2C94C; /* Цвет ссылки при наведении */
+        text-decoration: underline; /* Добавляем подчёркивание */
+    }
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 html {
   line-height: 1.15;
