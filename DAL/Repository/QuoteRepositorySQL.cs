@@ -1,5 +1,6 @@
 ﻿using DAL.Entities;
 using DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,7 +27,10 @@ namespace DAL.Repository
 
         public Quote GetItem(object id)
         {
-            return db.Quotes.Find((int)id);
+            return db.Quotes
+                .Include(q => q.User)
+                .Include(q => q.Book).ThenInclude(qb => qb.Authors).ThenInclude(qa => qa.Author.Full_name)
+                .SingleOrDefault(q => q.QuoteId == (int)id);
         }
 
         public IEnumerable<Quote> GetAll()

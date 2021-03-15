@@ -54,4 +54,4 @@ function logOff() {
 }
 // Обработка кликов по кнопкам
 document.getElementById("btnLogin").addEventListener("click", logIn);
-//document.getElementById("logoffBtn").addEventListener("click", logOff);
+document.getElementById("logoffBtn").addEventListener("click", logOff);

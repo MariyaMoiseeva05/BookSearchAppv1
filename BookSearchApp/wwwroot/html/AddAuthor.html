@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Новый автор</title>
+    <link rel="shortcut icon" href="../images/logoverh.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../LoginStyle/owl.carousel.min.css">
+    <link rel="stylesheet" href="../LoginStyle/bootstrap.min.css">
+    <link rel="stylesheet" href="../LoginStyle/style.css">
+</head>
+<body>
+    <div class="d-md-flex half">
+        <div class="bg" style="background-image: url('https://i.joylada.net/12816486/writer/5a8ab967007ee3000179f46e/cover-eb15058f-6562-404f-82f7-52d6c9eb3807.jpg/thumbnail');"></div>
+        <div class="contents">
+            <div class="container p-3">
+                <div class="form-block mx-auto">
+                    <div class="text-left">
+                        <a href="Home.html"><img src="../images/logo_1.png" alt=""></a>
+                    </div>
+                    <div class="row align-items-center justify-content-center">
+                        <div class="text-center">
+                            <h1 class="display-4">Добавление нового автора</h1>
+                        </div>
+                    </div>
+                    <form>
+                        <div class="row mb-3">
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Full_name">Ф.И.О. автора</label>
+                                <input class="form-control" id="author-Full_name" placeholder="Введите Ф.И.О." required />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Pseudonym">Псевдоним</label>
+                                <input class="form-control" id="author-Pseudonym" placeholder="Укажите псевдоним автора " />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author_Date_of_Birth">Дата рождения</label>
+                                <input class="form-control" type="date" id="author_Date_of_Birth" placeholder="Укажите дату рождения" />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author_Date_of_Death">Дата смерти</label>
+                                <input class="form-control" type="date" id="author_Date_of_Death" placeholder="Укажите дату смерти" />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Place_of_Birth">Место рождения</label>
+                                <input class="form-control" id="author-Place_of_Birth" placeholder="Место рождения автора " />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Place_of_Death">Место смерти</label>
+                                <input class="form-control" id="author-Place_of_Death" placeholder="Место смерти автора " />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Citizenship">Гражданство</label>
+                                <input class="form-control" id="author-Citizenship" placeholder="Укажите гражданство автора " />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Occupation">Род деятельности</label>
+                                <input class="form-control" id="author-Occupation" placeholder="Писатель, прозаик, актёр и т.д." />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Years_of_creativity">Годы творчества</label>
+                                <input class="form-control" id="author-Years_of_creativity" placeholder="Введите промежуток времени" />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Language_of_works">Язык произведений</label>
+                                <input class="form-control" id="author-Language_of_works" placeholder="Язык(и), на котором(ых) были написны произведения " />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Debut">Дебют</label>
+                                <input class="form-control" id="author-Debut" placeholder="Произведение-дебют" />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="book-Details">Подробная биография автора</label>
+                                <textarea name="message" rows="6" class="form-control" id="book-Details" placeholder="Напишите всё, что знаете об авторе"></textarea>
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="book-Awards">Премии</label>
+                                <textarea name="message" rows="6" class="form-control" id="book-Awards" placeholder="Укажите все премии автора"></textarea>
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="book-Prizes">Награды</label>
+                                <textarea name="message" rows="6" class="form-control" id="book-Prizes" placeholder="Укажите все награды автора"></textarea>
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="addImage">Изображение:</label>
+                                <input class="form-control" type="file" id="addImage" name="addImageAuthor" accept=".jpg, .jpeg, .png" placeholder="Прикрепите изображение" />
+                            </div>
+                        </div>
+                        <input type="button" value="Добавить автора" id="btnCreate" class="btn btn-block py-2 btn-primary" onclick="createAuthor();">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../scripts/LoginStyleJs/jquery-3.3.1.min.js"></script>
+    <script src="../scripts/LoginStyleJs/popper.min.js"></script>
+    <script src="../scripts/LoginStyleJs/bootstrap.min.js"></script>
+    <script src="../scripts/LoginStyleJs/main.js"></script>
+    <script src="../js/Login.js"></script>
+    <script src="../js/Login_Register.js"></script>
+    <script src="../js/Register.js"></script>
+    <script src="../js/Author.js"></script>
+</body>
+</html>

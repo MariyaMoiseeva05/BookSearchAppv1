@@ -9,8 +9,8 @@ namespace BLL.Models
         public int AuthorId { get; set; }
         public string Full_name { get; set; }
         public string Pseudonym { get; set; }
-        public DateTime Date_of_Birth { get; set; }
-        public DateTime Date_of_Death { get; set; }
+        public DateTime? Date_of_Birth { get; set; }
+        public DateTime? Date_of_Death { get; set; }
         public string Place_of_Birth { get; set; }
         public string Place_of_Death { get; set; }
         public string Citizenship { get; set; }

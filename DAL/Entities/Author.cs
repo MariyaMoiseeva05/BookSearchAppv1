@@ -23,13 +23,13 @@ namespace DAL.Entities
 
         [Display(Name = "Дата рождения")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime Date_of_Birth { get; set; } // Дата рождения
+        [DisplayFormat(DataFormatString = "{0:D}", ApplyFormatInEditMode = true)]
+        public DateTime? Date_of_Birth { get; set; } // Дата рождения
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:D}", ApplyFormatInEditMode = true)]
         [Display(Name = "Дата смерти")]
-        public DateTime Date_of_Death { get; set; } // Дата смерти
+        public DateTime? Date_of_Death { get; set; } // Дата смерти
 
         [Display(Name = "Место рождения")]
         public string Place_of_Birth { get; set; } // Место рождения

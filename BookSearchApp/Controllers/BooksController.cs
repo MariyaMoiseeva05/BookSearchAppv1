@@ -114,7 +114,7 @@ namespace BookSearchApp.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update([FromRoute] int id, [FromBody] BookModel book)
+        public IActionResult UpdateBook([FromRoute] int id, [FromBody] BookModel book)
         {
             if (!ModelState.IsValid)
             {
@@ -127,7 +127,7 @@ namespace BookSearchApp.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] int id)
+        public IActionResult DeleteBook([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {

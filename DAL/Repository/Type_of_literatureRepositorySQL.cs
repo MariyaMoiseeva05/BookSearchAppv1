@@ -1,5 +1,6 @@
 ﻿using DAL.Entities;
 using DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,7 +27,9 @@ namespace DAL.Repository
 
         public Type_of_literature GetItem(object id)
         {
-            return db.Type_Of_Literatures.Find((int)id);
+            return db.Type_Of_Literatures
+                .Include(t => t.Book)
+                .SingleOrDefault(t => t.Type_of_literatureId == (int) id);
         }
 
         public IEnumerable<Type_of_literature> GetAll()
