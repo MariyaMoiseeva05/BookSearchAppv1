@@ -12,13 +12,13 @@
         }),
         success: function (data) {
 
-            $('#msg_l').html('');
-            $('#msg_l').html(data.message);
+            $('#msgLogin').html('');
+            $('#msgLogin').html(data.message);
             if (data.error !== undefined) {
                 if (data.error.length > 0) {
                     let html = ""
                     data.error.forEach(element => html += "<li>" + element + "</li>");
-                    $("#formError_l").html(html);
+                    $("#formErrorLogin").html(html);
                     $('#password').val("");
                 }
             }
@@ -53,5 +53,5 @@ function logOff() {
     localStorage.removeItem('jcart');
 }
 // Обработка кликов по кнопкам
-document.getElementById("btnLogin").addEventListener("click", logIn);
-document.getElementById("logoffBtn").addEventListener("click", logOff);
+//document.getElementById("btnLogin").addEventListener("click", logIn);
+//document.getElementById("logoffBtn").addEventListener("click", logOff);
