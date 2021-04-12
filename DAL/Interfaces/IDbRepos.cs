@@ -20,7 +20,6 @@ namespace DAL.Interfaces
         IRepository<Character> Characters { get; }
         IRepository<Advert> Adverts { get; }
         IRepository<Featured_Advert> Featured_Adverts { get; }
-        IRepository<Like_Advert> Like_Adverts { get; }
         IRepository<Locality> Localities { get; }
         IRepository<Message> Messages { get; }
         IRepository<Featured_Book> Featured_Books { get; }

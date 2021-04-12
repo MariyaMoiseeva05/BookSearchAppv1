@@ -737,7 +737,7 @@ namespace BLL.Data
                 Pickup = a.Pickup,
                 Message = a.Message,
                 Featured_Adverts = a.Featured_Adverts,
-                Like_Adverts = a.Like_Adverts,
+                Like = a.Like,
                 Book = a.Book,
                 BookId = a.BookId,
                 User = a.User,
@@ -762,7 +762,7 @@ namespace BLL.Data
             ad.Pickup = a.Pickup;
             ad.Message = a.Message;
             ad.Featured_Adverts = a.Featured_Adverts;
-            ad.Like_Adverts = a.Like_Adverts;
+            ad.Like = a.Like;
             ad.User = a.User;
             ad.UserId = a.UserId;
             ad.Book = a.Book;
@@ -872,50 +872,7 @@ namespace BLL.Data
         }
         #endregion
 
-        #region LikeAdvert
-        public IEnumerable<Like_AdvertModel> GetAllLikeAdverts()
-        {
-            return db.Like_Adverts.GetAll().Select(i => new Like_AdvertModel(i)).ToList();
-        }
-
-        public Like_AdvertModel GetLikeAdvert(int Id)
-        {
-            return new Like_AdvertModel(db.Like_Adverts.GetItem(Id));
-        }
-
-        public void CreateLikeAdvert(Like_AdvertModel fa)
-        {
-            db.Like_Adverts.Create(new Like_Advert()
-            {
-                UserId = fa.UserId,
-                User = fa.User,
-                AdvertId = fa.AdvertId,
-                Advert = fa.Advert
-            });
-            Save();
-        }
-
-        public void UpdateLikeAdvert(Like_AdvertModel l, int like_advertId)
-        {
-            Like_Advert lk = db.Like_Adverts.GetItem(l.Like_AdvertId);
-
-            lk.User = l.User;
-            lk.UserId = l.UserId;
-            lk.Advert = l.Advert;
-            lk.AdvertId = l.AdvertId;
-            Save();
-        }
-
-        public void DeleteLikeAdvert(int id)
-        {
-            Like_Advert f = db.Like_Adverts.GetItem(id);
-            if (f != null)
-            {
-                db.Like_Adverts.Delete(f.Like_AdvertId);
-                Save();
-            }
-        }
-        #endregion
+      
 
         #region Locality
         public IEnumerable<LocalityModel> GetAllLocalities()

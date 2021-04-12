@@ -54,13 +54,13 @@ namespace DAL.Repository
             advert.ExchangeCompleted = Advert.ExchangeCompleted;
             advert.SaleCompleted = Advert.SaleCompleted;
             advert.Finish = Advert.Finish;
+            advert.Like = Advert.Like;
             advert.Date_of_Create = Advert.Date_of_Create;
             advert.Number_of_views = Advert.Number_of_views;
             advert.Delivery = Advert.Delivery;
             advert.Pickup = Advert.Pickup;
             advert.Message = Advert.Message;
             advert.Featured_Adverts = Advert.Featured_Adverts;
-            advert.Like_Adverts = Advert.Like_Adverts;
             advert.BookId = Advert.BookId;
             advert.UserId = Advert.UserId;
 

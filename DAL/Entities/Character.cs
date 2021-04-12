@@ -15,7 +15,7 @@ namespace DAL.Entities
         public string Name { get; set; } // Имя персонажа
 
         [Display(Name = "Другие имена")]
-        public string Other_name { get; set; } // Другие именя
+        public string Other_name { get; set; } // Другие имена
 
         [Display(Name = "Пол")]
         public string Sex { get; set; } //Пол

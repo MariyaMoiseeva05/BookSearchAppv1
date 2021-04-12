@@ -40,7 +40,6 @@ namespace DAL.Repository
                 .Include(m => m.Message)
                 .Include(fa => fa.Featured_Adverts)
                 .Include(fb => fb.Featured_Books)
-                .Include(l => l.Like_Adverts)
                 .Include(a => a.Think)
                 .Include(r => r.Review)
                 .Include(q => q.Quote)
@@ -54,7 +53,6 @@ namespace DAL.Repository
                 .Include(m => m.Message)
                 .Include(fa => fa.Featured_Adverts)
                 .Include(fb => fb.Featured_Books)
-                .Include(l => l.Like_Adverts)
                 .Include(a => a.Think)
                 .Include(r => r.Review)
                 .Include(q => q.Quote)
@@ -84,7 +82,6 @@ namespace DAL.Repository
             user.Message = User.Message;
             user.Featured_Books = User.Featured_Books;
             user.Featured_Adverts = User.Featured_Adverts;
-            user.Like_Adverts = User.Like_Adverts;
 
             db.PUsers.Update(User);
             db.SaveChanges();

@@ -20,7 +20,6 @@ namespace BLL.Interfaces
         IEnumerable<AdvertModel> GetAllAdverts();
         IEnumerable<Featured_AdvertModel> GetAllFeaturedAdverts();
         IEnumerable<Featured_BookModel> GetAllFeaturedBooks();
-        IEnumerable<Like_AdvertModel> GetAllLikeAdverts();
         IEnumerable<LocalityModel> GetAllLocalities();
         IEnumerable<MessageModel> GetAllMessages();
         IEnumerable<Comment_ReviewModel> GetAllComment_Review();
@@ -108,10 +107,6 @@ namespace BLL.Interfaces
         void UpdateFeaturedBook(Featured_BookModel fb, int featured_bookId);
         void DeleteFeaturedBook(int id);
 
-        Like_AdvertModel GetLikeAdvert(int like_advertId);
-        void CreateLikeAdvert(Like_AdvertModel la);
-        void UpdateLikeAdvert(Like_AdvertModel la, int like_advertId);
-        void DeleteLikeAdvert(int id);
 
         LocalityModel GetLocality(int localityId);
         void CreateLocality(LocalityModel l);

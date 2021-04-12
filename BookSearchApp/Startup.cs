@@ -64,7 +64,7 @@ namespace BookSearchApp
             services.ConfigureApplicationCookie(options => // возврат 401 кода в авторизации 
             {
                 options.Cookie.Name = "SimpleWebApp";
-                options.LoginPath = "/";
+                options.LoginPath = "/html/Login.html";
                 options.AccessDeniedPath = "/";
                 options.LogoutPath = "/";
                 options.Events.OnRedirectToLogin = context =>
@@ -139,10 +139,10 @@ namespace BookSearchApp
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
 
             app.UseDefaultFiles();
             app.UseStaticFiles();

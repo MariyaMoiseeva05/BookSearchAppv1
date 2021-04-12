@@ -2,8 +2,7 @@
     common.init();
 
 });
-var options = { year: 'numeric', month: 'long', day: 'numeric', minute: '2-digit', hour: 'numeric', second: '2-digit' };
-var formatter = new Intl.DateTimeFormat("ru", options); //формат даты
+
 var common = {
     user_type: "", //тип пользователя
     //получение текущего пользователя
@@ -19,19 +18,22 @@ var common = {
                 },
                 200: function (data) {
                     $("#msgLogin").html(data.message);
-                    if (data.role !== undefined) {
+                    /*if (data.role !== undefined) {
                         sessionStorage.setItem('role', data.role[0]);
                         sessionStorage.setItem('userid', data.id);
                     }
                     if (data.isAuthenticated == 0) {
-                        $(".login").hide();
-
+                        $("#logoffBtn").hide();
                         sessionStorage.setItem('role', 'guest');
                         sessionStorage.setItem('userid', '');
                     }
                     else {
-                        $(".not-login").hide();
-                    }
+                        let x = window.location;
+                        if (x.pathname == "/Login.html") {
+                            $(location).attr('href', "/");
+                        }
+                        $("#btnLogin").hide();
+                    }*/
                 }
             }
         });
@@ -39,7 +41,7 @@ var common = {
     //выход из аккаунта
     logoff: function () {
         $.ajax({
-            url: '/api/account/logoff',
+            url: '/api/Account/Logoff',
             type: 'POST',
             contentType: 'application/json',
             success: function (data) {
@@ -77,3 +79,4 @@ var common = {
         common.customizePage();
     }
 };
+

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     getAuthor();
     getGenre();
     getType();
+    showFile();
 });
 
 //var formatter = new Intl.DateTimeFormat("ru"); 
@@ -23,7 +24,8 @@ function getBook() {
                     html += "<div class=\"post-image\"><img src=" + book[i].ImageLink + "></div>";
                     html += "<div class=\"down-content\">";
                     html += "<a href=\"#\"><h4>" + book[i].Title + "</h4 ></a>";
-                    html += "<ul class=\"post - info\">";
+                    html += "<ul class =\"post-info\">";
+                    html += "<li><a href=#>Подробнее о книге</a></li>";
                   //  html += "<li><a href=\"#\">Автор" + book[i].Authors.Author.Full_name + "</a></li>";
                     html += "</ul>";
                     html += "</div>";
@@ -159,3 +161,62 @@ function createBook() {
         }
     });
 }
+
+const dropArea = document.querySelector(".drag-area"),
+    dragText = document.getElementById("dragHeader"),
+    buttonDrag = document.getElementById("buttonDrag"),
+    inputDrag = document.getElementById("addImage");
+let file;
+
+function showFile() {
+    let fileType = file.type;
+    let validExtensions = ["image/jpeg", "image/jpg", "image/png"];
+    if (validExtensions.includes(fileType)) {
+        let fileReader = new FileReader();
+        fileReader.onload = () => {
+            let fileURL = fileReader.result;
+            let imgTag = '<img src='+ fileURL+ ' alt="">';
+            dropArea.innerHTML = imgTag;
+        }
+        fileReader.readAsDataURL(file);
+    } else {
+        alert("К сожалению, такой файл загрузить невозможно, выберите изображение");
+        dropArea.classList.remove("active");
+        dragText.textContent = "Отпустите файл, чтобы загрузить его";
+    }
+}
+
+buttonDrag.onclick = () => {
+    inputDrag.click();
+}
+
+inputDrag.addEventListener("change", function () {
+    file = this.files[0];
+    dropArea.classList.add("active");
+    showFile();
+});
+
+dropArea.addEventListener("dragover", (event) => {
+    event.preventDefault();
+    dropArea.classList.add("active");
+    dragText.textContent = "Отпустите файл, чтобы загурзить его";
+
+});
+
+dropArea.addEventListener("dragleave", () => {
+    dropArea.classList.remove("active");
+    dragText.textContent = "Перетащите и отпустите файл";
+});
+
+dropArea.addEventListener("drop", (event) => {
+    event.preventDefault();
+    file = event.dataTransfer.files[0];
+    showFile();
+});
+
+
+
+
+
+
+

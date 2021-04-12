@@ -18,10 +18,9 @@ namespace BLL.Models
         public int Number_of_views { get; set; }
         public bool Delivery { get; set; }
         public bool Pickup { get; set; }
+        public int Like { get; set; }
         public virtual ICollection<Message> Message { get; set; } 
         public virtual ICollection<Featured_Advert> Featured_Adverts { get; set; }
-        public virtual ICollection<Like_Advert> Like_Adverts { get; set; }
-
         public int BookId { get; set; } 
         public virtual Book Book { get; set; }
         public string UserId { get; set; } 
@@ -44,9 +43,9 @@ namespace BLL.Models
             Number_of_views = a.Number_of_views;
             Delivery = a.Delivery;
             Pickup = a.Pickup;
+            Like = a.Like;
             Message = a.Message;
             Featured_Adverts = a.Featured_Adverts;
-            Like_Adverts = a.Like_Adverts;
 
         }
 

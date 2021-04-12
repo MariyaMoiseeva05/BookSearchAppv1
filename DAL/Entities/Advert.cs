@@ -27,9 +27,9 @@ namespace DAL.Entities
         public int Number_of_views { get; set; } // Количество просмотров
         public bool Delivery { get; set; } // Флаг доставки
         public bool Pickup { get; set; } // Флаг самовывоза
+        public int Like { get; set; } // лайки
         public virtual ICollection<Message> Message { get; set; } // Сообщения
         public virtual ICollection<Featured_Advert> Featured_Adverts { get; set; } // Избранные объявления
-        public virtual ICollection<Like_Advert> Like_Adverts { get; set; } // Избранные объявления
 
         public int BookId { get; set; } // ссылка на книгу
         public virtual Book Book { get; set; }

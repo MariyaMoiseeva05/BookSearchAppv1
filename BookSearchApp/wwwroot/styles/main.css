@@ -24,7 +24,45 @@ h6 {
         text-decoration: underline; /* Добавляем подчёркивание */
     }
 
+.form-search-review {
+    position: relative;
+    min-width: 500px;
+    margin: 0 auto;
+}
+.search-review {
+    background: white;
+}
 
+    .search-review input {
+        width: 100%;
+        height: 42px;
+        padding-left: 10px;
+        border: 5px solid rgba(255,171,0,0.10407913165266103);
+        border-radius: 5px;
+        outline: none;
+        background: #f9f0da;
+        color: #9E9C9C;
+       
+    }
+
+    .search-review button {
+        position: absolute;
+        top: 0;
+        right: 0px;
+        width: 42px;
+        height: 42px;
+        border: none;
+        background: #ff5100;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+    }
+
+        .search-review button:before {
+            content: "\f002";
+            font-family: FontAwesome;
+            font-size: 16px;
+            color: #F9F0DA;
+        }
 
 
 blockquote, container.expanded.quote {
@@ -1706,6 +1744,8 @@ section.large-gap {
       opacity: 0.75; }
     .main-sidebar .latest-posts ul.latest-post-list li:hover .right-content h6 {
       color: #F2C94C; }
+
+
 
 .main-sidebar .categories ul.categories {
   padding: 0;

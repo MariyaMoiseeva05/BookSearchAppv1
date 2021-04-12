@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../LoginStyle/bootstrap.min.css">
 
     <link rel="stylesheet" href="../LoginStyle/style.css">
-    <title>Login #5</title>
+    <title>Вход пользователя</title>
 </head>
 <body>
 
@@ -39,21 +39,21 @@
                                     <input type="password" class="form-control" placeholder="Введите пароль" id="Password">
                                 </div>
                                 <div class="d-sm-flex mb-5 align-items-center">
-                                    <label class="control control--checkbox mb-3 mb-sm-0">
+                                    <label class="control control--checkbox mb-3 mb-sm-0" for="remember_me">
                                         <span class="caption">Запомнить?</span>
-                                        <input type="checkbox" checked="checked" />
+                                        <input type="checkbox" id="remember_me" checked="checked" />
                                         <div class="control__indicator"></div>
                                     </label>
                                     <span class="ml-auto"><a href="#" class="forgot-pass">Забыли пароль?</a></span>
                                 </div>
                                 <div class="row">
-                                <div class="col-lg-6">
-                                    <input type="button" value="Войти" id="btnLogin" class="btn btn-block py-2 btn-primary">
-                                </div>
-                                <div class="col-lg-6">
-                                    <input type="button" value="Выйти" id="logoffBtn" class="btn btn-block py-2 btn-secondary">
-                                </div>
+                                    <div class="col-lg-6">
+                                        <input type="button" value="Войти" onclick="logIn();" id="btnLogin" class="btn btn-block py-2 btn-primary">
                                     </div>
+                                    <div class="col-lg-6">
+                                        <input type="button" value="Выйти" id="logoffBtn" onclick="logOff();" class="btn btn-block py-2 btn-secondary">
+                                    </div>
+                                </div>
                                 <br>
                                 <div class="btn-group">
                                     <a href="#" class="login100-social-item bg1" style="color:#3b5998">
@@ -84,6 +84,7 @@
     <script src="../scripts/LoginStyleJs/bootstrap.min.js"></script>
     <script src="../scripts/LoginStyleJs/main.js"></script>
     <script src="../js/Login.js"></script>
-    <script src="../js/Login_Register.js"></script>
+    <!--<script src="../js/Login_Register.js"></script>-->
+    <script src="../js/Register.js"></script>
 </body>
 </html>

@@ -1,7 +1,12 @@
-﻿function logIn() {
+﻿$('.message a').click(function () {
+    $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+});
+
+function logIn() {
     var login = $('#Login').val();
     var password = $('#Password').val();
-
+    var remember_me = $("#remember_me").prop("checked");
+    console.log(remember_me);
     $.ajax({
         url: '/api/Account/Login',
         type: 'POST',
@@ -9,16 +14,17 @@
         data: JSON.stringify({
             Login: login,
             Password: password,
+            RememberMe: remember_me
         }),
         success: function (data) {
 
-            $('#msg_l').html('');
-            $('#msg_l').html(data.message);
+            $('#msgLogin').html('');
+            $('#msgLogin').html(data.message);
             if (data.error !== undefined) {
                 if (data.error.length > 0) {
                     let html = ""
                     data.error.forEach(element => html += "<li>" + element + "</li>");
-                    $("#formError_l").html(html);
+                    $("#formErrorLogin").html(html);
                     $('#password').val("");
                 }
             }
@@ -33,8 +39,27 @@
         }
     });
 }
-
 function logOff() {
+    $.ajax({
+        url: 'api/Account/Logoff',
+        type: 'POST',
+        contentType: 'application/json',
+        success: function (data) {
+            var msg = JSON.parse(data);
+            document.getElementById("msgLogin").innerHTML = "";
+            var mydiv = document.getElementById('formErrorLogin');
+            while (mydiv.firstChild) {
+                mydiv.removeChild(mydiv.firstChild);
+            }
+            document.getElementById("msgLogin").innerHTML = msg;
+            location.reload();
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    });
+
+
     var request = new XMLHttpRequest();
     request.open("POST", "api/account/logoff");
     request.onload = function () {
@@ -53,5 +78,5 @@ function logOff() {
     localStorage.removeItem('jcart');
 }
 // Обработка кликов по кнопкам
-document.getElementById("btnLogin").addEventListener("click", logIn);
-document.getElementById("logoffBtn").addEventListener("click", logOff);
+/*document.getElementById("btnLogin").addEventListener("click", logIn);
+document.getElementById("logoffBtn").addEventListener("click", logOff);*/

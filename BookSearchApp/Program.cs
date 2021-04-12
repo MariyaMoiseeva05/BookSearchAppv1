@@ -39,12 +39,6 @@ namespace BookSearchApp
                 }
             }
             host.Run();
-
-
-            CreateHostBuilder(args).Build().Run();
-
-            var kernel = new StandardKernel(new NinjectRegistration(), new ServiceModule("BookSearchContext"));
-            IDbCRUD crudServ = kernel.Get<IDbCRUD>();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
