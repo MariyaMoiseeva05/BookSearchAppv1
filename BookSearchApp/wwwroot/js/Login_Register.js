@@ -1,7 +1,10 @@
 ﻿$(document).ready(function () {
     common.init();
-
 });
+$('.message a').click(function () {
+    $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+});
+
 var options = { year: 'numeric', month: 'long', day: 'numeric', minute: '2-digit', hour: 'numeric', second: '2-digit' };
 var formatter = new Intl.DateTimeFormat("ru", options); //формат даты
 var common = {
@@ -53,7 +56,7 @@ var common = {
                 }
                 else {
                     alert(data.message);
-                    $(location).attr('href', "/Login.html");
+                    $(location).attr('href', "/html/Login.html");
                 }
 
             },
@@ -77,3 +80,4 @@ var common = {
         common.customizePage();
     }
 };
+$('.close').on('click', function () { modals.closeAllModals(); })

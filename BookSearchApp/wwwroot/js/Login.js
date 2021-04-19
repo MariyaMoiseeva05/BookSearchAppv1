@@ -1,4 +1,8 @@
-﻿function logIn() {
+﻿$('.message a').click(function () {
+    $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+});
+
+function logIn() {
     var login = $('#Login').val();
     var password = $('#Password').val();
 
@@ -34,24 +38,3 @@
     });
 }
 
-function logOff() {
-    var request = new XMLHttpRequest();
-    request.open("POST", "api/account/logoff");
-    request.onload = function () {
-        var msg = JSON.parse(this.responseText);
-        document.getElementById("msgLogin").innerHTML = "";
-        var mydiv = document.getElementById('formErrorLogin');
-        while (mydiv.firstChild) {
-            mydiv.removeChild(mydiv.firstChild);
-        }
-        document.getElementById("msgLogin").innerHTML = msg;
-        location.reload();
-    };
-    request.setRequestHeader("Content-Type",
-        "application/json;charset=UTF-8");
-    request.send();
-    localStorage.removeItem('jcart');
-}
-// Обработка кликов по кнопкам
-//document.getElementById("btnLogin").addEventListener("click", logIn);
-//document.getElementById("logoffBtn").addEventListener("click", logOff);

@@ -16,6 +16,7 @@ function getBook() {
         success: function (data) {
             let book = JSON.parse(data);
             let html = "";
+            var formatter = new Intl.DateTimeFormat("ru"); 
             if (book) {
                 for (var i in book) {
                     html += "<div class=\"col-md-4 masonry-item\">";
@@ -25,6 +26,7 @@ function getBook() {
                     html += "<a href=\"#\"><h4>" + book[i].Title + "</h4 ></a>";
                     html += "<ul class=\"post - info\">";
                   //  html += "<li><a href=\"#\">Автор" + book[i].Authors.Author.Full_name + "</a></li>";
+                    html += "<li><p class=\"lead\">Дата первой публикации: " + formatter.format(new Date(Date.parse(book[i].Publication_date))) +"</p></li>";
                     html += "</ul>";
                     html += "</div>";
                     html += "</div>";
@@ -108,6 +110,7 @@ function getType() {
 
 }
 
+
 function createBook() {
     var title = $('#book-bookTitle').val();
     var description = $('#book-bookDescription').val();
@@ -152,7 +155,7 @@ function createBook() {
         }),*/
         data: data,
         success: function (data) {
-           getBook();
+            getBook();
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert("У вас недостаточно прав для выполнения этого действия");

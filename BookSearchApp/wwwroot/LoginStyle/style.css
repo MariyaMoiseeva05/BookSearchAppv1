@@ -2,9 +2,17 @@ body {
   font-family: "Roboto", sans-serif;
   background-color: #fff; }
 
+#add {
+    background: #ffb1007a;
+}
 p {
-  color: #b3b3b3;
-  font-weight: 300; }
+    color: #b3b3b3;
+    font-weight: 300;
+}
+
+option:hover {
+    background-color: #ffb1007a;
+}
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -28,16 +36,80 @@ a {
     text-align: left;
 }
 
-#authorDiv, #genreDiv, #typeDiv, #book-bookDescription, #book-bookStory {
+#authorDiv, #genreDiv, #typeDiv {
     display: block;
     width: 100%;
-    height: 100px;
+    height: 200px;
     padding: 0.375rem 0.75rem;
     font-size: 0.85rem;
     font-weight: 200;
     line-height: 1.5;
     color: #495057;
 }
+
+body .drag-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 20vh;
+    background: #fff;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.drag-area {
+    border: 2px dashed #F2C94C;
+    min-height: 420px;
+    min-width: 290px;
+    max-height: 620px;
+    max-width: 590px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+    .drag-area img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+    .drag-area .active {
+        border: 2px solid #F2C94C;
+    }
+
+    .drag-area .icon {
+        font-size: 30px;
+        color: #F2C94C;
+    }
+
+    .drag-area header {
+        font-size: 20px;
+        font-weight: 500;
+        color: #212529;
+    }
+
+    .drag-area span {
+        font-size: 18px;
+        font-weight: 500;
+        color: #F2C94C;
+        margin: 10px 0 15px 0;
+    }
+
+    .drag-area button {
+        padding: 10px 20px;
+        font-size: 15px;
+        font-weight: 500;
+        background: #212529;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
 
 .form-control {
     display: block;
@@ -54,11 +126,6 @@ font-size:1.5rem;
 font-weight:800;
 }
 
-
-
-.msg-error {
-    color: red;
-}
 
 .form-select {
     display: block;

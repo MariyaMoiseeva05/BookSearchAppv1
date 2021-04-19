@@ -14,10 +14,8 @@
     <link rel="stylesheet" href="../LoginStyle/bootstrap.min.css">
     <link rel="stylesheet" href="../LoginStyle/style.css">
 </head>
-<body>
-    <div class="d-md-flex half">
-        <div class="bg" style="background-image: url('https://i.joylada.net/12816486/writer/5a8ab967007ee3000179f46e/cover-eb15058f-6562-404f-82f7-52d6c9eb3807.jpg/thumbnail');"></div>
-        <div class="contents">
+<body id="add">
+      <div class="contents">
             <div class="container p-3">
                 <div class="form-block mx-auto">
                     <div class="text-left">
@@ -70,11 +68,7 @@
                                 <label for="author-Language_of_works">Язык произведений</label>
                                 <input class="form-control" id="author-Language_of_works" placeholder="Язык(и), на котором(ых) были написны произведения " />
                             </div>
-                            <div class="form-group  col-6 themed-grid-col">
-                                <label for="author-Debut">Дебют</label>
-                                <input class="form-control" id="author-Debut" placeholder="Произведение-дебют" />
-                            </div>
-                            <div class="form-group  col-6 themed-grid-col">
+                            <div class="form-group col-12">
                                 <label for="book-Details">Подробная биография автора</label>
                                 <textarea name="message" rows="6" class="form-control" id="book-Details" placeholder="Напишите всё, что знаете об авторе"></textarea>
                             </div>
@@ -87,6 +81,10 @@
                                 <textarea name="message" rows="6" class="form-control" id="book-Prizes" placeholder="Укажите все награды автора"></textarea>
                             </div>
                             <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Debut">Дебют</label>
+                                <input class="form-control" id="author-Debut" placeholder="Произведение-дебют" />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
                                 <label for="addImage">Изображение:</label>
                                 <input class="form-control" type="file" id="addImage" name="addImageAuthor" accept=".jpg, .jpeg, .png" placeholder="Прикрепите изображение" />
                             </div>
@@ -96,7 +94,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
 
 

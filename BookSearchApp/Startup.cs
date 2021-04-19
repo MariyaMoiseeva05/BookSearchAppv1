@@ -137,13 +137,13 @@ namespace BookSearchApp
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseMvc();

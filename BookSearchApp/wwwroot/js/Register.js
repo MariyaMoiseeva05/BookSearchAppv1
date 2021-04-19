@@ -1,6 +1,9 @@
 ﻿$(document).ready(function () {
 });
-const uri = "/api/Account/Register";
+$('.message a').click(function () {
+    $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+});
+
 function Register() {
     // Считывание данных с формы
     var login = $("#login").val();
@@ -10,18 +13,12 @@ function Register() {
     var email = $("#email").val();
     var password = $("#password").val();
     var passwordConfirm = $("#passwordConfirm").val();
-    let request = new XMLHttpRequest();
-    request.open("POST", uri);
-    request.setRequestHeader("Accepts",
-        "application/json;charset=UTF-8");
-    request.setRequestHeader("Content-Type",
-        "application/json;charset=UTF-8");
-    // Обработка ответа
-    request.onload = function () {
-        ParseResponse(this);
-    };
-    // Запрос на сервер
-    request.send(JSON.stringify({
+
+    $.ajax({
+        url: '/api/Account/Register',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
         name: name,
         surname: surname,
         sex: sex,
@@ -29,31 +26,29 @@ function Register() {
         email: email,
         password: password,
         passwordConfirm: passwordConfirm
-    }));
-}
-// Разбор ответа
-function ParseResponse(e) {
+        }),
+        success: function (data) {
 
-    // Очистка контейнера вывода сообщений
-    $("#msgLogin").html("");
-    $("#formErrorLogin").html('');
-    // Обработка ответа от сервера
-    let response = JSON.parse(e.responseText);
-    $("#msgRegister").html(response.message);
-    // Вывод сообщений об ошибках
-    if (response.error.length > 0) {
-        $('.toast1').toast('show');
-        $("#drag").draggable();
-        let htmlError = "";
-        for (var i = 0; i < response.error.length; i++) {
-            htmlError += "<li>" + response.error[i] + '</li>';
+            $('#msg').html('');
+            $('#msg').html(data.message);
+            if (data.error !== undefined) {
+                if (data.error.length > 0) {
+                    let html = ""
+                    data.error.forEach(element => html += "<li>" + element + "</li>");
+                    $("#formError").html(html);
+                    $('#password').val("");
+                    $('#passwordConfirm').val("");
+                }
+            }
+            else {
+                alert(data.message);
+                $(location).attr('href', "/html");
+            }
+
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
-        $("#formErrorRegister").html(htmlError);
-    }
-    // Очистка полей паролей
-    $("#password").val('');
-    $("#passwordConfirm").val('');
+    });
 }
-// Обработка клика по кнопке регистрации
-document.querySelector("#btnRegister").addEventListener("click", Register);
 

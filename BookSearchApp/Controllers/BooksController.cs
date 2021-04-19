@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Threading.Tasks;
 using BLL.Interfaces;
 using BLL.Models;
 using Microsoft.AspNetCore.Hosting;
@@ -138,48 +139,75 @@ namespace BookSearchApp.Controllers
             return NoContent();
         }
 
-       /* [HttpPost("upload")]
+        [HttpPost("upload")]
         public async Task<IActionResult> UploadFile()
         {
             IFormCollection Files = await Request.ReadFormAsync().ConfigureAwait(false);
-            //foreach (var file in Files.Files) //проходимся по всем файлам
-            //{
-            //    //уникальное имя файла
-            //    string fileName = String.Format(@"{0}." + file.FileName.Substring(file.FileName.LastIndexOf(".") + 1, file.FileName.Length - file.FileName.LastIndexOf(".") - 1), System.Guid.NewGuid());
+            foreach (var file in Files.Files) //проходимся по всем файлам
+            {
+                //уникальное имя файла
+                string fileName = String.Format(@"{0}." + file.FileName.Substring(file.FileName.LastIndexOf(".") + 1, file.FileName.Length - file.FileName.LastIndexOf(".") - 1), System.Guid.NewGuid());
 
-            //    //путь к папке Files
-            //    string path = _appEnvironment.WebRootPath + "/Files/" + fileName;
+                //путь к папке Files
+                string path = _appEnvironment.WebRootPath + "/Files/" + fileName;
+                try
+                {
 
-            //    using (FileStream fs = new FileStream(path, FileMode.Create))
-            //    {
-            //        //записываем файл на сервер
-            //        await file.CopyToAsync(fs).ConfigureAwait(false);
-            //    }
+                    using (FileStream fs = new FileStream(path, FileMode.Create))
+                    {
+                        //записываем файл на сервер
+                        await file.CopyToAsync(fs).ConfigureAwait(false);
+                        _logger.LogInformation("UploadFile успешно по пути {0}", path);
+                    }
+                }
+                catch (IOException e)
+                {
+                    _logger.LogError("uploadFile ошибка при записи файла {0}", e.Message);
+                }
 
-            //    BookModel book = new BookModel { FileName = file.FileName, Link = path };
-            //    //сохраняем сведения о документе в БД
-            //    _context.Books.Add(book);
-            //    _context.SaveChanges();
-            //}
+                BookModel book = new BookModel { ImagePath = file.FileName, ImageLink = path };
+                //сохраняем сведения о документе в БД
+                try
+                {
+                    _dbCrud.CreateBook(book);
+                }
+                catch (DataException e)
+                {
+                    _logger.LogError("uploadFile ошибка при сохранении в БД{0}", e.Message);
+                    ModelState.AddModelError(string.Empty, "Невозможно применить изменения. Обратитесь к администратору системы для решения проблемы");
+                    throw;
+
+                }
+            }
             return Ok("ok");
-        }*/
+        }
 
-        /*[HttpGet("download/{id}")]
+        [HttpGet("download/{id}")]
         public async Task<IActionResult> DownloadFile([FromRoute] int id) // получаем книуг по её id
         {
-            //BookModel book = _dbCrud.GetBook(id);
+            _logger.LogInformation("DownloadFile {0}", id);
+            BookModel book = _dbCrud.GetBook(id);
 
-            //if (book == null)
-            //{
-            //    return NotFound();
-            //}
-            //string path = book.Link;
-            //FileStream fs = new FileStream(path, FileMode.Open);
-            //string file_type = "application/" + book.FileName.Substring(book.FileName.LastIndexOf(".") + 1, book.FileName.Length - book.FileName.LastIndexOf(".") - 1);
-            //string file_name = book.FileName;
-            //return File(fs, file_type, file_name);
-            return null;
-        }*/
+            if (book == null)
+            {
+                _logger.LogInformation("DownloadFile {0} не найдена", id);
+                return NotFound();
+            }
+
+            string path = book.ImageLink;
+            try
+            {
+                FileStream fs = new FileStream(path, FileMode.Open);
+                string file_type = "application/" + book.ImagePath.Substring(book.ImagePath.LastIndexOf(".") + 1, book.ImagePath.Length - book.ImagePath.LastIndexOf(".") - 1);
+                string file_name = book.ImagePath;
+                return File(fs, file_type, file_name);
+            }
+            catch (IOException e)
+            {
+                _logger.LogError("DownloadFile {0} ошибка при открытии потока: {1}", id, e.Message);
+            }
+            return BadRequest("Ошибка на сервере!");
+        }
 
     }
 }
