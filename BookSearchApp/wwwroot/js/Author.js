@@ -1,7 +1,7 @@
 ﻿
-/*$(document).ready(function () {
-    author.init();
-})*/
+$(document).ready(function () {
+    author.loadData();
+})
 
 var author = {
     url: '/api/Authors',
