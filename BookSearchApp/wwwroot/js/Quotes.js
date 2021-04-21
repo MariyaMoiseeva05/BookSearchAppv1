@@ -1,6 +1,8 @@
 ﻿document.addEventListener("DOMContentLoaded", function (event) {
     getQuote();
     getBook();
+    getAuthor();
+    createQuote();
 });
 
 const likeBtn = document.getElementById("likeBtn");
@@ -116,4 +118,31 @@ function getQuote() {
             alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
+}
+
+function createQuote() {
+    var authorBook = $('#authorDiv').val();
+    var bookQuote = $('#bookDiv').val();
+    var contentQuote = $('#quote-Content').val();
+    var book_id = $('#book_id').val();
+    var user_id = $('#user_id').val();
+   
+        $.ajax({
+            url: '/api/Quotes',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                Author: authorBook,
+                Book: bookQuote,
+                Content: contentQuote,
+                BookID: book_id,
+                UserId: user_id
+            }),
+            success: function (data) {
+                getQuote();
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
 }
