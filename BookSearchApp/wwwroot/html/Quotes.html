@@ -263,18 +263,20 @@
                 </div>
                 <div class="modal-body">
                     <form>
+                        <input type="hidden" id="book_id" class="form-control">
+                        <input type="hidden" class="form-control" id="user_id">
                         <div class="form-group  col-12 themed-grid-col">
-                            <label for="diaryDiv">Выберите автора книги:</label>
+                            <label for="authorDiv">Выберите автора книги:</label>
                             <select class="form-control" id="authorDiv" required>
                             </select>
                         </div>
                         <div class="form-group  col-12 themed-grid-col">
-                            <label for="diaryDiv">Выберите книгу: </label>
+                            <label for="bookDiv">Выберите книгу: </label>
                             <select class="form-control" id="bookDiv" required>
                             </select>
                         </div>
                         <div class="form-group  col-12 themed-grid-col">
-                            <label for="create-Content">Цитата</label>
+                            <label for="quote-Content">Цитата</label>
                             <textarea class="form-control" id="quote-Content" placeholder="Напишите цитату..." rows="4"></textarea>
                         </div>
                         <button onclick="createQuote();" id="createQuote" type="submit" class="btn btn-block py-2 btn-primary">Добавить цитату</button>
@@ -297,7 +299,7 @@
     <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
     <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
     <script src="../scripts/main.js" charset="utf-8"></script>
-    <script src="../js/Quotes.js" charset="utf-8"></script>
+    <script src="../js/Quotes.js"></script>
     <script src="../js/Login.js"></script>
     <script src="../js/Login_Register.js"></script>
     <script src="../js/Register.js"></script>
