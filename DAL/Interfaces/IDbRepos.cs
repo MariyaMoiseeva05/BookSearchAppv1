@@ -7,7 +7,9 @@ namespace DAL.Interfaces
     {
         IRepository<Book> Books { get; }
         IRepository<Author> Authors { get; }
+        IRepository<Author_Book> Authors_Books { get; }
         IRepository<Genre> Genres { get; }
+        IRepository<Genre_Book> Genres_Books { get; }
         IRepository<Interesting_fact> Interesting_facts { get; }
         IRepository<News> News { get; }
         IRepository<Quote> Quotes { get; }
@@ -26,6 +28,7 @@ namespace DAL.Interfaces
         IRepository<Featured_Book> Featured_Books { get; }
         IRepository<Comment_Review> Comment_Reviews { get; }
         IRepository<Comment_News> Comment_News { get; }
+        IRepository<TypeOfLit_Book> Type_of_literaturesBooks { get; }
         int Save();
     }
 }

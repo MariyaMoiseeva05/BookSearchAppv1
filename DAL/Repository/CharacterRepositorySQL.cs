@@ -15,10 +15,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Character Character)
+        public object Create(Character Character)
         {
             db.Characters.Add(Character);
             db.SaveChanges();
+            return Character.CharacterId;
         }
         public void Delete(object characterId)
         {

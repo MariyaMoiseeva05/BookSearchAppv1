@@ -12,9 +12,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Genre Genre)
+        public object Create(Genre Genre)
         {
             db.Genres.Add(Genre);
+            db.SaveChanges();
+            return Genre.GenreId;
         }
 
         public void Delete(object id)

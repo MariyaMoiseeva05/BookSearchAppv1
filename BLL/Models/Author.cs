@@ -22,8 +22,8 @@ namespace BLL.Models
         public string Awards { get; set; }
         public string Details { get; set; } // Подробно
         public string ImageLink { get; set; }
-        public string ImagePath{ get; set; }
-        public virtual ICollection<Author_Book> Book { get; set; } 
+        public string ImagePath { get; set; }
+        public virtual ICollection<Author_Book> Book { get; set; }
         public virtual ICollection<Interesting_fact> Interesting_fact { get; set; }  // Интересные факты
 
 
@@ -48,6 +48,29 @@ namespace BLL.Models
             Book = a.Book;
             Interesting_fact = a.Interesting_fact;
             Details = a.Details;
+        }
+        public DAL.Entities.Author getDALAuthor()
+        {
+            return new DAL.Entities.Author
+            {
+                AuthorId = this.AuthorId,
+                Full_name = this.Full_name,
+                Pseudonym = this.Pseudonym,
+                Date_of_Birth = this.Date_of_Birth,
+                Date_of_Death = this.Date_of_Death,
+                Citizenship = this.Citizenship,
+                Occupation = this.Occupation,
+                Years_of_creativity = this.Years_of_creativity,
+                Language_of_works = this.Language_of_works,
+                Debut = this.Debut,
+                Prizes = this.Prizes,
+                Awards = this.Awards,
+                ImageLink = this.ImageLink,
+                ImagePath = this.ImagePath,
+                Book = this.Book,
+                Interesting_fact = this.Interesting_fact,
+                Details = this.Details
+            };
         }
     }
 }

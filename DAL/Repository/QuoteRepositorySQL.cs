@@ -13,9 +13,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Quote Quote)
+        public object Create(Quote Quote)
         {
             db.Quotes.Add(Quote);
+            db.SaveChanges();
+            return Quote.QuoteId;
         }
 
         public void Delete(object id)

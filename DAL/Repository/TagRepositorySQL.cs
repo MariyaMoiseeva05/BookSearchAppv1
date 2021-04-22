@@ -12,9 +12,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Tag Tags)
+        public object Create(Tag Tags)
         {
             db.Tags.Add(Tags);
+            db.SaveChanges();
+            return Tags.Id;
         }
 
         public void Delete(object id)

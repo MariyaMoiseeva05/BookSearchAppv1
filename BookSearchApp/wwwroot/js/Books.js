@@ -1,4 +1,5 @@
-﻿
+﻿/*const { error } = require("jquery");*/
+
 
 document.addEventListener("DOMContentLoaded", function (event) {
     getBook();
@@ -23,7 +24,7 @@ function getBook() {
                     html += "<div class=\"standard-post without-sidebar-post\">";
                     html += "<div class=\"post-image\"><img src=" + book[i].ImageLink + "></div>";
                     html += "<div class=\"down-content\">";
-                    html += "<a href=\"#\"><h4>" + book[i].Title + "</h4 ></a>";
+                    html += '<a href="book.html?id=' + book[i].BookID+'"><h4>' + book[i].Title + '</h4 ></a>';
                     html += "<ul class=\"post - info\">";
                   //  html += "<li><a href=\"#\">Автор" + book[i].Authors.Author.Full_name + "</a></li>";
                     html += "<li><p class=\"lead\">Дата первой публикации: " + formatter.format(new Date(Date.parse(book[i].Publication_date))) +"</p></li>";
@@ -54,7 +55,7 @@ function getAuthor() {
             let html = "";  //текст вставки
             if (authors) {
                 for (var i in authors) {
-                    html += "<option value ='" + authors[i].AuthorID + "'>" + authors[i].Full_name + "</option>";
+                    html += "<option value ='" + authors[i].AuthorId + "'>" + authors[i].Full_name + "</option>";
                 }
             }
             $('#authorDiv').html(html);
@@ -116,7 +117,7 @@ function createBook() {
     var description = $('#book-bookDescription').val();
     var story = $('#book-bookStory').val();
     var edition = $('#book-bookEdition').val();
-    var publication_date = $('#book-bookPublicationDate').val();
+    var publication_date = $("#book-bookDate_of_publication").val();
     var screenings = $('#book-bookScreenings').val();
     var author = $('#authorDiv').val();
     var genre = $('#genreDiv').val();
@@ -126,7 +127,6 @@ function createBook() {
     if (fs.length > 0) {
         data.append("ImageLink", fs[0]);
     }
-    console.log(data);
     data.append("Title", title);
     data.append("Description", description);
     data.append("Story", story);
@@ -136,23 +136,11 @@ function createBook() {
     data.append("Author", author);
     data.append("Genre", genre);
     data.append("Type_of_literature", type_of_literature);
-    console.log(data);
     $.ajax({
         url: '/api/Books',
         type: 'POST',
         contentType: false,
-        contentData: false,
-        /*data: JSON.stringify({
-            title = title,
-            description = description,
-            story = story,
-            edition = edition,
-            publication_date = publication_date,
-            screenings = screenings,
-            author = author,
-            genre = genre,
-            type_of_literature = type_of_literature
-        }),*/
+        processData: false,
         data: data,
         success: function (data) {
             getBook();
@@ -160,5 +148,17 @@ function createBook() {
         error: function (xhr, ajaxOptions, thrownError) {
             alert("У вас недостаточно прав для выполнения этого действия");
         }
+    });
+}
+function viewBook(id) {
+   return $.ajax({
+        url: "/api/Books/"+id,
+        type: "GET",
+        dataType: "HTML",
+    }).done(function (data) {
+        return data; // Прокинем данные дальше, наружу
+    }).fail(function (xhr, ajaxOptions, thrownError) {
+        let error = JSON.parse(xhr.responseText);
+        console.log(error)
     });
 }

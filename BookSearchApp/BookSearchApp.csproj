@@ -19,5 +19,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\books\" />
+    <Folder Include="wwwroot\images\Новая папка\" />
+  </ItemGroup>
+
 
 </Project>

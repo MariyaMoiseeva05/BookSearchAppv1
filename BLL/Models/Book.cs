@@ -27,7 +27,6 @@ namespace BLL.Models
         public BookModel() { }
         public BookModel(Book b)
         {
-
             BookID = b.BookID;
             Title = b.Title;
             Description = b.Description;

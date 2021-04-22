@@ -33,7 +33,7 @@ namespace BLL.Interfaces
         void DeleteAuthor(int id);
 
         BookModel GetBook(int bookId);
-        void CreateBook(BookModel b);
+        void CreateBook(BookModel b, ICollection<string> a, ICollection<string> g, ICollection<string> tl);
         void UpdateBook(BookModel b, int bookId);
         void DeleteBook(int id);
 

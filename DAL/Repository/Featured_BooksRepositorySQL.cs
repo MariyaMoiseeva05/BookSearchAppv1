@@ -13,10 +13,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Featured_Book Featured_Book)
+        public object Create(Featured_Book Featured_Book)
         {
             db.Featured_Books.Add(Featured_Book);
             db.SaveChanges();
+            return Featured_Book.Featured_BookId;
         }
 
         public void Delete(object featBookId)

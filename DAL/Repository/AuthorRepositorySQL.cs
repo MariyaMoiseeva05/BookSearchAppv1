@@ -12,9 +12,11 @@ namespace DAL.Repository
         {
             db = dbcontext;
         }
-        public void Create(Author Author)
+        public object Create(Author Author)
         {
             db.Authors.Add(Author);
+            db.SaveChanges();
+            return Author.AuthorId;
         }
 
         public void Delete(object id)

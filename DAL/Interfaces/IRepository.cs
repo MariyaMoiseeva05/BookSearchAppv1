@@ -7,7 +7,7 @@ namespace DAL.Interfaces
     {
         IEnumerable<T> GetAll(); // получение всех объектов
         T GetItem(object id); // получение одного объекта по id
-        void Create(T item); // создание объекта
+        object Create(T item); // создание объекта
         void Update(T item, object id); // обновление объекта
         void Delete(object id); // удаление объекта по id
     }

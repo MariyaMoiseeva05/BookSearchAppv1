@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
-using BLL.Interfaces;
+﻿using BLL.Interfaces;
 using BLL.Models;
 using DAL.Entities;
 using DAL.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace BLL.Data
@@ -95,12 +97,15 @@ namespace BLL.Data
 
         public BookModel GetBook(int Id)
         {
-            return new BookModel(db.Books.GetItem(Id));
+            DAL.Entities.Book b = db.Books.GetItem(Id);
+            if (b != null)
+                return new BookModel(b);
+            else return null;
         }
 
-        public void CreateBook(BookModel b)
+        public void CreateBook(BookModel b, ICollection<string> a, ICollection<string> g, ICollection<string> tl)
         {
-            db.Books.Create(new Book()
+            int id = (int)db.Books.Create(new Book()
             {
                 Title = b.Title,
                 Description = b.Description,
@@ -122,6 +127,56 @@ namespace BLL.Data
 
             });
             Save();
+            
+            foreach (var s in tl)
+            {
+                DAL.Entities.TypeOfLit_Book typeOfLit_Book = new DAL.Entities.TypeOfLit_Book
+                {
+                    TypeId = int.Parse(s),
+                    BookId = id
+                };
+                try
+                {
+                    db.Type_of_literaturesBooks.Create(typeOfLit_Book);
+                }
+                catch (DataException e)
+                {
+                    throw new Exception(e.Message);
+                }
+            }
+            foreach (var s in g)
+            {
+                DAL.Entities.Genre_Book genre_book = new DAL.Entities.Genre_Book
+                {
+                    GenreId = int.Parse(s),
+                    BookId = id
+                };
+                try
+                {
+                    db.Genres_Books.Create(genre_book);
+                }
+                catch (DataException e)
+                {
+                    throw new Exception(e.Message);
+                }
+            }
+            foreach (var s in a)
+            {
+                DAL.Entities.Author_Book ab = new DAL.Entities.Author_Book
+                {
+                    AuthorId = int.Parse(s),
+                    BookId = id
+                };
+                try
+                {
+                    db.Authors_Books.Create(ab);
+                }
+                catch (DataException e)
+                {
+                    throw new Exception(e.Message);
+                }
+            }
+
         }
 
         public void UpdateBook(BookModel b, int bookId)
@@ -273,7 +328,7 @@ namespace BLL.Data
                 ImageLink = n.ImageLink,
                 ImagePath = n.ImagePath
 
-            }) ;
+            });
             Save();
         }
 
@@ -364,7 +419,7 @@ namespace BLL.Data
                 UserID = q.UserId,
                 User = q.User,
                 Like = q.Like
-            }) ;
+            });
             Save();
         }
 
@@ -678,7 +733,7 @@ namespace BLL.Data
                 ImageLink = ch.ImageLink,
                 Book_Characters = ch.Book_Characters
 
-            }) ;
+            });
             Save();
         }
 
@@ -731,7 +786,7 @@ namespace BLL.Data
                 ExchangeCompleted = a.ExchangeCompleted,
                 SaleCompleted = a.SaleCompleted,
                 Finish = a.Finish,
-                Date_of_Create =a.Date_of_Create,
+                Date_of_Create = a.Date_of_Create,
                 Number_of_views = a.Number_of_views,
                 Delivery = a.Delivery,
                 Pickup = a.Pickup,
@@ -808,7 +863,7 @@ namespace BLL.Data
         public void UpdateFeaturedAdvert(Featured_AdvertModel f, int featured_advertId)
         {
             Featured_Advert fa = db.Featured_Adverts.GetItem(f.Featured_AdvertId);
-            
+
             fa.User = f.User;
             fa.UserId = f.UserId;
             fa.Advert = f.Advert;
@@ -936,7 +991,7 @@ namespace BLL.Data
                 Name = l.Name,
                 Timezone = l.Timezone,
                 Adverts = l.Adverts
-        });
+            });
             Save();
         }
 
@@ -985,7 +1040,7 @@ namespace BLL.Data
                 User = m.User,
                 Advert = m.Advert,
                 AdvertId = m.AdvertId
-        });
+            });
             Save();
         }
 
@@ -1038,7 +1093,7 @@ namespace BLL.Data
                 ReviewId = cr.ReviewId,
                 Content = cr.Content,
                 Date_of_creation = cr.Date_of_creation
-        });
+            });
             Save();
         }
 
@@ -1088,7 +1143,7 @@ namespace BLL.Data
                 NewsId = cn.NewsId,
                 Content = cn.Content,
                 Date_of_creation = cn.Date_of_creation
-        });
+            });
             Save();
         }
 

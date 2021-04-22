@@ -11,8 +11,9 @@ namespace DAL.Entities
         public BookSearchContext(DbContextOptions<BookSearchContext> options)
             : base(options)
         { }
-        public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Author> Authors { get; set; }
+        public virtual DbSet<Author_Book> Author_Books { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
         public virtual DbSet<Comment_Review> Comments_Review { get; set; }
         public virtual DbSet<Comment_News> Comments_News { get; set; }
         public virtual DbSet<Think> Thinks { get; set; }
@@ -30,7 +31,6 @@ namespace DAL.Entities
         public virtual DbSet<Character> Characters { get; set; }
         public virtual DbSet<Book_Character> Book_Characters { get; set; }
         public virtual DbSet<Book_Collection> Book_Collections { get; set; }
-        public virtual DbSet<Author_Book> Author_Books { get; set; }
         public virtual DbSet<Advert> Adverts { get; set; }
         public virtual DbSet<Featured_Advert> Featured_Adverts { get; set; }
         public virtual DbSet<Like_Advert> Like_Adverts { get; set; }
@@ -87,7 +87,7 @@ namespace DAL.Entities
             modelBuilder.Entity<Author_Book>()
                 .HasOne(pt => pt.Author)
                 .WithMany(t => t.Book)
-                .HasForeignKey(pt => pt.BookId);
+                .HasForeignKey(pt => pt.AuthorId);
 
             modelBuilder.Entity<Genre_Book>()
             .HasKey(t => new { t.BookId, t.GenreId });

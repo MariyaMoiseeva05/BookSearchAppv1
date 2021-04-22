@@ -15,10 +15,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Collection Collection)
+        public object Create(Collection Collection)
         {
             db.Collections.Add(Collection);
             db.SaveChanges();
+            return Collection.CollectionId;
         }
         public void Delete(object collectionId)
         {

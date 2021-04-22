@@ -13,10 +13,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Message Message)
+        public object Create(Message Message)
         {
             db.Messages.Add(Message);
             db.SaveChanges();
+            return Message.MessageId;
         }
         public void Delete(object messageId)
         {

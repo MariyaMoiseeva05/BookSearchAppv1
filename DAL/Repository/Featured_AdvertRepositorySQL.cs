@@ -12,10 +12,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Featured_Advert Featured_Advert)
+        public object Create(Featured_Advert Featured_Advert)
         {
             db.Featured_Adverts.Add(Featured_Advert);
             db.SaveChanges();
+            return Featured_Advert.Featured_AdvertId;
         }
 
         public void Delete(object featadvertId)

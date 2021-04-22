@@ -13,10 +13,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Locality Locality)
+        public object Create(Locality Locality)
         {
             db.Localities.Add(Locality);
             db.SaveChanges();
+            return Locality.LocalityId;
         }
         public void Delete(object localityId)
         {

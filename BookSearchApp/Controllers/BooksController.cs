@@ -20,7 +20,7 @@ namespace BookSearchApp.Controllers
         private readonly IWebHostEnvironment _appEnvironment;
         private readonly IDbCRUD _dbCrud;
         private readonly ILogger _logger;
-        public BooksController(IDbCRUD dbCrud, IWebHostEnvironment appEnvironment, ILogger <BooksController> logger)
+        public BooksController(IDbCRUD dbCrud, IWebHostEnvironment appEnvironment, ILogger<BooksController> logger)
         {
             _appEnvironment = appEnvironment;
 
@@ -47,25 +47,28 @@ namespace BookSearchApp.Controllers
         }
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<IActionResult> CreateAsync([FromBody] BookModel book)
+        public async System.Threading.Tasks.Task<IActionResult> CreateAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+
             BookModel bookModel = new BookModel();
             IFormCollection FormFields = await Request.ReadFormAsync().ConfigureAwait(false);
 
             string path = null;
-            string link = @"images\fon1.png";
+            string link = @"images\default_book.jpeg";
+
+            string authors = FormFields["Author"] ;
+
+            string genre = FormFields["Genre"];
+
+            string type_of_literature = FormFields["Type_of_literature"];
 
             if (FormFields.Files.Count > 0)
             {
                 string fileName = String.Format(
                                 @"{0}." + FormFields.Files[0].FileName.Substring(FormFields.Files[0].FileName.LastIndexOf(".") + 1, FormFields.Files[0].FileName.Length - FormFields.Files[0].FileName.LastIndexOf(".") - 1), System.Guid.NewGuid());
                 //путь к папке FormFields
-                path = _appEnvironment.WebRootPath + @"\images\" + fileName;
-                link = @"images\" + fileName;
+                path = _appEnvironment.WebRootPath + @"\images\books\" + fileName;
+                link = "/images/books/" + fileName;
                 try
                 {
                     using (FileStream fs = new FileStream(path, FileMode.Create))
@@ -80,28 +83,24 @@ namespace BookSearchApp.Controllers
                     _logger.LogWarning("uploadFile ошибка при записи файла {0}", e.Message);
                 }
             }
+            else
+            {
+                return BadRequest();
+            }
 
             bookModel.ImageLink = link;
             bookModel.ImagePath = path;
             bookModel.Title = FormFields["Title"];
-            bookModel.Author = book.Author;
-            bookModel.Description = book.Description;
-            bookModel.Edition = book.Edition;
-            bookModel.Publication_date = book.Publication_date;
-            bookModel.Quote = book.Quote;
-            bookModel.Review = book.Review;
-            bookModel.Type_of_literature = book.Type_of_literature;
-            bookModel.Genre_Books = book.Genre_Books;
-            bookModel.Story = book.Story;
-            bookModel.Screenings = book.Screenings;
-            bookModel.Book_Collections = book.Book_Collections;
-            bookModel.Book_Characters = book.Book_Characters;
-            bookModel.Adverts = book.Adverts;
-            bookModel.Featured_Books = book.Featured_Books;
+
+            bookModel.Description = FormFields["Description"];
+            bookModel.Edition = FormFields["Edition"];
+            bookModel.Publication_date = DateTime.Parse(FormFields["Publication_date"]);
+            bookModel.Story = FormFields["Story"];
+            bookModel.Screenings = FormFields["Screenings"];
 
             try
             {
-                _dbCrud.CreateBook(book);
+                _dbCrud.CreateBook(bookModel, authors.Split(','), genre.Split(','), type_of_literature.Split(','));
             }
             catch (DataException ex)
             {
@@ -110,8 +109,8 @@ namespace BookSearchApp.Controllers
                 throw;
             }
             return CreatedAtAction("GetBook", new { id = bookModel.BookID }, bookModel);
-            
-           // return Ok();
+
+            // return Ok();
         }
 
         [HttpPut("{id}")]
@@ -139,48 +138,48 @@ namespace BookSearchApp.Controllers
             return NoContent();
         }
 
-        [HttpPost("upload")]
-        public async Task<IActionResult> UploadFile()
-        {
-            IFormCollection Files = await Request.ReadFormAsync().ConfigureAwait(false);
-            foreach (var file in Files.Files) //проходимся по всем файлам
-            {
-                //уникальное имя файла
-                string fileName = String.Format(@"{0}." + file.FileName.Substring(file.FileName.LastIndexOf(".") + 1, file.FileName.Length - file.FileName.LastIndexOf(".") - 1), System.Guid.NewGuid());
+        //[HttpPost("upload")]
+        //public async Task<IActionResult> UploadFile()
+        //{
+        //    IFormCollection Files = await Request.ReadFormAsync().ConfigureAwait(false);
+        //    foreach (var file in Files.Files) //проходимся по всем файлам
+        //    {
+        //        //уникальное имя файла
+        //        string fileName = String.Format(@"{0}." + file.FileName.Substring(file.FileName.LastIndexOf(".") + 1, file.FileName.Length - file.FileName.LastIndexOf(".") - 1), System.Guid.NewGuid());
 
-                //путь к папке Files
-                string path = _appEnvironment.WebRootPath + "/Files/" + fileName;
-                try
-                {
+        //        //путь к папке Files
+        //        string path = _appEnvironment.WebRootPath + "/Files/" + fileName;
+        //        try
+        //        {
 
-                    using (FileStream fs = new FileStream(path, FileMode.Create))
-                    {
-                        //записываем файл на сервер
-                        await file.CopyToAsync(fs).ConfigureAwait(false);
-                        _logger.LogInformation("UploadFile успешно по пути {0}", path);
-                    }
-                }
-                catch (IOException e)
-                {
-                    _logger.LogError("uploadFile ошибка при записи файла {0}", e.Message);
-                }
+        //            using (FileStream fs = new FileStream(path, FileMode.Create))
+        //            {
+        //                //записываем файл на сервер
+        //                await file.CopyToAsync(fs).ConfigureAwait(false);
+        //                _logger.LogInformation("UploadFile успешно по пути {0}", path);
+        //            }
+        //        }
+        //        catch (IOException e)
+        //        {
+        //            _logger.LogError("uploadFile ошибка при записи файла {0}", e.Message);
+        //        }
 
-                BookModel book = new BookModel { ImagePath = file.FileName, ImageLink = path };
-                //сохраняем сведения о документе в БД
-                try
-                {
-                    _dbCrud.CreateBook(book);
-                }
-                catch (DataException e)
-                {
-                    _logger.LogError("uploadFile ошибка при сохранении в БД{0}", e.Message);
-                    ModelState.AddModelError(string.Empty, "Невозможно применить изменения. Обратитесь к администратору системы для решения проблемы");
-                    throw;
+        //        BookModel book = new BookModel { ImagePath = file.FileName, ImageLink = path };
+        //        //сохраняем сведения о документе в БД
+        //        try
+        //        {
+        ////            _dbCrud.CreateBook(book);
+        //        }
+        //        catch (DataException e)
+        //        {
+        //            _logger.LogError("uploadFile ошибка при сохранении в БД{0}", e.Message);
+        //            ModelState.AddModelError(string.Empty, "Невозможно применить изменения. Обратитесь к администратору системы для решения проблемы");
+        //            throw;
 
-                }
-            }
-            return Ok("ok");
-        }
+        //        }
+        //    }
+        //    return Ok("ok");
+        //}
 
         [HttpGet("download/{id}")]
         public async Task<IActionResult> DownloadFile([FromRoute] int id) // получаем книуг по её id

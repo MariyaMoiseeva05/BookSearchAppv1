@@ -13,9 +13,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Type_of_literature Type_of_literature)
+        public object Create(Type_of_literature Type_of_literature)
         {
             db.Type_Of_Literatures.Add(Type_of_literature);
+            db.SaveChanges();
+            return Type_of_literature.Type_of_literatureId;
         }
 
         public void Delete(object id)

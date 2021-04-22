@@ -12,9 +12,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Think Think)
+        public object Create(Think Think)
         {
             db.Thinks.Add(Think);
+            db.SaveChanges();
+            return Think.ThinkId;
         }
 
         public void Delete(object id)

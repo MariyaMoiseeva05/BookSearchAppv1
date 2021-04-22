@@ -12,9 +12,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(News News)
+        public object Create(News News)
         {
             db.News.Add(News);
+            db.SaveChanges();
+            return News.NewsId;
         }
 
         public void Delete(object id)

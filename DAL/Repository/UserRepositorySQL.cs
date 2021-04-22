@@ -15,11 +15,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(User User)
+        public object Create(User User)
         {
             db.PUsers.Add(User);
             db.SaveChanges();
-
+            return User.UserId;
         }
 
         public void Delete(object userId)

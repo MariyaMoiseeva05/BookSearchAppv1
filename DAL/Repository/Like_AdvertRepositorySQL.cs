@@ -13,10 +13,12 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Like_Advert Like_Advert)
+        public object Create(Like_Advert Like_Advert)
         {
             db.Like_Adverts.Add(Like_Advert);
             db.SaveChanges();
+            return Like_Advert.Like_AdvertId;
+
         }
 
         public void Delete(object likeId)

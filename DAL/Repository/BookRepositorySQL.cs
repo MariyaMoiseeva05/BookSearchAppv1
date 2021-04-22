@@ -13,11 +13,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Book Book)
+        public object Create(Book Book)
         {
             db.Books.Add(Book);
             db.SaveChanges();
-
+            return Book.BookID;
         }
 
         public void Delete(object bookId)
@@ -42,7 +42,7 @@ namespace DAL.Repository
                 .Include(g => g.Genres_Books).ThenInclude(gn => gn.Genre)
                 .Include(cl => cl.Book_Collections).ThenInclude(gn => gn.Collection)
                 .Include(ch => ch.Book_Characters).ThenInclude(gn => gn.Character)
-                .First(b => b.BookID == (int)id);
+                .SingleOrDefault(b => b.BookID == (int)id);
         }
 
         public IEnumerable<Book> GetAll()

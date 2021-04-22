@@ -12,9 +12,11 @@ namespace DAL.Repository
         {
             this.db = dbcontext;
         }
-        public void Create(Review Review)
+        public object Create(Review Review)
         {
             db.Reviews.Add(Review);
+            db.SaveChanges();
+            return Review.RewiewId;
         }
 
         public void Delete(object id)
