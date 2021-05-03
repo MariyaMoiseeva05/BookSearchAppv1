@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Информация о книге</title>
+    <title id="title-head-review"></title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,7 +40,7 @@
                         <li><a href="#">О проекте</a></li>
                     </ul>
                 </li>
-                <li class="has-sub active">
+                <li class="has-sub">
                     <a href="Books.html">Что почитать<i class="sub-icon fa fa-angle-down"></i></a>
                     <ul class="sub-menu">
                         <li><a href="slider-infinity.html">Найти книгу</a></li>
@@ -55,7 +55,7 @@
                         <li><a href="Register.html">Зарегистрироваться</a></li>
                     </ul>
                 </li>
-                <li><a href="Reviews.html">Рецензии</a></li>
+                <li class="active"><a href="Reviews.html">Рецензии</a></li>
                 <li><a href="News.html">Новости</a></li>
                 <li class="menu-item-has-children">
                     <a href="Authors.html">Писатели</a>
@@ -111,7 +111,7 @@
                                 <li><a href="index.html">О проекте</a></li>
                             </ul>
                         </li>
-                        <li class="menu-item-has-children active">
+                        <li class="menu-item-has-children">
                             <a href="Books.html">Что почитать</a>
                             <ul class="sub-menu">
                                 <li><a href="slider-infinity.html">Найти книгу</a></li>
@@ -124,7 +124,7 @@
                                 <li><a href="slider-infinity.html">Персонажи</a></li>
                             </ul>
                         </li>
-                        <li><a href="Reviews.html">Рецензии</a></li>
+                        <li class="active"><a href="Reviews.html">Рецензии</a></li>
                         <li><a href="News.html">Новости</a></li>
                         <li class="menu-item-has-children">
                             <a href="Authors.html">Писатели</a>
@@ -134,7 +134,6 @@
                             </ul>
                         </li>
                         <li><a href="#">Книгообмен</a></li>
-                        <li><a href="AddBook.html">Добавить книгу</a></li>
                     </ul>
                 </div>
                 <div class="header-widgets">
@@ -159,110 +158,22 @@
             <button type="submit" class="primary-button"><i class="icon_search"></i></button>
         </form>
     </div>
-    <section class="large-gap about-me about-version-one">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="widget-sidebar about-me">
-                        <div class="widget-header">
-                            <h2 id="book-title"></h2>
-                        </div>
-                        <h3 id="book-author"></h3>
-                        <div class="widget-content">
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <img src="/images/default_book.jpeg" id="book-img" />
-                                   
-                                </div>
-                                <div class="col-lg-8">
-                                    <div class="book-info" id="bookinfo">
-                                        <div class="row book-info-header">
-                                            <h4>О книге</h4>
-                                        </div>
-
-                                        <p class="description" id="book-description"></p>
-
-
-                                        <h5>Сюжет</h5>
-                                        <div class="story hide">
-                                            <p id="book-story"></p>
-                                        </div>
-                                        <a class="content_toggle" href="#">Читать далее</a>
-                                        <br>
-                                        <h5>Тираж: <span id="book-edition"></span></h5>
-                                        <h5>Дата выхода в свет: <span id="book-publication_date"></span></h5>
-                                        <h5>Жанр: <a id="book-genre"></a></h5>
-                                        <h5><strong>Экранизации: </strong><span id="book-screen"></span></h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-
-        <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/jquery.easing.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/wow.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/parallax.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/isotope.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/imagesloaded.pkgd.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/packery-mode.pkgd.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/owl-carousel.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
-        <script src="../scripts/main.js" charset="utf-8"></script>
-        <script src="../js/Login.js"></script>
-        <script src="../js/Login_Register.js"></script>
-        <script src="../js/Books.js" charset="utf-8"></script>
-        <script>
-
-            $(document).ready(function () {
-                $('.content_toggle').click(function () {
-                    $('.story').toggleClass('hide');
-                    if ($('.story').hasClass('hide')) {
-                        $('.content_toggle').html('Читать далее');
-                    } else {
-                        $('.content_toggle').html('Свернуть');
-                    }
-                    return false;
-                });
-            });
-
-            document.addEventListener("DOMContentLoaded", function (event) {
-                $.when(viewBook(getUrlParameter('id'))).then(
-                    function (response) {
-                        let book = JSON.parse(response);
-                        $("#book-title").html(book.Title);
-                       /* for (var a in book.Author[a]) {
-                            $("#book-author").html(book.Author[a].Author.Full_name);
-                        }
-                        for (var g in book.Genre[g]) {
-                            $("#book-genre").html(book.Genre[g].Genre.NameGenre);
-                        }
-                        for (var t in book.Type_of_literature[t]) {
-                            $("#book-type").html(book.Type_of_literature[t].Type_of_literature.Name_Type);
-                        }*/
-                        $("#book-description").html(book.Description);
-                        $("#book-story").html(book.Story);
-                        $("#book-edition").html(book.Edition);
-                        $("#book-publication_date").html(book.Publication_date);
-                        $("#book-screen").html(book.Screenings);
-
-                        if (book.ImageLink != "")
-                            $("#book-img").attr("src", book.ImageLink);
-
-                    },
-                    function (error) {
-                        let e = JSON.parse(error.responseText);
-                        $("#bookinfo").html(e.Title);
-                    }
-                );
-            });
-        </script>
+    <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.easing.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/wow.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/parallax.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/isotope.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/imagesloaded.pkgd.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/packery-mode.pkgd.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/owl-carousel.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
+    <script src="../js/Login.js"></script>
+    <script src="../js/Login_Register.js"></script>
+    <script src="../js/Register.js"></script>
+    <script src="../scripts/main.js" charset="utf-8"></script>
+    <script src="../js/Review.js" charset="utf-8"></script>
 </body>
 </html>
