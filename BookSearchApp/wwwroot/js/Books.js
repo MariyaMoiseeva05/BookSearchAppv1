@@ -1,5 +1,8 @@
 ﻿/*const { error } = require("jquery");*/
 
+$('.message a').click(function () {
+    $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+});
 
 document.addEventListener("DOMContentLoaded", function (event) {
     getBook();
@@ -20,14 +23,15 @@ function getBook() {
             var formatter = new Intl.DateTimeFormat("ru"); 
             if (book) {
                 for (var i in book) {
-                    html += "<div class=\"col-md-4 masonry-item\">";
+                    html += "<div class=\"col-md-3 masonry-item\">";
                     html += "<div class=\"standard-post without-sidebar-post\">";
-                    html += "<div class=\"post-image\"><img src=" + book[i].ImageLink + "></div>";
+                    html += "<div class=\"post-image\"><img src=" + book[i].ImageLink + " id=\"bookGetImage\"></div>";
                     html += "<div class=\"down-content\">";
                     html += '<a href="book.html?id=' + book[i].BookID+'"><h4>' + book[i].Title + '</h4 ></a>';
                     html += "<ul class=\"post - info\">";
-                  //  html += "<li><a href=\"#\">Автор" + book[i].Authors.Author.Full_name + "</a></li>";
-                    html += "<li><p class=\"lead\">Дата первой публикации: " + formatter.format(new Date(Date.parse(book[i].Publication_date))) +"</p></li>";
+                    for (var j in book[i].Author) {
+                            html += "<li><a href=\"#\">" + book[i].Author[j].Author.Full_name + "</a></li>";
+                    }
                     html += "</ul>";
                     html += "</div>";
                     html += "</div>";
@@ -44,6 +48,8 @@ function getBook() {
         }
     });
 }
+
+
 
 function getAuthor() {
     $.ajax({
@@ -143,6 +149,7 @@ function createBook() {
         processData: false,
         data: data,
         success: function (data) {
+            alert("Книга добавлена!");
             getBook();
         },
         error: function (xhr, ajaxOptions, thrownError) {

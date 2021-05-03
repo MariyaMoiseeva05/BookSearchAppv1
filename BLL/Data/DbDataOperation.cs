@@ -28,33 +28,67 @@ namespace BLL.Data
             return new AuthorModel(db.Authors.GetItem(Id));
         }
 
-        public void CreateAuthor(AuthorModel a)
+        public void CreateAuthor(AuthorModel at, ICollection<string> b, ICollection<string> inf)
         {
-            db.Authors.Create(new Author()
+            int id = (int)db.Authors.Create(new Author()
             {
-                Full_name = a.Full_name,
-                Pseudonym = a.Pseudonym,
-                Date_of_Birth = a.Date_of_Birth,
-                Date_of_Death = a.Date_of_Death,
-                Place_of_Birth = a.Place_of_Birth,
-                Place_of_Death = a.Place_of_Death,
-                Citizenship = a.Citizenship,
-                Occupation = a.Occupation,
-                Years_of_creativity = a.Years_of_creativity,
-                Debut = a.Debut,
-                Prizes = a.Prizes,
-                Awards = a.Awards,
-                Language_of_works = a.Language_of_works,
-                ImagePath = a.ImagePath,
-                ImageLink = a.ImageLink,
-                Book = a.Book,
-                Interesting_fact = a.Interesting_fact,
-                Details = a.Details
+                Full_name = at.Full_name,
+                Pseudonym = at.Pseudonym,
+                Date_of_Birth = at.Date_of_Birth,
+                Date_of_Death = at.Date_of_Death,
+                Place_of_Birth = at.Place_of_Birth,
+                Place_of_Death = at.Place_of_Death,
+                Citizenship = at.Citizenship,
+                Occupation = at.Occupation,
+                Years_of_creativity = at.Years_of_creativity,
+                Debut = at.Debut,
+                Prizes = at.Prizes,
+                Awards = at.Awards,
+                Language_of_works = at.Language_of_works,
+                ImagePath = at.ImagePath,
+                ImageLink = at.ImageLink,
+                Book = at.Book,
+                Interesting_fact = at.Interesting_fact,
+                Details = at.Details
             });
             Save();
+
+            foreach (var a in b)
+            {
+                DAL.Entities.Author_Book ab = new DAL.Entities.Author_Book
+                {
+                    AuthorId = id,
+                    BookId = int.Parse(a),
+                };
+                try
+                {
+                    db.Authors_Books.Create(ab);
+                }
+                catch (DataException e)
+                {
+                    throw new Exception(e.Message);
+                }
+            }
+            foreach (var a in inf)
+            {
+                DAL.Entities.Interesting_fact fa = new DAL.Entities.Interesting_fact
+                {
+                    AuthorID = id,
+                    FactId = int.Parse(a),
+                };
+                try
+                {
+                    db.Interesting_facts.Create(fa);
+                }
+                catch (DataException e)
+                {
+                    throw new Exception(e.Message);
+                }
+            }
+
         }
 
-        public void UpdateAuthor(AuthorModel a)
+        public void UpdateAuthor(AuthorModel a, int authorId)
         {
             Author av = db.Authors.GetItem(a.AuthorId);
             av.Full_name = a.Full_name;

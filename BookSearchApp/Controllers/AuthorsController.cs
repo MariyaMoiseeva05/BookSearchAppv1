@@ -51,25 +51,24 @@ namespace BookSearchApp.Controllers
         }
 
         [HttpPost]
-        public async System.Threading.Tasks.Task<IActionResult> CreateAsync([FromBody] AuthorModel author)
+        public async System.Threading.Tasks.Task<IActionResult> CreateAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+           
             AuthorModel authorModel = new AuthorModel();
             IFormCollection FormFields = await Request.ReadFormAsync().ConfigureAwait(false);
 
             string path = null;
-            string link = @"images\fon1.png";
+            string link = @"images\author_default";
+            string books = FormFields["Book"];
+            string facts = FormFields["Interesting_fact"];
 
             if (FormFields.Files.Count > 0)
             {
                 string fileName = String.Format(
                                 @"{0}." + FormFields.Files[0].FileName.Substring(FormFields.Files[0].FileName.LastIndexOf(".") + 1, FormFields.Files[0].FileName.Length - FormFields.Files[0].FileName.LastIndexOf(".") - 1), System.Guid.NewGuid());
                 //путь к папке FormFields
-                path = _appEnvironment.WebRootPath + @"\images\" + fileName;
-                link = @"images\" + fileName;
+                path = _appEnvironment.WebRootPath + @"\images\authors\" + fileName;
+                link = "/images/authors/" + fileName;
                 try
                 {
                     using (FileStream fs = new FileStream(path, FileMode.Create))
@@ -85,27 +84,26 @@ namespace BookSearchApp.Controllers
                 }
             }
 
-            authorModel.Full_name = author.Full_name;
-            authorModel.Pseudonym = author.Pseudonym;
-            authorModel.Date_of_Birth = author.Date_of_Birth;
-            authorModel.Date_of_Death = author.Date_of_Death;
-            authorModel.Place_of_Birth = author.Place_of_Birth;
-            authorModel.Place_of_Death = author.Place_of_Death;
-            authorModel.Citizenship = author.Citizenship;
-            authorModel.Occupation = author.Occupation;
-            authorModel.Years_of_creativity = author.Years_of_creativity;
-            authorModel.Language_of_works = author.Language_of_works;
-            authorModel.Debut = author.Debut;
-            authorModel.Awards = author.Awards;
-            authorModel.Prizes = author.Prizes;
-            authorModel.Details = author.Details;
-            authorModel.ImageLink = author.ImageLink;
-            authorModel.ImagePath = author.ImagePath;
-            authorModel.Book = author.Book;
-            authorModel.Interesting_fact = author.Interesting_fact;
+            authorModel.ImageLink = link;
+            authorModel.ImagePath = path;
+            authorModel.Full_name = FormFields["Full_name"];
+            authorModel.Pseudonym = FormFields["Pseudonym"];
+            authorModel.Date_of_Birth = DateTime.Parse(FormFields["Date_of_Birth"]);
+            authorModel.Date_of_Death = DateTime.Parse(FormFields["Date_of_Death"]); 
+            authorModel.Place_of_Birth = FormFields["Place_of_Birth"];
+            authorModel.Place_of_Death = FormFields["Place_of_Death"];
+            authorModel.Citizenship = FormFields["Citizenship"];
+            authorModel.Occupation = FormFields["Occupation"];
+            authorModel.Years_of_creativity = FormFields["Years_of_creativity"];
+            authorModel.Language_of_works = FormFields["Language_of_works"];
+            authorModel.Debut = FormFields["Debut"];
+            authorModel.Awards = FormFields["Awards"];
+            authorModel.Prizes = FormFields["Prizes"];
+            authorModel.Details = FormFields["Details"];
+
             try
             {
-                _dbCrud.CreateAuthor(author);
+                _dbCrud.CreateAuthor(authorModel, books.Split(','), facts.Split(','));
             }
             catch (DataException ex)
             {
@@ -113,7 +111,7 @@ namespace BookSearchApp.Controllers
                 ModelState.AddModelError(string.Empty, "Невозможно применить изменения. Обратитесь к администратору системы для решения проблемы");
                 throw;
             }
-            return CreatedAtAction("GetBook", new { id = authorModel.AuthorId }, authorModel);
+            return CreatedAtAction("GetAuthor", new { id = authorModel.AuthorId }, authorModel);
 
             // return Ok();
         }
@@ -133,7 +131,7 @@ namespace BookSearchApp.Controllers
             }
             authorModel.AuthorId = id;
 
-            _dbCrud.UpdateAuthor(authorModel);
+            _dbCrud.UpdateAuthor(authorModel, id);
             return NoContent();
         }
 

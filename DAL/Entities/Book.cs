@@ -30,10 +30,8 @@ namespace DAL.Entities
         [Display(Name = "Тираж")]
         public string Edition { get; set; } // Тираж
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Дата выхода в свет")]
-        public DateTime Publication_date { get; set; } // Дата выхода в свет
+        public string Publication_date { get; set; } // Дата выхода в свет
         //[Required()]
         public string ImagePath { get; set; } //Путь до изображения - хранить в блоб-полях
         public string ImageLink { get; set; } // Ссылка на изображение

@@ -134,7 +134,7 @@
                             </ul>
                         </li>
                         <li><a href="#">Книгообмен</a></li>
-                        <li><a href="AddBook.html">Добавить книгу</a></li>
+                        <li><a href="AddAuthor.html">Добавить автора</a></li>
                     </ul>
                 </div>
                 <div class="header-widgets">
@@ -165,104 +165,97 @@
                 <div class="col-lg-12">
                     <div class="widget-sidebar about-me">
                         <div class="widget-header">
-                            <h2 id="book-title"></h2>
+                            <h2 id="author-name"></h2>
                         </div>
-                        <h3 id="book-author"></h3>
                         <div class="widget-content">
                             <div class="row">
                                 <div class="col-lg-3">
-                                    <img src="/images/default_book.jpeg" id="book-img" />
-                                   
+                                    <img src="/images/default_author.jpeg" id="author-img" />
                                 </div>
                                 <div class="col-lg-8">
-                                    <div class="book-info" id="bookinfo">
+                                    <div class="book-info" id="authorInfo">
                                         <div class="row book-info-header">
-                                            <h4>О книге</h4>
+                                            <h4>Об авторе</h4>
+                                            <p class="details hide" id="author-details"></p>
+                                            <a class="reply-button" href="#">Читать далее</a>
+                                            <p id="author-pseudonym"><strong> Псевдоним:</strong> </p>
+                                            <p id="author-date-of-birth">Дата рождения: </p>
+                                            <p id="author-date-of-death">Дата смерти: </p>
+                                            <p id="author-citizenship">Гражданство: </p>
+                                            <p id="author-occupation">Род деятельность: </p>
+                                            <p id="author-years-of-creativity">Годы творчества: </p>
+                                            <p id="author-language-of-works">Язык произведений: </p>
+                                            <p id="author-awards">Премии: </p>
+                                            <p id="author-prizes">Награды: </p>
+                                            <p id="author-debut">Дебют: </p>
                                         </div>
-
-                                        <p class="description" id="book-description"></p>
-
-
-                                        <h5>Сюжет</h5>
-                                        <div class="story hide">
-                                            <p id="book-story"></p>
-                                        </div>
-                                        <a class="content_toggle" href="#">Подробнее</a>
-                                        <br>
-                                        <h5>Тираж: <span id="book-edition"></span></h5>
-                                        <h5>Дата выхода в свет: <span id="book-publication_date"></span></h5>
-                                        <h5>Жанр: <a id="book-genre"></a></h5>
-                                        <h5><strong>Экранизации: </strong><span id="book-screen"></span></h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    </div>
                 </div>
             </div>
+        </div>
     </section>
-
-        <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/jquery.easing.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/wow.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/parallax.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/isotope.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/imagesloaded.pkgd.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/packery-mode.pkgd.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/owl-carousel.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
-        <script src="../scripts/main.js" charset="utf-8"></script>
-        <script src="../js/Login.js"></script>
-        <script src="../js/Login_Register.js"></script>
-        <script src="../js/Books.js" charset="utf-8"></script>
-        <script>
-
+    <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.easing.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/wow.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/parallax.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/isotope.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/imagesloaded.pkgd.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/packery-mode.pkgd.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/owl-carousel.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
+    <script src="../scripts/main.js" charset="utf-8"></script>
+    <script src="../js/Login.js"></script>
+    <script src="../js/Login_Register.js"></script>
+    <script src="../js/Author.js" charset="utf-8"></script>
+    <script>
             $(document).ready(function () {
-                $('.content_toggle').click(function () {
-                    $('.story').toggleClass('hide');
-                    if ($('.story').hasClass('hide')) {
-                        $('.content_toggle').html('Читать далее');
+                $('.reply-button').click(function () {
+                    $('.details').toggleClass('hide');
+                    if ($('.details').hasClass('hide')) {
+                        $('.reply-button').html('Читать далее');
                     } else {
-                        $('.content_toggle').html('Свернуть');
+                        $('.reply-button').html('Свернуть');
                     }
                     return false;
                 });
             });
 
             document.addEventListener("DOMContentLoaded", function (event) {
-                $.when(viewBook(getUrlParameter('id'))).then(
+                $.when(viewAuthor(getUrlParameter('id'))).then(
                     function (response) {
-                        let book = JSON.parse(response);
-                        $("#book-title").html(book.Title);
-                       /* for (var a in book.Author[a]) {
-                            $("#book-author").html(book.Author[a].Author.Full_name);
-                        }
-                        for (var g in book.Genre[g]) {
-                            $("#book-genre").html(book.Genre[g].Genre.NameGenre);
-                        }
-                        for (var t in book.Type_of_literature[t]) {
-                            $("#book-type").html(book.Type_of_literature[t].Type_of_literature.Name_Type);
-                        }*/
-                        $("#book-description").html(book.Description);
-                        $("#book-story").html(book.Story);
-                        $("#book-edition").html(book.Edition);
-                        $("#book-publication_date").html(book.Publication_date);
-                        $("#book-screen").html(book.Screenings);
-
-                        if (book.ImageLink != "")
-                            $("#book-img").attr("src", book.ImageLink);
+                        let author = JSON.parse(response);
+                        $("#author-name").html(author.Full_name);
+                        $("#author-pseudonym").html(author.Pseudonym);
+                       // var formatter = new Intl.DateTimeFormat("ru");
+                        $("#author-date-of-birth").html(author.Date_of_Birth);
+                        $("#author-date-of-death").html(author.Date_of_Death);
+                        $("#author-place-of-birth").html(author.Place_of_Birth);
+                        $("#author-place-of-death").html(author.Place_of_Death);
+                        $("#author-citizenship").html(author.Citizenship);
+                        $("#author-years-of-creativity").html(author.Years_of_creativity);
+                        $("#author-language-of-works").html(author.Language_of_works);
+                        $("#author-details").html(author.Details);
+                        $("#author-awards").html(author.Awards);
+                        $("#author-prizes").html(author.Prizes);
+                        $("#author-debut").html(author.Debut);
+                        
+                        if (author.ImageLink != "")
+                            $("#author-img").attr("src", author.ImageLink);
 
                     },
                     function (error) {
                         let e = JSON.parse(error.responseText);
-                        $("#bookinfo").html(e.Title);
+                        $("#authorInfo").html(e.Full_name);
                     }
                 );
             });
-        </script>
+    </script>
 </body>
 </html>

@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Новая книга</title>
+    <link rel="shortcut icon" href="../images/logoverh.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../fonts/icomoon/style.css">
+    <link rel="stylesheet" href="../LoginStyle/owl.carousel.min.css">
+    <link rel="stylesheet" href="../LoginStyle/bootstrap.min.css">
+    <link rel="stylesheet" href="../LoginStyle/style.css">
+</head>
+<body id="add">
+    <div class="contents">
+        <div class="container p-3">
+            <div class="form-block mx-auto">
+                <div class="text-left">
+                    <a href="Home.html"><img src="../images/logo_1.png" alt=""></a>
+                </div>
+                <div class="row align-items-center justify-content-center">
+                    <div class="text-center">
+                        <h1 class="display-4">Добавление новой книги</h1>
+                    </div>
+                </div>
+                <form>
+                    <div class="row mb-3">
+                        <div class="form-group col-5 themed-grid-col">
+                            <label for="book-bookTitle">Название</label>
+                            <input class="form-control" id="book-bookTitle" placeholder="Введите название книги" required />
+                        </div>
+                        <div class="form-group  col themed-grid-col">
+                            <label for="book-bookEdition">Тираж</label>
+                            <input class="form-control" id="book-bookEdition" placeholder="Укажите тираж" required />
+                        </div>
+                        <div class="form-group  col themed-grid-col">
+                            <label for="book-bookDate_of_publication">Дата первой публикации</label>
+                            <input class="form-control" type="date" id="book-bookDate_of_publication" placeholder="Укажите, когда мир впервые узнал об этой книге" />
+                        </div>
+                        <div class="form-group  col-12 themed-grid-col">
+                            <label for="book-bookScreenings">Экранизация</label>
+                            <textarea class="form-control" rows="6" id="book-bookScreenings" placeholder="Какие фильмы были сняты по этой книге?"></textarea>
+                        </div>
+                        <div class="form-group  col-12 themed-grid-col">
+                            <label for="book-bookDescription">Описание книги</label>
+                            <textarea name="message" rows="8" class="form-control" id="book-bookDescription" placeholder="О чём эта книга?"></textarea>
+                        </div>
+                        <div class="form-group  col-12 themed-grid-col">
+                            <label for="book-bookStory">Сюжет книги</label>
+                            <textarea name="message" rows="8" class="form-control" id="book-bookStory" placeholder="Сюжет"></textarea>
+                        </div>
+                        <div class="form-group  col-6 themed-grid-col">
+                            <label for="authorDiv">Автор</label>
+                            <select class="form-control" id="authorDiv" placeholder="Выберите автора" multiple required></select>
+                        </div>
+                        <div class="form-group  col-6 themed-grid-col">
+                            <label for="genreDiv">Жанр</label>
+                            <select class="form-control" id="genreDiv" placeholder="Выберите жанр" multiple required></select>
+                        </div>
+                        <div class="form-group  col-6 themed-grid-col">
+                            <label for="typeDiv">Тип литературы</label>
+                            <select class="form-control" id="typeDiv" placeholder="Выберите тип литературы" multiple required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="addImage">Изображение:</label>
+                            <input class="form-control" type="file" id="addImage" name="addImageBook" accept=".jpg, .jpeg, .png" placeholder="Прикрепите изображение" required />
+                        </div>
+                    </div>
+                </form>
+                <input type="button" value="Добавить книгу" id="btnCreate" class="btn btn-block py-2 btn-primary" onclick="createBook();">
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../scripts/LoginStyleJs/jquery-3.3.1.min.js"></script>
+    <script src="../scripts/LoginStyleJs/popper.min.js"></script>
+    <script src="../scripts/LoginStyleJs/bootstrap.min.js"></script>
+    <script src="../scripts/LoginStyleJs/main.js"></script>
+    <script src="../js/Login.js"></script>
+    <script src="../js/Login_Register.js"></script>
+    <script src="../js/Register.js"></script>
+    <script src="../js/Books.js"></script>
+</body>
+</html>

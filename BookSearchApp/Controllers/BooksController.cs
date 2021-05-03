@@ -94,7 +94,7 @@ namespace BookSearchApp.Controllers
 
             bookModel.Description = FormFields["Description"];
             bookModel.Edition = FormFields["Edition"];
-            bookModel.Publication_date = DateTime.Parse(FormFields["Publication_date"]);
+            bookModel.Publication_date = FormFields["Publication_date"];
             bookModel.Story = FormFields["Story"];
             bookModel.Screenings = FormFields["Screenings"];
 
