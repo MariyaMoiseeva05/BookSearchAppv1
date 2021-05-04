@@ -30,17 +30,20 @@ function getReview() {
                             </ul>
                             <p id="review-content">Рецензия Bushwick fam PBRB master cleanse post-ironic. Craft ethical forage four loko fam fanny cronut pork belly waistcoat cloud bread helvetica food truck readymade ethical affogato migas vinyl.</p>
                         </div>*/
-                        html += "<div class=\"post-image\"><a href=\"Review.html\"><img src=" + review[i].Book.ImageLink + "></a></div>";
+                    html += '<div class="col-12">';
+                    html += "<div class=\"post-image\"><a href=\"Review.html\"><img src=" + review[i].Book.ImageLink + "></a></div>";
                     html += "<div class=\"down-content\">";
+                    html += '<a href="review.html?id=' + review[i].RewiewId + '"><h4>' + review[i].Book.Title + '</h4 >';
                     for (var a in review[i].Book.Authors) {
-                        html += '<a href="review.html?id=' + review[i].RewiewId + '"><h4>' + review[i].Book.Title + '</h4 ><em>' + review[i].Book.Authors[a].Author.Full_name + '</em></a>';
+                        html += '<em>' + review[i].Book.Authors[a].Author.Full_name + '</em></a>';
                     }
                     html += "<ul class=\"post - info\">";
                     html += '<li><a href=\"#\">' + review[i].Rating + '</a></li>';
                     html += '<li><a href=\"#\">' + review[i].User.Login + '</a></li>';
                     html += "</ul>";
                     html += "<p>" + review[i].Text + "</p>";
-                    html += "<a href=\"Review.html\">"+ "перейти к рецензии" +"</a>";
+                    html += "<a href=\"review.html?id=' + review[i].RewiewId + '\">"+ "перейти к рецензии" +"</a>";
+                    html += "</div>";
                     html += "</div>";
                     html += "</div>";
                     html += "</div>";
