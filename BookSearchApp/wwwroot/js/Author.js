@@ -20,11 +20,11 @@ function getAuthor() {
                     for (var i in authors) {
                         html += "<div class=\"col-md-3 masonry-item\">";
                         html += "<div class=\"standard-post without-sidebar-post\">";
-                        html += "<div class=\"post-image\"><img src=" + authors[i].imageLink + "></div>";
+                        html += "<div class=\"post-image\"><img src=" + (authors[i].ImageLink ? authors[i].ImageLink :"/images/author-default.jpg") + "></div>";
                         html += "<div class=\"down-content\">";
-                        html += '<a href="authors.html?id=' + authors[i].AuthorID + '"><h4>' + authors[i].Full_name + '</h4 ></a>';
+                        html += '<a href="author.html?id=' + authors[i].AuthorId + '"><h4>' + authors[i].Full_name + '</h4 ></a>';
                         html += "<ul class =\"post-info\">";
-                        html += "<li><a href=Author.html>Подробнее об авторе</a></li>";
+                        html += '<li><a href="author.html?id=' + authors[i].AuthorId + '">Подробнее об авторе</a></li>';
                         html += "</ul>";
                         html += "</div>";
                         html += "</div>";
@@ -44,8 +44,8 @@ function getAuthor() {
 function createAuthor() {
     var full_name = $('#author-Full_name').val();
     var pseudonym = $('#author-Pseudonym').val();
-    var date_of_birth = $('#author-Date_of_Birth').val();
-    var date_of_death = $('#author-Date_of_Death').val();
+    var date_of_birth = $('#author_Date_of_Birth').val();
+    var date_of_death = $('#author_Date_of_Death').val();
     var place_of_birth = $('#author-Place_of_Birth').val();
     var place_of_death = $('#author-Place_of_Death').val();
     var citizenship = $('#author-Citizenship').val();
