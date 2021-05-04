@@ -1942,6 +1942,12 @@ section.large-gap {
       text-align: center;
       min-width: 140px; }
 
+#img-post-review {
+    width: 252px;
+    height: 352px;
+    padding-right: 10px;
+}
+
 #bookGetImage {
     width: 252px;
     height: 400px;

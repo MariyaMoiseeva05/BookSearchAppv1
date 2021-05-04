@@ -117,6 +117,30 @@ function getType() {
 
 }
 
+//Получение рецензий на книгу
+
+/*function getReview() {
+    $.ajax({
+        url: "/api/Review",
+        type: "GET",
+        dataType: "HTML",
+        success: function (data) {
+            let types = JSON.parse(data);
+            let html = "";  //текст вставки
+            if (review) {
+                for (var i in review) {
+                   
+                }
+            }
+            $('#reviewDiv').html(html);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    });
+
+}*/
+
 
 function createBook() {
     var title = $('#book-bookTitle').val();

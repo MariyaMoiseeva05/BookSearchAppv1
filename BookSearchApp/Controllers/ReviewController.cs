@@ -19,17 +19,16 @@ namespace BookSearchApp.Controllers
         public ReviewController(BookSearchContext context)
         {
             _context = context;
-            if (_context.Reviews.Count() == 0)
-            {
-                _context.Reviews.Add(new Review { Title = "Отличная книга", BookID = 1, Rating = 10 }) ;
-                _context.SaveChanges();
-            }
+           
         }
 
         [HttpGet] //  обрабатывает http-запросы GET
         public IEnumerable<Review> GetAll()
         {
-            return _context.Reviews.Include(a => a.Comments);
+            return _context.Reviews
+                .Include(a => a.Comments)
+                .Include(b =>b.Book).ThenInclude(av => av.Authors).ThenInclude(avt => avt.Author)
+                .Include(u => u.User);
         }
 
         [HttpGet("{id}")] // обрабатывает запросы GET, но кроме этого, обрабатывает переменную {id}

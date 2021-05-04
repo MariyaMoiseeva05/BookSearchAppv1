@@ -158,23 +158,23 @@
             <button type="submit" class="primary-button"><i class="icon_search"></i></button>
         </form>
     </div>
-
-    <section class="large-gap about-me about-version-one">
+    <section class="medium-gap standard-home list-home">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
-                    <div class="widget-sidebar about-me">
-                        <div class="widget-header">
-                            <h4 id="review-title"></h4>
-                        </div>
-                        <div class="widget-content">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <img src="/images/default_review.jpeg" alt="">
+                    <div class="standard-posts">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="standard-post list-post" id="reviewDiv">
                                 </div>
-                                <div class="col-lg-8">
-                                    <p id="content-review"></p>
-                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <ul class="pagination">
+                                    <li><a href="#">1</a></li>
+                                    <li class="active"><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -183,9 +183,27 @@
                     <div class="main-sidebar right-sidebar">
                         <div class="row">
                             <div class="col-lg-12">
-                                        <div class="post-image">
-                                                <a href="AddReview.html" class="add-review">Написать рецензию<img src="../images/create-review.png" class="img-review" /></a>
-                                        </div>
+                                <div class="widget-sidebar latest-posts">
+                                    <div class="widget-header">
+                                        <h4>Популярные рецензии</h4>
+                                    </div>
+                                    <div class="widget-content">
+                                        <ul class="latest-post-list">
+                                            <li>
+                                                <a href="single-standard-post.html">
+                                                    <div class="left-image">
+                                                        <img src="/images/default_book.jpeg" alt="">
+                                                        <span id="rating-review-small">оценка</span>
+                                                    </div>
+                                                    <div class="right-content">
+                                                        <h6>Название книги</h6>
+                                                        <span>Автор книги</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -194,6 +212,7 @@
         </div>
     </section>
    
+
     <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
     <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
