@@ -632,7 +632,7 @@ namespace BLL.Data
             return db.Users.GetAll().Select(i => new UserModel(i)).ToList();
         }
 
-        public UserModel GetUser(int Id)
+        public UserModel GetUser(string Id)
         {
             return new UserModel(db.Users.GetItem(Id));
         }
@@ -682,7 +682,7 @@ namespace BLL.Data
             Save();
         }
 
-        public void DeleteUser(int id)
+        public void DeleteUser(string id)
         {
             User u = db.Users.GetItem(id);
             if (u != null)

@@ -25,6 +25,7 @@ namespace BLL.Interfaces
         IEnumerable<MessageModel> GetAllMessages();
         IEnumerable<Comment_ReviewModel> GetAllComment_Review();
         IEnumerable<Comment_NewsModel> GetAllComment_News();
+        IEnumerable<UserModel> GetAllUsers();
 
 
         AuthorModel GetAuthor(int authorId);
@@ -78,10 +79,10 @@ namespace BLL.Interfaces
         void UpdateType_of_literature(Type_of_literatureModel tl);
         void DeleteType_of_literature(int id);
 
-        UserModel GetUser(int userId);
+        UserModel GetUser(string userId);
         void CreateUser(UserModel u);
         void UpdateUser(UserModel u);
-        void DeleteUser(int id);
+        void DeleteUser(string id);
 
         CollectionModel GetCollection(int collectionId);
         void CreateCollection(CollectionModel cl);

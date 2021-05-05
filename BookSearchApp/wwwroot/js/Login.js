@@ -28,7 +28,7 @@ function logIn() {
             }
             else {
                 alert(data.message);
-                $(location).attr('href', "/html");
+                $(location).attr('href', "/html/user-pages/user_home.html");
             }
 
         },

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Личная информация</title>
+    <title>Информация о пользователях</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,8 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Cormorant:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../fonts/font-awesome/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="../../styles/bootstrap.css"/>
-    <link rel="stylesheet" href="../../styles/main.css"/>
+    <link rel="stylesheet" href="../../styles/bootstrap.css" />
+    <link rel="stylesheet" href="../../styles/main.css" />
 </head>
 <body>
     <div id="js-preloader" class="js-preloader">
@@ -51,7 +51,7 @@
                         <li><a href="slider-small.html">Книгообмен</a></li>
                         <li><a href="slider-infinity.html">Коллекции</a></li>
                         <li><a href="slider-infinity.html">Персонажи</a></li>
-                        <li class="active"><a href="Login.html">Войти</a></li>
+                        <li><a href="Login.html">Войти</a></li>
                         <li><a href="Register.html">Зарегистрироваться</a></li>
                     </ul>
                 </li>
@@ -64,6 +64,7 @@
                         <li><a href="single-audio-post.html">Популярные авторы</a></li>
                     </ul>
                 </li>
+                <li class="active"><a href="allUsers.html">Пользователи</a></li>
             </ul>
         </div>
     </div>
@@ -74,13 +75,13 @@
             <div class="row">
                 <div class="col-lg-4 align-self-center">
                     <ul class="social-icons">
-                        <li class="active"><a href="Login.html"><i class="fa fa-user fa-fw"></i></a></li>
+                        <li><a href="Login.html"><i class="fa fa-user fa-fw"></i></a></li>
                     </ul>
                     <a id="register" href="Register.html">Зарегистрироваться?</a>
                 </div>
                 <div class="col-lg-4 align-self-center">
                     <div class="logo">
-                        <a href="Home.html"><img src="../../images/logo.png" alt=""></a>
+                        <a href="Home.html"><img src="../images/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
@@ -134,6 +135,7 @@
                             </ul>
                         </li>
                         <li><a href="#">Книгообмен</a></li>
+                        <li class="active"><a href="allUsers.html">Пользователи</a></li>
                     </ul>
                 </div>
                 <div class="header-widgets">
@@ -158,18 +160,72 @@
             <button type="submit" class="primary-button"><i class="icon_search"></i></button>
         </form>
     </div>
-    <div class="container">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Профиль</a></li>
-            <li class="breadcrumb-item"><a href="#">Читательский дневник</a></li>
-            <li class="breadcrumb-item"><a href="#">Рецензии</a></li>
-            <li class="breadcrumb-item"><a href="#">Цитаты</a></li>
-            <li class="breadcrumb-item"><a href="#">Книгообмен</a></li>
-            <li class="breadcrumb-item"><a href="#">Уведомления</a></li>
-            <li class="breadcrumb-item"><a href="allUsers.html">Все пользователи</a></li>
-
-        </ol>
+    <!--Все пользователи-->
+    <div class="container content mt-3">
+        <div class="row">
+            <h1 class="col-12">Пользователи</h1>
+        </div>
+        <div class="row pt-3">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Логин</th>
+                            <th scope="col">Имя</th>
+                            <th scope="col">Фамилия</th>
+                            <th scope="col">Пол</th>
+                            <th scope="col">Интересы</th>
+                            <th scope="col">Любимые книги</th>
+                            <th scope="col">Страна проживания</th>
+                            <th scope="col">Место жительства</th>
+                            <th scope="col">Дата рождения</th>
+                            <th scope="col">О себе</th>
+                            <th scope="col">Изображение профиля</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-content">
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+    <footer>
+        <div class="modal fade" id="view_modal" tabindex="-1" role="dialog" aria-labelledby="view_modal_label" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="view_modal_label">...</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-12">
+                            <button id="update-btn" class="btn btn-primary" data-toggle="modal" data-target="#form_modal" onclick="">Обновить информацию</button>
+                            <button id="save-updates-btn" class="btn btn-success" onclick="" style="display:none">Сохранить информацию</button>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <!--Основная информация-->
+                            <div class="table-responsive-md">
+                                <table id="w0" class="table table-striped table-bordered">
+                                    <tbody id="view_modal_table">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div><!--view_modal end-->
+     
+    </footer>
+
+
     <script src="../../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script src="../../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
     <script src="../../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
@@ -185,5 +241,6 @@
     <script src="../../scripts/main.js" charset="utf-8"></script>
     <script src="../../js/Login.js"></script>
     <script src="../../js/Login_Register.js"></script>
+    <script src="../../js/Users.js" charset="utf-8"></script>
 </body>
 </html>
