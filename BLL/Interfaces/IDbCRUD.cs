@@ -29,7 +29,7 @@ namespace BLL.Interfaces
 
 
         AuthorModel GetAuthor(int authorId);
-        void CreateAuthor(AuthorModel at, ICollection<string> b, ICollection<string> inf);
+        void CreateAuthor(AuthorModel at);
         void UpdateAuthor(AuthorModel at, int authorId);
         void DeleteAuthor(int id);
 

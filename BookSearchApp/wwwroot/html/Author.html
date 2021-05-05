@@ -170,24 +170,45 @@
                         <div class="widget-content">
                             <div class="row">
                                 <div class="col-lg-3">
-                                    <img src="/images/default_author.jpeg" id="author-img"/>
+                                    <img src="/images/author-default.jpg" id="author-img" />
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="author-info" id="authorInfo">
-                                        <div class="row book-info-header">
+                                        <div class="book-info-header">
                                             <h4>Об авторе</h4>
                                             <p class="details hide" id="author-details"></p>
                                             <a class="reply-button" href="#">Читать далее</a>
-                                            <p id="author-pseudonym"><strong> Псевдоним:</strong> </p>
-                                            <p id="author-date-of-birth">Дата рождения: </p>
-                                            <p id="author-date-of-death">Дата смерти: </p>
-                                            <p id="author-citizenship">Гражданство: </p>
-                                            <p id="author-occupation">Род деятельность: </p>
-                                            <p id="author-years-of-creativity">Годы творчества: </p>
-                                            <p id="author-language-of-works">Язык произведений: </p>
-                                            <p id="author-awards">Премии: </p>
-                                            <p id="author-prizes">Награды: </p>
-                                            <p id="author-debut">Дебют: </p>
+                                            <p>
+                                                <strong> Псевдоним: </strong><span id="author-pseudonym"></span>
+                                            </p>
+                                            <p>
+                                                <strong> Дата рождения: </strong><span id="author-date-of-birth"></span>
+                                            </p>
+                                            <p>
+                                                <strong> Дата смерти: </strong><span id="author-date-of-death"></span>
+                                            </p>
+                                            <p>
+                                                <strong> Гражданство: </strong><span id="author-citizenship"></span>
+                                            </p>
+                                            <p>
+                                                <strong> Род деятельность: </strong><span id="author-occupation"></span>
+                                            </p>
+                                            <p>
+                                                <strong> Годы творчества: </strong><span id="author-years-of-creativity"></span>
+                                            </p>
+                                            <p>
+                                                <strong> Язык произведений: </strong><span id="author-language-of-works"></span>
+                                            </p>
+                                            <p>
+                                                <strong> Премии: </strong><span id="author-awards"></span>
+                                            </p>
+                                            <p>
+                                                <strong> Награды: </strong><span id="author-prizes"></span>
+                                            </p>
+                                            <p>
+                                                <strong> Дебют: </strong><span id="author-debut"></span>
+                                            </p>
+
                                         </div>
                                     </div>
                                 </div>
@@ -215,47 +236,49 @@
     <script src="../js/Login_Register.js"></script>
     <script src="../js/Author.js" charset="utf-8"></script>
     <script>
-            $(document).ready(function () {
-                $('.reply-button').click(function () {
-                    $('.details').toggleClass('hide');
-                    if ($('.details').hasClass('hide')) {
-                        $('.reply-button').html('Читать далее');
-                    } else {
-                        $('.reply-button').html('Свернуть');
-                    }
-                    return false;
-                });
+        $(document).ready(function () {
+            $('.reply-button').click(function () {
+                $('.details').toggleClass('hide');
+                if ($('.details').hasClass('hide')) {
+                    $('.reply-button').html('Читать далее');
+                } else {
+                    $('.reply-button').html('Свернуть');
+                }
+                return false;
             });
+        });
 
-            document.addEventListener("DOMContentLoaded", function (event) {
-                $.when(viewAuthor(getUrlParameter('id'))).then(
-                    function (response) {
-                        let author = JSON.parse(response);
-                        $("#author-name").html(author.Full_name);
-                        $("#author-pseudonym").html(author.Pseudonym);
-                       // var formatter = new Intl.DateTimeFormat("ru");
-                        $("#author-date-of-birth").html(author.Date_of_Birth);
-                        $("#author-date-of-death").html(author.Date_of_Death);
-                        $("#author-place-of-birth").html(author.Place_of_Birth);
-                        $("#author-place-of-death").html(author.Place_of_Death);
-                        $("#author-citizenship").html(author.Citizenship);
-                        $("#author-years-of-creativity").html(author.Years_of_creativity);
-                        $("#author-language-of-works").html(author.Language_of_works);
-                        $("#author-details").html(author.Details);
-                        $("#author-awards").html(author.Awards);
-                        $("#author-prizes").html(author.Prizes);
-                        $("#author-debut").html(author.Debut);
-                        
-                        if (author.ImageLink != "")
-                            $("#author-img").attr("src", author.ImageLink);
+        document.addEventListener("DOMContentLoaded", function (event) {
+            $.when(viewAuthor(getUrlParameter('id'))).then(
+                function (response) {
+                    let author = JSON.parse(response);
+                    $("#author-name").html(author.Full_name);
+                    $("#author-pseudonym").html(author.Pseudonym);
+                    var formatter = new Intl.DateTimeFormat("ru");
+                    $("#author-date-of-birth").html(formatter.format(new Date(Date.parse(author.Date_of_Birth))));
+                    if (author.Date_of_Death)
+                        $("#author-date-of-death").html(formatter.format(new Date(Date.parse(author.Date_of_Death))));
+                    else $("#author-date-of-death").parent().hide();
+                    $("#author-place-of-birth").html(author.Place_of_Birth);
+                    $("#author-place-of-death").html(author.Place_of_Death);
+                    $("#author-citizenship").html(author.Citizenship);
+                    $("#author-occupation").html(author.Occupation);
+                    $("#author-years-of-creativity").html(author.Years_of_creativity);
+                    $("#author-language-of-works").html(author.Language_of_works);
+                    $("#author-details").html(author.Details);
+                    $("#author-awards").html(author.Awards);
+                    $("#author-prizes").html(author.Prizes);
+                    $("#author-debut").html(author.Debut);
+                    if (author.ImageLink)
+                        $("#author-img").attr("src", author.ImageLink);
 
-                    },
-                    function (error) {
-                        let e = JSON.parse(error.responseText);
-                        $("#authorInfo").html(e.Full_name);
-                    }
-                );
-            });
+                },
+                function (error) {
+                    let e = JSON.parse(error.responseText);
+                    $("#authorInfo").html(e.Full_name);
+                }
+            );
+        });
     </script>
 </body>
 </html>

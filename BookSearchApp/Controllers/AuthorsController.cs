@@ -53,14 +53,12 @@ namespace BookSearchApp.Controllers
         [HttpPost]
         public async System.Threading.Tasks.Task<IActionResult> CreateAsync()
         {
-           
+
             AuthorModel authorModel = new AuthorModel();
             IFormCollection FormFields = await Request.ReadFormAsync().ConfigureAwait(false);
 
             string path = null;
             string link = @"images\author_default";
-            string books = FormFields["Book"];
-            string facts = FormFields["Interesting_fact"];
 
             if (FormFields.Files.Count > 0)
             {
@@ -89,7 +87,9 @@ namespace BookSearchApp.Controllers
             authorModel.Full_name = FormFields["Full_name"];
             authorModel.Pseudonym = FormFields["Pseudonym"];
             authorModel.Date_of_Birth = DateTime.Parse(FormFields["Date_of_Birth"]);
-            authorModel.Date_of_Death = DateTime.Parse(FormFields["Date_of_Death"]); 
+
+            if (FormFields["Date_of_Death"] != "")
+                authorModel.Date_of_Death = DateTime.Parse(FormFields["Date_of_Death"]);
             authorModel.Place_of_Birth = FormFields["Place_of_Birth"];
             authorModel.Place_of_Death = FormFields["Place_of_Death"];
             authorModel.Citizenship = FormFields["Citizenship"];
@@ -103,7 +103,7 @@ namespace BookSearchApp.Controllers
 
             try
             {
-                _dbCrud.CreateAuthor(authorModel, books.Split(','), facts.Split(','));
+                _dbCrud.CreateAuthor(authorModel);
             }
             catch (DataException ex)
             {

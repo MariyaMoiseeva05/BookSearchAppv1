@@ -28,7 +28,7 @@ namespace BLL.Data
             return new AuthorModel(db.Authors.GetItem(Id));
         }
 
-        public void CreateAuthor(AuthorModel at, ICollection<string> b, ICollection<string> inf)
+        public void CreateAuthor(AuthorModel at)
         {
             int id = (int)db.Authors.Create(new Author()
             {
@@ -52,40 +52,6 @@ namespace BLL.Data
                 Details = at.Details
             });
             Save();
-
-            foreach (var a in b)
-            {
-                DAL.Entities.Author_Book ab = new DAL.Entities.Author_Book
-                {
-                    AuthorId = id,
-                    BookId = int.Parse(a),
-                };
-                try
-                {
-                    db.Authors_Books.Create(ab);
-                }
-                catch (DataException e)
-                {
-                    throw new Exception(e.Message);
-                }
-            }
-            foreach (var a in inf)
-            {
-                DAL.Entities.Interesting_fact fa = new DAL.Entities.Interesting_fact
-                {
-                    AuthorID = id,
-                    FactId = int.Parse(a),
-                };
-                try
-                {
-                    db.Interesting_facts.Create(fa);
-                }
-                catch (DataException e)
-                {
-                    throw new Exception(e.Message);
-                }
-            }
-
         }
 
         public void UpdateAuthor(AuthorModel a, int authorId)

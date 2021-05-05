@@ -170,11 +170,11 @@
                         <h3 id="book-author"></h3>
                         <div class="widget-content">
                             <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-12 col-md-3">
                                     <img src="/images/default_book.jpeg" id="book-img" />
-                                   
+
                                 </div>
-                                <div class="col-lg-8">
+                                <div class="col-12 col-md-8">
                                     <div class="book-info" id="bookinfo">
                                         <div class="row book-info-header">
                                             <h4>О книге</h4>
@@ -182,87 +182,102 @@
 
                                         <p class="description" id="book-description"></p>
 
-
-                                        <h5>Сюжет</h5>
+                                        <strong>Сюжет</strong>
                                         <div class="story hide">
                                             <p id="book-story"></p>
                                         </div>
                                         <a class="content_toggle" href="#">Читать далее</a>
                                         <br>
-                                        <h5>Тираж: <span id="book-edition"></span></h5>
-                                        <h5>Дата выхода в свет: <span id="book-publication_date"></span></h5>
-                                        <h5>Жанр: <a id="book-genre"></a></h5>
-                                        <h5><strong>Экранизации: </strong><span id="book-screen"></span></h5>
+                                        <p>
+                                            <strong>Тираж: </strong><span id="book-edition"></span>
+                                        </p>
+                                        <p>
+                                            <strong>Дата выхода в свет: </strong>
+                                            <span id="book-publication_date"></span>
+                                        </p>
+                                        <p>
+                                            <strong>Жанр: </strong>
+                                            <span id="book-genre"></span>
+                                        </p>
+                                        <p>
+                                            <strong>Тип литературы: </strong><span id="book-type"></span>
+                                        </p>
+                                        <p>
+                                            <strong>Экранизации: </strong><span id="book-screen">не экранизировано</span>
+                                        </p>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                    </div>
                 </div>
             </div>
+        </div>
     </section>
 
-        <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/jquery.easing.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/wow.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/parallax.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/isotope.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/imagesloaded.pkgd.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/packery-mode.pkgd.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/owl-carousel.min.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
-        <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
-        <script src="../scripts/main.js" charset="utf-8"></script>
-        <script src="../js/Login.js"></script>
-        <script src="../js/Login_Register.js"></script>
-        <script src="../js/Books.js" charset="utf-8"></script>
-        <script>
+    <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.easing.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/wow.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/parallax.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/isotope.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/imagesloaded.pkgd.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/packery-mode.pkgd.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/owl-carousel.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
+    <script src="../scripts/main.js" charset="utf-8"></script>
+    <script src="../js/Login.js"></script>
+    <script src="../js/Login_Register.js"></script>
+    <script src="../js/Books.js" charset="utf-8"></script>
+    <script>
 
-            $(document).ready(function () {
-                $('.content_toggle').click(function () {
-                    $('.story').toggleClass('hide');
-                    if ($('.story').hasClass('hide')) {
-                        $('.content_toggle').html('Читать далее');
-                    } else {
-                        $('.content_toggle').html('Свернуть');
-                    }
-                    return false;
-                });
+        $(document).ready(function () {
+            $('.content_toggle').click(function () {
+                $('.story').toggleClass('hide');
+                if ($('.story').hasClass('hide')) {
+                    $('.content_toggle').html('Читать далее');
+                } else {
+                    $('.content_toggle').html('Свернуть');
+                }
+                return false;
             });
+        });
 
-            document.addEventListener("DOMContentLoaded", function (event) {
-                $.when(viewBook(getUrlParameter('id'))).then(
-                    function (response) {
-                        let book = JSON.parse(response);
-                        $("#book-title").html(book.Title);
-                       /* for (var a in book.Author[a]) {
-                            $("#book-author").html(book.Author[a].Author.Full_name);
-                        }
-                        for (var g in book.Genre[g]) {
-                            $("#book-genre").html(book.Genre[g].Genre.NameGenre);
-                        }
-                        for (var t in book.Type_of_literature[t]) {
-                            $("#book-type").html(book.Type_of_literature[t].Type_of_literature.Name_Type);
-                        }*/
-                        $("#book-description").html(book.Description);
-                        $("#book-story").html(book.Story);
-                        $("#book-edition").html(book.Edition);
-                        $("#book-publication_date").html(book.Publication_date);
-                        $("#book-screen").html(book.Screenings);
-
-                        if (book.ImageLink != "")
-                            $("#book-img").attr("src", book.ImageLink);
-
-                    },
-                    function (error) {
-                        let e = JSON.parse(error.responseText);
-                        $("#bookinfo").html(e.Title);
+        document.addEventListener("DOMContentLoaded", function (event) {
+            $.when(viewBook(getUrlParameter('id'))).then(
+                function (response) {
+                    let book = JSON.parse(response);
+                    $("#book-title").html(book.Title);
+                    for (var a in book.Author) {
+                        $("#book-author").append(book.Author[a].Author.Full_name + ", ");
                     }
-                );
-            });
-        </script>
+                    for (var g in book.Genre_Books) {
+                        $("#book-genre").append(book.Genre_Books[g].Genre.NameGenre + ", ");
+                    }
+                    for (var t in book.Type_of_literature) {
+                        $("#book-type").append(book.Type_of_literature[t].TypeLit.Name_Type + ", ");
+                    }
+
+                    $("#book-description").html(book.Description);
+                    $("#book-story").html(book.Story);
+                    $("#book-edition").html(book.Edition);
+                    let formatter = new Intl.DateTimeFormat("ru"); //формат даты
+                    $("#book-publication_date").html(formatter.format(new Date(Date.parse(book.Publication_date))));
+                    $("#book-screen").html(book.Screenings);
+
+                    if (book.ImageLink != "")
+                        $("#book-img").attr("src", book.ImageLink);
+
+                },
+                function (error) {
+                    let e = JSON.parse(error.responseText);
+                    $("#bookinfo").html(e.Title);
+                }
+            );
+        });
+    </script>
 </body>
 </html>
