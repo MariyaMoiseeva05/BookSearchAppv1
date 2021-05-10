@@ -178,8 +178,21 @@
                 </dt>
                 <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
                     <form>
-                          <div class="col-lg-12">
-                          </div>
+                        <div class="col-lg-12">
+                            <div class="form-control">
+                                <label for="create-think-date">Дата создания</label>
+                                <input class="form-control" type="date" id="create-think-date" placeholder="Укажите дату написания мысли" />
+                            </div>
+                            <div class="form-control">
+                                <label for="create-think-title">Заголовок</label>
+                                <input class="form-control" id="create-think-title" placeholder="Напишите название" required />
+                            </div>
+                            <div class="form-control">
+                                <label for="create-think-content">Мысль</label>
+                                <input class="form-control" id="create-think-content" placeholder="Поделитесь своими мыслями..." />
+                            </div>
+                        </div>
+                        <input type="button" value="Добавить мысль" id="btnCreate" class="btn btn-block py-2 btn-primary" onclick="createThink();">
                     </form>
                 </dd>
             </dl>

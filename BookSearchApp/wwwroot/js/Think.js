@@ -44,7 +44,28 @@ function getThink() {
 }
 
 function createThink() {
+    var title = $('#create-think-title').val();
+    var text = $('#create-think-content').val();
+    var date = $('#create-think-date').val();
+    var data = new FormData();
+    data.append("Title", title);
+    data.append("Content", text);
+    data.append("Date_of_creation", date);
 
+    $.ajax({
+        url: '/api/Thinks',
+        type: 'POST',
+        contentType: false,
+        processData: false,
+        data: data,
+        success: function (data) {
+            alert("Ваши мысли успешно сохранены!");
+            getThink();
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert("У вас недостаточно прав для выполнения этого действия");
+        }
+    });
 }
 
 function viewThink(id) {
@@ -59,3 +80,63 @@ function viewThink(id) {
         console.log(error)
     });
 }
+
+(function () {
+    var d = document,
+        accordionToggles = d.querySelectorAll('.js-accordionTrigger'),
+        setAria,
+        setAccordionAria,
+        switchAccordion,
+        touchSupported = ('ontouchstart' in window),
+        pointerSupported = ('pointerdown' in window);
+
+    skipClickDelay = function (e) {
+        e.preventDefault();
+        e.target.click();
+    }
+
+    setAriaAttr = function (el, ariaType, newProperty) {
+        el.setAttribute(ariaType, newProperty);
+    };
+    setAccordionAria = function (el1, el2, expanded) {
+        switch (expanded) {
+            case "true":
+                setAriaAttr(el1, 'aria-expanded', 'true');
+                setAriaAttr(el2, 'aria-hidden', 'false');
+                break;
+            case "false":
+                setAriaAttr(el1, 'aria-expanded', 'false');
+                setAriaAttr(el2, 'aria-hidden', 'true');
+                break;
+            default:
+                break;
+        }
+    };
+    //function
+    switchAccordion = function (e) {
+        console.log("triggered");
+        e.preventDefault();
+        var thisAnswer = e.target.parentNode.nextElementSibling;
+        var thisQuestion = e.target;
+        if (thisAnswer.classList.contains('is-collapsed')) {
+            setAccordionAria(thisQuestion, thisAnswer, 'true');
+        } else {
+            setAccordionAria(thisQuestion, thisAnswer, 'false');
+        }
+        thisQuestion.classList.toggle('is-collapsed');
+        thisQuestion.classList.toggle('is-expanded');
+        thisAnswer.classList.toggle('is-collapsed');
+        thisAnswer.classList.toggle('is-expanded');
+
+        thisAnswer.classList.toggle('animateIn');
+    };
+    for (var i = 0, len = accordionToggles.length; i < len; i++) {
+        if (touchSupported) {
+            accordionToggles[i].addEventListener('touchstart', skipClickDelay, false);
+        }
+        if (pointerSupported) {
+            accordionToggles[i].addEventListener('pointerdown', skipClickDelay, false);
+        }
+        accordionToggles[i].addEventListener('click', switchAccordion, false);
+    }
+})();
