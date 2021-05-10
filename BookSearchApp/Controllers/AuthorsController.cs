@@ -86,8 +86,8 @@ namespace BookSearchApp.Controllers
             authorModel.ImagePath = path;
             authorModel.Full_name = FormFields["Full_name"];
             authorModel.Pseudonym = FormFields["Pseudonym"];
-            authorModel.Date_of_Birth = DateTime.Parse(FormFields["Date_of_Birth"]);
-
+            if (FormFields["Date_of_Birth"] != "")
+                authorModel.Date_of_Birth = DateTime.Parse(FormFields["Date_of_Birth"]);
             if (FormFields["Date_of_Death"] != "")
                 authorModel.Date_of_Death = DateTime.Parse(FormFields["Date_of_Death"]);
             authorModel.Place_of_Birth = FormFields["Place_of_Birth"];

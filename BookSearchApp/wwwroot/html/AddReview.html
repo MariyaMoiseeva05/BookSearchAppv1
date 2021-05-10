@@ -177,56 +177,64 @@
                                     <a href="#" id="book-author"></a>
                                     <br>
                                     <a href="#" id="book-genre"></a>
-                                    <div class="rating-result">
-                                        <span class="active"></span>
-                                        <span class="active"></span>
-                                        <span class="active"></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
+                                    <!-- <div class="rating-result">
+                                         <span class="active"></span>
+                                         <span class="active"></span>
+                                         <span class="active"></span>
+                                         <span></span>
+                                         <span></span>
+                                     </div>-->
                                     <br>
                                 </div>
                             </div>
                         </div>
-                            <div class="widget-content">
-                                <div class="contact-form">
-                                    <form id="contact" action="#" method="post">
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <fieldset>
-                                                    <label>Ваша оценка книги по шкале от 1 до 5</label>
-                                                    <div class="rating-mini">
-                                                            <input  id="star-rating-5" type="radio" name="rating-mini" value="5">
-                                                            <label  for="star-rating-5" title="Очень понравилась"></label>
-                                                            <input  id="star-rating-4" type="radio" name="rating-mini" value="4">
-                                                            <label for="star-rating-4" title="Понравилась"></label>
-                                                            <input  id="star-rating-3" type="radio" name="rating-mini" value="3">
-                                                            <label  for="star-rating-3" title="Можно прочитать один раз"></label>
-                                                            <input  id="star-rating-2" type="radio" name="rating-mini" value="2">
-                                                            <label for="star-rating-2" title="Не понравилась"></label>
-                                                            <input id="star-rating-1" type="radio" name="rating-mini" value="1">
-                                                            <label for="star-rating-1" title="Очень не понравилась"></label>
-                                                    </div>
-                                                </fieldset>
-                                                <fieldset>
-                                                    <label>Заголовок рецензии</label>
-                                                    <input name="name" type="text" class="form-controlInput" id="create-review-name" placeholder="Введите название рецензии" required="">
-                                                </fieldset>
-                                                <fieldset>
-                                                    <label>Текст вашей рецензии</label>
-                                                    <textarea name="message" rows="10" class="form-control" id="create-review-content" placeholder="Ваша рецензия" required=""></textarea>
-                                                </fieldset>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <fieldset>
-                                                    <button type="submit" id="form-submit" class="filled-button">Опубликовать</button>
-                                                </fieldset>
-                                            </div>
+                        <div class="widget-content">
+                            <div class="contact-form">
+                                <form id="contact" action="#" method="post">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <fieldset>
+                                                <label>Ваша оценка книги по шкале от 1 до 5</label>
+                                                <div class="rating-mini" id="create-review-rating">
+                                                    <input id="star-rating-5" type="radio" name="rating-mini" value="5">
+                                                    <label for="star-rating-5" title="Очень понравилась"></label>
+                                                    <input id="star-rating-4" type="radio" name="rating-mini" value="4">
+                                                    <label for="star-rating-4" title="Понравилась"></label>
+                                                    <input id="star-rating-3" type="radio" name="rating-mini" value="3">
+                                                    <label for="star-rating-3" title="Можно прочитать один раз"></label>
+                                                    <input id="star-rating-2" type="radio" name="rating-mini" value="2">
+                                                    <label for="star-rating-2" title="Не понравилась"></label>
+                                                    <input id="star-rating-1" type="radio" name="rating-mini" value="1">
+                                                    <label for="star-rating-1" title="Очень не понравилась"></label>
+                                                </div>
+                                            </fieldset>
+                                            <input type="hidden" class="form-control" id="user_id">
+                                            <fieldset>
+                                                <label class="control-label" for="create-review-type">Тип рецензии</label>
+                                                <select id="create-review-type" class="form-control" name="">
+                                                    <option value="0" selected="">Отрицательная</option>
+                                                    <option value="1">Положительная</option>
+                                                </select>
+                                            </fieldset>
+                                            <fieldset>
+                                                <label for="create-review-name">Заголовок рецензии</label>
+                                                <input name="name" type="text" class="form-controlInput" id="create-review-name" placeholder="Введите название рецензии" required="">
+                                            </fieldset>
+                                            <fieldset>
+                                                <label for="create-review-content">Текст вашей рецензии</label>
+                                                <textarea name="message" rows="10" class="form-control" id="create-review-content" placeholder="Ваша рецензия" required=""></textarea>
+                                            </fieldset>
                                         </div>
-                                    </form>
-                                </div>
+                                        <div class="col-lg-12">
+                                            <fieldset>
+                                                <button type="submit" id="form-submit" onclick="createReview();" class="filled-button">Опубликовать</button>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -249,5 +257,26 @@
     <script src="../js/Register.js"></script>
     <script src="../scripts/main.js" charset="utf-8"></script>
     <script src="../js/Review.js" charset="utf-8"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            $.when(viewReview(getUrlParameter('id'))).then(
+                function (response) {
+                    let review = JSON.parse(response);
+                    $("#book-title").html(review.Book.Title);
+                    for (var a in review.Book.Author) {
+                        $("#book-author").append(review.Book.Author[a].Author.Full_name + "<br>");
+                    }
+                    if (review.Book.ImageLink != "")
+                        $("#book-img").attr("src", review.Book.ImageLink);
+
+                },
+                function (error) {
+                    let e = JSON.parse(error.responseText);
+                    $("#reviewinfo").html(e.Title);
+                }
+            );
+        });
+    </script>
 </body>
 </html>

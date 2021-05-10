@@ -178,10 +178,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    <div class="standard-posts">
-                        <div class="row">
-                            <div class="col-lg-12">
+                <div class="col-lg-12">
                                 <div class="standard-post">
                                     <div class="d1">
                                         <form>
@@ -192,9 +189,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="col-lg-4">
 
                 </div>
@@ -263,15 +257,15 @@
                 </div>
                 <div class="modal-body">
                     <form>
-                        <input type="hidden" id="book_id" class="form-control">
                         <input type="hidden" class="form-control" id="user_id">
                         <div class="form-group  col-12 themed-grid-col">
-                            <label for="authorDiv">Выберите автора книги:</label>
-                            <select class="form-control" id="authorDiv" required>
+                            <label for="bookDiv">Выберите книгу: </label>
+                            <select class="form-control" id="bookDiv" required>
                             </select>
                         </div>
+                        <label style="align-content:center">ИЛИ</label>
                         <div class="form-group  col-12 themed-grid-col">
-                            <label for="bookDiv">Выберите книгу: </label>
+                            <label for="bookDiv">Выполните поиск книги: </label>
                             <select class="form-control" id="bookDiv" required>
                             </select>
                         </div>
@@ -279,7 +273,7 @@
                             <label for="quote-Content">Цитата</label>
                             <textarea class="form-control" id="quote-Content" placeholder="Напишите цитату..." rows="4"></textarea>
                         </div>
-                        <button onclick="createQuote();" id="createQuote" type="submit" class="btn btn-block py-2 btn-primary">Добавить цитату</button>
+                        <input type="button" value="Добавить цитату" id="createQuote" class="btn btn-block py-2 btn-primary" onclick="createQuote();">
                     </form>
                 </div>
             </div>

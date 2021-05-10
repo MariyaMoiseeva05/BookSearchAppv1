@@ -171,13 +171,14 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <img src="/images/author-default.jpg" id="author-img" />
+                                    <a id="update-btn" class="btn btn-primary" href="UpdateAuthor.html" onclick="">Обновить информацию</a>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="author-info" id="authorInfo">
                                         <div class="book-info-header">
                                             <h4>Об авторе</h4>
-                                            <p class="details hide" id="author-details"></p>
-                                            <a class="reply-button" href="#">Читать далее</a>
+                                            <p class="story hide" id="author-details"></p>
+                                            <a class="content_toggle" href="#">Читать далее</a>
                                             <p>
                                                 <strong> Псевдоним: </strong><span id="author-pseudonym"></span>
                                             </p>
@@ -237,12 +238,12 @@
     <script src="../js/Author.js" charset="utf-8"></script>
     <script>
         $(document).ready(function () {
-            $('.reply-button').click(function () {
-                $('.details').toggleClass('hide');
-                if ($('.details').hasClass('hide')) {
-                    $('.reply-button').html('Читать далее');
+            $('.content_toggle').click(function () {
+                $('.story').toggleClass('hide');
+                if ($('.story').hasClass('hide')) {
+                    $('.content_toggle').html('Читать далее');
                 } else {
-                    $('.reply-button').html('Свернуть');
+                    $('.content_toggle').html('Свернуть');
                 }
                 return false;
             });

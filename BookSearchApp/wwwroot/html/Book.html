@@ -167,48 +167,48 @@
                         <div class="widget-header">
                             <h2 id="book-title"></h2>
                         </div>
-                        <h3 id="book-author"></h3>
                         <div class="widget-content">
                             <div class="row">
                                 <div class="col-12 col-md-3">
-                                    <img src="/images/default_book.jpeg" id="book-img" />
+                                        <a><h2 id="book-author"></h2></a>
+                                        <img src="/images/default_book.jpeg" id="book-img" />
 
-                                </div>
-                                <div class="col-12 col-md-8">
-                                    <div class="book-info" id="bookinfo">
-                                        <div class="row book-info-header">
-                                            <h4>О книге</h4>
-                                        </div>
-
-                                        <p class="description" id="book-description"></p>
-
-                                        <strong>Сюжет</strong>
-                                        <div class="story hide">
-                                            <p id="book-story"></p>
-                                        </div>
-                                        <a class="content_toggle" href="#">Читать далее</a>
-                                        <br>
-                                        <p>
-                                            <strong>Тираж: </strong><span id="book-edition"></span>
-                                        </p>
-                                        <p>
-                                            <strong>Дата выхода в свет: </strong>
-                                            <span id="book-publication_date"></span>
-                                        </p>
-                                        <p>
-                                            <strong>Жанр: </strong>
-                                            <span id="book-genre"></span>
-                                        </p>
-                                        <p>
-                                            <strong>Тип литературы: </strong><span id="book-type"></span>
-                                        </p>
-                                        <p>
-                                            <strong>Экранизации: </strong><span id="book-screen">не экранизировано</span>
-                                        </p>
                                     </div>
-                                </div>
+                                    <div class="col-12 col-md-8">
+                                        <div class="book-info" id="bookinfo">
+                                            <div class="row book-info-header">
+                                                <h4>О книге</h4>
+                                            </div>
 
-                            </div>
+                                            <p class="description" id="book-description"></p>
+
+                                            <strong>Сюжет</strong>
+                                            <div class="story hide">
+                                                <p id="book-story"></p>
+                                            </div>
+                                            <a class="content_toggle" href="#">Читать далее</a>
+                                            <br>
+                                            <p>
+                                                <strong>Тираж: </strong><span id="book-edition"></span>
+                                            </p>
+                                            <p>
+                                                <strong>Дата выхода в свет: </strong>
+                                                <span id="book-publication_date"></span>
+                                            </p>
+                                            <p>
+                                                <strong>Жанр: </strong>
+                                                <span id="book-genre"><a></a></span>
+                                            </p>
+                                            <!--<p>
+                <strong>Тип литературы: </strong><span id="book-type"></span>
+            </p>-->
+                                            <p>
+                                                <strong>Экранизации: </strong><span id="book-screen">не экранизировано</span>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -252,20 +252,20 @@
                     let book = JSON.parse(response);
                     $("#book-title").html(book.Title);
                     for (var a in book.Author) {
-                        $("#book-author").append(book.Author[a].Author.Full_name + ", ");
+                        $("#book-author").append(book.Author[a].Author.Full_name + "<br>");
                     }
                     for (var g in book.Genre_Books) {
-                        $("#book-genre").append(book.Genre_Books[g].Genre.NameGenre + ", ");
+                        $("#book-genre").append(book.Genre_Books[g].Genre.NameGenre + "<br>");
                     }
-                    for (var t in book.Type_of_literature) {
-                        $("#book-type").append(book.Type_of_literature[t].TypeLit.Name_Type + ", ");
-                    }
+                   /* for (var t in book.Type_of_literature) {
+                        $("#book-type").append(book.Type_of_literature[t].TypeLit.Name_Type + " ");
+                    }*/
+
 
                     $("#book-description").html(book.Description);
                     $("#book-story").html(book.Story);
                     $("#book-edition").html(book.Edition);
-                    let formatter = new Intl.DateTimeFormat("ru"); //формат даты
-                    $("#book-publication_date").html(formatter.format(new Date(Date.parse(book.Publication_date))));
+                    $("#book-publication_date").html(book.Publication_date);
                     $("#book-screen").html(book.Screenings);
 
                     if (book.ImageLink != "")

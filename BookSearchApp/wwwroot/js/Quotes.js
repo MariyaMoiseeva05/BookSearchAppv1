@@ -86,7 +86,6 @@ function getQuote() {
             let html = "";
             if (quote) {
                 for (var i in quote) {
-                    
                     html += "<div class = \"standard-posts\">";
                     html += "<div class = \"row\">";
                     html += "<div class = \"col lg-12\">";
@@ -120,11 +119,34 @@ function getQuote() {
     });
 }
 
+function getUser() {
+    $.ajax({
+        url: "/api/Users" + sessionStorage.getItem('UserId'),
+        type: "GET",
+        dataType: "HTML",
+        statusCode: {
+            200: function (data) {
+                let users = JSON.parse(data);
+                let html = "";  //текст вставки
+                for (i in users) {
+                    html += users[i].UserId;
+                }
+                $('#user_id').html(html);
+            },
+            401: function (data) {
+                alert('У вас не хватает прав для выполнения данного действия');
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(data.responseText);
+        }
+    });
+}
 function createQuote() {
+
     var authorBook = $('#authorDiv').val();
     var bookQuote = $('#bookDiv').val();
     var contentQuote = $('#quote-Content').val();
-    var book_id = $('#book_id').val();
     var user_id = $('#user_id').val();
    
         $.ajax({
@@ -135,7 +157,7 @@ function createQuote() {
                 Author: authorBook,
                 Book: bookQuote,
                 Content: contentQuote,
-                BookID: book_id,
+                BookID: bookQuote,
                 UserId: user_id
             }),
             success: function (data) {

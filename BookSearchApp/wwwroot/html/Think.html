@@ -1,11 +1,12 @@
 ﻿<!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
+    <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Мой читательский дневник</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Писатели</title>
     <link rel="shortcut icon" href="../images/logoverh.svg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../fonts/elegant-font/style.css">
@@ -40,21 +41,23 @@
                     </ul>
                 </li>
                 <li class="has-sub">
-                    <a href="Books.html">Книги<i class="sub-icon fa fa-angle-down"></i></a>
+                    <a href="Books.html">Что почитать<i class="sub-icon fa fa-angle-down"></i></a>
                     <ul class="sub-menu">
                         <li><a href="slider-infinity.html">Найти книгу</a></li>
                         <li><a href="slider-full-width.html">Топ-250</a></li>
-                        <li><a href="slider-infinity.html">Жанры</a></li>
+                        <li><a href="Genres.html">Жанры</a></li>
                         <li><a href="Reviews.html">Рецензии</a></li>
                         <li><a href="Quotes.html">Цитаты</a></li>
                         <li><a href="slider-small.html">Книгообмен</a></li>
                         <li><a href="slider-infinity.html">Коллекции</a></li>
                         <li><a href="slider-infinity.html">Персонажи</a></li>
+                        <li><a href="Login.html">Войти</a></li>
+                        <li><a href="Register.html">Зарегистрироваться</a></li>
                     </ul>
                 </li>
                 <li><a href="Reviews.html">Рецензии</a></li>
                 <li><a href="News.html">Новости</a></li>
-                <li class="menu-item-has-children active">
+                <li class="menu-item-has-children">
                     <a href="Authors.html">Писатели</a>
                     <ul class="sub-menu">
                         <li><a href="Interesting_facts.html">Интересные факты</a></li>
@@ -109,11 +112,11 @@
                             </ul>
                         </li>
                         <li class="menu-item-has-children">
-                            <a href="Books.html">Книги</a>
+                            <a href="Books.html">Что почитать</a>
                             <ul class="sub-menu">
                                 <li><a href="slider-infinity.html">Найти книгу</a></li>
                                 <li><a href="slider-full-width.html">Топ-250</a></li>
-                                <li><a href="slider-infinity.html">Жанры</a></li>
+                                <li><a href="Genres.html">Жанры</a></li>
                                 <li><a href="Reviews.html">Рецензии</a></li>
                                 <li><a href="Quotes.html">Цитаты</a></li>
                                 <li><a href="slider-small.html">Книгообмен</a></li>
@@ -123,7 +126,7 @@
                         </li>
                         <li><a href="Reviews.html">Рецензии</a></li>
                         <li><a href="News.html">Новости</a></li>
-                        <li class="menu-item-has-children active">
+                        <li class="menu-item-has-children">
                             <a href="Authors.html">Писатели</a>
                             <ul class="sub-menu">
                                 <li><a href="Interesting_facts.html">Интересные факты</a></li>
@@ -156,33 +159,90 @@
             <button type="submit" class="primary-button"><i class="icon_search"></i></button>
         </form>
     </div>
-    <section class="medium-gap standard-home without-sidebar-home">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="personal_data.html">Мой профиль</a></li>
+            <li class="breadcrumb-item active"><a href="../Think.html">Читательский дневник</a></li>
+            <li class="breadcrumb-item"><a href="#">Рецензии</a></li>
+            <li class="breadcrumb-item"><a href="#">Цитаты</a></li>
+            <li class="breadcrumb-item"><a href="#">Книгообмен</a></li>
+            <li class="breadcrumb-item"><a href="#">Уведомления</a></li>
+        </ol>
+    </div>
+    <br>
+    <section class="medium-gap standard-home">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                        <div class="standard-posts">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="standard-post">
-                                        <div class="d1">
-                                            <form>
-                                                <input type="text" placeholder="Поиск по авторам...">
-                                                <button type="submit">
-                                                </button>
-                                            </form>
+                <div class="col-lg-8">
+                    <div class="standard-posts">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="standard-post">
+                                    <div class="down-content">
+                                        <div class="meta-category">
+                                            <span id="span-think">Мысль</span>
                                         </div>
+                                        <a href="single-standard-post.html"><h4>Название<em>мысли</em></h4></a>
+                                        <ul class="post-info">
+                                            <li><a href="#">Дата</a></li>
+                                            <li><a href="#">Имя автора</a></li>
+                                        </ul>
+                                        <p>Содержание мысли</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <div class="standard-posts">
-                        <div class="row masonry-layout normal-col-gap" id="authorDiv">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="main-sidebar right-sidebar">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="widget-sidebar promo-post">
+                                    <div class="widget-content">
+                                        <div class="promo-image">
+                                            <img src="../images/fon1.png" id="img-add-think"/>
+                                            <div class="inner-content">
+                                                <p>Пишите о своих мыслях как можно чаще, чтобы отражать как можно больше воспоминаний о книге...</p>
+                                                <div class="normal-white-button">
+                                                    <a href="#">Добавить новую мысль</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+  
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="footer-social-icons">
+                        <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fa fa-behance"></i> Behance</a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i> Linkedin</a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i> Dribbble</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-12">
+                    <div class="copyright-text">
+                        <p>all rights reserved. <a href="#">robert imeri</a> 2020.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
 
     <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
@@ -196,11 +256,9 @@
     <script src="../scripts/vendors/owl-carousel.min.js" charset="utf-8"></script>
     <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
     <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
+    <script src="../scripts/main.js" charset="utf-8"></script>
     <script src="../js/Login.js"></script>
     <script src="../js/Login_Register.js"></script>
-    <script src="../js/Register.js"></script>
-    <script src="../scripts/main.js" charset="utf-8"></script>
-    <script src="../js/Author.js" charset="utf-8"></script>
 
 </body>
 </html>

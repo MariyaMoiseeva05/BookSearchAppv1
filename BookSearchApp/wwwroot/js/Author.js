@@ -86,10 +86,96 @@ function createAuthor() {
             getAuthor();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert("У вас недостаточно прав для выполнения этого действия");
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
         }
     });
 }
+
+function updateAuthor(id) {
+    var full_name = $('#author-Full_name').val();
+    var pseudonym = $('#author-Pseudonym').val();
+    var date_of_birth = $('#author_Date_of_Birth').val();
+    var date_of_death = $('#author_Date_of_Death').val();
+    var place_of_birth = $('#author-Place_of_Birth').val();
+    var place_of_death = $('#author-Place_of_Death').val();
+    var citizenship = $('#author-Citizenship').val();
+    var occupation = $('#author-Occupation').val();
+    var years_of_creativity = $('#author-Years_of_creativity').val();
+    var language_of_works = $('#author-Language_of_works').val();
+    var debut = $('#author-Debut').val();
+    var details = $('#author-Details').val();
+    var awards = $('#author-Awards').val();
+    var prizes = $('#author-Prizes').val();
+    let fs = document.getElementById("addImage").files; //получение файла из формы
+    var data = new FormData();
+    if (fs.length > 0) {
+        data.append("ImageLink", fs[0]);
+    }
+    $.ajax({
+        url: '/api/UpdateAuthor/'+id,
+        type: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            Full_name: full_name,
+            Pseudonym: pseudonym,
+            Date_of_Birth: date_of_birth,
+            Date_of_Death: date_of_death,
+            Place_of_Birth: place_of_birth,
+            Place_of_Death: place_of_death,
+            Citizenship: citizenship,
+            Occupation: occupation,
+            Years_of_creativity: years_of_creativity,
+            Language_of_works: language_of_works,
+            Debut: debut,
+            Details: details,
+            Awards: awards,
+            Prizes: prizes,
+            ImageLink: fs
+        }),
+        success: function (data) {
+            getAuthor();
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    });
+}
+
+function insertAuthor(id) {
+    $.ajax({
+        url: '/api/Authors',
+        type: 'GET',
+        dataType: 'HTML',
+        success: function (data) {
+            let a = JSON.parse(data);
+            $('#author-Full_name').val(a.Full_name);
+            $('#author-Pseudonym').val(a.Pseudonym);
+            $('#author_Date_of_Birth').val(a.Date_of_Birth);
+            $('#author_Date_of_Death').val(a.Date_of_Death);
+            $('#author-Place_of_Birth').val(a.Place_of_Birth);
+            $('#author-Place_of_Death').val(a.Place_of_Death);
+            $('#author-Citizenship').val(a.Citizenship);
+            $('#author-Occupation').val(a.Occupation);
+            $('#author-Years_of_creativity').val(a.Years_of_creativity);
+            $('#author-Language_of_works').val(a.Language_of_works);
+            $('#author-Debut').val(a.Debut);
+            $('#author-Details').val(a.Details);
+            $('#author-Awards').val(a.Awards);
+            $('#author-Prizes').val(a.Prizes);
+            let fs = document.getElementById("addImage").files; //получение файла из формы
+            var data = new FormData();
+            if (fs.length > 0) {
+                data.append("ImageLink", fs[0]);
+            }
+
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+        }
+    });
+    $('#save-btn').attr("onclick", "author.updateAuthor(" + id + ")");
+}
+
 
     //загрузка данных об одном авторе
     function viewAuthor(id) {
@@ -123,111 +209,5 @@ function createAuthor() {
     }
 
 
-    /*viewProject: function (id) {
-        $.ajax({
-            url: author.url + '/' + id,
-            type: 'GET',
-            dataType: 'HTML',
-            success: function (data) {
-                let author = JSON.parse(data);
-                let html = "";
-                var formatter = new Intl.DateTimeFormat("ru");
-                $('#view_modal_label').html(author.full_name);
-                $('#update-btn').attr("onclick", "modals.updatingFormModal(" + author.id + ")");
-
-                */
-                      
-
-/*document.addEventListener("DOMContentLoaded", function (event) {
-    getAuthor();
-    getAuthorAll();
-});
-
-
-
-function getAuthor() {
-    $.ajax({
-        url: "/api/Authors",
-        type: "GET",
-        dataType: "HTML",
-        success: function (data) {
-            let author = JSON.parse(data);
-            let html = "";
-            var formatter = new Intl.DateTimeFormat("ru"); 
-            if (author) {
-                for (var i in author) {
-                    html += "<div class=\"col-md-4 masonry-item\">";
-                    html += "<div class=\"standard-post without-sidebar-post\">";
-                    html += "<div class=\"post-image\"><img src=" + author[i].imageLink + "></div>";
-                    html += "<div class=\"down-content\">";
-                    html += "<h4>" + author[i].Full_name + "</h4>";
-                    html += "<ul class =\"post-info\">";
-                    html += "<li><a href=#>Подробнее об авторе</a></li>";
-                    html += "</ul>";
-                    html += "<h6><em>" + author[i].Pseudonym + "</em></h6>";
-                    html += "<p> Дата рождения: " + formatter.format(new Date(Date.parse(author[i].Date_of_Birth))) + "</p>"; 
-                   // html += "<p> Дата смерти: " + formatter.format(new Date(Date.parse(author[i].Date_of_Death))) + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Place_of_Birth + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Place_of_Death + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Occupation + "</p>";
-
-                    html += "</div>";
-                    html += "</div>";
-                    html += "</div>";
-                }
-            }
-            $('#authorDiv').html(html);
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-    });
-}
-
-function getAuthorAll() {
-    $.ajax({
-        url: "/api/Authors",
-        type: "GET",
-        dataType: "HTML",
-        success: function (data) {
-            let author = JSON.parse(data);
-            let html = "";
-            // var formatter = new Intl.DateTimeFormat("ru"); //формат даты
-            // var formatter = new Intl.ToString("D", CultureInfo.CreateSpecificCulture("ru"));
-            if (author) {
-                for (var i in author) {
-                    html += "<div class=\"col-md-4 masonry-item\">";
-                    html += "<div class=\"standard-post without-sidebar-post\">";
-                    html += "<div class=\"post-image\"><img src=" + author[i].imageLink + "></div>";
-                    html += "<div class=\"down-content\">";
-                    html += "<h4>" + author[i].Full_name + "</h4>";
-                    html += "<ul class =\"post-info\">";
-                    html += "<li><a href=#>Подробнее об авторе</a></li>";
-                    html += "</ul>";
-                    html += "<h6><em>" + author[i].Pseudonym + "</em></h6>";
-                    html += "<p> Дата рождения: " + author[i].Date_of_Birth + "</p>"; //formatter.format(new Date(DateTime.parse(
-                    html += "<p> Дата смерти: " + author[i].Date_of_Death + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Place_of_Birth + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Place_of_Death + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Occupation + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Citizenship + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Years_of_creativity + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Language_of_works + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Debut + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Details + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Awards + "</p>";
-                    html += "<p class=\"lead\">" + author[i].Prizes + "</p>";
-                    html += "</div>";
-                    html += "</div>";
-                    html += "</div>";
-                }
-            }
-            $('#authorGetAll').html(html);
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-    });
-}*/
 
 

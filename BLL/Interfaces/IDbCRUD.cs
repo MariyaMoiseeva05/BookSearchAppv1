@@ -65,13 +65,13 @@ namespace BLL.Interfaces
         void DeleteQuote(int id);
 
         ReviewModel GetReview(int reviewId);
-        void CreateReview(ReviewModel r);
-        void UpdateReview(ReviewModel r);
+        void CreateReview(ReviewModel r, ICollection<string> c);
+        void UpdateReview(ReviewModel r, int reviewId);
         void DeleteReview(int id);
 
         ThinkModel GetThink(int thinkId);
         void CreateThink(ThinkModel t);
-        void UpdateThink(ThinkModel t);
+        void UpdateThink(ThinkModel t, int thinkId);
         void DeleteThink(int id);
 
         Type_of_literatureModel GetType_of_literature(int type_of_literatureId);

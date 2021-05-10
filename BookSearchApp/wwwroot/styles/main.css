@@ -14,6 +14,34 @@ h6 {
     font-size: 36px;
     }
 
+#book-img-review2 {
+    width: 310px;
+    height: 250px;
+    border-radius: 8px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    filter: blur(10px);
+}
+
+#book-rating {
+    padding-left: 20px;
+}
+
+#book-author {
+    margin-top: 0px;
+    background-color: #F2C94C;
+    color: #f7f7f7;
+    font-family: "Cormorant", Arial, Helvetica, serif;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 16px 24px;
+    text-align: center;
+    min-width: 140px;
+}
+
 .book-info a.reply-button {
     position: absolute;
     right: 77%;
@@ -436,6 +464,44 @@ button:-moz-focusring,
 
 }
 
+#login-review {
+    margin-top: 0px;
+    color: black;
+    font-family: 'Times New Roman';
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 5px 5px;
+    text-align: center;
+    min-width: 120px;
+}
+
+.text {
+    overflow: hidden;
+    position: relative;
+    text-indent: 0px;
+    margin-top: 0em; /* Отступ сверху */
+    margin-bottom: 0em; /* Отступ снизу */
+    text-align: justify;
+}
+
+    .text.hide {
+        height: 100px;
+    }
+
+        .text.hide:after {
+            content: "";
+            display: block;
+            height: 25px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            text-align: justify;
+            background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 75%)
+        }
 
 .story {
     overflow: hidden;
@@ -1943,9 +2009,10 @@ section.large-gap {
       min-width: 140px; }
 
 #img-post-review {
-    width: 252px;
-    height: 352px;
-    padding-right: 10px;
+    width: 152px;
+    height: 242px;
+    padding-right: 0px;
+    border-radius: 8px;
 }
 
 #bookGetImage {
@@ -1972,6 +2039,14 @@ section.large-gap {
     object-fit: cover;
 }
 
+#book-img-review {
+    width: 152px;
+    height: 214px;
+    border-radius: 8px;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
 #review-img {
     width: 222px;
     height: 304px;
@@ -1991,6 +2066,26 @@ section.large-gap {
     letter-spacing: 1px;
     display: inline-block;
     padding: 16px 24px;
+    text-align: center;
+    min-width: 140px;
+}
+#style-height {
+    height: 210px;
+}
+#book-title-review {
+    padding-left: 170px;
+}
+#book-author-review {
+    padding-left: 150px;
+}
+#book-title-review, #book-author-review {
+    margin-top: 0px;
+    color: black;
+    font-family: 'Cormorant';
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    display: inline-block;
     text-align: center;
     min-width: 140px;
 }
@@ -2963,12 +3058,21 @@ section.large-gap {
   padding-bottom: 40px;
 
 }
-  .standard-post .down-content {
+
+#img-add-think {
+    filter: blur(10px);
+}
+
+#span-think {
+    background-color: #fb8633;
+}
+.standard-post .down-content {
     position: relative;
     margin: -7px 0px 0px;
     background-color: #ffffff;
     box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.1);
-    padding: 45px 20px 20px; }
+    padding: 45px 20px 20px;
+}
     @media (min-width: 992px) {
       .standard-post .down-content {
         margin: -37px 30px 0px 30px;
@@ -3025,6 +3129,69 @@ section.large-gap {
           transition: all .3s; }
           .standard-post .down-content ul.post-info li a:hover {
             color: #F2C94C; }
+
+.standard-post .down-content-review {
+    position: center;
+    margin: 0px 0px 0px 0px;
+    background-color: #e7e7e7;
+    box-shadow: 0 0px 15px 0 rgba(0, 0, 0, 0.1);
+    padding: 25px;
+}
+
+@media (min-width: 992px) {
+    .standard-post .down-content-review {
+        margin: -37px 30px 0px 30px;
+        padding: 57px 30px 30px 30px;
+    }
+}
+
+.standard-post .down-content-review .meta-category span {
+    position: absolute;
+    top: -27px;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: "Cormorant", Arial, Helvetica, serif;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 700;
+    background-color: #F2C94C;
+    padding: 12px 25px;
+    display: inline-block;
+}
+
+.standard-post .down-content-review h4 {
+    font-family: "Cormorant", Arial, Helvetica, serif;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    font-size: 28px;
+    line-height: 30px;
+    text-transform: none;
+    font-weight: 700;
+    text-align: center;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+    .standard-post .down-content-review h4 em {
+        font-weight: 300;
+    }
+
+            .standard-post .down-content ul.post-info li a {
+                text-transform: uppercase;
+                font-size: 13px;
+                color: #8b8b8b;
+                font-weight: 400;
+                -webkit-transition: all .3s;
+                transition: all .3s;
+            }
+
+                .standard-post .down-content ul.post-info li a:hover {
+                    color: #F2C94C;
+                }
+
 .add-review {
     position: relative;
     display: -webkit-box;
@@ -3206,7 +3373,13 @@ section.large-gap {
     padding: 20px 30px; }
     @media (min-width: 992px) {
       .list-home .list-post .down-content {
-        margin-left: 370px; } }
+        margin-left: 170px; } }
+@media (min-width: 992px) {
+   #down-content-review {
+        margin-left: 170px;
+    }
+}
+   
     .list-home .list-post .down-content h4 {
       font-size: 24px;
       line-height: 32px;
@@ -3424,12 +3597,13 @@ ul.pagination {
         background-color: rgba(121, 164, 114, 0.95);
         padding: 15px 30px;
         display: inline-block; }
-  .single-posts .single-post .down-content {
-    position: relative;
-    margin: 0px;
-    background-color: #f7f7f7;
-    box-shadow: none;
-    padding: 40px 30px; }
+    .single-posts .single-post .down-content {
+        position: relative;
+        margin: 0px;
+        background-color: #fafafa;
+        box-shadow: none;
+        padding: 40px 30px;
+    }
     .single-posts .single-post .down-content h4 {
       margin-top: 0px;
       margin-bottom: 20px;
@@ -4147,7 +4321,7 @@ ul.pagination {
 .breadcrumb-item.active {
     color: #fff;
     display: block;
-    background: #F2C94C;
+    background: #ff6b03;
     text-decoration: none;
     position: relative;
     height: 34px;
@@ -4183,7 +4357,7 @@ ul.pagination {
         content: "";
         position: absolute;
         top: 0;
-        border: 0 solid #F2C94C;
+        border: 0 solid #ff6b03;
         border-width: 17px 10px;
         width: 0;
         height: 0;
@@ -4198,7 +4372,7 @@ ul.pagination {
 .breadcrumb-item > a::after {
     left: 100%;
     border-color: transparent;
-    border-left-color: #F2C94C;
+    border-left-color: #ff6b03;
 }
 
 .breadcrumb-item > a:hover {
@@ -4215,11 +4389,11 @@ ul.pagination {
     }
 
 .breadcrumb-item.active {
-    color: #fb8633;
-    background-color: #F2C94C;
+    color: #ff6b03;
+    background-color: #ffb1007a;
 }
 
     .breadcrumb-item.active::before {
-        border-color: #F2C94C;
+        border-color: #ffb1007a;
         border-left-color: transparent;
     }

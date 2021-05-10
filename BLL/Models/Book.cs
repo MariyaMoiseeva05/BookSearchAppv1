@@ -12,7 +12,7 @@ namespace BLL.Models
         public string Story { get; set; }
         public string Edition { get; set; }
         public string Screenings { get; set; }
-        public DateTime Publication_date { get; set; }
+        public string Publication_date { get; set; }
         public string ImageLink { get; set; }
         public string ImagePath { get; set; }
         public virtual ICollection<TypeOfLit_Book> Type_of_literature { get; set; }

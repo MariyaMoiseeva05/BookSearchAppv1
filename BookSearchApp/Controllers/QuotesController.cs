@@ -57,7 +57,7 @@ namespace BookSearchApp.Controllers
             try
             {
                 _dbCrud.CreateQuote(quote);
-                _logger.LogInformation("Создание проекта id: " + quoteModel.QuoteId + " успешно!");
+                _logger.LogInformation("Создание цитаты id: " + quoteModel.QuoteId + " успешно!");
             }
             catch (DataException e)
             {

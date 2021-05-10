@@ -2,6 +2,8 @@
     user.loadData();
 });
 
+//if (User.IsInRole("admin"))
+
 var user = {
     // адрес апи
     url: "/api/Users",
@@ -17,6 +19,8 @@ var user = {
             dataType: 'HTML',
             success: function (data) {
                 let users = JSON.parse(data);
+                let user_type = sessionStorage.getItem('role');
+                let user_id = sessionStorage.getItem('userid');
                 let html = "";  //текст вставки
                 var formatter = new Intl.DateTimeFormat("ru"); //формат даты
                 if (users) {

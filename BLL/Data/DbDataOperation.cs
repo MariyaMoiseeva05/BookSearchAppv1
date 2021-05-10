@@ -176,7 +176,6 @@ namespace BLL.Data
                     throw new Exception(e.Message);
                 }
             }
-
         }
 
         public void UpdateBook(BookModel b, int bookId)
@@ -458,9 +457,9 @@ namespace BLL.Data
             return new ReviewModel(db.Reviews.GetItem(Id));
         }
 
-        public void CreateReview(ReviewModel r)
+        public void CreateReview(ReviewModel r, ICollection<string> c)
         {
-            db.Reviews.Create(new Review()
+            int id = (int)db.Reviews.Create(new Review()
             {
                 Title = r.Title,
                 Text = r.Text,
@@ -473,9 +472,27 @@ namespace BLL.Data
                 Rating = r.Rating
             });
             Save();
+
+            foreach (var rw in c)
+            {
+                DAL.Entities.Comment_Review cr = new DAL.Entities.Comment_Review
+                {
+                    Comment_ReviewId = int.Parse(rw),
+                    ReviewId = id
+                };
+                try
+                {
+                    db.Comment_Reviews.Create(cr);
+                }
+                catch (DataException e)
+                {
+                    throw new Exception(e.Message);
+                }
+            }
+
         }
 
-        public void UpdateReview(ReviewModel r)
+        public void UpdateReview(ReviewModel r, int reviewId)
         {
             Review rw = db.Reviews.GetItem(r.RewiewId);
 
@@ -527,7 +544,7 @@ namespace BLL.Data
             Save();
         }
 
-        public void UpdateThink(ThinkModel t)
+        public void UpdateThink(ThinkModel t, int thinkId)
         {
             Think th = db.Thinks.GetItem(t.ThinkId);
 
