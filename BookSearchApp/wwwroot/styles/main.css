@@ -14,6 +14,15 @@ h6 {
     font-size: 36px;
     }
 
+#img-add-think {
+    width: 310px;
+    height: 250px;
+    border-radius: 8px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    filter: blur(10px);
+}
+
 #book-img-review2 {
     width: 310px;
     height: 250px;
@@ -462,6 +471,16 @@ button:-moz-focusring,
     font-size: 14px;
     font-family:'fontello';
 
+}
+
+#title-user-review {
+    font-family: 'CORMORANT';
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: bold;
+    align-content: stretch;
+    padding-left: 420px;
+    padding-top: 15px;
 }
 
 #login-review {
@@ -3064,7 +3083,7 @@ section.large-gap {
 }
 
 #span-think {
-    background-color: #fb8633;
+    background-color: #ff6b03;
 }
 .standard-post .down-content {
     position: relative;
@@ -4309,7 +4328,11 @@ ul.pagination {
     font-size: 19px;
     color: #1e1e1e; }
 
-  /*личный кабинет пользователя*/
+
+#down-content-think {
+background-color: honeydew;
+}
+/*личный кабинет пользователя*/
 .breadcrumb {
     list-style: none;
     display: flex;
@@ -4389,7 +4412,7 @@ ul.pagination {
     }
 
 .breadcrumb-item.active {
-    color: #ff6b03;
+    color: #fb8633;
     background-color: #ffb1007a;
 }
 

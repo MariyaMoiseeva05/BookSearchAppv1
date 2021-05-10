@@ -161,55 +161,38 @@
     </div>
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="personal_data.html">Мой профиль</a></li>
+            <li class="breadcrumb-item"><a href="user-pages/personal_data.html">Мой профиль</a></li>
             <li class="breadcrumb-item active"><a href="../Think.html">Читательский дневник</a></li>
-            <li class="breadcrumb-item"><a href="#">Рецензии</a></li>
+            <li class="breadcrumb-item"><a href="user-pages/user-review-page.html">Рецензии</a></li>
             <li class="breadcrumb-item"><a href="#">Цитаты</a></li>
             <li class="breadcrumb-item"><a href="#">Книгообмен</a></li>
             <li class="breadcrumb-item"><a href="#">Уведомления</a></li>
         </ol>
     </div>
     <br>
+    <div class="container">
+        <div class="accordion">
+            <dl>
+                <dt>
+                    <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">Добавить мысль</a>
+                </dt>
+                <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
+                    <form>
+                          <div class="col-lg-12">
+                          </div>
+                    </form>
+                </dd>
+            </dl>
+        </div>
+    </div>
     <section class="medium-gap standard-home">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                     <div class="standard-posts">
                         <div class="row">
                             <div class="col-lg-12">
-                                <div class="standard-post">
-                                    <div class="down-content">
-                                        <div class="meta-category">
-                                            <span id="span-think">Мысль</span>
-                                        </div>
-                                        <a href="single-standard-post.html"><h4>Название<em>мысли</em></h4></a>
-                                        <ul class="post-info">
-                                            <li><a href="#">Дата</a></li>
-                                            <li><a href="#">Имя автора</a></li>
-                                        </ul>
-                                        <p>Содержание мысли</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="main-sidebar right-sidebar">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="widget-sidebar promo-post">
-                                    <div class="widget-content">
-                                        <div class="promo-image">
-                                            <img src="../images/fon1.png" id="img-add-think"/>
-                                            <div class="inner-content">
-                                                <p>Пишите о своих мыслях как можно чаще, чтобы отражать как можно больше воспоминаний о книге...</p>
-                                                <div class="normal-white-button">
-                                                    <a href="#">Добавить новую мысль</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                <div class="standard-post" id="thinkDiv">
                                 </div>
                             </div>
                         </div>
@@ -218,30 +201,7 @@
             </div>
         </div>
     </section>
-
-  
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="footer-social-icons">
-                        <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a></li>
-                        <li><a href="#"><i class="fa fa-behance"></i> Behance</a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i> Linkedin</a></li>
-                        <li><a href="#"><i class="fa fa-dribbble"></i> Dribbble</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-12">
-                    <div class="copyright-text">
-                        <p>all rights reserved. <a href="#">robert imeri</a> 2020.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+ 
     <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
 
     <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
@@ -259,6 +219,7 @@
     <script src="../scripts/main.js" charset="utf-8"></script>
     <script src="../js/Login.js"></script>
     <script src="../js/Login_Register.js"></script>
+    <script src="../js/Think.js"></script>
 
 </body>
 </html>

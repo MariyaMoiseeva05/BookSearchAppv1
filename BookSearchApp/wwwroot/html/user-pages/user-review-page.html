@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Личная информация</title>
+    <title>Мои рецензии</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,8 +14,8 @@
     <link href="https://fonts.googleapis.com/css?family=Cormorant:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../fonts/font-awesome/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="../../styles/bootstrap.css"/>
-    <link rel="stylesheet" href="../../styles/main.css"/>
+    <link rel="stylesheet" href="../../styles/bootstrap.css" />
+    <link rel="stylesheet" href="../../styles/main.css" />
 </head>
 <body>
     <div id="js-preloader" class="js-preloader">
@@ -51,7 +51,7 @@
                         <li><a href="slider-small.html">Книгообмен</a></li>
                         <li><a href="slider-infinity.html">Коллекции</a></li>
                         <li><a href="slider-infinity.html">Персонажи</a></li>
-                        <li class="active"><a href="../Login.html">Войти</a></li>
+                        <li><a href="../Login.html">Войти</a></li>
                         <li><a href="../Register.html">Зарегистрироваться</a></li>
                     </ul>
                 </li>
@@ -74,7 +74,7 @@
             <div class="row">
                 <div class="col-lg-4 align-self-center">
                     <ul class="social-icons">
-                        <li class="active"><a href="../Login.html"><i class="fa fa-user fa-fw"></i></a></li>
+                        <li><a href="../Login.html"><i class="fa fa-user fa-fw"></i></a></li>
                     </ul>
                     <a id="register" href="../Register.html">Зарегистрироваться?</a>
                 </div>
@@ -101,7 +101,7 @@
         <div class="container expanded">
             <div class="header-wrap">
                 <div class="header-logo">
-                    <a href="../Home.html"><img src=../images/logo.png alt=""></a>
+                    <a href="../Home.html"><img src=../../images/logo.png alt=""></a>
                 </div>
                 <div class="header-nav">
                     <ul class="main-menu">
@@ -162,12 +162,59 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="personal_data.html">Мой профиль</a></li>
             <li class="breadcrumb-item"><a href="../Think.html">Читательский дневник</a></li>
-            <li class="breadcrumb-item"><a href="user-review-page.html">Рецензии</a></li>
+            <li class="breadcrumb-item active"><a href="user-review-page.html">Рецензии</a></li>
             <li class="breadcrumb-item"><a href="#">Цитаты</a></li>
             <li class="breadcrumb-item"><a href="#">Книгообмен</a></li>
             <li class="breadcrumb-item"><a href="#">Уведомления</a></li>
         </ol>
+        <h4 id="title-user-review">Мои рецензии на книги</h4>
     </div>
+    <br>
+    <section class="medium-gap single-post">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="single-posts">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="single-post">
+                                    <div class="down-content" id="reviewinfo">
+                                        <h2 id="review-title"></h2>
+                                        <a href="#"><h4 id="book-title-review"></h4></a><a href="#"><h4><em id="book-author-review"></em></h4></a>
+                                        <ul class="post-info">
+                                            <li>
+                                                <a href="#" class="rating-result" id="review-rating">
+                                                    <span class="active"></span>
+                                                    <span class="active"></span>
+                                                    <span class="active"></span>
+                                                    <span class="active"></span>
+                                                    <span class="active"></span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <p class="first-paragraph" id="review-content"><br></p>
+                                        <div class="row">
+                                            <div class="col-lg-7 col-md-6">
+                                                <div class="tags">
+                                                    <ul class="tags">
+                                                        <li><i class="fa fa-tag" id="review-type"></i></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
+
     <script src="../../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script src="../../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
     <script src="../../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
@@ -183,6 +230,25 @@
     <script src="../../scripts/main.js" charset="utf-8"></script>
     <script src="../../js/Login.js"></script>
     <script src="../../js/Login_Register.js"></script>
-    <script src="../../js/Users.js"></script>
+    <script src="../../js/Review.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            $.when(viewReview(getUrlParameter('id'))).then(
+                function (response) {
+                    let review = JSON.parse(response);
+                    $("#review-title").html(review.Title);
+                    $("#review-content").html(review.Text);
+                    $("#review-rating").html(review.Rating);
+                    $("#book-title-review").html(review.Book.Title);
+                    $("#review-type").html(review.Type);
+                    for (var a in review.Book.Authors) {
+                        $("#book-author-review").append(review.Book.Authors[a].Author.Full_name + "<br>");
+                    }
+                }
+            );
+        });
+    </script>
+
 </body>
 </html>
