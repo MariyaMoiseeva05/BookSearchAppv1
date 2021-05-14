@@ -40,9 +40,9 @@ function getReview() {
                     html += '<li><a href=\"#\">' + review[i].Rating + '</a></li>';
                     html += '<li><p><strong>Рецензия написана пользователем: </strong><a id=\"login-review\" href=\"#\">' + review[i].User.Login + '</a></p></li>';
                     html += "</ul>";
-                    html += '<a href="review.html?id=' + review[i].RewiewId + '"><h4>' + review[i].Title + '</h4>';
+                    html += '<a href="review.html?id=' + review[i].RewiewId + '"><h4>' + review[i].Title + '</h4></a>';
                     html += "<div class=\"text hide\"><p>" + review[i].Text + "</p></div>";
-                    html += "<a class=\"content_toggle\" href=\"review.html?id=' + review[i].RewiewId + '\">"+ "Перейти к рецензии" +"</a>";
+                    html += '<a class=\"content_toggle\" href=\"review.html?id=' + review[i].RewiewId + '\">'+ "Перейти к рецензии" +'</a>';
                     html += "</div>";
                     html += "</div>";
                     html += "</div>";

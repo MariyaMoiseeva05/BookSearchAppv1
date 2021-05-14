@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Новый автор</title>
+    <title>Обновление информации об авторе</title>
     <link rel="shortcut icon" href="../images/logoverh.svg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../fonts/font-awesome/css/font-awesome.min.css">
@@ -21,78 +21,80 @@
                 <div class="text-left">
                     <a href="Home.html"><img src="../images/logo_1.png" alt=""></a>
                 </div>
-                <div class="row align-items-center justify-content-center">
-                    <div class="text-center">
-                        <h1 class="display-4">Добавление нового автора</h1>
+                <div class="author-info" id="authorInfo">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="text-center">
+                            <h1 class="display-4">Обновление информации об авторе</h1>
+                        </div>
+                    </div>
+                    <form>
+                        <div class="row mb-3">
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Full_name">Ф.И.О. автора</label>
+                                <input class="form-control" id="author-Full_name" placeholder="Введите Ф.И.О." required />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Pseudonym">Псевдоним</label>
+                                <input class="form-control" id="author-Pseudonym" placeholder="Укажите псевдоним автора " />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author_Date_of_Birth">Дата рождения</label>
+                                <input class="form-control" type="date" id="author_Date_of_Birth" placeholder="Укажите дату рождения" />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author_Date_of_Death">Дата смерти</label>
+                                <input class="form-control" type="date" id="author_Date_of_Death" placeholder="Укажите дату смерти" />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Place_of_Birth">Место рождения</label>
+                                <input class="form-control" id="author-Place_of_Birth" placeholder="Место рождения автора " />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Place_of_Death">Место смерти</label>
+                                <input class="form-control" id="author-Place_of_Death" placeholder="Место смерти автора " />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Citizenship">Гражданство</label>
+                                <input class="form-control" id="author-Citizenship" placeholder="Укажите гражданство автора " />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Occupation">Род деятельности</label>
+                                <input class="form-control" id="author-Occupation" placeholder="Писатель, прозаик, актёр и т.д." />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Years_of_creativity">Годы творчества</label>
+                                <input class="form-control" id="author-Years_of_creativity" placeholder="Введите промежуток времени" />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Language_of_works">Язык произведений</label>
+                                <input class="form-control" id="author-Language_of_works" placeholder="Язык(и), на котором(ых) были написны произведения " />
+                            </div>
+                            <div class="form-group col-12">
+                                <label for="author-Details">Подробная биография автора</label>
+                                <textarea name="message" rows="6" class="form-control" id="author-Details" placeholder="Напишите всё, что знаете об авторе"></textarea>
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Awards">Премии</label>
+                                <textarea name="message" rows="6" class="form-control" id="author-Awards" placeholder="Укажите все премии автора"></textarea>
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Prizes">Награды</label>
+                                <textarea name="message" rows="6" class="form-control" id="author-Prizes" placeholder="Укажите все награды автора"></textarea>
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="author-Debut">Дебют</label>
+                                <input class="form-control" id="author-Debut" placeholder="Произведение-дебют" />
+                            </div>
+                            <div class="form-group  col-6 themed-grid-col">
+                                <label for="addImage">Изображение:</label>
+                                <input class="form-control" type="file" id="addImage" name="addImageAuthor" accept=".jpg, .jpeg, .png" placeholder="Прикрепите изображение" />
+                            </div>
+                        </div>
+                        <input type="button" value="Обновить информацию об авторе" id="save-btn" class="btn btn-block py-2 btn-primary">
+                    </form>
                     </div>
                 </div>
-                <form>
-                    <div class="row mb-3">
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author-Full_name">Ф.И.О. автора</label>
-                            <input class="form-control" id="author-Full_name" placeholder="Введите Ф.И.О." required />
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author-Pseudonym">Псевдоним</label>
-                            <input class="form-control" id="author-Pseudonym" placeholder="Укажите псевдоним автора " />
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author_Date_of_Birth">Дата рождения</label>
-                            <input class="form-control" type="date" id="author_Date_of_Birth" placeholder="Укажите дату рождения" />
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author_Date_of_Death">Дата смерти</label>
-                            <input class="form-control" type="date" id="author_Date_of_Death" placeholder="Укажите дату смерти" />
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author-Place_of_Birth">Место рождения</label>
-                            <input class="form-control" id="author-Place_of_Birth" placeholder="Место рождения автора " />
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author-Place_of_Death">Место смерти</label>
-                            <input class="form-control" id="author-Place_of_Death" placeholder="Место смерти автора " />
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author-Citizenship">Гражданство</label>
-                            <input class="form-control" id="author-Citizenship" placeholder="Укажите гражданство автора " />
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author-Occupation">Род деятельности</label>
-                            <input class="form-control" id="author-Occupation" placeholder="Писатель, прозаик, актёр и т.д." />
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author-Years_of_creativity">Годы творчества</label>
-                            <input class="form-control" id="author-Years_of_creativity" placeholder="Введите промежуток времени" />
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author-Language_of_works">Язык произведений</label>
-                            <input class="form-control" id="author-Language_of_works" placeholder="Язык(и), на котором(ых) были написны произведения " />
-                        </div>
-                        <div class="form-group col-12">
-                            <label for="author-Details">Подробная биография автора</label>
-                            <textarea name="message" rows="6" class="form-control" id="author-Details" placeholder="Напишите всё, что знаете об авторе"></textarea>
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author-Awards">Премии</label>
-                            <textarea name="message" rows="6" class="form-control" id="author-Awards" placeholder="Укажите все премии автора"></textarea>
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author-Prizes">Награды</label>
-                            <textarea name="message" rows="6" class="form-control" id="author-Prizes" placeholder="Укажите все награды автора"></textarea>
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="author-Debut">Дебют</label>
-                            <input class="form-control" id="author-Debut" placeholder="Произведение-дебют" />
-                        </div>
-                        <div class="form-group  col-6 themed-grid-col">
-                            <label for="addImage">Изображение:</label>
-                            <input class="form-control" type="file" id="addImage" name="addImageAuthor" accept=".jpg, .jpeg, .png" placeholder="Прикрепите изображение" />
-                        </div>
-                    </div>
-                    <input type="button" value="Обновить информацию об авторе" id="save-btn" class="btn btn-block py-2 btn-primary">
-                </form>
             </div>
-        </div>
     </div>
 
 
@@ -105,5 +107,38 @@
     <script src="../js/Login_Register.js"></script>
     <script src="../js/Register.js"></script>
     <script src="../js/Author.js"></script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function (event) {
+            $.when(viewAuthor(getUrlParameter('id'))).then(
+                function (response) {
+                    let author = JSON.parse(response);
+                    $("#author-Full_name").html(author.Full_name);
+                    $("#author-Pseudonym").html(author.Pseudonym);
+                    var formatter = new Intl.DateTimeFormat("ru");
+                    $("#author_Date_of_Birth").html(formatter.format(new Date(Date.parse(author.Date_of_Birth))));
+                    $("#author_Date_of_Death").html(formatter.format(new Date(Date.parse(author.Date_of_Death))));
+                    $("#author-Place_of_Birth").html(author.Place_of_Birth);
+                    $("#author-Place_of_Death").html(author.Place_of_Death);
+                    $("#author-Citizenship").html(author.Citizenship);
+                    $("#author-Occupation").html(author.Occupation);
+                    $("#author-Years_of_creativity").html(author.Years_of_creativity);
+                    $("#author-Language_of_works").html(author.Language_of_works);
+                    $("#author-Details").html(author.Details);
+                    $("#author-Awards").html(author.Awards);
+                    $("#author-Prizes").html(author.Prizes);
+                    $("#author-Debut").html(author.Debut);
+                    if (author.ImageLink)
+                        $("#author-img").attr("src", author.ImageLink);
+                },
+                function (error) {
+                    let e = JSON.parse(error.responseText);
+                    $("#authorInfo").html(e.Full_name);
+                }
+            );
+        });
+    </script>
+
 </body>
 </html>

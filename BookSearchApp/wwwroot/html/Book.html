@@ -170,45 +170,47 @@
                         <div class="widget-content">
                             <div class="row">
                                 <div class="col-12 col-md-3">
-                                        <a><h2 id="book-author"></h2></a>
-                                        <img src="/images/default_book.jpeg" id="book-img" />
-
-                                    </div>
-                                    <div class="col-12 col-md-8">
-                                        <div class="book-info" id="bookinfo">
-                                            <div class="row book-info-header">
-                                                <h4>О книге</h4>
-                                            </div>
-
-                                            <p class="description" id="book-description"></p>
-
-                                            <strong>Сюжет</strong>
-                                            <div class="story hide">
-                                                <p id="book-story"></p>
-                                            </div>
-                                            <a class="content_toggle" href="#">Читать далее</a>
-                                            <br>
-                                            <p>
-                                                <strong>Тираж: </strong><span id="book-edition"></span>
-                                            </p>
-                                            <p>
-                                                <strong>Дата выхода в свет: </strong>
-                                                <span id="book-publication_date"></span>
-                                            </p>
-                                            <p>
-                                                <strong>Жанр: </strong>
-                                                <span id="book-genre"><a></a></span>
-                                            </p>
-                                            <!--<p>
-                <strong>Тип литературы: </strong><span id="book-type"></span>
-            </p>-->
-                                            <p>
-                                                <strong>Экранизации: </strong><span id="book-screen">не экранизировано</span>
-                                            </p>
-                                        </div>
-                                    </div>
-
+                                    <a><h2 id="book-author"></h2></a>
+                                    <img src="/images/default_book.jpeg" id="book-img" />
                                 </div>
+                                <div class="col-12 col-md-8">
+                                    <div class="book-info" id="bookinfo">
+                                        <div class="row book-info-header">
+                                            <h4 id="h4-AboutBook">О книге</h4>
+                                        </div>
+
+                                        <p class="description" id="book-description"></p>
+
+                                        <strong id="strong-Story">Сюжет</strong>
+                                        <div class="story hide">
+                                            <p id="book-story"></p>
+                                        </div>
+                                        <a class="content_toggle" href="#">Читать далее</a>
+                                        <br>
+                                        <p>
+                                            <strong id="strong-book-edition">Тираж: </strong><span id="book-edition"></span>
+                                        </p>
+                                        <p>
+                                            <strong id="strong-book-publication_date">Дата выхода в свет: </strong>
+                                            <span id="book-publication_date"></span>
+                                        </p>
+                                        <p>
+                                            <strong id="strong-book-genre">Жанр: </strong>
+                                            <span id="book-genre"><a></a></span>
+                                        </p>
+                                        <!--<p>
+        <strong>Тип литературы: </strong><span id="book-type"></span>
+    </p>-->
+                                        <p>
+                                            <strong id="strong-book-screen">Экранизации: </strong><span id="book-screen">не экранизировано</span>
+                                        </p>
+                                            
+                                            <a id="update-btn" class="btn btn-primary" href="UpdateBook.html" onclick="">Обновить информацию</a>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -255,18 +257,29 @@
                         $("#book-author").append(book.Author[a].Author.Full_name + "<br>");
                     }
                     for (var g in book.Genre_Books) {
-                        $("#book-genre").append(book.Genre_Books[g].Genre.NameGenre + "<br>");
+                        if (book.Genre_Books[g].Genre.NameGenre)
+                            $("#book-genre").append(book.Genre_Books[g].Genre.NameGenre + "<br>");
+                        else $("#book-genre").parent().hide();
                     }
                    /* for (var t in book.Type_of_literature) {
                         $("#book-type").append(book.Type_of_literature[t].TypeLit.Name_Type + " ");
                     }*/
 
-
-                    $("#book-description").html(book.Description);
-                    $("#book-story").html(book.Story);
-                    $("#book-edition").html(book.Edition);
-                    $("#book-publication_date").html(book.Publication_date);
-                    $("#book-screen").html(book.Screenings);
+                    if (book.Description)
+                        $("#book-description").html(book.Description);
+                    else $("#book-description").parent().hide();
+                    if (book.Story)
+                        $("#book-story").html(book.Story);
+                    else $("#book-story").parent().hide();
+                    if (book.Edition)
+                        $("#book-edition").html(book.Edition);
+                    else $("#book-edition").parent().hide();
+                    if (book.Publication_date)
+                        $("#book-publication_date").html(book.Publication_date);
+                    else $("#book-publication_date").parent().hide();
+                    if (book.Screenings)
+                        $("#book-screen").html(book.Screenings);
+                    else $("#book-screen").parent().hide();
 
                     if (book.ImageLink != "")
                         $("#book-img").attr("src", book.ImageLink);

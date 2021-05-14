@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using BLL.Models;
+using BLL.Services;
 
 namespace BLL.Interfaces
 {
     public interface IDbCRUD
     {
-        IEnumerable<BookModel> GetAllBooks();
+       IEnumerable<BookModel> GetAllBooks();
+       // PageList<BookModel> GetAllBooks(BookParameters bookParameters);
         IEnumerable<AuthorModel> GetAllAuthors();
         IEnumerable<GenreModel> GetAllGenres();
         IEnumerable<Interesting_factModel> GetAllInteresting_facts();
@@ -26,6 +28,7 @@ namespace BLL.Interfaces
         IEnumerable<Comment_ReviewModel> GetAllComment_Review();
         IEnumerable<Comment_NewsModel> GetAllComment_News();
         IEnumerable<UserModel> GetAllUsers();
+
 
 
         AuthorModel GetAuthor(int authorId);

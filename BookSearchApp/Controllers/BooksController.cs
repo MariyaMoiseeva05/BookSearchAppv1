@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using BLL.Interfaces;
 using BLL.Models;
+using BLL.Services;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace BookSearchApp.Controllers
 {
@@ -30,8 +33,24 @@ namespace BookSearchApp.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<BookModel> GetAllBooks()
+        public IEnumerable<BookModel> GetAllBooks([FromQuery] BookParameters bookParameters)
         {
+            /*var books = _dbCrud.GetAllBooks(bookParameters);
+
+            var metadata = new
+            {
+                books.TotalCount,
+                books.PageSize,
+                books.CurrentPage,
+                books.TotalPages,
+                books.HasNext,
+                books.HasPrevious
+            };
+            Response.Headers.Add("X-номер страницы", JsonConvert.SerializeObject(metadata));
+
+            _logger.LogInformation($"Показано {books.TotalCount} книг из базы данных.");*/
+
+
             return _dbCrud.GetAllBooks();
         }
 
@@ -45,6 +64,8 @@ namespace BookSearchApp.Controllers
             }
             return Ok(book);
         }
+
+      
 
         [HttpPost]
         public async System.Threading.Tasks.Task<IActionResult> CreateAsync()

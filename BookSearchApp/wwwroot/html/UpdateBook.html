@@ -85,5 +85,32 @@
     <script src="../js/Login_Register.js"></script>
     <script src="../js/Register.js"></script>
     <script src="../js/Books.js"></script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function (event) {
+            $.when(viewBook(getUrlParameter('id'))).then(
+                function (response) {
+                    let book = JSON.parse(response);
+                    $("#book-bookTitle").html(book.Title);
+
+
+                    $("#book-bookDescription").html(book.Description);
+                    $("#book-bookStory").html(book.Story);
+                    $("#book-bookEdition").html(book.Edition);
+                    $("#book-bookDate_of_publication").html(book.Publication_date);
+                    $("#book-bookScreenings").html(book.Screenings);
+
+
+                },
+                function (error) {
+                    let e = JSON.parse(error.responseText);
+                    $("#bookinfo").html(e.Title);
+                }
+            );
+        });
+    </script>
+
+
 </body>
 </html>

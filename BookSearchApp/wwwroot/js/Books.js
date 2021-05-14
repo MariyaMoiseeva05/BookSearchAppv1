@@ -34,8 +34,7 @@ function getBook() {
                     html += "</div>";
                     html += "</div>";
                     html += "</div>";
-                   // html += '<button type="button" class="mt-2 btn btn-primary btn-block innerBtn"   data-toggle="modal" data-target="#myModal2" onclick="Getdbook(' + book[i].bookId + ');"> Редактировать </button>';
-                   // html += '<button type="button" class="btn btn-btn-link btn-block innerBtn" onclick="deleteBook(' + book[i].bookId + ');"> Удалить </button>';
+                   
                   
                 }
             }

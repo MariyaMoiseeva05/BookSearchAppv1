@@ -171,7 +171,7 @@
                             <div class="row">
                                 <div class="col-lg-3">
                                     <img src="/images/author-default.jpg" id="author-img" />
-                                    <a id="update-btn" class="btn btn-primary" href="UpdateAuthor.html" onclick="">Обновить информацию</a>
+                                    <a id="update-btn" class="btn btn-primary" href="UpdateAuthor.html"></a>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="author-info" id="authorInfo">
@@ -208,6 +208,9 @@
                                             </p>
                                             <p>
                                                 <strong> Дебют: </strong><span id="author-debut"></span>
+                                            </p>
+                                            <p>
+                                                <strong> Книги: </strong><span id="author-books"></span>
                                             </p>
 
                                         </div>
@@ -253,6 +256,7 @@
             $.when(viewAuthor(getUrlParameter('id'))).then(
                 function (response) {
                     let author = JSON.parse(response);
+
                     $("#author-name").html(author.Full_name);
                     $("#author-pseudonym").html(author.Pseudonym);
                     var formatter = new Intl.DateTimeFormat("ru");
@@ -272,7 +276,6 @@
                     $("#author-debut").html(author.Debut);
                     if (author.ImageLink)
                         $("#author-img").attr("src", author.ImageLink);
-
                 },
                 function (error) {
                     let e = JSON.parse(error.responseText);

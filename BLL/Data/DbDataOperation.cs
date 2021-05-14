@@ -1,5 +1,6 @@
 ﻿using BLL.Interfaces;
 using BLL.Models;
+using BLL.Services;
 using DAL.Entities;
 using DAL.Interfaces;
 using System;
@@ -90,9 +91,20 @@ namespace BLL.Data
         #endregion
 
         #region Book
-        public IEnumerable<BookModel> GetAllBooks()
+         /*public PageList<BookModel> GetAllBooks(BookParameters bookParameters)
         {
-            return db.Books.GetAll().Select(i => new BookModel(i)).ToList();
+                 IEnumerable<BookModel> books = db.Books.GetAll().Select(i => new BookModel(i)).OrderBy(b => b.Title)
+                .Skip((bookParameters.PageNumber - 1)*bookParameters.PageSize)
+                .Take(bookParameters.PageSize)
+                .ToList();
+
+
+        }*/
+
+    public IEnumerable<BookModel> GetAllBooks()
+        {
+            return db.Books.GetAll().Select(i => new BookModel(i)).OrderBy(b => b.Title)
+                .ToList();
         }
 
         public BookModel GetBook(int Id)
@@ -102,6 +114,7 @@ namespace BLL.Data
                 return new BookModel(b);
             else return null;
         }
+
 
         public void CreateBook(BookModel b, ICollection<string> a, ICollection<string> g, ICollection<string> tl)
         {
@@ -638,8 +651,13 @@ namespace BLL.Data
                 ImageLink = u.ImageLink,
                 Review = u.Review,
                 Think = u.Think,
-                Quote = u.Quote
-            });
+                Quote = u.Quote,
+                Message = u.Message,
+                Advert = u.Advert,
+                Featured_Adverts = u.Featured_Adverts,
+                Like_Adverts = u.Like_Adverts,
+                Featured_Books = u.Featured_Books
+        });
             Save();
         }
 
@@ -661,6 +679,11 @@ namespace BLL.Data
             us.Quote = u.Quote;
             us.Review = u.Review;
             us.Think = u.Think;
+            us.Message = u.Message;
+            us.Advert = u.Advert;
+            us.Featured_Adverts = u.Featured_Adverts;
+            us.Like_Adverts = u.Like_Adverts;
+            us.Featured_Books = u.Featured_Books;
 
             Save();
         }

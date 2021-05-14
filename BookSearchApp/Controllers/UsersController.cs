@@ -34,7 +34,7 @@ namespace BookSearchApp.Controllers
         [HttpGet]
         public IEnumerable<UserModel> GetAll()
         {
-            _logger.LogInformation("user GetAll");
+            _logger.LogInformation("Все пользователи");
             return _dbCrud.GetAllUsers();
         }
 
@@ -56,9 +56,14 @@ namespace BookSearchApp.Controllers
         [HttpPost]
         public async System.Threading.Tasks.Task<IActionResult> CreateAsync()
         {
-
             UserModel userModel = new UserModel();
             IFormCollection FormFields = await Request.ReadFormAsync().ConfigureAwait(false);
+
+            if (userModel.Login == "admin") 
+            {
+                ModelState.AddModelError("Login", "К сожалению, данное имя пользователя недопустимо");
+            }
+
 
             string path = null;
             string link = @"images\default_user.png";
@@ -111,6 +116,10 @@ namespace BookSearchApp.Controllers
                 ModelState.AddModelError(string.Empty, "Невозможно применить изменения. Обратитесь к администратору системы для решения проблемы");
                 throw;
             }
+
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             return CreatedAtAction("GetUser", new { id = userModel.UserId }, userModel);
         }
 

@@ -25,6 +25,12 @@ namespace BLL.Models
         public virtual ICollection<Think> Think { get; set; }  // Мысли
         public virtual ICollection<Quote> Quote { get; set; }  // Цитаты
         public virtual ICollection<Review> Review { get; set; } // Рецензии
+        public virtual ICollection<Message> Message { get; set; } // Сообщения
+        public virtual ICollection<Advert> Advert { get; set; } // Объявления
+        public virtual ICollection<Featured_Advert> Featured_Adverts { get; set; } // Избранные объявления
+        public virtual ICollection<Like_Advert> Like_Adverts { get; set; } // Лайки на объявлениях
+        public virtual ICollection<Featured_Book> Featured_Books { get; set; } // Избранные книги
+
 
         public UserModel() { }
         public UserModel(User u)
@@ -47,6 +53,11 @@ namespace BLL.Models
             Quote = u.Quote;
             Comment_News = u.Comment_News;
             Comment_Review = u.Comment_Review;
+            Message = u.Message;
+            Advert = u.Advert;
+            Featured_Adverts = u.Featured_Adverts;
+            Like_Adverts = u.Like_Adverts;
+            Featured_Books = u.Featured_Books;
 
         }
 

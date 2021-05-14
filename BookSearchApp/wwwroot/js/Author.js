@@ -112,7 +112,7 @@ function updateAuthor(id) {
         data.append("ImageLink", fs[0]);
     }
     $.ajax({
-        url: '/api/UpdateAuthor/'+id,
+        url: '/api/Authors/'+id,
         type: 'PUT',
         contentType: 'application/json',
         data: JSON.stringify({
@@ -143,7 +143,7 @@ function updateAuthor(id) {
 
 function insertAuthor(id) {
     $.ajax({
-        url: '/api/Authors',
+        url: '/api/Authors/' + id,
         type: 'GET',
         dataType: 'HTML',
         success: function (data) {

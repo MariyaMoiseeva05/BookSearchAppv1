@@ -24,7 +24,7 @@ function getThink() {
                     html += "</div>";
                     html += "<a href=\"single-standard-post.html\"><h4>" + think[i].Title + "</h4></a>";
                     html += "<ul class=\"post-info\">";
-                    html += "<li> <a href=\"#\">" + + formatter.format(new Date(Date.parse(think[i].Date_of_creation))) + "</a></li>";
+                    html += "<li> <a href=\"#\">" +  formatter.format(new Date(Date.parse(think[i].Date_of_creation))) + "</a></li>";
                     for (var j in think[i].User) {
                         html += "<li><a href=\"#\">" + think[i].User[j].Login + "</a></li>";
                     }
