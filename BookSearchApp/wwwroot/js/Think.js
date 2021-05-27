@@ -31,7 +31,7 @@ var think = {
                         html += "</ul>";
                         html += "<p class = lead>" + think[i].Content + "</p>";
                         html += "<button id=\"btnDel\" type= button class=btn btn-danger ml-2 mr-2 onclick='think.deleteThink(" + think[i].ThinkId + ");'>Удалить</button>";
-                        html += "<button id=\"btnUpdate\" type=button class=btn btn-primary ml-2 mr-2 data-toggle=modal data-target=#updateThink onclick='think.editThink(" + think[i].ThinkId + ");'>Редактировать</button>";
+                        html += "<button id=\"btnUpdate\" type=\"button\" class=\"btn btn-primary ml-2 mr-2\" data-toggle=\"modal\" data-target=\"#updateThink\" onclick='think.insertDataForm(" + think[i].ThinkId + ");'>Редактировать</button>";
                         html += "</div>";
                         $('#view_modal_table').html(html);
                     }
@@ -86,9 +86,9 @@ var think = {
 
     updateThink: function (id) {
         var user_id = sessionStorage.getItem('userid');
-        var title = $('#create-think-title').val();
-        var text = $('#create-think-content').val();
-        var date = $('#create-think-date').val();
+        var title = $('#edit-title').val();
+        var text = $('#edit-content').val();
+        var date = $('#edit-date').val();
         $.ajax({
             url: '/api/Thinks/' + id,
             type: 'PUT',
@@ -116,9 +116,9 @@ var think = {
             dataType: 'HTML',
             success: function (data) {
                 let p = JSON.parse(data);
-                $('#create-think-title').val(p.Title);
-                $('#create-think-content').val(p.Content);
-                $('#create-think-date').val(p.Date_of_creation);
+                $('#edit-title').val(p.Title);
+                $('#edit-content').val(p.Content);
+                $('#edit-date').val(p.Date_of_creation);
                 $(sessionStorage.getItem('userid')).val(p.UserId);
             },
             error: function (xhr, ajaxOptions, thrownError) {

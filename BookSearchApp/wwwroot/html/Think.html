@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -15,10 +15,10 @@
     <link rel="stylesheet" href="../fonts/font-awesome/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="../styles/bootstrap.css" />
-    <link rel="stylesheet" href="../styles/main.css"/>
+    <link rel="stylesheet" href="../styles/main.css" />
 
     <link rel="stylesheet" href="../styles/userCss.css" />
-    <link rel="stylesheet" href="../styles/listGroup.css"/>"
+    <link rel="stylesheet" href="../styles/listGroup.css" />"
 
 </head>
 <body>
@@ -237,35 +237,37 @@
 
     <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
 
-    <footer>
-        <div class="modal fade" id="view_modal" tabindex="-1" role="dialog" aria-labelledby="view_modal_label" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="view_modal_label">...</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="col-12 admin-show" style="display:none">
-                            <button id="update-btn" class="btn btn-primary" data-toggle="modal" data-target="#form_modal" onclick="modals.updatingFormModal()">Обновить информацию</button>
+    <div class="modal fade" id="updateThink" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Изменить</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id="editThink">
+                    <form>
+                        <div class="form-group">
+                            <label>Название</label>
+                            <input type="text" class="form-control" id="edit-title">
                         </div>
-                        <div class="col-12 mt-3"><span class="text-danger" id="error-msg"></span></div>
-                        <div class="col-12 mt-3">
-                            <!--Основная информация-->
-                            <div class="table-responsive-md">
-                                <table id="w0" class="table table-striped table-bordered">
-                                    <tbody id="view_modal_table">
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="form-group">
+                            <label>Дата создания </label>
+                            <input type="text" class="form-control" id="edit-date">
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label>Мысль</label>
+                            <textarea rows="5" class="form-control" id="edit-content"></textarea>
+                        </div>
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary" onclick="updateThink(); return false;">Сохранить изменения</button>
+                    </form>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
 
     <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
