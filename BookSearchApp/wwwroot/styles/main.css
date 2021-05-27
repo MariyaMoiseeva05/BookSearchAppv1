@@ -16,6 +16,12 @@
     margin-left: 180px;
 }
 
+#content2 {
+    margin-top: 0px;
+    border-top-width: 1px;
+    padding-top: 70px;
+}
+
 h1,
 h2,
 h3,
@@ -1543,15 +1549,15 @@ strong {
 
         .owl-carousel .owl-nav.disabled,
         .owl-carousel .owl-dots.disabled {
-            display: none;
+            display: none !important;
         }
 
         .owl-carousel .owl-nav .owl-prev,
         .owl-carousel .owl-nav .owl-next,
         .owl-carousel .owl-dot {
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
+            cursor: pointer !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
             -ms-user-select: none;
             user-select: none;
         }
@@ -2628,7 +2634,7 @@ div#msgLogin {
         section.medium-gap {
             margin-top: 0;
         }
-    }`
+    }
 
     section.large-gap {
         margin-top: 30px;
@@ -4178,7 +4184,7 @@ div#msgLogin {
     }
 
     #span-think {
-        background-color: #ff6b03;
+        background-color: dimgray;
     }
 
     .standard-post .down-content {

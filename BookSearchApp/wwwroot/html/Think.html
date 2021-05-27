@@ -14,9 +14,12 @@
     <link href="https://fonts.googleapis.com/css?family=Cormorant:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../fonts/font-awesome/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="../styles/bootstrap.css"/>
+    <link rel="stylesheet" href="../styles/bootstrap.css" />
     <link rel="stylesheet" href="../styles/main.css"/>
-    <link rel="stylesheet" href="../../styles/userCss.css" />
+
+    <link rel="stylesheet" href="../styles/userCss.css" />
+    <link rel="stylesheet" href="../styles/listGroup.css"/>"
+
 </head>
 <body>
     <div id="js-preloader" class="js-preloader">
@@ -202,55 +205,22 @@
         <section id="content1">
         </section>
 
-        <section id="content2">
-
+        <section class="medium-gap standard-home" id="content2">
             <div class="container">
-                <div class="accordion">
-                    <dl>
-                        <dt>
-                            <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">Добавить мысль</a>
-                        </dt>
-                        <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
-                            <form>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="standard-posts">
+                            <div class="row">
                                 <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <label for="create-think-date">Дата создания</label>
-                                        <input class="form-control" type="date" id="create-think-date" placeholder="Укажите дату написания мысли" />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="create-think-title">Заголовок</label>
-                                        <input class="form-control" id="create-think-title" placeholder="Напишите название" required />
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="create-think-content">Мысль</label>
-                                        <textarea class="form-control" id="create-think-content" placeholder="Поделитесь своими мыслями..." rows="8"></textarea>
-                                    </div>
-                                </div>
-                                <input type="button" value="Добавить мысль" id="btnCreate" class="btn btn-block py-2 btn-primary" onclick="createThink();">
-                            </form>
-                        </dd>
-                    </dl>
-                </div>
-            </div>
-            <section class="medium-gap standard-home">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="standard-posts">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="standard-post" id="thinkDiv">
-                                        </div>
+                                    <div class="standard-post" id="thinkDiv">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-
+            </div>
         </section>
-
         <section id="content3">
         </section>
 
@@ -265,9 +235,37 @@
 
     </main>
 
-    
-
     <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
+
+    <footer>
+        <div class="modal fade" id="view_modal" tabindex="-1" role="dialog" aria-labelledby="view_modal_label" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="view_modal_label">...</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-12 admin-show" style="display:none">
+                            <button id="update-btn" class="btn btn-primary" data-toggle="modal" data-target="#form_modal" onclick="modals.updatingFormModal()">Обновить информацию</button>
+                        </div>
+                        <div class="col-12 mt-3"><span class="text-danger" id="error-msg"></span></div>
+                        <div class="col-12 mt-3">
+                            <!--Основная информация-->
+                            <div class="table-responsive-md">
+                                <table id="w0" class="table table-striped table-bordered">
+                                    <tbody id="view_modal_table">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
@@ -285,6 +283,7 @@
     <script src="../js/Login.js"></script>
     <script src="../js/Login_Register.js"></script>
     <script src="../js/Think.js"></script>
+
 
 </body>
 </html>

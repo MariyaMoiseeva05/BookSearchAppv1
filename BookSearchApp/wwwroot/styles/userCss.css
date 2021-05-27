@@ -130,3 +130,31 @@ input:checked + label {
         padding: 15px;
     }
 }
+
+
+button#btnDel {
+    text-transform: uppercase;
+    outline: 0;
+    background: #e62b2b;
+    width: 15%;
+    border: 0;
+    padding: 15px;
+    margin-right:20px;
+    margin-top: 20px;
+    color: #FFFFFF;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+button#btnUpdate {
+    text-transform: uppercase;
+    outline: 0;
+    background: #28a72d;
+    width: 20%;
+    border: 0;
+    margin-top: 20px;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 12px;
+    cursor: pointer;
+}

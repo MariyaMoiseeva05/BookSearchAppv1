@@ -71,7 +71,6 @@ var review = {
                         html += '<div class="col-12">';
                         html += "<div class=\"post-image\"><a href=\"Review.html\"><img id=\"img-post-review\" src=" + review[i].Book.ImageLink + "></a></div>";
                         html += "<div class=\"down-content\" id=\"down-content-review\">";
-                        html += '<input type="hidden" id=\"bookId\">' + review[i].Book.BookID;
                         html += '<a href="book.html?id=' + review[i].Book.BookID + '"><h4>' + review[i].Book.Title + '</h4></a>';
                         for (var a in review[i].Book.Authors) {
                             html += '<a href="author.html?id=' + review[i].Book.Authors[a].Author.AuthorId + '"><h4><em>' + review[i].Book.Authors[a].Author.Full_name + '</h4></em></a>';
@@ -79,6 +78,7 @@ var review = {
                         html += "</div>";
                         html += "</div>";
                         html += "</div>";
+                        html += "<br>";
                         // html += '<button type="button" class="mt-2 btn btn-primary btn-block innerBtn"   data-toggle="modal" data-target="#myModal2" onclick="Getdbook(' + book[i].bookId + ');"> Редактировать </button>';
                         // html += '<button type="button" class="btn btn-btn-link btn-block innerBtn" onclick="deleteBook(' + book[i].bookId + ');"> Удалить </button>';
 
@@ -168,14 +168,13 @@ var review = {
             location.replace('/');
             return false;
         }
-        let contentQuote = $('#quote-Content').val();
-        if (contentQuote == "") {
-            alert('Поле "Тукст вашей рецензии" обязательно к заполнению!');
+        let reviewContent = $('#create-review-content').val();
+        if (reviewContent == "") {
+            alert('Поле "Текст вашей рецензии" обязательно к заполнению!');
             return false;
         }
         let reviewTitle = $('#create-review-name').val();
-        let reviewContent = $('#create-review-content').val();
-        let bookID = $('#bookId').val;
+        let bookID = $('#BookReviewDiv').val;
         let ratingBook = $('#create-review-rating').val();
         let typeReview = $('#create-review-type').val() == "1" ? "true" : "false";
         $.ajax({
