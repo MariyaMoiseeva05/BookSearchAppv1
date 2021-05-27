@@ -17,18 +17,18 @@ namespace DAL.Repository
         }
         public object Create(User User)
         {
-            db.PUsers.Add(User);
+            db.Users.Add(User);
             db.SaveChanges();
-            return User.UserId;
+            return User.Id;
         }
 
         public void Delete(object userId)
         {
-            var user = db.PUsers.FirstOrDefault(x => x.UserId == (string)userId);
+            var user = db.Users.FirstOrDefault(x => x.Id == (string)userId);
 
             if (user != null)
             {
-                db.PUsers.Remove(user);
+                db.Users.Remove(user);
                 db.SaveChanges();
             }
         }
@@ -40,21 +40,19 @@ namespace DAL.Repository
                 .Include(m => m.Message)
                 .Include(fa => fa.Featured_Adverts)
                 .Include(fb => fb.Featured_Books)
-                .Include(l => l.Like_Adverts)
                 .Include(t => t.Think)
                 .Include(r => r.Review)
                 .Include(q => q.Quote)
-                .First (u => u.UserId == (string)id);
+                .First (u => u.Id == (string)id);
         }
 
         public IEnumerable<User> GetAll()
         {
-            return db.PUsers
+            return db.Users
                 .Include(a => a.Advert)
                 .Include(m => m.Message)
                 .Include(fa => fa.Featured_Adverts)
                 .Include(fb => fb.Featured_Books)
-                .Include(l => l.Like_Adverts)
                 .Include(t => t.Think)
                 .Include(r => r.Review)
                 .Include(q => q.Quote)
@@ -63,7 +61,7 @@ namespace DAL.Repository
 
         public void Update(User User, object userId)
         {
-            var user = db.PUsers.Find((string)userId);
+            var user = db.Users.Find((string)userId);
             user.Review = User.Review;
             user.Quote = User.Quote;
             user.Think = User.Think;
@@ -84,9 +82,8 @@ namespace DAL.Repository
             user.Message = User.Message;
             user.Featured_Books = User.Featured_Books;
             user.Featured_Adverts = User.Featured_Adverts;
-            user.Like_Adverts = User.Like_Adverts;
 
-            db.PUsers.Update(User);
+            db.Users.Update(User);
             db.SaveChanges();
         }
 

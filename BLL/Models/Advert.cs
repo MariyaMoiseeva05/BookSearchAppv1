@@ -20,7 +20,6 @@ namespace BLL.Models
         public bool Pickup { get; set; }
         public virtual ICollection<Message> Message { get; set; } 
         public virtual ICollection<Featured_Advert> Featured_Adverts { get; set; }
-        public virtual ICollection<Like_Advert> Like_Adverts { get; set; }
 
         public int BookId { get; set; } 
         public virtual Book Book { get; set; }
@@ -46,7 +45,6 @@ namespace BLL.Models
             Pickup = a.Pickup;
             Message = a.Message;
             Featured_Adverts = a.Featured_Adverts;
-            Like_Adverts = a.Like_Adverts;
 
         }
 

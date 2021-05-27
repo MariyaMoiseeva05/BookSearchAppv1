@@ -76,7 +76,10 @@
                     <ul class="social-icons">
                         <li><a href="Login.html"><i class="fa fa-user fa-fw"></i></a></li>
                     </ul>
-                    <a id="register" href="Register.html">Зарегистрироваться?</a>
+                    <div class="msg-error">
+                        <div class="my-2 text-left" id="msgLogin"></div>
+                        <ul class="list-unstyled" id="formErrorLogin"></ul>
+                    </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
                     <div class="logo">
@@ -134,7 +137,6 @@
                             </ul>
                         </li>
                         <li><a href="#">Книгообмен</a></li>
-                        <li><a href="AddAuthor.html">Добавить автора</a></li>
                     </ul>
                 </div>
                 <div class="header-widgets">
@@ -258,21 +260,53 @@
                     let author = JSON.parse(response);
 
                     $("#author-name").html(author.Full_name);
-                    $("#author-pseudonym").html(author.Pseudonym);
+                    
+                    if (author.Pseudonym)
+                        $("#author-pseudonym").html(author.Pseudonym);
+                    else $("#author-pseudonym").parent().hide();
+
                     var formatter = new Intl.DateTimeFormat("ru");
                     $("#author-date-of-birth").html(formatter.format(new Date(Date.parse(author.Date_of_Birth))));
                     if (author.Date_of_Death)
                         $("#author-date-of-death").html(formatter.format(new Date(Date.parse(author.Date_of_Death))));
                     else $("#author-date-of-death").parent().hide();
-                    $("#author-place-of-birth").html(author.Place_of_Birth);
-                    $("#author-place-of-death").html(author.Place_of_Death);
-                    $("#author-citizenship").html(author.Citizenship);
-                    $("#author-occupation").html(author.Occupation);
-                    $("#author-years-of-creativity").html(author.Years_of_creativity);
-                    $("#author-language-of-works").html(author.Language_of_works);
-                    $("#author-details").html(author.Details);
-                    $("#author-awards").html(author.Awards);
-                    $("#author-prizes").html(author.Prizes);
+
+                    if (author.Place_of_Birth)
+                        $("#author-place-of-birth").html(author.Place_of_Birth);
+                    else $("#author-place-of-birth").parent().hide();
+
+                    if (author.Place_of_Death)
+                        $("#author-place-of-death").html(author.Place_of_Death);
+                    else $("#author-place-of-death").parent().hide();
+
+                    if (author.Citizenship)
+                        $("#author-citizenship").html(author.Citizenship);
+                    else $("#author-citizenship").parent().hide();
+
+                    if (author.Occupation)
+                        $("#author-occupation").html(author.Occupation);
+                    else $("#author-occupation").parent().hide();
+
+                    if (author.Years_of_creativity)
+                        $("#author-years-of-creativity").html(author.Years_of_creativity);
+                    else $("#author-years-of-creativity").parent().hide();
+
+                    if (author.Language_of_works)
+                        $("#author-language-of-works").html(author.Language_of_works);
+                    else $("#author-language-of-works").parent().hide();
+
+                    if (author.Details)
+                        $("#author-details").html(author.Details);
+                    else $("#author-details").parent().hide();
+
+                    if (author.Awards)
+                        $("#author-awards").html(author.Awards);
+                    else $("#author-awards").parent().hide();
+
+                    if (author.Prizes)
+                        $("#author-prizes").html(author.Prizes);
+                    else $("#author-prizes").parent().hide();
+
                     $("#author-debut").html(author.Debut);
                     if (author.ImageLink)
                         $("#author-img").attr("src", author.ImageLink);

@@ -73,7 +73,10 @@
                     <ul class="social-icons">
                         <li><a href="Login.html"><i class="fa fa-user fa-fw"></i></a></li>
                     </ul>
-                    <a id="register" href="Register.html">Зарегистрироваться?</a>
+                    <div class="msg-error">
+                        <div class="my-2 text-left" id="msgLogin"></div>
+                        <ul class="list-unstyled" id="formErrorLogin"></ul>
+                    </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
                     <div class="logo">
@@ -131,7 +134,7 @@
                             </ul>
                         </li>
                         <li><a href="#">Книгообмен</a></li>
-                        <li><a href="AddAuthor.html">Добавить автора</a></li>
+                       <li class="admin-show" style="display:none" ><a href="AddAuthor.html">Добавить автора</a></li>
                     </ul>
                 </div>
                 <div class="header-widgets">

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace BookSearchApp.Models
 {
@@ -9,16 +10,16 @@ namespace BookSearchApp.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Не указан Логин")]
-        [Display(Name = "Login")]
+        [Display(Name = "Логин")]
         public string Login { get; set; }
 
-        [Display(Name = "Sex")]
+        [Display(Name = "Пол")]
         public bool Sex { get; set; }
 
-        [Display(Name = "Name")]
+        [Display(Name = "Имя")]
         public string Name { get; set; }
 
-        [Display(Name = "Surname")]
+        [Display(Name = "Фамилия")]
         public string Surname { get; set; }
 
         [Required(ErrorMessage = "Не указан пароль")]
@@ -31,5 +32,27 @@ namespace BookSearchApp.Models
         [DataType(DataType.Password)]
         [Display(Name = "Подтвердить пароль")]
         public string PasswordConfirm { get; set; }
+
+        [Display(Name = "Интересы")]
+        public string Interest { get; set; } // Увлечения
+
+        [Display(Name = "Любимые книги")]
+        public string Favorite_books { get; set; } // Любимые книги
+
+        [Display(Name = "Страна проживания")]
+        public string Country { get; set; } // Страна проживания
+
+        [Display(Name = "Место жительства (Город, посёлок и т.д.)")]
+        public string Place { get; set; } // Место жительства
+
+        [Display(Name = "Дата рождения")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Date_of_Birth { get; set; } // Дата рождения
+
+        [Display(Name = "О себе")]
+        public string About_me { get; set; } // О себе
+        public string ImagePath { get; set; } //Путь до изображения
+        public string ImageLink { get; set; } // Фотка
     }
 }

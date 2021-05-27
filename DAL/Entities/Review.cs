@@ -24,7 +24,9 @@ namespace DAL.Entities
 
         [Display(Name = "Оценка книги")]
         public int Rating { get; set; } //рейтинг книги
+        [Required]
         public int BookID { get; set; }
+        [Required]
         public string UserID { get; set; }
         public virtual Book Book { get; set; } // навигационное свойство
         public virtual User User { get; set; }

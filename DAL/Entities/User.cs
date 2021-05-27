@@ -18,8 +18,8 @@ namespace DAL.Entities
             Advert = new HashSet<Advert>();
         }
 
-        [Key]
-        public string UserId { get; set; } //Id
+       // public string UserId { get; set; }
+
 
         [Required()]
         [Display(Name = "Имя пользователя")]
@@ -64,7 +64,6 @@ namespace DAL.Entities
         public virtual ICollection<Message> Message { get; set; } // Сообщения
         public virtual ICollection<Advert> Advert { get; set; } // Объявления
         public virtual ICollection<Featured_Advert> Featured_Adverts { get; set; } // Избранные объявления
-        public virtual ICollection<Like_Advert> Like_Adverts { get; set; } // Лайки на объявлениях
         public virtual ICollection<Featured_Book> Featured_Books { get; set; } // Избранные книги
 
     }

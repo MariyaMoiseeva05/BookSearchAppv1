@@ -26,7 +26,6 @@ namespace DAL.Repository
         private LocalityRepositorySQL localityRepository;
         private Featured_AdvertRepositorySQL featured_advertRepository;
         private Featured_BooksRepositorySQL featured_booksRepository;
-        private Like_AdvertRepositorySQL like_advertRepository;
         private Comment_ReviewRepositorySQL comment_reviewRepository;
         private Comment_NewsRepositorySQL comment_newsRepository;
         private TypeOfLiteratureBooksRepositorySQL type_of_lit_bookRepository;
@@ -173,15 +172,6 @@ namespace DAL.Repository
         }
 
 
-
-        public IRepository<Like_Advert> Like_Adverts {
-            get {
-                if (like_advertRepository == null)
-                    like_advertRepository = new Like_AdvertRepositorySQL(db);
-                return like_advertRepository;
-            }
-        }
-
         public IRepository<Featured_Advert> Featured_Adverts {
             get {
                 if (featured_advertRepository == null)
@@ -229,6 +219,7 @@ namespace DAL.Repository
                 return comment_newsRepository;
             }
         }
+
 
         public int Save()
         {

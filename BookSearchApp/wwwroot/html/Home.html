@@ -75,11 +75,14 @@
                     <ul class="social-icons">
                         <li><a href="Login.html"><i class="fa fa-user fa-fw"></i></a></li>
                     </ul>
-                    <a id="register" href="Register.html">Зарегистрироваться?</a>
+                    <div class="msg-error">
+                        <div class="my-2 text-left" id="msgLogin"></div>
+                        <ul class="list-unstyled" id="formErrorLogin"></ul>
+                    </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
                     <div class="logo">
-                        <a href="index.html"><img src="../images/logo.png" alt=""></a>
+                        <a href="Home.html"><img src="../images/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
@@ -107,7 +110,7 @@
                         <li class="menu-item-has-children active">
                             <a href="Home.html">Главная</a>
                             <ul class="sub-menu">
-                                <li><a href="index.html">О проекте</a></li>
+                                <li><a href="Home.html">О проекте</a></li>
                             </ul>
                         </li>
                         <li class="menu-item-has-children">
@@ -156,6 +159,40 @@
             <button type="submit" class="primary-button"><i class="icon_search"></i></button>
         </form>
     </div>
+    <section class="medium-gap standard-home">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="standard-posts">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="standard-post">
+                                    <div class="post-image">
+                                        <a href="single-standard-post.html"><img src="../images/knigi-home.jpg" alt=""></a>
+                                    </div>
+                                    <div class="down-content">
+                                        <a href="single-standard-post.html"><h4>"BookSearch" - <em>книжный сервис для любителей книг</em></h4></a>
+                                        <ul class="post-info" id="bookHome">
+                                            <li><a href="#"><em>Книги – самые тихие и самые постоянные друзья, они самые доступные и мудрейшие советники, и самые терпеливые учителя.</em> </a></li>
+                                            <li><a href="#">Чарльз Уильям Элиот</a></li>
+                                        </ul>
+                                        <p>
+                                            Добро пожаловать на книжный сервис "BookSearch"! Если Вы не знаете какую книгу выбрать для чтения, с кем поделиться эмоциями о прочитанной книге или Вам просто захотелось узнать о книгах и писателях немного больше, тогда Вы обратились по адресу!
+                                            Воспользуйтесь замечательной возможностью - вести читательский дневник, это поможет Вам на долго сохранить удивительные впечатления от прочтения книги. Если Вы - предпочитаете читать бумажные книги и обмениваться ими с другими людьми, то "BookSearch" также поможет Вам в этом!
+                                            Ищите книги, делитесь впечатлениями, ведите читательский дневник, обменивайтесь книгами и ещё многое другое вместе с "BookSearch"!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
+
     <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
     <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>

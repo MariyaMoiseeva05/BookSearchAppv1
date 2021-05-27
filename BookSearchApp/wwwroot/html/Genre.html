@@ -1,11 +1,12 @@
 ﻿<!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
+    <meta charset="utf-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Жанры</title>
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>primer</title>
     <link rel="shortcut icon" href="../images/logoverh.svg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../fonts/elegant-font/style.css">
@@ -39,17 +40,19 @@
                         <li><a href="#">О проекте</a></li>
                     </ul>
                 </li>
-                <li class="has-sub">
-                    <a href="Books.html">Книги<i class="sub-icon fa fa-angle-down"></i></a>
+                <li class="has-sub active">
+                    <a href="Books.html">Что почитать<i class="sub-icon fa fa-angle-down"></i></a>
                     <ul class="sub-menu">
                         <li><a href="slider-infinity.html">Найти книгу</a></li>
                         <li><a href="slider-full-width.html">Топ-250</a></li>
-                        <li><a href="slider-infinity.html">Жанры</a></li>
+                        <li class="active"><a href="Genres.html">Жанры</a></li>
                         <li><a href="Reviews.html">Рецензии</a></li>
                         <li><a href="Quotes.html">Цитаты</a></li>
                         <li><a href="slider-small.html">Книгообмен</a></li>
                         <li><a href="slider-infinity.html">Коллекции</a></li>
                         <li><a href="slider-infinity.html">Персонажи</a></li>
+                        <li><a href="Login.html">Войти</a></li>
+                        <li><a href="Register.html">Зарегистрироваться</a></li>
                     </ul>
                 </li>
                 <li><a href="Reviews.html">Рецензии</a></li>
@@ -70,10 +73,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 align-self-center">
-                        <ul class="social-icons">
-                            <li><a href="Login.html"><i class="fa fa-user fa-fw"></i></a></li>
-                        </ul>
-                        <a id="register" href="Register.html">Зарегистрироваться?</a>
+                    <ul class="social-icons">
+                        <li><a href="Login.html"><i class="fa fa-user fa-fw"></i></a></li>
+                    </ul>
+                    <a id="register" href="Register.html">Зарегистрироваться?</a>
                 </div>
                 <div class="col-lg-4 align-self-center">
                     <div class="logo">
@@ -102,18 +105,18 @@
                 </div>
                 <div class="header-nav">
                     <ul class="main-menu">
-                        <li class="menu-item-has-children active">
+                        <li class="menu-item-has-children">
                             <a href="Home.html">Главная</a>
                             <ul class="sub-menu">
-                                <li><a href="index.html">О проекте</a></li>
+                                <li><a href="Home.html">О проекте</a></li>
                             </ul>
                         </li>
-                        <li class="menu-item-has-children">
-                            <a href="Books.html">Книги</a>
+                        <li class="menu-item-has-children active">
+                            <a href="Books.html">Что почитать</a>
                             <ul class="sub-menu">
                                 <li><a href="slider-infinity.html">Найти книгу</a></li>
                                 <li><a href="slider-full-width.html">Топ-250</a></li>
-                                <li><a href="slider-infinity.html">Жанры</a></li>
+                                <li class="active"><a href="Genres.html">Жанры</a></li>
                                 <li><a href="Reviews.html">Рецензии</a></li>
                                 <li><a href="Quotes.html">Цитаты</a></li>
                                 <li><a href="slider-small.html">Книгообмен</a></li>
@@ -130,6 +133,7 @@
                                 <li><a href="single-audio-post.html">Популярные авторы</a></li>
                             </ul>
                         </li>
+                        <li><a href="#">Книгообмен</a></li>
                     </ul>
                 </div>
                 <div class="header-widgets">
@@ -154,6 +158,21 @@
             <button type="submit" class="primary-button"><i class="icon_search"></i></button>
         </form>
     </div>
+    <section class="medium-gap standard-home without-sidebar-home">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="standard-posts">
+                        <div class="row masonry-layout normal-col-gap" id="bookDiv">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
+
     <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
     <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
     <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
@@ -167,7 +186,10 @@
     <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
     <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
     <script src="../scripts/main.js" charset="utf-8"></script>
+    <script src="../js/Login.js"></script>
+    <script src="../js/Login_Register.js"></script>
+    <script src="../js/Books.js" charset="utf-8"></script>
+
 
 </body>
-</html>
-
+</html >

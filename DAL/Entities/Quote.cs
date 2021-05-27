@@ -8,11 +8,14 @@ namespace DAL.Entities
     public partial class Quote // Цитата из книги
     {
         [Key]
+        [Required]
         public int QuoteId { get; set; }
-        [Required()]
+        [Required]
         public int BookID { get; set; } // внешний ключ
+        [Required]
         public string UserID { get; set; }
         public int Like { get; set; } // (лайки, понравившиеся цитаты)скольким пользователям понравилась цитата
+        [Required]
         public string Content { get; set; } // содержание отзыва
         public virtual Book Book { get; set; } // навигационное свойство
         public virtual User User { get; set; }

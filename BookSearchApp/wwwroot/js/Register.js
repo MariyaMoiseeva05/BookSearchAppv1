@@ -13,6 +13,13 @@ function Register() {
     var email = $("#email").val();
     var password = $("#password").val();
     var passwordConfirm = $("#passwordConfirm").val();
+    var interest = $("#inp-user-interest").val();
+    var favorite_books = $("#inp-user-favorite_books").val();
+    var country = $("#inp-user-country").val();
+    var place = $("#inp-user-place").val();
+    var date_of_birth = $("#inp-user-date_of_birth").val();
+    var about_me = $("#inp-user-about_me").val();
+    var image = $("#inp-user-image_link").files;
 
     $.ajax({
         url: '/api/Account/Register',
@@ -25,7 +32,14 @@ function Register() {
         login: login,
         email: email,
         password: password,
-        passwordConfirm: passwordConfirm
+            passwordConfirm: passwordConfirm,
+            interest: interest,
+            favorite_books: favorite_books,
+            country: country,
+            place: place,
+            date_of_birth: date_of_birth,
+            about_me: about_me,
+            image: image
         }),
         success: function (data) {
 
@@ -42,7 +56,7 @@ function Register() {
             }
             else {
                 alert(data.message);
-                $(location).attr('href', "/html");
+                $(location).attr('href', "/html/user-pages/user_home.html");
             }
 
         },

@@ -228,7 +228,8 @@ namespace BLL.Data
         #region Genre
         public IEnumerable<GenreModel> GetAllGenres()
         {
-            return db.Genres.GetAll().Select(i => new GenreModel(i)).ToList();
+            return db.Genres.GetAll().Select(i => new GenreModel(i)).OrderBy(n => n.NameGenre)
+                .ToList();
         }
 
         public GenreModel GetGenre(int Id)
@@ -470,7 +471,7 @@ namespace BLL.Data
             return new ReviewModel(db.Reviews.GetItem(Id));
         }
 
-        public void CreateReview(ReviewModel r, ICollection<string> c)
+        public void CreateReview(ReviewModel r)
         {
             int id = (int)db.Reviews.Create(new Review()
             {
@@ -485,7 +486,7 @@ namespace BLL.Data
                 Rating = r.Rating
             });
             Save();
-
+/*
             foreach (var rw in c)
             {
                 DAL.Entities.Comment_Review cr = new DAL.Entities.Comment_Review
@@ -501,7 +502,7 @@ namespace BLL.Data
                 {
                     throw new Exception(e.Message);
                 }
-            }
+            }*/
 
         }
 
@@ -655,15 +656,14 @@ namespace BLL.Data
                 Message = u.Message,
                 Advert = u.Advert,
                 Featured_Adverts = u.Featured_Adverts,
-                Like_Adverts = u.Like_Adverts,
                 Featured_Books = u.Featured_Books
         });
             Save();
         }
 
-        public void UpdateUser(UserModel u)
+        public void UpdateUser(UserModel u, string id)
         {
-            User us = db.Users.GetItem(u.UserId);
+            User us = db.Users.GetItem(id);
             us.Login = u.Login;
             us.Name = u.Name;
             us.Surname = u.Surname;
@@ -682,7 +682,6 @@ namespace BLL.Data
             us.Message = u.Message;
             us.Advert = u.Advert;
             us.Featured_Adverts = u.Featured_Adverts;
-            us.Like_Adverts = u.Like_Adverts;
             us.Featured_Books = u.Featured_Books;
 
             Save();
@@ -693,7 +692,7 @@ namespace BLL.Data
             User u = db.Users.GetItem(id);
             if (u != null)
             {
-                db.Users.Delete(u.UserId);
+                db.Users.Delete(u.Id);
                 Save();
             }
         }
@@ -832,7 +831,6 @@ namespace BLL.Data
                 Pickup = a.Pickup,
                 Message = a.Message,
                 Featured_Adverts = a.Featured_Adverts,
-                Like_Adverts = a.Like_Adverts,
                 Book = a.Book,
                 BookId = a.BookId,
                 User = a.User,
@@ -857,7 +855,6 @@ namespace BLL.Data
             ad.Pickup = a.Pickup;
             ad.Message = a.Message;
             ad.Featured_Adverts = a.Featured_Adverts;
-            ad.Like_Adverts = a.Like_Adverts;
             ad.User = a.User;
             ad.UserId = a.UserId;
             ad.Book = a.Book;
@@ -967,50 +964,7 @@ namespace BLL.Data
         }
         #endregion
 
-        #region LikeAdvert
-        public IEnumerable<Like_AdvertModel> GetAllLikeAdverts()
-        {
-            return db.Like_Adverts.GetAll().Select(i => new Like_AdvertModel(i)).ToList();
-        }
-
-        public Like_AdvertModel GetLikeAdvert(int Id)
-        {
-            return new Like_AdvertModel(db.Like_Adverts.GetItem(Id));
-        }
-
-        public void CreateLikeAdvert(Like_AdvertModel fa)
-        {
-            db.Like_Adverts.Create(new Like_Advert()
-            {
-                UserId = fa.UserId,
-                User = fa.User,
-                AdvertId = fa.AdvertId,
-                Advert = fa.Advert
-            });
-            Save();
-        }
-
-        public void UpdateLikeAdvert(Like_AdvertModel l, int like_advertId)
-        {
-            Like_Advert lk = db.Like_Adverts.GetItem(l.Like_AdvertId);
-
-            lk.User = l.User;
-            lk.UserId = l.UserId;
-            lk.Advert = l.Advert;
-            lk.AdvertId = l.AdvertId;
-            Save();
-        }
-
-        public void DeleteLikeAdvert(int id)
-        {
-            Like_Advert f = db.Like_Adverts.GetItem(id);
-            if (f != null)
-            {
-                db.Like_Adverts.Delete(f.Like_AdvertId);
-                Save();
-            }
-        }
-        #endregion
+        
 
         #region Locality
         public IEnumerable<LocalityModel> GetAllLocalities()

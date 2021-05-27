@@ -7,7 +7,6 @@ namespace BLL.Models
 {
     public class UserModel
     {
-        public string UserId { get; set; }
         public string Login { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -28,14 +27,12 @@ namespace BLL.Models
         public virtual ICollection<Message> Message { get; set; } // Сообщения
         public virtual ICollection<Advert> Advert { get; set; } // Объявления
         public virtual ICollection<Featured_Advert> Featured_Adverts { get; set; } // Избранные объявления
-        public virtual ICollection<Like_Advert> Like_Adverts { get; set; } // Лайки на объявлениях
         public virtual ICollection<Featured_Book> Featured_Books { get; set; } // Избранные книги
 
 
         public UserModel() { }
         public UserModel(User u)
         {
-            UserId = u.UserId;
             Login = u.Login;
             Name = u.Name;
             Surname = u.Surname;
@@ -56,7 +53,6 @@ namespace BLL.Models
             Message = u.Message;
             Advert = u.Advert;
             Featured_Adverts = u.Featured_Adverts;
-            Like_Adverts = u.Like_Adverts;
             Featured_Books = u.Featured_Books;
 
         }

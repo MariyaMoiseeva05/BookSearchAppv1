@@ -30,13 +30,15 @@ namespace DAL.Repository
         public Type_of_literature GetItem(object id)
         {
             return db.Type_Of_Literatures
-                .Include(t => t.Book)
+                .Include(t => t.Book).ThenInclude(b => b.Book)
                 .SingleOrDefault(t => t.Type_of_literatureId == (int) id);
         }
 
         public IEnumerable<Type_of_literature> GetAll()
         {
-            return db.Type_Of_Literatures.ToList();
+            return db.Type_Of_Literatures
+                .Include(t => t.Book).ThenInclude(b => b.Book)
+                .ToList();
         }
 
         public void Update(Type_of_literature Type_of_literature, object tlId)

@@ -52,7 +52,7 @@ namespace BookSearchApp.Controllers
 
             return Ok(user);
         }
-
+/*
         [HttpPost]
         public async System.Threading.Tasks.Task<IActionResult> CreateAsync()
         {
@@ -120,8 +120,8 @@ namespace BookSearchApp.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            return CreatedAtAction("GetUser", new { id = userModel.UserId }, userModel);
-        }
+            return CreatedAtAction("GetUser", new { id = userModel.Id }, userModel);
+        }*/
 
         [HttpPut("{id}")]
         public IActionResult Update(string id, UserModel user)
@@ -136,7 +136,7 @@ namespace BookSearchApp.Controllers
 
             try
             {
-                _dbCrud.UpdateUser(user);
+                _dbCrud.UpdateUser(user, id);
                 //await _context.SaveChangesAsync();
             }
             catch (DataException e)

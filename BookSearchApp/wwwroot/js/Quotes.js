@@ -1,19 +1,16 @@
-﻿document.addEventListener("DOMContentLoaded", function (event) {
-    getQuote();
-    getBook();
-    getAuthor();
-    createQuote();
+﻿$(document).ready(function () {
+    quote.init();
 });
 
-const likeBtn = document.getElementById("likeBtn");
+/*const likeBtn = document.getElementById("likeBtn");
 
 let like = true,
-    likeCount = document.querySelector('.likes').innerHTML;
+    likeCount = document.querySelector('.likes').innerHTML();
 
 likeBtn.addEventListener('click', () => {
     likeCount = like ? ++likeCount : --likeCount;
     like = !like;
-    document.querySelector('.likes').innerHTML = likeCount;
+    document.querySelector('.likes').html(html) = likeCount;
 });
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -28,32 +25,88 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelector('#addQuote').style.marginLeft = '0px';
     });
 });
+*/
 
 
 
-//Загрузка данных о книгах
-function getBook() {
-    $.ajax({
-        url: "/api/Books",
-        type: "GET",
-        dataType: "HTML",
-        success: function (data) {
-            let books = JSON.parse(data);
-            let html = "";  //текст вставки
-            if (books) {
-                for (var i in books) {
-                    html += "<option value ='" + books[i].BookID + "'>" + books[i].Title + "</option>";
+
+var quote = {
+    getQuote: function () {
+        $.ajax({
+            url: "/api/Quotes",
+            type: "GET",
+            dataType: "HTML",
+            success: function (data) {
+                let quote = JSON.parse(data);
+                let html = "";
+                if (quote) {
+                    for (var i in quote) {
+                        html += "<div class = \"standard-posts\">";
+                        html += "<div class = \"row\">";
+                        html += "<div class = \"col lg-12\">";
+                        html += "<div class = \"standard-post\">";
+                        html += "<div class = \"down-content\">";
+                        html += "<div class = \"row\">";
+                        html += "<blockquote>";
+                        html += '<h4><em><b>' + quote[i].Content + '</b></em></h4>';
+                        html += "<div>";
+                        for (var b in quote[i].Book) {
+                            html += '<h5><b>' + quote[i].Book.Title + '</b></h5><br>';
+                            for (var a in quote[i].Book[b].Author) {
+                                html += '<h5><b>' + quote[i].Book[b].Author[a].Author.Full_name + '</b></h5>';
+                            }
+                        }
+                        html += "</div>";
+                        html += "<div class = \"row justify-content-md-center\">";
+                        html += "<div class = \"col col-lg-2\"></div>";
+                        html += "<div class = \"col-md-auto\">";
+                        html += '<div class=\"normal-white-button\" id=\"likeBtn\"><i class=\"fa fa-thumbs-o-up fa-2\" aria-hidden="true"></i></div>';
+                        html += "</div>";
+                        html += "<div class = \"col col-lg-3\">";
+                        html += '<div class=\"likes\">' + quote[i].Like + '</div>';
+                        html += "</div>";
+                        html += "</div>";
+                        html += "</blockquote>";
+                        html += "</div>";
+                        html += "</div>";
+                        html += "</div>";
+                        html += "</div>";
+                        html += "</div>";
+                    }
                 }
+                $('#quoteDiv').html(html);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
-            $('#bookDiv').html(html);
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-    });
-}
+        });
+    },
+
+    //Загрузка данных о книгах
+    getBook: function () {
+        $.ajax({
+            url: "/api/Books",
+            type: "GET",
+            dataType: "HTML",
+            success: function (data) {
+                let books = JSON.parse(data);
+                let html = "";  //текст вставки
+                if (books) {
+                    for (var i in books) {
+                        for (var a in books[i].Author) {
+                            html += "<option value ='" + books[i].BookID + "'>Название: " + books[i].Title + " , автор:  " + books[i].Author[a].Author.Full_name + "</option>";
+                        }
+                    }
+                }
+                $('#bookDiv').html(html);
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+},
 //Загрузка данных об авторах
-function getAuthor() {
+    getAuthor: function() {
     $.ajax({
         url: "/api/Authors",
         type: "GET",
@@ -73,98 +126,82 @@ function getAuthor() {
         }
     });
 
-}
+},
 
 
-function getQuote() {
-    $.ajax({
-        url: "/api/Quotes",
-        type: "GET",
-        dataType: "HTML",
-        success: function (data) {
-            let quote = JSON.parse(data);
-            let html = "";
-            if (quote) {
-                for (var i in quote) {
-                    html += "<div class = \"standard-posts\">";
-                    html += "<div class = \"row\">";
-                    html += "<div class = \"col lg-12\">";
-                    html += "<div class = \"standard-post\">";
-                    html += "<div class = \"down-content\">";
-                    html += "<div class = \"row\">";
-                    html += "<blockquote>";
-                    html += '<h4><em><b>' + quote[i].Content + '</b></em></h4>';
-                    html += "<div class = \"row justify-content-md-center\">";
-                    html += "<div class = \"col col-lg-2\"></div>";
-                    html += "<div class = \"col-md-auto\">";
-                    html += '<div class=\"normal-white-button\" id=\"likeBtn\"><i class=\"fa fa-thumbs-o-up fa-2\" aria-hidden="true"></i></div>';
-                    html += "</div>";
-                    html += "<div class = \"col col-lg-3\">";
-                    html += '<div class=\"likes\">' + quote[i].Like + '</div>';
-                    html += "</div>";
-                    html += "</div>";
-                    html += "</blockquote>";
-                    html += "</div>";
-                    html += "</div>";
-                    html += "</div>";
-                    html += "</div>";
-                    html += "</div>";
-                }
-            }
-            $('#quoteDiv').html(html);
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
-        }
-    });
-}
-
-function getUser() {
-    $.ajax({
-        url: "/api/Users" + sessionStorage.getItem('UserId'),
-        type: "GET",
-        dataType: "HTML",
-        statusCode: {
-            200: function (data) {
-                let users = JSON.parse(data);
-                let html = "";  //текст вставки
-                for (i in users) {
-                    html += users[i].UserId;
-                }
-                $('#user_id').html(html);
-            },
-            401: function (data) {
-                alert('У вас не хватает прав для выполнения данного действия');
-            }
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-            alert(data.responseText);
-        }
-    });
-}
-function createQuote() {
-
-    var authorBook = $('#authorDiv').val();
-    var bookQuote = $('#bookDiv').val();
-    var contentQuote = $('#quote-Content').val();
-    var user_id = $('#user_id').val();
-   
+    /*function getUser() {
         $.ajax({
-            url: '/api/Quotes',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                Author: authorBook,
-                Book: bookQuote,
-                Content: contentQuote,
-                BookID: bookQuote,
-                UserId: user_id
-            }),
+            url: "/api/Users",
+            type: "GET",
+            dataType: "HTML",
             success: function (data) {
-                getQuote();
+                    let users = JSON.parse(data);
+                    let html = "";  //текст вставки
+                    if (users) {
+                        for (var i in users) {
+                            html += users[i].UserId;
+                        }
+                }
+                    $('#user_id').html(html);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
             }
         });
-}
+    }*/
+
+
+
+    createQuote: function () {
+        let user_id = sessionStorage.getItem('userid');
+        if (user_id == "" || undefined) {
+            alert("Вы не авторизованы");
+            location.replace('/');
+            return false;
+        }
+        let contentQuote = $('#quote-Content').val();
+        if (contentQuote == "") {
+            alert('Поле Цитата обязательно к заполнению!');
+            return false;
+        }
+        let bookQuote = $('#bookDiv').val();
+        $.ajax({
+            url: '/api/Quotes',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                BookID: bookQuote,
+                UserID: user_id,
+                Content: contentQuote,
+            }),
+
+            success: function (data) {
+                console.log(data);
+                alert("Цитата успешно добавлена!");
+                location.replace("/html/Quotes.html");
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    },
+
+    viewQuote: function (id) {
+        return $.ajax({
+            url: "/api/Quotes/" + id,
+            type: "GET",
+            dataType: "HTML",
+        }).done(function (data) {
+            return data; // Прокинем данные дальше, наружу
+        }).fail(function (xhr, ajaxOptions, thrownError) {
+            let error = JSON.parse(xhr.responseText);
+            console.log(error)
+        });
+    },
+
+    init: function () {
+        quote.getQuote();
+        quote.getAuthor();
+        quote.getBook();
+    }
+};

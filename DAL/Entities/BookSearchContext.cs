@@ -26,14 +26,13 @@ namespace DAL.Entities
         public virtual DbSet<TypeOfLit_Book> TypeOfLit_Books { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Quote> Quotes { get; set; }
-        public virtual DbSet<User> PUsers { get; set; }
+        public override DbSet<User> Users { get; set; }
         public virtual DbSet<Collection> Collections { get; set; }
         public virtual DbSet<Character> Characters { get; set; }
         public virtual DbSet<Book_Character> Book_Characters { get; set; }
         public virtual DbSet<Book_Collection> Book_Collections { get; set; }
         public virtual DbSet<Advert> Adverts { get; set; }
         public virtual DbSet<Featured_Advert> Featured_Adverts { get; set; }
-        public virtual DbSet<Like_Advert> Like_Adverts { get; set; }
         public virtual DbSet<Locality> Localities { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Featured_Book> Featured_Books { get; set; }
@@ -226,18 +225,6 @@ namespace DAL.Entities
                 .WithMany(t => t.Featured_Adverts)
                 .HasForeignKey(pt => pt.UserId);
 
-            modelBuilder.Entity<Like_Advert>()
-           .HasKey(t => new { t.AdvertId, t.UserId });
-
-            modelBuilder.Entity<Like_Advert>()
-                .HasOne(pt => pt.Advert)
-                .WithMany(p => p.Like_Adverts)
-                .HasForeignKey(pt => pt.AdvertId);
-
-            modelBuilder.Entity<Like_Advert>()
-                .HasOne(pt => pt.User)
-                .WithMany(t => t.Like_Adverts)
-                .HasForeignKey(pt => pt.UserId);
 
             modelBuilder.Entity<Advert>(entity =>
             {

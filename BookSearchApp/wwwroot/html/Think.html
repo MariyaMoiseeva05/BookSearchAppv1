@@ -14,8 +14,9 @@
     <link href="https://fonts.googleapis.com/css?family=Cormorant:300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../fonts/font-awesome/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="../styles/bootstrap.css" />
-    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/bootstrap.css"/>
+    <link rel="stylesheet" href="../styles/main.css"/>
+    <link rel="stylesheet" href="../../styles/userCss.css" />
 </head>
 <body>
     <div id="js-preloader" class="js-preloader">
@@ -76,7 +77,10 @@
                     <ul class="social-icons">
                         <li><a href="Login.html"><i class="fa fa-user fa-fw"></i></a></li>
                     </ul>
-                    <a id="register" href="Register.html">Зарегистрироваться?</a>
+                    <div class="msg-error">
+                        <div class="my-2 text-left" id="msgLogin"></div>
+                        <ul class="list-unstyled" id="formErrorLogin"></ul>
+                    </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
                     <div class="logo">
@@ -108,7 +112,7 @@
                         <li class="menu-item-has-children">
                             <a href="Home.html">Главная</a>
                             <ul class="sub-menu">
-                                <li><a href="index.html">О проекте</a></li>
+                                <li><a href="Home.html">О проекте</a></li>
                             </ul>
                         </li>
                         <li class="menu-item-has-children">
@@ -134,7 +138,6 @@
                             </ul>
                         </li>
                         <li><a href="#">Книгообмен</a></li>
-                        <li><a href="AddAuthor.html">Добавить автора</a></li>
                     </ul>
                 </div>
                 <div class="header-widgets">
@@ -159,7 +162,7 @@
             <button type="submit" class="primary-button"><i class="icon_search"></i></button>
         </form>
     </div>
-    <div class="container">
+    <!--<div class="container">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="user-pages/personal_data.html">Мой профиль</a></li>
             <li class="breadcrumb-item active"><a href="../Think.html">Читательский дневник</a></li>
@@ -169,52 +172,101 @@
             <li class="breadcrumb-item"><a href="#">Уведомления</a></li>
         </ol>
     </div>
-    <br>
-    <div class="container">
-        <div class="accordion">
-            <dl>
-                <dt>
-                    <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">Добавить мысль</a>
-                </dt>
-                <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
-                    <form>
+    <br>-->
+    <main>
+
+        <input id="tab0" type="radio" name="tabs">
+        <label for="tab0"><a href="../html/user-pages/allUsers.html">Все пользователи</a></label>
+
+        <input id="tab1" type="radio" name="tabs">
+        <label for="tab1"><a href="../html/user-pages/personal_data.html">Мой профиль</a></label>
+
+        <input id="tab2" type="radio" name="tabs" checked>
+        <label for="tab2"><a href="Think.html">Читательский дневник</a></label>
+
+        <input id="tab3" type="radio" name="tabs">
+        <label for="tab3"><a href="../html/user-pages/user-review-page.html">Рецензии</a></label>
+
+        <input id="tab4" type="radio" name="tabs">
+        <label for="tab4">Цитаты</label>
+
+        <input id="tab5" type="radio" name="tabs">
+        <label for="tab5">Книгообмен</label>
+
+        <input id="tab6" type="radio" name="tabs">
+        <label for="tab6">Уведомления</label>
+
+        <section id="content0">
+        </section>
+
+        <section id="content1">
+        </section>
+
+        <section id="content2">
+
+            <div class="container">
+                <div class="accordion">
+                    <dl>
+                        <dt>
+                            <a href="#accordion1" aria-expanded="false" aria-controls="accordion1" class="accordion-title accordionTitle js-accordionTrigger">Добавить мысль</a>
+                        </dt>
+                        <dd class="accordion-content accordionItem is-collapsed" id="accordion1" aria-hidden="true">
+                            <form>
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <label for="create-think-date">Дата создания</label>
+                                        <input class="form-control" type="date" id="create-think-date" placeholder="Укажите дату написания мысли" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="create-think-title">Заголовок</label>
+                                        <input class="form-control" id="create-think-title" placeholder="Напишите название" required />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="create-think-content">Мысль</label>
+                                        <textarea class="form-control" id="create-think-content" placeholder="Поделитесь своими мыслями..." rows="8"></textarea>
+                                    </div>
+                                </div>
+                                <input type="button" value="Добавить мысль" id="btnCreate" class="btn btn-block py-2 btn-primary" onclick="createThink();">
+                            </form>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+            <section class="medium-gap standard-home">
+                <div class="container">
+                    <div class="row">
                         <div class="col-lg-12">
-                            <div class="form-control">
-                                <label for="create-think-date">Дата создания</label>
-                                <input class="form-control" type="date" id="create-think-date" placeholder="Укажите дату написания мысли" />
-                            </div>
-                            <div class="form-control">
-                                <label for="create-think-title">Заголовок</label>
-                                <input class="form-control" id="create-think-title" placeholder="Напишите название" required />
-                            </div>
-                            <div class="form-control">
-                                <label for="create-think-content">Мысль</label>
-                                <input class="form-control" id="create-think-content" placeholder="Поделитесь своими мыслями..." />
-                            </div>
-                        </div>
-                        <input type="button" value="Добавить мысль" id="btnCreate" class="btn btn-block py-2 btn-primary" onclick="createThink();">
-                    </form>
-                </dd>
-            </dl>
-        </div>
-    </div>
-    <section class="medium-gap standard-home">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="standard-posts">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="standard-post" id="thinkDiv">
+                            <div class="standard-posts">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="standard-post" id="thinkDiv">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
- 
+            </section>
+
+        </section>
+
+        <section id="content3">
+        </section>
+
+        <section id="content4">
+        </section>
+
+        <section id="content5">
+        </section>
+
+        <section id="content6">
+        </section>
+
+    </main>
+
+    
+
     <a href="#" class="go-top"><i class="fa fa-angle-up"></i></a>
 
     <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>

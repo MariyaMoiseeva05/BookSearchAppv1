@@ -1,12 +1,7 @@
 ﻿$(document).ready(function () {
     common.init();
 });
-$('.message a').click(function () {
-    $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
-});
 
-var options = { year: 'numeric', month: 'long', day: 'numeric', minute: '2-digit', hour: 'numeric', second: '2-digit' };
-var formatter = new Intl.DateTimeFormat("ru", options); //формат даты
 var common = {
     user_type: "", //тип пользователя
     //получение текущего пользователя
@@ -27,13 +22,19 @@ var common = {
                         sessionStorage.setItem('userid', data.id);
                     }
                     if (data.isAuthenticated == 0) {
-                        $(".login").hide();
-
+                        $("#logoffBtn").hide();
                         sessionStorage.setItem('role', 'guest');
                         sessionStorage.setItem('userid', '');
                     }
                     else {
-                        $(".not-login").hide();
+                        let x = window.location;
+                        if (x.pathname == "/Login.html") {
+                            $(location).attr('href', "/html");
+                        }
+                        $("#btnLogin").hide();
+                        $("#ifnotregister").hide();
+                        $("#fogotpassword").hide();
+                        $("#btngroup").hide();
                     }
                 }
             }
@@ -65,15 +66,15 @@ var common = {
             }
         });
     },
-    //Отображение кнопок по ролям
     customizePage: function () {
         if (sessionStorage.getItem('role') == 'admin') {
             $('.admin-show').show();
         }
         if (sessionStorage.getItem('role') == 'user') {
-            $('.user-show').show();
+            $('.emp-show').show();
         }
     },
+    
     //начальная инициализаци страницы
     init: function () {
         common.getCurrentUser();

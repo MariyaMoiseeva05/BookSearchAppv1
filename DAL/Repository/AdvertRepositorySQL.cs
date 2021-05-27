@@ -61,7 +61,6 @@ namespace DAL.Repository
             advert.Pickup = Advert.Pickup;
             advert.Message = Advert.Message;
             advert.Featured_Adverts = Advert.Featured_Adverts;
-            advert.Like_Adverts = Advert.Like_Adverts;
             advert.BookId = Advert.BookId;
             advert.UserId = Advert.UserId;
 

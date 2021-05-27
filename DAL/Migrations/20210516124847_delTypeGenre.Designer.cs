@@ -4,14 +4,16 @@ using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DAL.Migrations
 {
     [DbContext(typeof(BookSearchContext))]
-    partial class BookSearchContextModelSnapshot : ModelSnapshot
+    [Migration("20210516124847_delTypeGenre")]
+    partial class delTypeGenre
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -423,6 +425,24 @@ namespace DAL.Migrations
                     b.ToTable("Interesting_Facts");
                 });
 
+            modelBuilder.Entity("DAL.Entities.Like_Advert", b =>
+                {
+                    b.Property<string>("AdvertId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Like_AdvertId")
+                        .HasColumnType("int");
+
+                    b.HasKey("AdvertId", "UserId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Like_Adverts");
+                });
+
             modelBuilder.Entity("DAL.Entities.Locality", b =>
                 {
                     b.Property<int>("LocalityId")
@@ -541,14 +561,12 @@ namespace DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Like")
                         .HasColumnType("int");
 
                     b.Property<string>("UserID")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("QuoteId");
@@ -755,6 +773,9 @@ namespace DAL.Migrations
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)")
@@ -1052,6 +1073,21 @@ namespace DAL.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("DAL.Entities.Like_Advert", b =>
+                {
+                    b.HasOne("DAL.Entities.Advert", "Advert")
+                        .WithMany("Like_Adverts")
+                        .HasForeignKey("AdvertId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DAL.Entities.User", "User")
+                        .WithMany("Like_Adverts")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("DAL.Entities.Message", b =>
                 {
                     b.HasOne("DAL.Entities.Advert", "Advert")
@@ -1090,9 +1126,7 @@ namespace DAL.Migrations
 
                     b.HasOne("DAL.Entities.User", "User")
                         .WithMany("Quote")
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserID");
                 });
 
             modelBuilder.Entity("DAL.Entities.Review", b =>

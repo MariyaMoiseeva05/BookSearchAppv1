@@ -29,7 +29,6 @@ namespace DAL.Entities
         public bool Pickup { get; set; } // Флаг самовывоза
         public virtual ICollection<Message> Message { get; set; } // Сообщения
         public virtual ICollection<Featured_Advert> Featured_Adverts { get; set; } // Избранные объявления
-        public virtual ICollection<Like_Advert> Like_Adverts { get; set; } // Избранные объявления
 
         public int BookId { get; set; } // ссылка на книгу
         public virtual Book Book { get; set; }

@@ -2,7 +2,7 @@
     user.getAllUsers();
 });
 
-//if (User.IsInRole("admin"))
+/*if (User.IsInRole("admin"))*/
 
 var user = {
     // адрес апи
@@ -19,11 +19,10 @@ var user = {
                 var formatter = new Intl.DateTimeFormat("ru"); //формат даты
                 if (users) {
                     for (var i in users) {
-                        html += "<tr data-id=\"" + users[i].UserId + "\">";
+                        html += "<tr data-id=\"" + users[i].Id + "\">";
                         html += "<th scope=\"row\">" + (+i + +1) + "</th>";
                         html += "<td>" + users[i].Email + "</td>";
                         html += "<td>" + users[i].Login + "</td>";
-                        html += "<td>" + users[i].Password + "</td>";
                         html += "<td>" + users[i].Name + "</td>";
                         html += "<td>" + users[i].Surname + "</td>";
                         html += "<td>" + users[i].Sex + "</td>";
@@ -33,7 +32,8 @@ var user = {
                         html += "<td>" + users[i].Place + "</td>";
                         html += "<td>" + formatter.format(new Date(Date.parse(users[i].Date_of_Birth))) + "</td>";
                         html += "<td>" + users[i].About_me + "</td>";
-                        html += "<td class=\"img-user\">" + users[i].ImageLink + "</td>";
+                        html += "<td class=\"img-user\"><img src=" + (users[i].ImageLink ? users[i].ImageLink : " /images/author-default.jpg")+ "></td>";
+                        html += "<td><button type=\"button\" onclick=\"user.viewUser('" + users[i].Id + "')\" data-toggle=\"modal\" data-target=\"#view_modal\" class=\"btn btn-outline-secondary\"><i class=\"fa fa-eye\" aria-hidden=\"true\"></i></button></td>";
                        
                         html += "</tr>";
                     }
@@ -46,12 +46,6 @@ var user = {
         });
     },
 
-    //Добавление пользователя
-    createUser: function () {
-
-    },
-   
-
     // загрузка данных пользователя
     viewUser: function (id) {
         $.ajax({
@@ -61,12 +55,11 @@ var user = {
             success: function (data) {
                 let users = JSON.parse(data);
                 let html = "";
-                $('#view_modal_label').html(users.name);
-                $('#update-btn').attr("onclick", "user.createUpdateForm('" + users.UserId + "')");
-                $('#save-updates-btn').attr("onclick", "user.updateUser('" + users.UserId + "')");
+                $('#view_modal_label').html(users.Name);
+                $('#update-btn').attr("onclick", "user.createUpdateForm('" + users.Id + "')");
+                $('#save-updates-btn').attr("onclick", "user.updateUser('" + users.Id + "')");
 
                 html += "<tr><th>Логин</th><td id='user-login'>" + users.Login + "</td ></tr >";
-                html += "<tr><th>Пароль</th><td id='user-login'>" + users.Password + "</td ></tr >";
                 html += "<tr><th>Имя</th><td id='user-name'>" + users.Name + "</td ></tr >";
                 html += "<tr><th>Фамилия</th><td id='user-surname'>" + users.Surname + "</td ></tr >";
                 html += "<tr><th>Email</th><td id ='user-email'>" + users.Email + "</td ></tr >";
@@ -89,7 +82,6 @@ var user = {
     // создание полей для изменения данных
     createUpdateForm: function (id) {
         $('#user-login').html("<input class='form-control' type='text' id='inp-user-login' value='" + $('#user-login').html() + "'>");
-        $('#user-password').html("<input class='form-control' type='text' id='inp-user-password' value='" + $('#user-password').html() + "'>");
         $('#user-name').html("<input class='form-control' type='text' id='inp-user-name' value='" + $('#user-name').html() + "'>");
         $('#user-surname').html("<input class='form-control' type='text' id='inp-user-surname' value='" + $('#user-surname').html() + "'>");
         $('#user-email').html("<input class='form-control' type='text' id='inp-user-email' value='" + $('#user-email').html() + "' >");
@@ -106,7 +98,6 @@ var user = {
     },
     updateUser: function (id) {
         let login = $('#inp-user-login').val();
-        let password = $('#inp-user-password').val();
         let name = $('#inp-user-name').val();
         let surname = $('#inp-user-surname').val();
         let email = $('#inp-user-email').val();
@@ -123,7 +114,7 @@ var user = {
             data.append("ImageLink", fs[0]);
         }
         try {
-            if (login == "" || password == ""|| name == "" || surname == "" || email == "" || sex == "" || interest == "" || favorite_books == "" || country == "" ||
+            if (login == "" || name == "" || surname == "" || email == "" || sex == "" || interest == "" || favorite_books == "" || country == "" ||
                 place == "" || date_of_birth == "" || about_me == "")
                 throw new Error("Имеются незаполненные поля!");
             $.ajax({
@@ -132,7 +123,6 @@ var user = {
                 contentType: 'application/json',
                 data: JSON.stringify({
                     Login: login,
-                    Password: password,
                     Surname: surname,
                     Name: name,
                     Email: email,
@@ -160,4 +150,5 @@ var user = {
         }
     }
 };
+
 

@@ -43,9 +43,37 @@ namespace BookSearchApp.Controllers
         }
 
         [HttpPost] //  обрабатывает http-запросы POST
-        public async System.Threading.Tasks.Task<IActionResult> CreateAsync()
+        public IActionResult CreateReview([FromBody] ReviewModel review)
         {
-            ReviewModel reviewModel = new ReviewModel();
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            ReviewModel reviewModel = new ReviewModel
+            {
+                BookID = review.BookID,
+                UserID = review.UserID,
+                Title = review.Title,
+                Text = review.Text,
+                Rating = review.Rating,
+                Type = review.Type
+            };
+            try
+            {
+                _dbCrud.CreateReview(review);
+                _logger.LogInformation("Создание рецензии id: " + reviewModel.RewiewId + " успешно!");
+            }
+            catch (DataException e)
+            {
+                _logger.LogError("Ошибка при записи в бд: " + e.Message);
+                ModelState.AddModelError(string.Empty, "Невозможно применить изменения. Обратитесь к администратору системы для решения проблемы");
+                throw;
+            }
+            return CreatedAtAction("GetReview", new { id = reviewModel.RewiewId }, reviewModel);
+
+        }
+          /*  ReviewModel reviewModel = new ReviewModel();
             IFormCollection FormFields = await Request.ReadFormAsync().ConfigureAwait(false);
             string comments = FormFields["Comment_Review"];
             if (!ModelState.IsValid)
@@ -70,7 +98,7 @@ namespace BookSearchApp.Controllers
                 throw;
             }
             return CreatedAtAction("GetReview", new { id = reviewModel.RewiewId }, reviewModel);
-        }
+        }*/
         [HttpPut("{id}")]
         public async Task<IActionResult> Update([FromRoute] int id, [FromBody] ReviewModel review)
         {

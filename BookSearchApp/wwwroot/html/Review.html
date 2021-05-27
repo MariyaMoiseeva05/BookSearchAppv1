@@ -76,7 +76,10 @@
                     <ul class="social-icons">
                         <li><a href="Login.html"><i class="fa fa-user fa-fw"></i></a></li>
                     </ul>
-                    <a id="register" href="Register.html">Зарегистрироваться?</a>
+                    <div class="msg-error">
+                        <div class="my-2 text-left" id="msgLogin"></div>
+                        <ul class="list-unstyled" id="formErrorLogin"></ul>
+                    </div>
                 </div>
                 <div class="col-lg-4 align-self-center">
                     <div class="logo">
@@ -108,7 +111,7 @@
                         <li class="menu-item-has-children">
                             <a href="Home.html">Главная</a>
                             <ul class="sub-menu">
-                                <li><a href="index.html">О проекте</a></li>
+                                <li><a href="Home.html">О проекте</a></li>
                             </ul>
                         </li>
                         <li class="menu-item-has-children">
@@ -228,6 +231,7 @@
                                         <h4 id="review-title"></h4>
                                         <ul class="post-info">
                                             <li>
+                                                <a href="#">Оценка книги: </a>
                                                 <a href="#" class="rating-result" id="review-rating">
                                                     <span class="active"></span>
                                                     <span class="active"></span>
@@ -244,17 +248,9 @@
                                             <div class="col-lg-7 col-md-6">
                                                 <div class="tags">
                                                     <ul class="tags">
-                                                        <li><i class="fa fa-tag" id="review-type"></i></li>
+                                                        <li><p id="review-type">Тип рецензии: </p></li>
                                                     </ul>
                                                 </div>
-                                            </div>
-                                            <div class="col-lg-5 col-md-6">
-                                                <ul class="share-post">
-                                                    <li><i class="fa fa-share-alt"></i></li>
-                                                    <li><a href="#">Facebook</a>,</li>
-                                                    <li><a href="#">Twitter</a>,</li>
-                                                    <li><a href="#">Pinterest</a></li>
-                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -262,14 +258,11 @@
                                 <div class="col-lg-12">
                                     <div class="about-author">
                                         <div class="author-image">
-                                            <img src="http://placehold.it/140x140" alt="">
+                                            <img src="../images/author-default.jpg" alt="">
                                         </div>
                                         <div class="right-content">
                                             <h6 id="review-user-name"></h6>
                                             <p id="review-user-info">О пользователе</p>
-                                            <ul class="social-icons">
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -282,32 +275,32 @@
                                             <ul class="comments">
                                                 <li>
                                                     <div class="comment-author-image">
-                                                        <img src="http://placehold.it/90x90" alt="">
+                                                        <img src="../images/author-default.jpg" alt="">
                                                     </div>
                                                     <div class="right-content">
-                                                        <h6>Robert Imeri <span>January 10, 2020</span></h6>
-                                                        <a href="#" class="reply-button">Reply</a>
-                                                        <p>Franzen tumeric sriracha and quinoa goard next level. Cold-pressed kinfolk cronut short ditch freegan kistrater selfies.</p>
+                                                        <h6>1 комментарий<span>Дата, время</span></h6>
+                                                        <a href="#" class="reply-button">Ответить</a>
+                                                        <p>Отличная рецензия</p>
                                                     </div>
                                                 </li>
                                                 <li class="replied">
                                                     <div class="comment-author-image">
-                                                        <img src="http://placehold.it/90x90" alt="">
+                                                        <img src="../images/author-default.jpg" alt="">
                                                     </div>
                                                     <div class="right-content">
-                                                        <h6>Kate Luise <span>January 11, 2020</span></h6>
-                                                        <a href="#" class="reply-button">Reply</a>
-                                                        <p>Franzen tumeric sriracha and quinoa goard next level. Cold-pressed kinfolk cronut short ditch freegan kistrater selfies.</p>
+                                                        <h6>2 комментарий <span>Дата, время</span></h6>
+                                                        <a href="#" class="reply-button">Ответить</a>
+                                                        <p>Не понравилась рецензия</p>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="comment-author-image">
-                                                        <img src="http://placehold.it/90x90" alt="">
+                                                        <img src="../images/author-default.jpg" alt="">
                                                     </div>
                                                     <div class="right-content">
-                                                        <h6>Antonio Matters <span>January 09, 2020</span></h6>
-                                                        <a href="#" class="reply-button">Reply</a>
-                                                        <p>Franzen tumeric sriracha and quinoa goard next level. Cold-pressed kinfolk cronut short ditch freegan kistrater selfies.</p>
+                                                        <h6>3 комментарий<span>Дата, время</span></h6>
+                                                        <a href="#" class="reply-button">Отправить</a>
+                                                        <p>Хорошоая книга</p>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -406,7 +399,7 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function (event) {
-            $.when(viewReview(getUrlParameter('id'))).then(
+            $.when(review.viewReview(getUrlParameter('id'))).then(
                 function (response) {
                     let review = JSON.parse(response);
                     $("#review-title").html(review.Title);

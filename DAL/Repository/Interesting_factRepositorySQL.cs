@@ -1,5 +1,6 @@
 ﻿using DAL.Entities;
 using DAL.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -28,12 +29,16 @@ namespace DAL.Repository
 
         public Interesting_fact GetItem(object id)
         {
-            return db.Interesting_Facts.Find((int)id);
+            return db.Interesting_Facts
+                .Include(a => a.Author)
+                .SingleOrDefault(b => b.FactId == (int)id);
         }
 
         public IEnumerable<Interesting_fact> GetAll()
         {
-            return db.Interesting_Facts.ToList();
+            return db.Interesting_Facts
+                .Include(a => a.Author)
+                .ToList();
         }
 
         public void Update(Interesting_fact Interesting_fact, object factId)
