@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BLL.Interfaces;
 using BLL.Models;
+using BLL.Services;
 using DAL.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
@@ -33,11 +34,20 @@ namespace BookSearchApp.Controllers
 
             _logger = logger;
         }
+        //[FromQuery] AuthorParameters authorParameters
         [HttpGet]
         public IEnumerable<AuthorModel> GetAllAuthors()
         {
+            
+
+           /* if (!authorParameters.ValidYearRange)
+            {
+                return (IEnumerable<AuthorModel>)BadRequest("Максимальный год рождения не может быть меньше минимального года рождения.");
+            }*/
+
             return _dbCrud.GetAllAuthors();
         }
+        
 
         [HttpGet("{id}")]
         public IActionResult GetAuthor([FromRoute] int id)

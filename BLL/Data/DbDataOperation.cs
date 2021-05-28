@@ -21,12 +21,22 @@ namespace BLL.Data
         #region Author
         public IEnumerable<AuthorModel> GetAllAuthors()
         {
-            return db.Authors.GetAll().Select(i => new AuthorModel(i)).ToList();
+      
+            return db.Authors.GetAll().Select(i => new AuthorModel(i))
+                .OrderBy(a => a.Full_name)
+               // .Skip((authorParameters.PageNumber - 1)*authorParameters.PageSize)
+                //.Take(authorParameters.PageSize)
+                .ToList();
         }
+
 
         public AuthorModel GetAuthor(int Id)
         {
             return new AuthorModel(db.Authors.GetItem(Id));
+        }
+
+        public void IndexAuthor(string sortOrder, string searchString, string currentFilter, int? pageNumber) {
+           
         }
 
         public void CreateAuthor(AuthorModel at)
@@ -103,7 +113,10 @@ namespace BLL.Data
 
     public IEnumerable<BookModel> GetAllBooks()
         {
-            return db.Books.GetAll().Select(i => new BookModel(i)).OrderBy(b => b.Title)
+            return db.Books.GetAll().Select(i => new BookModel(i))
+                .OrderBy(b => b.Title)
+                //.Skip((bookParameters.PageNumber - 1)*bookParameters.PageSize)
+                //.Take(bookParameters.PageSize)
                 .ToList();
         }
 

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace BLL.Services
+namespace BLL.Models
 {
-    public class PageList<T> : List<T>
+    public class PagedList<T> : List <T>
     {
 		public int CurrentPage { get; private set; }
 		public int TotalPages { get; private set; }
@@ -14,7 +14,7 @@ namespace BLL.Services
 
 		public bool HasPrevious => CurrentPage > 1; // HasPrevious истинно, если CurrentPage больше 1
 		public bool HasNext => CurrentPage < TotalPages; //HasNext вычисляется, если CurrentPage меньше общего количества страниц
-		public PageList(List<T> items, int count, int pageNumber, int pageSize)
+		public PagedList(List<T> items, int count, int pageNumber, int pageSize)
 		{
 			TotalCount = count;
 			PageSize = pageSize;
@@ -24,12 +24,13 @@ namespace BLL.Services
 			AddRange(items);
 		}
 
-		public static PageList<T> ToPagedList(IQueryable<T> source, int pageNumber, int pageSize)
+		public static PagedList<T> ToPagedList(IQueryable<T> source, int pageNumber, int pageSize)
 		{
 			var count = source.Count();
 			var items = source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
 
-			return new PageList<T>(items, count, pageNumber, pageSize);
+			return new PagedList<T>(items, count, pageNumber, pageSize);
 		}
 	}
 }
+

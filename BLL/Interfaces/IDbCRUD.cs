@@ -6,6 +6,7 @@ namespace BLL.Interfaces
 {
     public interface IDbCRUD
     {
+
        IEnumerable<BookModel> GetAllBooks();
        // PageList<BookModel> GetAllBooks(BookParameters bookParameters);
         IEnumerable<AuthorModel> GetAllAuthors();
@@ -34,6 +35,7 @@ namespace BLL.Interfaces
         void CreateAuthor(AuthorModel at);
         void UpdateAuthor(AuthorModel at, int authorId);
         void DeleteAuthor(int id);
+        void IndexAuthor(string sortOrder, string searchString, string currentFilter, int? pageNumber);
 
         BookModel GetBook(int bookId);
         void CreateBook(BookModel b, ICollection<string> a, ICollection<string> g, ICollection<string> tl);
