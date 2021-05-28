@@ -206,7 +206,7 @@
                                             <div class="inner-content">
                                                 <p>Добавьте рецензию на эту книгу, поделитесь впечатлениями с другими пользователями!</p>
                                                 <div class="normal-white-button">
-                                                    <a href="AddReview.html">Написать рецензию!</a>
+                                                    <a href="AddReview.html" id="add-review-link">Написать рецензию!</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -409,6 +409,8 @@
                     $("#review-user-name").html(review.User.Login);
                     $("#review-user-info").html(review.User.About_me);
                     $("#review-type").html(review.Type);
+                    $("#add-review-link").attr("href", "AddReview.html?id=" + review.Book.BookID);
+
                     for (var a in review.Book.Authors) {
                         $("#book-author-review").append(review.Book.Authors[a].Author.Full_name + "<br>");
                     }

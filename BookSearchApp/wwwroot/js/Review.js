@@ -13,7 +13,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    review.init();
+    //review.init();
 });
 
 var review = {
@@ -123,9 +123,6 @@ var review = {
         }
         updateResults();
     },
-
-
-
    /* getBook: function () {
         $.ajax({
             url: "/api/Books",
@@ -174,7 +171,7 @@ var review = {
             return false;
         }
         let reviewTitle = $('#create-review-name').val();
-        let bookID = $('#BookReviewDiv').val;
+        let bookID = $("#book-id").val();
         let ratingBook = $('#create-review-rating').val();
         let typeReview = $('#create-review-type').val() == "1" ? "true" : "false";
         $.ajax({

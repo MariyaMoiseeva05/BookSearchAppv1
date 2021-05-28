@@ -161,24 +161,78 @@
             <button type="submit" class="primary-button"><i class="icon_search"></i></button>
         </form>
     </div>
-    <section class="medium-gap standard-home list-home" id="style-height">
+    <section class="large-gap contact-me contact-version-two">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8">
-                    <div class="standard-posts">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="standard-post list-post"  id="BookReviewDiv">
-                                    <!--<div class="post-image">
-                                        <a href="#"><img src="/images/default_book.jpeg" id="book-img-review" /></a>
+                <div class="col-lg-12">
+                    <div class="widget-sidebar contact-me">
+                        <div class="widget-header">
+                            <h4>Новая рецензия</h4>
+                        </div>
+                        <div class="book-review" id="book-reviewDiv">
+                            <div class="post-image">
+                                <a href="#"><img src="/images/default_book.jpeg" id="book-img-review" /></a>
+                            </div>
+                            <div class="down-content">
+                                <a href="#"><h4 id="book-title-review"></h4></a>
+                                <p><em id="book-author-review"></em></p>
+                                <ul class="post-info">
+                                    <li><a id="book-genre-review" href="#"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="widget-content">
+                            <div class="contact-form">
+                                <form id="contact" action="#" method="post">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <!-- <fieldset>
+                                                <label>Ваша оценка книги по шкале от 1 до 5</label>
+                                                <div class="rating-mini" id="create-review-rating">
+                                                    <input id="star-rating-5" type="radio" class="rating-mini" value="5">
+                                                    <label for="star-rating-5" title="Очень понравилась"></label>
+                                                    <input id="star-rating-4" type="radio" class="rating-mini" value="4">
+                                                    <label for="star-rating-4" title="Понравилась"></label>
+                                                    <input id="star-rating-3" type="radio" class="rating-mini" value="3">
+                                                    <label for="star-rating-3" title="Можно прочитать один раз"></label>
+                                                    <input id="star-rating-2" type="radio" class="rating-mini" value="2">
+                                                    <label for="star-rating-2" title="Не понравилась"></label>
+                                                    <input id="star-rating-1" type="radio" class="rating-mini" value="1">
+                                                    <label for="star-rating-1" title="Очень не понравилась"></label>
+                                                    <input id="sum-rating"><br>
+                                                    <input id="all-rating">
+                                                </div>
+                                            </fieldset>-->
+                                            <input type="hidden" id="book-id"/>
+                                            <fieldset>
+                                                <label>Ваша оценка книги по шкале от 1 до 5</label>
+                                                <input type="number" id="create-review-rating" min="1" max="5" class="form-controlInput">
+                                            </fieldset>
+
+                                            <fieldset>
+                                                <label class="control-label" for="create-review-type">Тип рецензии</label>
+
+                                                <select id="create-review-type" class="form-control" name="">
+                                                    <option value="0" selected="">Положительная</option>
+                                                    <option value="1">Отрицательная</option>
+                                                </select>
+                                            </fieldset>
+                                            <fieldset>
+                                                <label for="create-review-name">Заголовок рецензии</label>
+                                                <input name="name" type="text" class="form-controlInput" id="create-review-name" placeholder="Введите название рецензии" required="">
+                                            </fieldset>
+                                            <fieldset>
+                                                <label for="create-review-content">Текст вашей рецензии</label>
+                                                <textarea name="message" rows="10" class="form-control" id="create-review-content" placeholder="Ваша рецензия" required=""></textarea>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <fieldset>
+                                                <button type="submit" id="form-submit" onclick="review.createReview()" class="filled-button">Опубликовать</button>
+                                            </fieldset>
+                                        </div>
                                     </div>
-                                    <div class="down-content">
-                                        <a href="#"><h4 id="book-title-review"></h4></a><a href="#"><h4><em id="book-author-review"></em></h4></a>
-                                        <ul class="post-info">
-                                            <li><a id="book-genre-review" href="#"></a></li>
-                                        </ul>
-                                    </div>-->
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -186,111 +240,44 @@
             </div>
         </div>
     </section>
-                                        <section class="large-gap contact-me contact-version-two">
-                                            <div class="container">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="widget-sidebar contact-me">
-                                                            <div class="widget-header">
-                                                                <h4>Новая рецензия</h4>
-                                                            </div>
-                                                            <div class="book-review" id="book-reviewDiv">
-                                                            </div>
-                                                            <div class="widget-content">
-                                                                <div class="contact-form">
-                                                                    <form id="contact" action="#" method="post">
-                                                                        <div class="row">
-                                                                            <div class="col-lg-12">
-                                                                                <!-- <fieldset>
-                                                                                    <label>Ваша оценка книги по шкале от 1 до 5</label>
-                                                                                    <div class="rating-mini" id="create-review-rating">
-                                                                                        <input id="star-rating-5" type="radio" class="rating-mini" value="1">
-                                                                                        <label for="star-rating-5" title="Очень понравилась"></label>
-                                                                                        <input id="star-rating-4" type="radio" class="rating-mini" value="1">
-                                                                                        <label for="star-rating-4" title="Понравилась"></label>
-                                                                                        <input id="star-rating-3" type="radio" class="rating-mini" value="1">
-                                                                                        <label for="star-rating-3" title="Можно прочитать один раз"></label>
-                                                                                        <input id="star-rating-2" type="radio" class="rating-mini" value="1">
-                                                                                        <label for="star-rating-2" title="Не понравилась"></label>
-                                                                                        <input id="star-rating-1" type="radio" class="rating-mini" value="1">
-                                                                                        <label for="star-rating-1" title="Очень не понравилась"></label>
-                                                                                        <input id="sum-rating"><br>
-                                                                                        <input id="all-rating">
-                                                                                    </div>
-                                                                                </fieldset>-->
-                                                                                <fieldset>
-                                                                                    <label>Ваша оценка книги по шкале от 1 до 5</label>
-                                                                                    <input type="text" id="create-review-rating" class="form-controlInput">
-                                                                                </fieldset>
 
-                                                                                <fieldset>
-                                                                                    <label class="control-label" for="create-review-type">Тип рецензии</label>
+    <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.easing.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/wow.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/parallax.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/isotope.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/imagesloaded.pkgd.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/packery-mode.pkgd.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/owl-carousel.min.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
+    <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
+    <script src="../js/Login.js"></script>
+    <script src="../js/Login_Register.js"></script>
+    <script src="../js/Register.js"></script>
+    <script src="../scripts/main.js" charset="utf-8"></script>
+    <script src="../js/Review.js" charset="utf-8"></script>
 
-                                                                                    <select id="create-review-type" class="form-control" name="">
-                                                                                        <option value="0" selected="">Положительная</option>
-                                                                                        <option value="1">Отрицательная</option>
-                                                                                    </select>
-                                                                                </fieldset>
-                                                                                <fieldset>
-                                                                                    <label for="create-review-name">Заголовок рецензии</label>
-                                                                                    <input name="name" type="text" class="form-controlInput" id="create-review-name" placeholder="Введите название рецензии" required="">
-                                                                                </fieldset>
-                                                                                <fieldset>
-                                                                                    <label for="create-review-content">Текст вашей рецензии</label>
-                                                                                    <textarea name="message" rows="10" class="form-control" id="create-review-content" placeholder="Ваша рецензия" required=""></textarea>
-                                                                                </fieldset>
-                                                                            </div>
-                                                                            <div class="col-lg-12">
-                                                                                <fieldset>
-                                                                                    <button type="submit" id="form-submit" onclick="review.createReview()" class="filled-button">Опубликовать</button>
-                                                                                </fieldset>
-                                                                            </div>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            $.when(review.viewBook(getUrlParameter('id'))).then(
+                function (response) {
+                    let book = JSON.parse(response);
+                    $("#book-title-review").html(book.Title);
+                    $("#book-id").val(book.BookID);
+                    for (var a in book.Authors) {
+                        $("#book-author-review").append(book.Authors[a].Author.Full_name + "<br>");
+                    }
+                    for (var g in book.Genre_Books) {
+                        $("#book-genre-review").append(book.Genre_Books[g].Genre.NameGenre + "<br>");
+                    }
+                    if (book.ImageLink != "")
+                        $("#book-img-review").attr("src", book.ImageLink);
 
-                                        <script src="../scripts/vendors/jquery-3.4.1.min.js" charset="utf-8"></script>
-                                        <script src="../scripts/vendors/jquery.hoverIntent.min.js" charset="utf-8"></script>
-                                        <script src="../scripts/vendors/perfect-scrollbar.min.js" charset="utf-8"></script>
-                                        <script src="../scripts/vendors/jquery.easing.min.js" charset="utf-8"></script>
-                                        <script src="../scripts/vendors/wow.min.js" charset="utf-8"></script>
-                                        <script src="../scripts/vendors/parallax.min.js" charset="utf-8"></script>
-                                        <script src="../scripts/vendors/isotope.min.js" charset="utf-8"></script>
-                                        <script src="../scripts/vendors/imagesloaded.pkgd.min.js" charset="utf-8"></script>
-                                        <script src="../scripts/vendors/packery-mode.pkgd.min.js" charset="utf-8"></script>
-                                        <script src="../scripts/vendors/owl-carousel.min.js" charset="utf-8"></script>
-                                        <script src="../scripts/vendors/jquery.appear.js" charset="utf-8"></script>
-                                        <script src="../scripts/vendors/jquery.countTo.js" charset="utf-8"></script>
-                                        <script src="../js/Login.js"></script>
-                                        <script src="../js/Login_Register.js"></script>
-                                        <script src="../js/Register.js"></script>
-                                        <script src="../scripts/main.js" charset="utf-8"></script>
-                                        <script src="../js/Review.js" charset="utf-8"></script>
-
-                                        <script>
-                                            document.addEventListener("DOMContentLoaded", function (event) {
-                                                $.when(review.viewBook(getUrlParameter('id'))).then(
-                                                    function (response) {
-                                                        let book = JSON.parse(response);
-                                                        $("#book-title-review").html(book.Title);
-                                                        for (var a in book.Authors) {
-                                                            $("#book-author-review").append(book.Authors[a].Author.Full_name + "<br>");
-                                                        }
-                                                        for (var g in book.Genre_Books) {
-                                                            $("#book-genre-review").append(book.Genre_Books[g].Genre.NameGenre + "<br>");
-                                                        }
-                                                        if (book.ImageLink != "")
-                                                            $("#book-img-review").attr("src", book.ImageLink);
-                                                   
-                                                    }
-                                                );
-                                            });
-                                        </script>
+                }
+            );
+        });
+    </script>
 </body>
 </html>
